@@ -24,7 +24,8 @@ namespace Ecocoon
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            pnl_wydzialy.Visible = true;
+            pnl_harmonogramy.Visible = false;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -35,6 +36,12 @@ namespace Ecocoon
         private void button6_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            pnl_harmonogramy.Visible = true;
+            pnl_wydzialy.Visible = false;
         }
     }
 }

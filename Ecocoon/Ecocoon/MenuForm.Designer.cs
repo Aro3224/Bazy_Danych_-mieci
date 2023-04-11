@@ -35,10 +35,16 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.pnl_harmonogramy = new System.Windows.Forms.Panel();
+            this.napis_harmonogramy = new System.Windows.Forms.TextBox();
+            this.pnl_wydzialy = new System.Windows.Forms.Panel();
+            this.napis_wydzialy = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.pnl_harmonogramy.SuspendLayout();
+            this.pnl_wydzialy.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -124,6 +130,7 @@
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 
@@ -135,17 +142,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(731, 61);
             this.panel2.TabIndex = 1;
-            // 
-            // button5
-            // 
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
-            this.button5.Location = new System.Drawing.Point(575, 0);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 61);
-            this.button5.TabIndex = 0;
-            this.button5.UseVisualStyleBackColor = true;
             // 
             // button6
             // 
@@ -159,12 +155,57 @@
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
+            // button5
+            // 
+            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
+            this.button5.Location = new System.Drawing.Point(575, 0);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 61);
+            this.button5.TabIndex = 0;
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // pnl_harmonogramy
+            // 
+            this.pnl_harmonogramy.Controls.Add(this.napis_harmonogramy);
+            this.pnl_harmonogramy.Location = new System.Drawing.Point(229, 57);
+            this.pnl_harmonogramy.Name = "pnl_harmonogramy";
+            this.pnl_harmonogramy.Size = new System.Drawing.Size(731, 483);
+            this.pnl_harmonogramy.TabIndex = 2;
+            // 
+            // napis_harmonogramy
+            // 
+            this.napis_harmonogramy.Location = new System.Drawing.Point(319, 165);
+            this.napis_harmonogramy.Name = "napis_harmonogramy";
+            this.napis_harmonogramy.Size = new System.Drawing.Size(107, 24);
+            this.napis_harmonogramy.TabIndex = 0;
+            this.napis_harmonogramy.Text = "Harmonogramy";
+            // 
+            // pnl_wydzialy
+            // 
+            this.pnl_wydzialy.Controls.Add(this.napis_wydzialy);
+            this.pnl_wydzialy.Location = new System.Drawing.Point(229, 57);
+            this.pnl_wydzialy.Name = "pnl_wydzialy";
+            this.pnl_wydzialy.Size = new System.Drawing.Size(731, 483);
+            this.pnl_wydzialy.TabIndex = 3;
+            // 
+            // napis_wydzialy
+            // 
+            this.napis_wydzialy.Location = new System.Drawing.Point(281, 172);
+            this.napis_wydzialy.Name = "napis_wydzialy";
+            this.napis_wydzialy.Size = new System.Drawing.Size(68, 24);
+            this.napis_wydzialy.TabIndex = 0;
+            this.napis_wydzialy.Text = "Wydziały";
+            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.PaleGreen;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(960, 540);
+            this.Controls.Add(this.pnl_wydzialy);
+            this.Controls.Add(this.pnl_harmonogramy);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Arial Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -175,6 +216,10 @@
             this.Load += new System.EventHandler(this.MenuForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.pnl_harmonogramy.ResumeLayout(false);
+            this.pnl_harmonogramy.PerformLayout();
+            this.pnl_wydzialy.ResumeLayout(false);
+            this.pnl_wydzialy.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -189,5 +234,9 @@
         private Button button2;
         private Button button5;
         private Button button6;
+        private Panel pnl_harmonogramy;
+        private TextBox napis_harmonogramy;
+        private Panel pnl_wydzialy;
+        private TextBox napis_wydzialy;
     }
 }

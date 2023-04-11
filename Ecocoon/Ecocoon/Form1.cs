@@ -67,5 +67,10 @@ namespace Ecocoon
             
         }
 
+        private void label5_Click(object sender, EventArgs e)
+        {
+            new Register().Show();
+            this.Hide();
+        }
     }
 }
