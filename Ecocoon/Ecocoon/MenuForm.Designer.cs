@@ -29,36 +29,63 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuForm));
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnl_left = new System.Windows.Forms.Panel();
+            this.button7 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnl_up = new System.Windows.Forms.Panel();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.pnl_harmonogramy = new System.Windows.Forms.Panel();
             this.napis_harmonogramy = new System.Windows.Forms.TextBox();
             this.pnl_wydzialy = new System.Windows.Forms.Panel();
             this.napis_wydzialy = new System.Windows.Forms.TextBox();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.entityCommand1 = new System.Data.Entity.Core.EntityClient.EntityCommand();
+            this.pnl_edycja_danych = new System.Windows.Forms.Panel();
+            this.pnl_add_acc = new System.Windows.Forms.Panel();
+            this.button_add = new System.Windows.Forms.Button();
+            this.label_add_email = new System.Windows.Forms.Label();
+            this.txt_add_email = new System.Windows.Forms.TextBox();
+            this.button_new_acc = new System.Windows.Forms.Button();
+            this.pnl_left.SuspendLayout();
+            this.pnl_up.SuspendLayout();
             this.pnl_harmonogramy.SuspendLayout();
             this.pnl_wydzialy.SuspendLayout();
+            this.pnl_edycja_danych.SuspendLayout();
+            this.pnl_add_acc.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // pnl_left
             // 
-            this.panel1.BackColor = System.Drawing.Color.Green;
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(229, 540);
-            this.panel1.TabIndex = 0;
+            this.pnl_left.BackColor = System.Drawing.Color.Green;
+            this.pnl_left.Controls.Add(this.button7);
+            this.pnl_left.Controls.Add(this.button4);
+            this.pnl_left.Controls.Add(this.button3);
+            this.pnl_left.Controls.Add(this.button2);
+            this.pnl_left.Controls.Add(this.button1);
+            this.pnl_left.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnl_left.Location = new System.Drawing.Point(0, 0);
+            this.pnl_left.Name = "pnl_left";
+            this.pnl_left.Size = new System.Drawing.Size(229, 540);
+            this.pnl_left.TabIndex = 0;
+            // 
+            // button7
+            // 
+            this.button7.FlatAppearance.BorderSize = 0;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.ForeColor = System.Drawing.Color.White;
+            this.button7.Image = ((System.Drawing.Image)(resources.GetObject("button7.Image")));
+            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button7.Location = new System.Drawing.Point(0, 329);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(229, 47);
+            this.button7.TabIndex = 6;
+            this.button7.Text = "  Edycja danych";
+            this.button7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button4
             // 
@@ -132,16 +159,16 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // panel2
+            // pnl_up
             // 
-            this.panel2.BackColor = System.Drawing.Color.DarkGreen;
-            this.panel2.Controls.Add(this.button6);
-            this.panel2.Controls.Add(this.button5);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(229, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(731, 61);
-            this.panel2.TabIndex = 1;
+            this.pnl_up.BackColor = System.Drawing.Color.DarkGreen;
+            this.pnl_up.Controls.Add(this.button6);
+            this.pnl_up.Controls.Add(this.button5);
+            this.pnl_up.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnl_up.Location = new System.Drawing.Point(229, 0);
+            this.pnl_up.Name = "pnl_up";
+            this.pnl_up.Size = new System.Drawing.Size(731, 61);
+            this.pnl_up.TabIndex = 1;
             // 
             // button6
             // 
@@ -169,9 +196,9 @@
             // pnl_harmonogramy
             // 
             this.pnl_harmonogramy.Controls.Add(this.napis_harmonogramy);
-            this.pnl_harmonogramy.Location = new System.Drawing.Point(229, 57);
+            this.pnl_harmonogramy.Location = new System.Drawing.Point(229, 59);
             this.pnl_harmonogramy.Name = "pnl_harmonogramy";
-            this.pnl_harmonogramy.Size = new System.Drawing.Size(731, 483);
+            this.pnl_harmonogramy.Size = new System.Drawing.Size(731, 481);
             this.pnl_harmonogramy.TabIndex = 2;
             // 
             // napis_harmonogramy
@@ -185,9 +212,9 @@
             // pnl_wydzialy
             // 
             this.pnl_wydzialy.Controls.Add(this.napis_wydzialy);
-            this.pnl_wydzialy.Location = new System.Drawing.Point(229, 57);
+            this.pnl_wydzialy.Location = new System.Drawing.Point(229, 59);
             this.pnl_wydzialy.Name = "pnl_wydzialy";
-            this.pnl_wydzialy.Size = new System.Drawing.Size(731, 483);
+            this.pnl_wydzialy.Size = new System.Drawing.Size(731, 481);
             this.pnl_wydzialy.TabIndex = 3;
             // 
             // napis_wydzialy
@@ -198,37 +225,110 @@
             this.napis_wydzialy.TabIndex = 0;
             this.napis_wydzialy.Text = "Wydziały";
             // 
+            // entityCommand1
+            // 
+            this.entityCommand1.CommandTimeout = 0;
+            this.entityCommand1.CommandTree = null;
+            this.entityCommand1.Connection = null;
+            this.entityCommand1.EnablePlanCaching = true;
+            this.entityCommand1.Transaction = null;
+            // 
+            // pnl_edycja_danych
+            // 
+            this.pnl_edycja_danych.Controls.Add(this.pnl_add_acc);
+            this.pnl_edycja_danych.Controls.Add(this.button_new_acc);
+            this.pnl_edycja_danych.Location = new System.Drawing.Point(229, 59);
+            this.pnl_edycja_danych.Name = "pnl_edycja_danych";
+            this.pnl_edycja_danych.Size = new System.Drawing.Size(731, 481);
+            this.pnl_edycja_danych.TabIndex = 4;
+            // 
+            // pnl_add_acc
+            // 
+            this.pnl_add_acc.BackColor = System.Drawing.Color.PaleGreen;
+            this.pnl_add_acc.Controls.Add(this.button_add);
+            this.pnl_add_acc.Controls.Add(this.label_add_email);
+            this.pnl_add_acc.Controls.Add(this.txt_add_email);
+            this.pnl_add_acc.Location = new System.Drawing.Point(415, 0);
+            this.pnl_add_acc.Name = "pnl_add_acc";
+            this.pnl_add_acc.Size = new System.Drawing.Size(316, 482);
+            this.pnl_add_acc.TabIndex = 1;
+            // 
+            // button_add
+            // 
+            this.button_add.BackColor = System.Drawing.Color.Ivory;
+            this.button_add.FlatAppearance.BorderSize = 0;
+            this.button_add.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button_add.Location = new System.Drawing.Point(182, 218);
+            this.button_add.Name = "button_add";
+            this.button_add.Size = new System.Drawing.Size(97, 33);
+            this.button_add.TabIndex = 2;
+            this.button_add.Text = "Dodaj";
+            this.button_add.UseVisualStyleBackColor = false;
+            // 
+            // label_add_email
+            // 
+            this.label_add_email.AutoSize = true;
+            this.label_add_email.Location = new System.Drawing.Point(22, 81);
+            this.label_add_email.Name = "label_add_email";
+            this.label_add_email.Size = new System.Drawing.Size(257, 17);
+            this.label_add_email.TabIndex = 1;
+            this.label_add_email.Text = "Wprowadź Email nowego użytkownika";
+            // 
+            // txt_add_email
+            // 
+            this.txt_add_email.Location = new System.Drawing.Point(22, 112);
+            this.txt_add_email.Name = "txt_add_email";
+            this.txt_add_email.Size = new System.Drawing.Size(257, 24);
+            this.txt_add_email.TabIndex = 0;
+            // 
+            // button_new_acc
+            // 
+            this.button_new_acc.BackColor = System.Drawing.Color.Ivory;
+            this.button_new_acc.FlatAppearance.BorderSize = 0;
+            this.button_new_acc.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button_new_acc.Location = new System.Drawing.Point(30, 59);
+            this.button_new_acc.Name = "button_new_acc";
+            this.button_new_acc.Size = new System.Drawing.Size(160, 39);
+            this.button_new_acc.TabIndex = 0;
+            this.button_new_acc.Text = "Nowy użytkownik";
+            this.button_new_acc.UseVisualStyleBackColor = false;
+            this.button_new_acc.Click += new System.EventHandler(this.button_new_acc_Click);
+            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(960, 540);
+            this.Controls.Add(this.pnl_edycja_danych);
             this.Controls.Add(this.pnl_wydzialy);
             this.Controls.Add(this.pnl_harmonogramy);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnl_up);
+            this.Controls.Add(this.pnl_left);
             this.Font = new System.Drawing.Font("Arial Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MenuForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MenuForm";
             this.Load += new System.EventHandler(this.MenuForm_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
+            this.pnl_left.ResumeLayout(false);
+            this.pnl_up.ResumeLayout(false);
             this.pnl_harmonogramy.ResumeLayout(false);
             this.pnl_harmonogramy.PerformLayout();
             this.pnl_wydzialy.ResumeLayout(false);
             this.pnl_wydzialy.PerformLayout();
+            this.pnl_edycja_danych.ResumeLayout(false);
+            this.pnl_add_acc.ResumeLayout(false);
+            this.pnl_add_acc.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Panel panel1;
+        private Panel pnl_left;
         private Button button1;
-        private Panel panel2;
+        private Panel pnl_up;
         private Button button4;
         private Button button3;
         private Button button2;
@@ -238,5 +338,13 @@
         private TextBox napis_harmonogramy;
         private Panel pnl_wydzialy;
         private TextBox napis_wydzialy;
+        private Button button7;
+        private System.Data.Entity.Core.EntityClient.EntityCommand entityCommand1;
+        private Panel pnl_edycja_danych;
+        private Panel pnl_add_acc;
+        private Button button_new_acc;
+        private Button button_add;
+        private Label label_add_email;
+        private TextBox txt_add_email;
     }
 }

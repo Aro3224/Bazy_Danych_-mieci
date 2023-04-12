@@ -19,13 +19,16 @@ namespace Ecocoon
 
         private void MenuForm_Load(object sender, EventArgs e)
         {
-
+            pnl_edycja_danych.Visible= false;
+            pnl_harmonogramy.Visible= false;
+            pnl_wydzialy.Visible= false;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             pnl_wydzialy.Visible = true;
             pnl_harmonogramy.Visible = false;
+            pnl_edycja_danych.Visible = false;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -42,6 +45,20 @@ namespace Ecocoon
         {
             pnl_harmonogramy.Visible = true;
             pnl_wydzialy.Visible = false;
+            pnl_edycja_danych.Visible = false;
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            pnl_edycja_danych.Visible = true;
+            pnl_harmonogramy.Visible = false;
+            pnl_wydzialy.Visible = false;
+            pnl_add_acc.Visible = false;
+        }
+
+        private void button_new_acc_Click(object sender, EventArgs e)
+        {
+            pnl_add_acc.Visible = true;
         }
     }
 }
