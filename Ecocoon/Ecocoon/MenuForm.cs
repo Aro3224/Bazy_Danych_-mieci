@@ -60,5 +60,10 @@ namespace Ecocoon
         {
             pnl_add_acc.Visible = true;
         }
+
+        private void txt_add_email_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

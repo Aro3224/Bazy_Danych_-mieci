@@ -280,6 +280,7 @@
             this.txt_add_email.Name = "txt_add_email";
             this.txt_add_email.Size = new System.Drawing.Size(257, 24);
             this.txt_add_email.TabIndex = 0;
+            this.txt_add_email.TextChanged += new System.EventHandler(this.txt_add_email_TextChanged);
             // 
             // button_new_acc
             // 

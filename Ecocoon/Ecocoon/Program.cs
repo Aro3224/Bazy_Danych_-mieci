@@ -1,3 +1,5 @@
+using System.Configuration;
+
 namespace Ecocoon
 {
     internal static class Program
@@ -11,6 +13,8 @@ namespace Ecocoon
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
+            ConnectionStringSettingsCollection settings =
+            ConfigurationManager.ConnectionStrings;
             Application.Run(new Form1());
         }
     }
