@@ -16,54 +16,45 @@ namespace Ecocoon
         {
             InitializeComponent();
         }
-
         private void MenuForm_Load(object sender, EventArgs e)
         {
-            pnl_edycja_danych.Visible= false;
-            pnl_harmonogramy.Visible= false;
-            pnl_wydzialy.Visible= false;
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            pnl_wydzialy.Visible = true;
-            pnl_harmonogramy.Visible = false;
-            pnl_edycja_danych.Visible = false;
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            pnl_harmonogramy.Visible = true;
-            pnl_wydzialy.Visible = false;
             pnl_edycja_danych.Visible = false;
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
+            Application.Exit();
+        }
+
+        private void btn_harmonogramy_Click(object sender, EventArgs e)
+        {
+            pnl_edycja_danych.Visible = false;
+        }
+
+        private void btn_wydzialy_Click(object sender, EventArgs e)
+        {
+            pnl_edycja_danych.Visible = false;
+        }
+
+        private void btn_druki_pliki_Click(object sender, EventArgs e)
+        {
+            pnl_edycja_danych.Visible = false;
+        }
+
+        private void btn_mail_Click(object sender, EventArgs e)
+        {
+            pnl_edycja_danych.Visible = false;
+        }
+
+        private void btn_edycja_danych_Click(object sender, EventArgs e)
+        {
             pnl_edycja_danych.Visible = true;
-            pnl_harmonogramy.Visible = false;
-            pnl_wydzialy.Visible = false;
             pnl_add_acc.Visible = false;
         }
 
-        private void button_new_acc_Click(object sender, EventArgs e)
+        private void btn_new_acc_Click(object sender, EventArgs e)
         {
             pnl_add_acc.Visible = true;
-        }
-
-        private void txt_add_email_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

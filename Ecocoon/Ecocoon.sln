@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.4.33205.214
+VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecocoon", "Ecocoon\Ecocoon.csproj", "{C9C70D2E-9149-4214-AF80-866590B0DE25}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecocoon", "Ecocoon\Ecocoon.csproj", "{D942423D-B050-4FF4-9391-FDD955D267F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C9C70D2E-9149-4214-AF80-866590B0DE25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C9C70D2E-9149-4214-AF80-866590B0DE25}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C9C70D2E-9149-4214-AF80-866590B0DE25}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C9C70D2E-9149-4214-AF80-866590B0DE25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D942423D-B050-4FF4-9391-FDD955D267F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D942423D-B050-4FF4-9391-FDD955D267F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D942423D-B050-4FF4-9391-FDD955D267F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D942423D-B050-4FF4-9391-FDD955D267F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {A7DEBB5B-A125-42A2-B30E-473FC4C21810}
+		SolutionGuid = {DDE0B10A-9177-47FA-B781-56F0602980FE}
 	EndGlobalSection
 EndGlobal
