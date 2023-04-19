@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Ecocoon
 {
@@ -60,7 +62,7 @@ namespace Ecocoon
             pnl_edycja_danych.Visible = false;
             pnl_harmonogramy.Visible = false;
             pnl_wydzialy.Visible = false;
-        }   
+        }
 
         private void btn_edycja_danych_Click(object sender, EventArgs e)
         {
@@ -106,6 +108,21 @@ namespace Ecocoon
             pnl_administracja.Visible = false;
             pnl_smieciarze.Visible = false;
             pnl_kierowcy.Visible = true;
+        }
+
+        private void pnl_kierowcy_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btn_add_Click(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True");
+            string InsertQuey = "Insert into Administrators (Email) Values ('" + txt_add_email.Text + "')";
+            con.Open();
+            SqlCommand cmd = new SqlCommand(InsertQuey, con);
+            cmd.ExecuteNonQuery();
+            con.Close();
         }
     }
 }

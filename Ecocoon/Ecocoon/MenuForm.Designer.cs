@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuForm));
             this.pnl_left = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.btn_edycja_danych = new System.Windows.Forms.Button();
             this.btn_mail = new System.Windows.Forms.Button();
@@ -46,36 +47,35 @@
             this.txt_add_email = new System.Windows.Forms.TextBox();
             this.label_add_email = new System.Windows.Forms.Label();
             this.pnl_harmonogramy = new System.Windows.Forms.Panel();
+            this.pnl_niesegregowane = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pnl_segregowane = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.Niesegregowane = new System.Windows.Forms.Button();
             this.Segregowane = new System.Windows.Forms.Button();
-            this.pnl_segregowane = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.pnl_niesegregowane = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.pnl_wydzialy = new System.Windows.Forms.Panel();
-            this.administracja = new System.Windows.Forms.Button();
-            this.smieciarze = new System.Windows.Forms.Button();
-            this.kierowcy = new System.Windows.Forms.Button();
-            this.pnl_administracja = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.pnl_smieciarze = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.pnl_kierowcy = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
+            this.pnl_smieciarze = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.pnl_administracja = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.kierowcy = new System.Windows.Forms.Button();
+            this.smieciarze = new System.Windows.Forms.Button();
+            this.administracja = new System.Windows.Forms.Button();
             this.pnl_left.SuspendLayout();
             this.pnl_up.SuspendLayout();
             this.pnl_edycja_danych.SuspendLayout();
             this.pnl_add_acc.SuspendLayout();
             this.pnl_harmonogramy.SuspendLayout();
-            this.pnl_segregowane.SuspendLayout();
             this.pnl_niesegregowane.SuspendLayout();
+            this.pnl_segregowane.SuspendLayout();
             this.pnl_wydzialy.SuspendLayout();
-            this.pnl_administracja.SuspendLayout();
-            this.pnl_smieciarze.SuspendLayout();
             this.pnl_kierowcy.SuspendLayout();
+            this.pnl_smieciarze.SuspendLayout();
+            this.pnl_administracja.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnl_left
@@ -92,6 +92,13 @@
             this.pnl_left.Name = "pnl_left";
             this.pnl_left.Size = new System.Drawing.Size(229, 540);
             this.pnl_left.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(229, 98);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(731, 442);
+            this.panel1.TabIndex = 6;
             // 
             // button1
             // 
@@ -264,6 +271,7 @@
             this.btn_add.TabIndex = 2;
             this.btn_add.Text = "Dodaj";
             this.btn_add.UseVisualStyleBackColor = false;
+            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
             // txt_add_email
             // 
@@ -292,6 +300,60 @@
             this.pnl_harmonogramy.Size = new System.Drawing.Size(731, 482);
             this.pnl_harmonogramy.TabIndex = 3;
             // 
+            // pnl_niesegregowane
+            // 
+            this.pnl_niesegregowane.Controls.Add(this.label4);
+            this.pnl_niesegregowane.Controls.Add(this.label3);
+            this.pnl_niesegregowane.Location = new System.Drawing.Point(0, 40);
+            this.pnl_niesegregowane.Name = "pnl_niesegregowane";
+            this.pnl_niesegregowane.Size = new System.Drawing.Size(731, 442);
+            this.pnl_niesegregowane.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(277, 21);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(132, 17);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Niesegregowanych";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(196, 4);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(301, 17);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Harmonogram wywozu opdadów na rok 2023";
+            // 
+            // pnl_segregowane
+            // 
+            this.pnl_segregowane.Controls.Add(this.label2);
+            this.pnl_segregowane.Controls.Add(this.label1);
+            this.pnl_segregowane.Location = new System.Drawing.Point(0, 40);
+            this.pnl_segregowane.Name = "pnl_segregowane";
+            this.pnl_segregowane.Size = new System.Drawing.Size(731, 442);
+            this.pnl_segregowane.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(297, 21);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(112, 17);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Segregowanych";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(196, 4);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(301, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Harmonogram wywozu opdadów na rok 2023";
+            // 
             // Niesegregowane
             // 
             this.Niesegregowane.BackColor = System.Drawing.Color.PaleGreen;
@@ -317,60 +379,6 @@
             this.Segregowane.UseVisualStyleBackColor = false;
             this.Segregowane.Click += new System.EventHandler(this.Segregowane_Click);
             // 
-            // pnl_segregowane
-            // 
-            this.pnl_segregowane.Controls.Add(this.label2);
-            this.pnl_segregowane.Controls.Add(this.label1);
-            this.pnl_segregowane.Location = new System.Drawing.Point(0, 40);
-            this.pnl_segregowane.Name = "pnl_segregowane";
-            this.pnl_segregowane.Size = new System.Drawing.Size(731, 442);
-            this.pnl_segregowane.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(196, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(301, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Harmonogram wywozu opdadów na rok 2023";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(297, 21);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(112, 17);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Segregowanych";
-            // 
-            // pnl_niesegregowane
-            // 
-            this.pnl_niesegregowane.Controls.Add(this.label4);
-            this.pnl_niesegregowane.Controls.Add(this.label3);
-            this.pnl_niesegregowane.Location = new System.Drawing.Point(0, 40);
-            this.pnl_niesegregowane.Name = "pnl_niesegregowane";
-            this.pnl_niesegregowane.Size = new System.Drawing.Size(731, 442);
-            this.pnl_niesegregowane.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(196, 4);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(301, 17);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Harmonogram wywozu opdadów na rok 2023";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(277, 21);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(132, 17);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Niesegregowanych";
-            // 
             // pnl_wydzialy
             // 
             this.pnl_wydzialy.Controls.Add(this.pnl_kierowcy);
@@ -384,62 +392,24 @@
             this.pnl_wydzialy.Size = new System.Drawing.Size(731, 482);
             this.pnl_wydzialy.TabIndex = 4;
             // 
-            // administracja
+            // pnl_kierowcy
             // 
-            this.administracja.BackColor = System.Drawing.Color.PaleGreen;
-            this.administracja.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.administracja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.administracja.Location = new System.Drawing.Point(0, 0);
-            this.administracja.Name = "administracja";
-            this.administracja.Size = new System.Drawing.Size(156, 41);
-            this.administracja.TabIndex = 1;
-            this.administracja.Text = "Administracja";
-            this.administracja.UseVisualStyleBackColor = false;
-            this.administracja.Click += new System.EventHandler(this.administracja_Click);
+            this.pnl_kierowcy.Controls.Add(this.label7);
+            this.pnl_kierowcy.Location = new System.Drawing.Point(0, 40);
+            this.pnl_kierowcy.Name = "pnl_kierowcy";
+            this.pnl_kierowcy.Size = new System.Drawing.Size(731, 442);
+            this.pnl_kierowcy.TabIndex = 6;
+            this.pnl_kierowcy.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_kierowcy_Paint);
             // 
-            // smieciarze
+            // label7
             // 
-            this.smieciarze.BackColor = System.Drawing.Color.PaleGreen;
-            this.smieciarze.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.smieciarze.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.smieciarze.Location = new System.Drawing.Point(156, 0);
-            this.smieciarze.Name = "smieciarze";
-            this.smieciarze.Size = new System.Drawing.Size(156, 41);
-            this.smieciarze.TabIndex = 2;
-            this.smieciarze.Text = "Śmieciarze";
-            this.smieciarze.UseVisualStyleBackColor = false;
-            this.smieciarze.Click += new System.EventHandler(this.smieciarze_Click);
-            // 
-            // kierowcy
-            // 
-            this.kierowcy.BackColor = System.Drawing.Color.PaleGreen;
-            this.kierowcy.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.kierowcy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.kierowcy.Location = new System.Drawing.Point(312, 0);
-            this.kierowcy.Name = "kierowcy";
-            this.kierowcy.Size = new System.Drawing.Size(156, 41);
-            this.kierowcy.TabIndex = 3;
-            this.kierowcy.Text = "Kierowcy";
-            this.kierowcy.UseVisualStyleBackColor = false;
-            this.kierowcy.Click += new System.EventHandler(this.kierowcy_Click);
-            // 
-            // pnl_administracja
-            // 
-            this.pnl_administracja.Controls.Add(this.label5);
-            this.pnl_administracja.Location = new System.Drawing.Point(0, 40);
-            this.pnl_administracja.Name = "pnl_administracja";
-            this.pnl_administracja.Size = new System.Drawing.Size(731, 442);
-            this.pnl_administracja.TabIndex = 4;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(276, 4);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(132, 23);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Administracja";
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
+            this.label7.Location = new System.Drawing.Point(296, 4);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(93, 23);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "Kierowcy";
             // 
             // pnl_smieciarze
             // 
@@ -459,30 +429,62 @@
             this.label6.TabIndex = 1;
             this.label6.Text = "Śmieciarze";
             // 
-            // panel1
+            // pnl_administracja
             // 
-            this.panel1.Location = new System.Drawing.Point(229, 98);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(731, 442);
-            this.panel1.TabIndex = 6;
+            this.pnl_administracja.Controls.Add(this.label5);
+            this.pnl_administracja.Location = new System.Drawing.Point(0, 40);
+            this.pnl_administracja.Name = "pnl_administracja";
+            this.pnl_administracja.Size = new System.Drawing.Size(731, 442);
+            this.pnl_administracja.TabIndex = 4;
             // 
-            // pnl_kierowcy
+            // label5
             // 
-            this.pnl_kierowcy.Controls.Add(this.label7);
-            this.pnl_kierowcy.Location = new System.Drawing.Point(0, 40);
-            this.pnl_kierowcy.Name = "pnl_kierowcy";
-            this.pnl_kierowcy.Size = new System.Drawing.Size(731, 442);
-            this.pnl_kierowcy.TabIndex = 6;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
+            this.label5.Location = new System.Drawing.Point(276, 4);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(132, 23);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Administracja";
             // 
-            // label7
+            // kierowcy
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
-            this.label7.Location = new System.Drawing.Point(296, 4);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(93, 23);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "Kierowcy";
+            this.kierowcy.BackColor = System.Drawing.Color.PaleGreen;
+            this.kierowcy.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.kierowcy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.kierowcy.Location = new System.Drawing.Point(312, 0);
+            this.kierowcy.Name = "kierowcy";
+            this.kierowcy.Size = new System.Drawing.Size(156, 41);
+            this.kierowcy.TabIndex = 3;
+            this.kierowcy.Text = "Kierowcy";
+            this.kierowcy.UseVisualStyleBackColor = false;
+            this.kierowcy.Click += new System.EventHandler(this.kierowcy_Click);
+            // 
+            // smieciarze
+            // 
+            this.smieciarze.BackColor = System.Drawing.Color.PaleGreen;
+            this.smieciarze.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.smieciarze.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.smieciarze.Location = new System.Drawing.Point(156, 0);
+            this.smieciarze.Name = "smieciarze";
+            this.smieciarze.Size = new System.Drawing.Size(156, 41);
+            this.smieciarze.TabIndex = 2;
+            this.smieciarze.Text = "Śmieciarze";
+            this.smieciarze.UseVisualStyleBackColor = false;
+            this.smieciarze.Click += new System.EventHandler(this.smieciarze_Click);
+            // 
+            // administracja
+            // 
+            this.administracja.BackColor = System.Drawing.Color.PaleGreen;
+            this.administracja.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.administracja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.administracja.Location = new System.Drawing.Point(0, 0);
+            this.administracja.Name = "administracja";
+            this.administracja.Size = new System.Drawing.Size(156, 41);
+            this.administracja.TabIndex = 1;
+            this.administracja.Text = "Administracja";
+            this.administracja.UseVisualStyleBackColor = false;
+            this.administracja.Click += new System.EventHandler(this.administracja_Click);
             // 
             // MenuForm
             // 
@@ -507,17 +509,17 @@
             this.pnl_add_acc.ResumeLayout(false);
             this.pnl_add_acc.PerformLayout();
             this.pnl_harmonogramy.ResumeLayout(false);
-            this.pnl_segregowane.ResumeLayout(false);
-            this.pnl_segregowane.PerformLayout();
             this.pnl_niesegregowane.ResumeLayout(false);
             this.pnl_niesegregowane.PerformLayout();
+            this.pnl_segregowane.ResumeLayout(false);
+            this.pnl_segregowane.PerformLayout();
             this.pnl_wydzialy.ResumeLayout(false);
-            this.pnl_administracja.ResumeLayout(false);
-            this.pnl_administracja.PerformLayout();
-            this.pnl_smieciarze.ResumeLayout(false);
-            this.pnl_smieciarze.PerformLayout();
             this.pnl_kierowcy.ResumeLayout(false);
             this.pnl_kierowcy.PerformLayout();
+            this.pnl_smieciarze.ResumeLayout(false);
+            this.pnl_smieciarze.PerformLayout();
+            this.pnl_administracja.ResumeLayout(false);
+            this.pnl_administracja.PerformLayout();
             this.ResumeLayout(false);
 
         }
