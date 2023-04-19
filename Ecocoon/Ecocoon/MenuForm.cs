@@ -15,10 +15,13 @@ namespace Ecocoon
         public MenuForm()
         {
             InitializeComponent();
+            pnl_edycja_danych.Visible = true;
+            pnl_harmonogramy.Visible = false;
+            pnl_wydzialy.Visible = false;
         }
         private void MenuForm_Load(object sender, EventArgs e)
         {
-            pnl_edycja_danych.Visible = false;
+
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -28,33 +31,81 @@ namespace Ecocoon
 
         private void btn_harmonogramy_Click(object sender, EventArgs e)
         {
+            pnl_harmonogramy.Visible = true;
+            pnl_segregowane.Visible = false;
+            pnl_niesegregowane.Visible = false;
             pnl_edycja_danych.Visible = false;
+            pnl_wydzialy.Visible = false;
         }
 
         private void btn_wydzialy_Click(object sender, EventArgs e)
         {
+            pnl_wydzialy.Visible = true;
+            pnl_administracja.Visible = false;
+            pnl_smieciarze.Visible = false;
+            pnl_kierowcy.Visible = false;
             pnl_edycja_danych.Visible = false;
+            pnl_harmonogramy.Visible = false;
         }
 
         private void btn_druki_pliki_Click(object sender, EventArgs e)
         {
             pnl_edycja_danych.Visible = false;
+            pnl_harmonogramy.Visible = false;
+            pnl_wydzialy.Visible = false;
         }
 
         private void btn_mail_Click(object sender, EventArgs e)
         {
             pnl_edycja_danych.Visible = false;
-        }
+            pnl_harmonogramy.Visible = false;
+            pnl_wydzialy.Visible = false;
+        }   
 
         private void btn_edycja_danych_Click(object sender, EventArgs e)
         {
             pnl_edycja_danych.Visible = true;
             pnl_add_acc.Visible = false;
+            pnl_harmonogramy.Visible = false;
+            pnl_wydzialy.Visible = false;
         }
 
         private void btn_new_acc_Click(object sender, EventArgs e)
         {
             pnl_add_acc.Visible = true;
+        }
+
+        private void Segregowane_Click(object sender, EventArgs e)
+        {
+            pnl_segregowane.Visible = true;
+            pnl_niesegregowane.Visible = false;
+        }
+
+        private void Niesegregowane_Click(object sender, EventArgs e)
+        {
+            pnl_niesegregowane.Visible = true;
+            pnl_segregowane.Visible = false;
+        }
+
+        private void administracja_Click(object sender, EventArgs e)
+        {
+            pnl_administracja.Visible = true;
+            pnl_smieciarze.Visible = false;
+            pnl_kierowcy.Visible = false;
+        }
+
+        private void smieciarze_Click(object sender, EventArgs e)
+        {
+            pnl_administracja.Visible = false;
+            pnl_smieciarze.Visible = true;
+            pnl_kierowcy.Visible = false;
+        }
+
+        private void kierowcy_Click(object sender, EventArgs e)
+        {
+            pnl_administracja.Visible = false;
+            pnl_smieciarze.Visible = false;
+            pnl_kierowcy.Visible = true;
         }
     }
 }
