@@ -4,41 +4,30 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DataBaseSmieciModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'DataBaseSmieci.dbo.Administrators' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+      <Schema Namespace="DataBaseSmieciModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Administrators">
           <Key>
             <PropertyRef Name="AdminID" />
-            <PropertyRef Name="Email" />
           </Key>
-          <Property Name="AdminID" Type="int" Nullable="false" />
+          <Property Name="AdminID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="20" />
           <Property Name="Surname" Type="varchar" MaxLength="20" />
           <Property Name="Email" Type="varchar" MaxLength="40" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityContainer Name="DataBaseSmieciModelStoreContainer">
-          <EntitySet Name="Administrators" EntityType="Self.Administrators" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Administrators].[AdminID] AS [AdminID], 
-    [Administrators].[Name] AS [Name], 
-    [Administrators].[Surname] AS [Surname], 
-    [Administrators].[Email] AS [Email], 
-    [Administrators].[Password] AS [Password]
-    FROM [dbo].[Administrators] AS [Administrators]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="Administrators" EntityType="Self.Administrators" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DataBaseSmieciModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Administrator">
           <Key>
             <PropertyRef Name="AdminID" />
-            <PropertyRef Name="Email" />
           </Key>
-          <Property Name="AdminID" Type="Int32" Nullable="false" />
+          <Property Name="AdminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Surname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
@@ -56,11 +45,11 @@ warning 6002: The table/view 'DataBaseSmieci.dbo.Administrators' does not have a
           <EntitySetMapping Name="Administrators">
             <EntityTypeMapping TypeName="DataBaseSmieciModel.Administrator">
               <MappingFragment StoreEntitySet="Administrators">
-                <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="AdminID" ColumnName="AdminID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Surname" ColumnName="Surname" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
