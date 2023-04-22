@@ -28,22 +28,74 @@ namespace Ecocoon
             }
             else if (txt_pswd.Text == txt_pswd_again.Text)
             {
-                //dodanie do bazy
-                MessageBox.Show("Rejestracja przebiegła pomyślnie");
-                new MenuForm().Show();
-                this.Hide();
+
+                string connectionString = @"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+                string selectQuery = "SELECT Email FROM Administrators WHERE Email = @formEmail";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+
+                    using (SqlCommand command = new SqlCommand(selectQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@formEmail", txt_email.Text);
+                        SqlDataReader reader = command.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                string emailzbazy = reader.GetString(0);
+                                if (emailzbazy == txt_email.Text)
+                                {
+                                    updateUser(connectionString);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Podanego adresu e-mail nie ma w bazie danych, spróbuj ponownie");
+                                }
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Podanego adresu e-mail nie ma w bazie danych, spróbuj ponownie");
+                        }
+
+                    }
+                }
             }
             else
             {
                 MessageBox.Show("Podane hasła są różne, Proszę wprowadźić ponownie.");
             }
+        }
 
-            SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True");
-            string InsertQuey = "Update Administrators Set Password = '"+ txt_pswd.Text +"' WHERE Email='" + txt_email.Text + "'";
-            con.Open();
-            SqlCommand cmd = new SqlCommand(InsertQuey, con);
-            cmd.ExecuteNonQuery();
-            con.Close();
+        private void updateUser(String connectionString)
+        {
+            string UpdateQuery = "Update Administrators Set Password = @Psswd, Name = @Name, Surname = @Surname WHERE Email = @email";
+    
+            using (SqlConnection updateConnection = new SqlConnection(connectionString))
+            {
+                updateConnection.Open();
+                SqlTransaction transaction = updateConnection.BeginTransaction();
+                SqlCommand cmd = new SqlCommand(UpdateQuery, updateConnection, transaction);
+
+                try
+                {
+                    cmd.Parameters.AddWithValue("@Psswd", txt_pswd.Text);
+                    cmd.Parameters.AddWithValue("@email", txt_email.Text);
+                    cmd.Parameters.AddWithValue("@Name", txt_name.Text);
+                    cmd.Parameters.AddWithValue("@Surname", txt_surname.Text);
+                    cmd.ExecuteNonQuery();
+                    transaction.Commit();
+                    MessageBox.Show("Rejestracja przebiegła pomyślnie");
+                    new MenuForm().Show();
+                    this.Hide();
+                }
+                catch (SqlException sqlError)
+                {
+                    transaction.Rollback();
+                }
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -67,11 +119,11 @@ namespace Ecocoon
         {
             if (ShowPswd.Checked)
             {
-                txt_pswd.PasswordChar = '\0';
+                txt_pswd_again.PasswordChar = '\0';
             }
             else
             {
-                txt_pswd.PasswordChar = '•';
+                txt_pswd_again.PasswordChar = '•';
             }
         }
 

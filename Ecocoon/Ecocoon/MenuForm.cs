@@ -118,11 +118,12 @@ namespace Ecocoon
         private void btn_add_Click(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True");
-            string InsertQuey = "Insert into Administrators (Email) Values ('" + txt_add_email.Text + "')";
+            string InsertQuery = "Insert into Administrators (Email) Values ('" + txt_add_email.Text + "')";
             con.Open();
-            SqlCommand cmd = new SqlCommand(InsertQuey, con);
+            SqlCommand cmd = new SqlCommand(InsertQuery, con);
             cmd.ExecuteNonQuery();
             con.Close();
+            MessageBox.Show("Użytkownik został dodany.");
         }
     }
 }
