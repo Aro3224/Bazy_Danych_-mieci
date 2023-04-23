@@ -1,0 +1,4 @@
+Pliki, w których trzeba zmieniać connection stringa:
+Form1
+MenuForm
+Register

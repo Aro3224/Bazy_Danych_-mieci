@@ -129,6 +129,7 @@
             this.ShowPswd.TabIndex = 12;
             this.ShowPswd.Text = "Pokaż hasło";
             this.ShowPswd.UseVisualStyleBackColor = true;
+            this.ShowPswd.CheckedChanged += new System.EventHandler(this.ShowsPswd_CheckedChanged);
             // 
             // txt_pswd_again
             // 

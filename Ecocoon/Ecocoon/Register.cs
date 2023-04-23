@@ -111,15 +111,21 @@ namespace Ecocoon
             Application.Exit();
         }
 
+        private void ShowsPswd_CheckedChanged(object sender, EventArgs e)
+        {
+            txt_pswd_TextChanged(sender, e);
+            txt_pswd_again_TextChanged(sender, e);
+        }
+
         private void txt_pswd_TextChanged(object sender, EventArgs e)
         {
-            if (ShowPswd.Checked)
+            if(ShowPswd.Checked)
             {
-                txt_pswd.PasswordChar = '\0';
+                txt_pswd.UseSystemPasswordChar = false;
             }
             else
             {
-                txt_pswd.PasswordChar = '•';
+                txt_pswd.UseSystemPasswordChar = true;
             }
         }
 
@@ -127,11 +133,11 @@ namespace Ecocoon
         {
             if (ShowPswd.Checked)
             {
-                txt_pswd_again.PasswordChar = '\0';
+                txt_pswd_again.UseSystemPasswordChar = false;
             }
             else
             {
-                txt_pswd_again.PasswordChar = '•';
+                txt_pswd_again.UseSystemPasswordChar = true;
             }
         }
 

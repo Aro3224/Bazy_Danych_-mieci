@@ -85,19 +85,18 @@ namespace Ecocoon
 
         private void ShowsPswd_CheckedChanged(object sender, EventArgs e)
         {
-
+            txt_pswd_TextChanged_1(sender, e);
         }
-
 
         private void txt_pswd_TextChanged_1(object sender, EventArgs e)
         {
             if (ShowPswd.Checked)
             {
-                txt_pswd.PasswordChar = '\0';
+                txt_pswd.UseSystemPasswordChar = false;
             }
             else
             {
-                txt_pswd.PasswordChar = '•';
+                txt_pswd.UseSystemPasswordChar = true;
             }
         }
 
