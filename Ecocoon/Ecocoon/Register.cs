@@ -29,7 +29,8 @@ namespace Ecocoon
             else if (txt_pswd.Text == txt_pswd_again.Text)
             {
 
-                string connectionString = @"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+                //string connectionString = @"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True"; Adik Server
+                string connectionString = @"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True";
                 string selectQuery = "SELECT Email FROM Administrators WHERE Email = @formEmail";
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
@@ -47,17 +48,24 @@ namespace Ecocoon
                                 string emailzbazy = reader.GetString(0);
                                 if (emailzbazy == txt_email.Text)
                                 {
-                                    updateUser(connectionString);
+                                    if(txt_pswd.Text!=null)
+                                    {
+                                        MessageBox.Show("Konto już istnieje");
+                                    }
+                                    else
+                                    {
+                                        updateUser(connectionString);
+                                    }     
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Podanego adresu e-mail nie ma w bazie danych, spróbuj ponownie");
+                                    MessageBox.Show("Nie można zweryfikować twojego e-maila, spróbuj ponownie lub skontaktuj się z administracją");
                                 }
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Podanego adresu e-mail nie ma w bazie danych, spróbuj ponownie");
+                            MessageBox.Show("Nie można zweryfikować twojego e-maila, spróbuj ponownie lub skontaktuj się z administracją");
                         }
 
                     }

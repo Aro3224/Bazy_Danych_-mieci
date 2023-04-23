@@ -27,8 +27,9 @@ namespace Ecocoon
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            string connectionString = @"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+
+            //string connectionString = @"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string connectionString = @"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True"; 
             string selectQuery = "SELECT Password FROM Administrators WHERE Email = @Email";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -42,18 +43,25 @@ namespace Ecocoon
                     {
                         while (reader.Read())
                         {
-                            string haslo = reader.GetString(0);
-                            if (haslo == txt_pswd.Text)
+                            if (!reader.IsDBNull(0))
                             {
-                                new MenuForm().Show();
-                                this.Hide();
+                                string haslo = reader.GetString(0);
+                                if (haslo == txt_pswd.Text)
+                                {
+                                    new MenuForm().Show();
+                                    this.Hide();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Adres Email lub hasło są niepoprawne, spróbuj ponownie");
+                                    txt_user.Clear();
+                                    txt_pswd.Clear();
+                                    txt_user.Focus();
+                                }
                             }
                             else
                             {
-                                MessageBox.Show("Adres Email lub hasło są niepoprawne, spróbuj ponownie");
-                                txt_user.Clear();
-                                txt_pswd.Clear();
-                                txt_user.Focus();
+                                MessageBox.Show("Nie posiadasz konta, zarejestruj się");
                             }
                         }
                     }
