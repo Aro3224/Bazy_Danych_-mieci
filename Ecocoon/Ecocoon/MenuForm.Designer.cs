@@ -56,6 +56,12 @@
             this.Niesegregowane = new System.Windows.Forms.Button();
             this.Segregowane = new System.Windows.Forms.Button();
             this.pnl_wydzialy = new System.Windows.Forms.Panel();
+            this.pnl_segregacja = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.administracja = new System.Windows.Forms.Button();
+            this.pnl_odbiór = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.odbior = new System.Windows.Forms.Button();
             this.pnl_kierowcy = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.pnl_smieciarze = new System.Windows.Forms.Panel();
@@ -64,7 +70,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.kierowcy = new System.Windows.Forms.Button();
             this.smieciarze = new System.Windows.Forms.Button();
-            this.administracja = new System.Windows.Forms.Button();
+            this.segregacja = new System.Windows.Forms.Button();
+            this.pnl_druki_pliki = new System.Windows.Forms.Panel();
+            this.btn_zaznacz = new System.Windows.Forms.Button();
+            this.btn_odznacz = new System.Windows.Forms.Button();
+            this.btn_pobierz = new System.Windows.Forms.Button();
+            this.pnl_powiadomienia = new System.Windows.Forms.Panel();
             this.pnl_left.SuspendLayout();
             this.pnl_up.SuspendLayout();
             this.pnl_edycja_danych.SuspendLayout();
@@ -73,9 +84,12 @@
             this.pnl_niesegregowane.SuspendLayout();
             this.pnl_segregowane.SuspendLayout();
             this.pnl_wydzialy.SuspendLayout();
+            this.pnl_segregacja.SuspendLayout();
+            this.pnl_odbiór.SuspendLayout();
             this.pnl_kierowcy.SuspendLayout();
             this.pnl_smieciarze.SuspendLayout();
             this.pnl_administracja.SuspendLayout();
+            this.pnl_druki_pliki.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnl_left
@@ -220,6 +234,7 @@
             // 
             // button6
             // 
+            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button6.FlatAppearance.BorderSize = 0;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
@@ -228,6 +243,7 @@
             this.button6.Size = new System.Drawing.Size(75, 61);
             this.button6.TabIndex = 0;
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // pnl_edycja_danych
             // 
@@ -381,16 +397,82 @@
             // 
             // pnl_wydzialy
             // 
+            this.pnl_wydzialy.Controls.Add(this.pnl_segregacja);
+            this.pnl_wydzialy.Controls.Add(this.administracja);
+            this.pnl_wydzialy.Controls.Add(this.pnl_odbiór);
+            this.pnl_wydzialy.Controls.Add(this.odbior);
             this.pnl_wydzialy.Controls.Add(this.pnl_kierowcy);
             this.pnl_wydzialy.Controls.Add(this.pnl_smieciarze);
             this.pnl_wydzialy.Controls.Add(this.pnl_administracja);
             this.pnl_wydzialy.Controls.Add(this.kierowcy);
             this.pnl_wydzialy.Controls.Add(this.smieciarze);
-            this.pnl_wydzialy.Controls.Add(this.administracja);
+            this.pnl_wydzialy.Controls.Add(this.segregacja);
             this.pnl_wydzialy.Location = new System.Drawing.Point(229, 58);
             this.pnl_wydzialy.Name = "pnl_wydzialy";
             this.pnl_wydzialy.Size = new System.Drawing.Size(731, 482);
             this.pnl_wydzialy.TabIndex = 4;
+            // 
+            // pnl_segregacja
+            // 
+            this.pnl_segregacja.Controls.Add(this.label9);
+            this.pnl_segregacja.Location = new System.Drawing.Point(0, 40);
+            this.pnl_segregacja.Name = "pnl_segregacja";
+            this.pnl_segregacja.Size = new System.Drawing.Size(731, 442);
+            this.pnl_segregacja.TabIndex = 9;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
+            this.label9.Location = new System.Drawing.Point(278, 4);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(111, 23);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Segregacja";
+            // 
+            // administracja
+            // 
+            this.administracja.BackColor = System.Drawing.Color.PaleGreen;
+            this.administracja.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.administracja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.administracja.Location = new System.Drawing.Point(0, 0);
+            this.administracja.Name = "administracja";
+            this.administracja.Size = new System.Drawing.Size(150, 41);
+            this.administracja.TabIndex = 1;
+            this.administracja.Text = "Administracja";
+            this.administracja.UseVisualStyleBackColor = false;
+            this.administracja.Click += new System.EventHandler(this.administracja_Click);
+            // 
+            // pnl_odbiór
+            // 
+            this.pnl_odbiór.Controls.Add(this.label8);
+            this.pnl_odbiór.Location = new System.Drawing.Point(0, 40);
+            this.pnl_odbiór.Name = "pnl_odbiór";
+            this.pnl_odbiór.Size = new System.Drawing.Size(731, 442);
+            this.pnl_odbiór.TabIndex = 8;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
+            this.label8.Location = new System.Drawing.Point(321, 4);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(68, 23);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "Odbiór";
+            // 
+            // odbior
+            // 
+            this.odbior.BackColor = System.Drawing.Color.PaleGreen;
+            this.odbior.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.odbior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.odbior.Location = new System.Drawing.Point(597, 0);
+            this.odbior.Name = "odbior";
+            this.odbior.Size = new System.Drawing.Size(134, 41);
+            this.odbior.TabIndex = 8;
+            this.odbior.Text = "Segregacja";
+            this.odbior.UseVisualStyleBackColor = false;
+            this.odbior.Click += new System.EventHandler(this.button3_Click);
             // 
             // pnl_kierowcy
             // 
@@ -452,9 +534,9 @@
             this.kierowcy.BackColor = System.Drawing.Color.PaleGreen;
             this.kierowcy.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.kierowcy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.kierowcy.Location = new System.Drawing.Point(312, 0);
+            this.kierowcy.Location = new System.Drawing.Point(300, 0);
             this.kierowcy.Name = "kierowcy";
-            this.kierowcy.Size = new System.Drawing.Size(156, 41);
+            this.kierowcy.Size = new System.Drawing.Size(150, 41);
             this.kierowcy.TabIndex = 3;
             this.kierowcy.Text = "Kierowcy";
             this.kierowcy.UseVisualStyleBackColor = false;
@@ -465,26 +547,79 @@
             this.smieciarze.BackColor = System.Drawing.Color.PaleGreen;
             this.smieciarze.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.smieciarze.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.smieciarze.Location = new System.Drawing.Point(156, 0);
+            this.smieciarze.Location = new System.Drawing.Point(150, 0);
             this.smieciarze.Name = "smieciarze";
-            this.smieciarze.Size = new System.Drawing.Size(156, 41);
+            this.smieciarze.Size = new System.Drawing.Size(150, 41);
             this.smieciarze.TabIndex = 2;
             this.smieciarze.Text = "Śmieciarze";
             this.smieciarze.UseVisualStyleBackColor = false;
             this.smieciarze.Click += new System.EventHandler(this.smieciarze_Click);
             // 
-            // administracja
+            // segregacja
             // 
-            this.administracja.BackColor = System.Drawing.Color.PaleGreen;
-            this.administracja.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.administracja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.administracja.Location = new System.Drawing.Point(0, 0);
-            this.administracja.Name = "administracja";
-            this.administracja.Size = new System.Drawing.Size(156, 41);
-            this.administracja.TabIndex = 1;
-            this.administracja.Text = "Administracja";
-            this.administracja.UseVisualStyleBackColor = false;
-            this.administracja.Click += new System.EventHandler(this.administracja_Click);
+            this.segregacja.BackColor = System.Drawing.Color.PaleGreen;
+            this.segregacja.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.segregacja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.segregacja.Location = new System.Drawing.Point(450, 0);
+            this.segregacja.Name = "segregacja";
+            this.segregacja.Size = new System.Drawing.Size(147, 41);
+            this.segregacja.TabIndex = 7;
+            this.segregacja.Text = "Odbiór";
+            this.segregacja.UseVisualStyleBackColor = false;
+            this.segregacja.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // pnl_druki_pliki
+            // 
+            this.pnl_druki_pliki.Controls.Add(this.btn_zaznacz);
+            this.pnl_druki_pliki.Controls.Add(this.btn_odznacz);
+            this.pnl_druki_pliki.Controls.Add(this.btn_pobierz);
+            this.pnl_druki_pliki.Location = new System.Drawing.Point(229, 58);
+            this.pnl_druki_pliki.Name = "pnl_druki_pliki";
+            this.pnl_druki_pliki.Size = new System.Drawing.Size(731, 482);
+            this.pnl_druki_pliki.TabIndex = 3;
+            // 
+            // btn_zaznacz
+            // 
+            this.btn_zaznacz.BackColor = System.Drawing.Color.Ivory;
+            this.btn_zaznacz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_zaznacz.Location = new System.Drawing.Point(227, 431);
+            this.btn_zaznacz.Name = "btn_zaznacz";
+            this.btn_zaznacz.Size = new System.Drawing.Size(160, 39);
+            this.btn_zaznacz.TabIndex = 4;
+            this.btn_zaznacz.Text = "Zaznacz wszystko";
+            this.btn_zaznacz.UseVisualStyleBackColor = false;
+            // 
+            // btn_odznacz
+            // 
+            this.btn_odznacz.BackColor = System.Drawing.Color.Ivory;
+            this.btn_odznacz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_odznacz.Location = new System.Drawing.Point(393, 431);
+            this.btn_odznacz.Name = "btn_odznacz";
+            this.btn_odznacz.Size = new System.Drawing.Size(160, 39);
+            this.btn_odznacz.TabIndex = 3;
+            this.btn_odznacz.Text = "Odznacz";
+            this.btn_odznacz.UseVisualStyleBackColor = false;
+            this.btn_odznacz.Click += new System.EventHandler(this.button3_Click_1);
+            // 
+            // btn_pobierz
+            // 
+            this.btn_pobierz.BackColor = System.Drawing.Color.Ivory;
+            this.btn_pobierz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_pobierz.Location = new System.Drawing.Point(559, 431);
+            this.btn_pobierz.Name = "btn_pobierz";
+            this.btn_pobierz.Size = new System.Drawing.Size(160, 39);
+            this.btn_pobierz.TabIndex = 2;
+            this.btn_pobierz.Text = "Pobierz";
+            this.btn_pobierz.UseVisualStyleBackColor = false;
+            // 
+            // pnl_powiadomienia
+            // 
+            this.pnl_powiadomienia.BackColor = System.Drawing.Color.PaleGreen;
+            this.pnl_powiadomienia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnl_powiadomienia.Location = new System.Drawing.Point(428, 58);
+            this.pnl_powiadomienia.Name = "pnl_powiadomienia";
+            this.pnl_powiadomienia.Size = new System.Drawing.Size(451, 251);
+            this.pnl_powiadomienia.TabIndex = 5;
             // 
             // MenuForm
             // 
@@ -492,14 +627,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(960, 540);
+            this.Controls.Add(this.pnl_powiadomienia);
+            this.Controls.Add(this.pnl_druki_pliki);
             this.Controls.Add(this.pnl_wydzialy);
             this.Controls.Add(this.pnl_harmonogramy);
             this.Controls.Add(this.pnl_edycja_danych);
             this.Controls.Add(this.pnl_up);
             this.Controls.Add(this.pnl_left);
             this.Font = new System.Drawing.Font("Arial Black", 9F, System.Drawing.FontStyle.Bold);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
             this.Name = "MenuForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MenuForm";
@@ -514,12 +651,17 @@
             this.pnl_segregowane.ResumeLayout(false);
             this.pnl_segregowane.PerformLayout();
             this.pnl_wydzialy.ResumeLayout(false);
+            this.pnl_segregacja.ResumeLayout(false);
+            this.pnl_segregacja.PerformLayout();
+            this.pnl_odbiór.ResumeLayout(false);
+            this.pnl_odbiór.PerformLayout();
             this.pnl_kierowcy.ResumeLayout(false);
             this.pnl_kierowcy.PerformLayout();
             this.pnl_smieciarze.ResumeLayout(false);
             this.pnl_smieciarze.PerformLayout();
             this.pnl_administracja.ResumeLayout(false);
             this.pnl_administracja.PerformLayout();
+            this.pnl_druki_pliki.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -562,5 +704,16 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel pnl_kierowcy;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel pnl_segregacja;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Panel pnl_odbiór;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button odbior;
+        private System.Windows.Forms.Button segregacja;
+        private System.Windows.Forms.Panel pnl_druki_pliki;
+        private System.Windows.Forms.Button btn_zaznacz;
+        private System.Windows.Forms.Button btn_odznacz;
+        private System.Windows.Forms.Button btn_pobierz;
+        private System.Windows.Forms.Panel pnl_powiadomienia;
     }
 }

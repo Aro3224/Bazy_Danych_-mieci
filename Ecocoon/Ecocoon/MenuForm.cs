@@ -20,10 +20,11 @@ namespace Ecocoon
             pnl_edycja_danych.Visible = true;
             pnl_harmonogramy.Visible = false;
             pnl_wydzialy.Visible = false;
+            pnl_powiadomienia.Visible = false;
         }
         private void MenuForm_Load(object sender, EventArgs e)
         {
-
+         
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -38,6 +39,8 @@ namespace Ecocoon
             pnl_niesegregowane.Visible = false;
             pnl_edycja_danych.Visible = false;
             pnl_wydzialy.Visible = false;
+            pnl_druki_pliki.Visible = false;
+            pnl_powiadomienia.Visible = false;
         }
 
         private void btn_wydzialy_Click(object sender, EventArgs e)
@@ -46,8 +49,12 @@ namespace Ecocoon
             pnl_administracja.Visible = false;
             pnl_smieciarze.Visible = false;
             pnl_kierowcy.Visible = false;
+            pnl_odbiór.Visible = false;
+            pnl_segregacja.Visible = false;
             pnl_edycja_danych.Visible = false;
             pnl_harmonogramy.Visible = false;
+            pnl_druki_pliki.Visible = false;
+            pnl_powiadomienia.Visible = false;
         }
 
         private void btn_druki_pliki_Click(object sender, EventArgs e)
@@ -55,6 +62,8 @@ namespace Ecocoon
             pnl_edycja_danych.Visible = false;
             pnl_harmonogramy.Visible = false;
             pnl_wydzialy.Visible = false;
+            pnl_druki_pliki.Visible = true;
+            pnl_powiadomienia.Visible = false;
         }
 
         private void btn_mail_Click(object sender, EventArgs e)
@@ -62,6 +71,8 @@ namespace Ecocoon
             pnl_edycja_danych.Visible = false;
             pnl_harmonogramy.Visible = false;
             pnl_wydzialy.Visible = false;
+            pnl_druki_pliki.Visible = false;
+            pnl_powiadomienia.Visible = false;
         }
 
         private void btn_edycja_danych_Click(object sender, EventArgs e)
@@ -70,6 +81,8 @@ namespace Ecocoon
             pnl_add_acc.Visible = false;
             pnl_harmonogramy.Visible = false;
             pnl_wydzialy.Visible = false;
+            pnl_druki_pliki.Visible = false;
+            pnl_powiadomienia.Visible = false;
         }
 
         private void btn_new_acc_Click(object sender, EventArgs e)
@@ -94,6 +107,8 @@ namespace Ecocoon
             pnl_administracja.Visible = true;
             pnl_smieciarze.Visible = false;
             pnl_kierowcy.Visible = false;
+            pnl_odbiór.Visible = false;
+            pnl_segregacja.Visible = false;
         }
 
         private void smieciarze_Click(object sender, EventArgs e)
@@ -101,6 +116,8 @@ namespace Ecocoon
             pnl_administracja.Visible = false;
             pnl_smieciarze.Visible = true;
             pnl_kierowcy.Visible = false;
+            pnl_odbiór.Visible = false;
+            pnl_segregacja.Visible = false;
         }
 
         private void kierowcy_Click(object sender, EventArgs e)
@@ -108,6 +125,8 @@ namespace Ecocoon
             pnl_administracja.Visible = false;
             pnl_smieciarze.Visible = false;
             pnl_kierowcy.Visible = true;
+            pnl_odbiór.Visible = false;
+            pnl_segregacja.Visible = false;
         }
 
         private void pnl_kierowcy_Paint(object sender, PaintEventArgs e)
@@ -117,14 +136,49 @@ namespace Ecocoon
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-            //SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True"); Adik Server
-            SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True");
+            SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True"); //Adik Server
+            //SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True");
             string InsertQuery = "Insert into Administrators (Email) Values ('" + txt_add_email.Text + "')";
             con.Open();
             SqlCommand cmd = new SqlCommand(InsertQuery, con);
             cmd.ExecuteNonQuery();
             con.Close();
             MessageBox.Show("Użytkownik został dodany.");
+        }
+
+        private void button2_Click(object sender, EventArgs e) //button odbiór
+        {
+            pnl_administracja.Visible = false;
+            pnl_smieciarze.Visible = false;
+            pnl_kierowcy.Visible = false;
+            pnl_odbiór.Visible = true;
+            pnl_segregacja.Visible = false;
+        }
+
+        private void button3_Click(object sender, EventArgs e) //button segregacja
+        {
+            pnl_administracja.Visible = false;
+            pnl_smieciarze.Visible = false;
+            pnl_kierowcy.Visible = false;
+            pnl_odbiór.Visible = false;
+            pnl_segregacja.Visible = true;
+        }
+
+        private void button3_Click_1(object sender, EventArgs e) //button odznacz
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+           if(pnl_powiadomienia.Visible)
+            {
+                pnl_powiadomienia.Visible= false;
+            }
+           else
+           {
+                pnl_powiadomienia.Visible = true;    
+           }
         }
     }
 }
