@@ -32,7 +32,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.ShowPswd = new System.Windows.Forms.CheckBox();
             this.txt_pswd_again = new System.Windows.Forms.TextBox();
@@ -53,7 +52,6 @@
             // 
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.ShowPswd);
             this.panel1.Controls.Add(this.txt_pswd_again);
@@ -93,18 +91,6 @@
             this.label7.Size = new System.Drawing.Size(117, 19);
             this.label7.TabIndex = 15;
             this.label7.Text = "Masz już konto?";
-            // 
-            // button2
-            // 
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(0, 494);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(54, 46);
-            this.button2.TabIndex = 14;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -256,7 +242,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox ShowPswd;
         private System.Windows.Forms.TextBox txt_pswd_again;

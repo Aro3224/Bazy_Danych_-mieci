@@ -28,8 +28,8 @@ namespace Ecocoon
         private void button1_Click(object sender, EventArgs e)
         {
 
-            //string connectionString = @"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            string connectionString = @"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True"; 
+            string connectionString = @"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            //string connectionString = @"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True"; 
             string selectQuery = "SELECT Password FROM Administrators WHERE Email = @Email";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -76,11 +76,6 @@ namespace Ecocoon
                     connection.Close();
                 }
             }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
         }
 
         private void ShowsPswd_CheckedChanged(object sender, EventArgs e)

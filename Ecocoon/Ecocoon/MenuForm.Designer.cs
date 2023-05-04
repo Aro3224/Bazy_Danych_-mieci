@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuForm));
             this.pnl_left = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnl_raport_odp = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.btn_edycja_danych = new System.Windows.Forms.Button();
             this.btn_mail = new System.Windows.Forms.Button();
@@ -41,6 +41,20 @@
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.pnl_edycja_danych = new System.Windows.Forms.Panel();
+            this.pnl_edit_harmonogram = new System.Windows.Forms.Panel();
+            this.btn_create_harm = new System.Windows.Forms.Button();
+            this.btn_edit_harm = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.pnl_edit_wydzial = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btn_edit_admin = new System.Windows.Forms.Button();
+            this.btn_edit_seg = new System.Windows.Forms.Button();
+            this.btn_edit_odbior = new System.Windows.Forms.Button();
+            this.btn_edit_kierowcy = new System.Windows.Forms.Button();
+            this.btn_edit_smieciarze = new System.Windows.Forms.Button();
+            this.btn_edit_harmonogram = new System.Windows.Forms.Button();
+            this.btn_edit_wydzial = new System.Windows.Forms.Button();
+            this.btn_edit_user = new System.Windows.Forms.Button();
             this.btn_new_acc = new System.Windows.Forms.Button();
             this.pnl_add_acc = new System.Windows.Forms.Panel();
             this.btn_add = new System.Windows.Forms.Button();
@@ -76,9 +90,34 @@
             this.btn_odznacz = new System.Windows.Forms.Button();
             this.btn_pobierz = new System.Windows.Forms.Button();
             this.pnl_powiadomienia = new System.Windows.Forms.Panel();
+            this.btn_new_raport = new System.Windows.Forms.Button();
+            this.btn_show_raport = new System.Windows.Forms.Button();
+            this.btn_print_raport = new System.Windows.Forms.Button();
+            this.pnl_new_raport = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.btn_raport_odp = new System.Windows.Forms.Button();
+            this.btn_raport_prac = new System.Windows.Forms.Button();
+            this.pnl_show_raport = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.pnl_print_raport = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.btn_print = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.txt_name = new System.Windows.Forms.TextBox();
+            this.txt_date = new System.Windows.Forms.TextBox();
+            this.txt_ile_smiec = new System.Windows.Forms.TextBox();
+            this.txt_rodzaj = new System.Windows.Forms.TextBox();
+            this.txt_trasa = new System.Windows.Forms.TextBox();
             this.pnl_left.SuspendLayout();
+            this.pnl_raport_odp.SuspendLayout();
             this.pnl_up.SuspendLayout();
             this.pnl_edycja_danych.SuspendLayout();
+            this.pnl_edit_harmonogram.SuspendLayout();
+            this.pnl_edit_wydzial.SuspendLayout();
             this.pnl_add_acc.SuspendLayout();
             this.pnl_harmonogramy.SuspendLayout();
             this.pnl_niesegregowane.SuspendLayout();
@@ -90,12 +129,16 @@
             this.pnl_smieciarze.SuspendLayout();
             this.pnl_administracja.SuspendLayout();
             this.pnl_druki_pliki.SuspendLayout();
+            this.pnl_new_raport.SuspendLayout();
+            this.pnl_show_raport.SuspendLayout();
+            this.pnl_print_raport.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnl_left
             // 
             this.pnl_left.BackColor = System.Drawing.Color.Green;
-            this.pnl_left.Controls.Add(this.panel1);
+            this.pnl_left.Controls.Add(this.btn_raport_odp);
+            this.pnl_left.Controls.Add(this.btn_raport_prac);
             this.pnl_left.Controls.Add(this.button1);
             this.pnl_left.Controls.Add(this.btn_edycja_danych);
             this.pnl_left.Controls.Add(this.btn_mail);
@@ -107,12 +150,18 @@
             this.pnl_left.Size = new System.Drawing.Size(229, 540);
             this.pnl_left.TabIndex = 0;
             // 
-            // panel1
+            // pnl_raport_odp
             // 
-            this.panel1.Location = new System.Drawing.Point(229, 98);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(731, 442);
-            this.panel1.TabIndex = 6;
+            this.pnl_raport_odp.Controls.Add(this.pnl_new_raport);
+            this.pnl_raport_odp.Controls.Add(this.pnl_print_raport);
+            this.pnl_raport_odp.Controls.Add(this.pnl_show_raport);
+            this.pnl_raport_odp.Controls.Add(this.btn_new_raport);
+            this.pnl_raport_odp.Controls.Add(this.btn_show_raport);
+            this.pnl_raport_odp.Controls.Add(this.btn_print_raport);
+            this.pnl_raport_odp.Location = new System.Drawing.Point(229, 58);
+            this.pnl_raport_odp.Name = "pnl_raport_odp";
+            this.pnl_raport_odp.Size = new System.Drawing.Size(731, 482);
+            this.pnl_raport_odp.TabIndex = 6;
             // 
             // button1
             // 
@@ -247,12 +296,174 @@
             // 
             // pnl_edycja_danych
             // 
+            this.pnl_edycja_danych.Controls.Add(this.pnl_edit_harmonogram);
+            this.pnl_edycja_danych.Controls.Add(this.pnl_edit_wydzial);
+            this.pnl_edycja_danych.Controls.Add(this.btn_edit_harmonogram);
+            this.pnl_edycja_danych.Controls.Add(this.btn_edit_wydzial);
+            this.pnl_edycja_danych.Controls.Add(this.btn_edit_user);
             this.pnl_edycja_danych.Controls.Add(this.btn_new_acc);
             this.pnl_edycja_danych.Controls.Add(this.pnl_add_acc);
             this.pnl_edycja_danych.Location = new System.Drawing.Point(229, 58);
             this.pnl_edycja_danych.Name = "pnl_edycja_danych";
             this.pnl_edycja_danych.Size = new System.Drawing.Size(731, 482);
             this.pnl_edycja_danych.TabIndex = 2;
+            // 
+            // pnl_edit_harmonogram
+            // 
+            this.pnl_edit_harmonogram.BackColor = System.Drawing.Color.PaleGreen;
+            this.pnl_edit_harmonogram.Controls.Add(this.btn_create_harm);
+            this.pnl_edit_harmonogram.Controls.Add(this.btn_edit_harm);
+            this.pnl_edit_harmonogram.Controls.Add(this.label11);
+            this.pnl_edit_harmonogram.Location = new System.Drawing.Point(414, 0);
+            this.pnl_edit_harmonogram.Name = "pnl_edit_harmonogram";
+            this.pnl_edit_harmonogram.Size = new System.Drawing.Size(317, 482);
+            this.pnl_edit_harmonogram.TabIndex = 13;
+            // 
+            // btn_create_harm
+            // 
+            this.btn_create_harm.BackColor = System.Drawing.Color.Ivory;
+            this.btn_create_harm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_create_harm.Location = new System.Drawing.Point(23, 120);
+            this.btn_create_harm.Name = "btn_create_harm";
+            this.btn_create_harm.Size = new System.Drawing.Size(160, 39);
+            this.btn_create_harm.TabIndex = 15;
+            this.btn_create_harm.Text = "Stwórz harmonogram";
+            this.btn_create_harm.UseVisualStyleBackColor = false;
+            // 
+            // btn_edit_harm
+            // 
+            this.btn_edit_harm.BackColor = System.Drawing.Color.Ivory;
+            this.btn_edit_harm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_edit_harm.Location = new System.Drawing.Point(23, 59);
+            this.btn_edit_harm.Name = "btn_edit_harm";
+            this.btn_edit_harm.Size = new System.Drawing.Size(160, 39);
+            this.btn_edit_harm.TabIndex = 14;
+            this.btn_edit_harm.Text = "Edytuj harmonogram";
+            this.btn_edit_harm.UseVisualStyleBackColor = false;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
+            this.label11.Location = new System.Drawing.Point(19, 7);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(146, 23);
+            this.label11.TabIndex = 12;
+            this.label11.Text = "Harmonogramy";
+            // 
+            // pnl_edit_wydzial
+            // 
+            this.pnl_edit_wydzial.BackColor = System.Drawing.Color.PaleGreen;
+            this.pnl_edit_wydzial.Controls.Add(this.label10);
+            this.pnl_edit_wydzial.Controls.Add(this.btn_edit_admin);
+            this.pnl_edit_wydzial.Controls.Add(this.btn_edit_seg);
+            this.pnl_edit_wydzial.Controls.Add(this.btn_edit_odbior);
+            this.pnl_edit_wydzial.Controls.Add(this.btn_edit_kierowcy);
+            this.pnl_edit_wydzial.Controls.Add(this.btn_edit_smieciarze);
+            this.pnl_edit_wydzial.Location = new System.Drawing.Point(414, 0);
+            this.pnl_edit_wydzial.Name = "pnl_edit_wydzial";
+            this.pnl_edit_wydzial.Size = new System.Drawing.Size(317, 482);
+            this.pnl_edit_wydzial.TabIndex = 5;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
+            this.label10.Location = new System.Drawing.Point(19, 7);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(87, 23);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "Wydziały";
+            // 
+            // btn_edit_admin
+            // 
+            this.btn_edit_admin.BackColor = System.Drawing.Color.Ivory;
+            this.btn_edit_admin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_edit_admin.Location = new System.Drawing.Point(23, 318);
+            this.btn_edit_admin.Name = "btn_edit_admin";
+            this.btn_edit_admin.Size = new System.Drawing.Size(160, 39);
+            this.btn_edit_admin.TabIndex = 10;
+            this.btn_edit_admin.Text = "Administracja";
+            this.btn_edit_admin.UseVisualStyleBackColor = false;
+            // 
+            // btn_edit_seg
+            // 
+            this.btn_edit_seg.BackColor = System.Drawing.Color.Ivory;
+            this.btn_edit_seg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_edit_seg.Location = new System.Drawing.Point(23, 249);
+            this.btn_edit_seg.Name = "btn_edit_seg";
+            this.btn_edit_seg.Size = new System.Drawing.Size(160, 39);
+            this.btn_edit_seg.TabIndex = 9;
+            this.btn_edit_seg.Text = "Segregacja";
+            this.btn_edit_seg.UseVisualStyleBackColor = false;
+            // 
+            // btn_edit_odbior
+            // 
+            this.btn_edit_odbior.BackColor = System.Drawing.Color.Ivory;
+            this.btn_edit_odbior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_edit_odbior.Location = new System.Drawing.Point(23, 182);
+            this.btn_edit_odbior.Name = "btn_edit_odbior";
+            this.btn_edit_odbior.Size = new System.Drawing.Size(160, 39);
+            this.btn_edit_odbior.TabIndex = 8;
+            this.btn_edit_odbior.Text = "Odbiór";
+            this.btn_edit_odbior.UseVisualStyleBackColor = false;
+            // 
+            // btn_edit_kierowcy
+            // 
+            this.btn_edit_kierowcy.BackColor = System.Drawing.Color.Ivory;
+            this.btn_edit_kierowcy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_edit_kierowcy.Location = new System.Drawing.Point(23, 120);
+            this.btn_edit_kierowcy.Name = "btn_edit_kierowcy";
+            this.btn_edit_kierowcy.Size = new System.Drawing.Size(160, 39);
+            this.btn_edit_kierowcy.TabIndex = 7;
+            this.btn_edit_kierowcy.Text = "Kierowcy";
+            this.btn_edit_kierowcy.UseVisualStyleBackColor = false;
+            // 
+            // btn_edit_smieciarze
+            // 
+            this.btn_edit_smieciarze.BackColor = System.Drawing.Color.Ivory;
+            this.btn_edit_smieciarze.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_edit_smieciarze.Location = new System.Drawing.Point(23, 59);
+            this.btn_edit_smieciarze.Name = "btn_edit_smieciarze";
+            this.btn_edit_smieciarze.Size = new System.Drawing.Size(160, 39);
+            this.btn_edit_smieciarze.TabIndex = 6;
+            this.btn_edit_smieciarze.Text = "Śmieciarze";
+            this.btn_edit_smieciarze.UseVisualStyleBackColor = false;
+            // 
+            // btn_edit_harmonogram
+            // 
+            this.btn_edit_harmonogram.BackColor = System.Drawing.Color.Ivory;
+            this.btn_edit_harmonogram.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_edit_harmonogram.Location = new System.Drawing.Point(30, 249);
+            this.btn_edit_harmonogram.Name = "btn_edit_harmonogram";
+            this.btn_edit_harmonogram.Size = new System.Drawing.Size(160, 39);
+            this.btn_edit_harmonogram.TabIndex = 4;
+            this.btn_edit_harmonogram.Text = "Harmonogramy";
+            this.btn_edit_harmonogram.UseVisualStyleBackColor = false;
+            this.btn_edit_harmonogram.Click += new System.EventHandler(this.btn_edit_harmonogram_Click);
+            // 
+            // btn_edit_wydzial
+            // 
+            this.btn_edit_wydzial.BackColor = System.Drawing.Color.Ivory;
+            this.btn_edit_wydzial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_edit_wydzial.Location = new System.Drawing.Point(30, 182);
+            this.btn_edit_wydzial.Name = "btn_edit_wydzial";
+            this.btn_edit_wydzial.Size = new System.Drawing.Size(160, 39);
+            this.btn_edit_wydzial.TabIndex = 3;
+            this.btn_edit_wydzial.Text = "Wydziały";
+            this.btn_edit_wydzial.UseVisualStyleBackColor = false;
+            this.btn_edit_wydzial.Click += new System.EventHandler(this.btn_edit_wydzial_Click);
+            // 
+            // btn_edit_user
+            // 
+            this.btn_edit_user.BackColor = System.Drawing.Color.Ivory;
+            this.btn_edit_user.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_edit_user.Location = new System.Drawing.Point(30, 120);
+            this.btn_edit_user.Name = "btn_edit_user";
+            this.btn_edit_user.Size = new System.Drawing.Size(160, 39);
+            this.btn_edit_user.TabIndex = 2;
+            this.btn_edit_user.Text = "Edytuj użytkownika";
+            this.btn_edit_user.UseVisualStyleBackColor = false;
             // 
             // btn_new_acc
             // 
@@ -621,6 +832,239 @@
             this.pnl_powiadomienia.Size = new System.Drawing.Size(451, 251);
             this.pnl_powiadomienia.TabIndex = 5;
             // 
+            // btn_new_raport
+            // 
+            this.btn_new_raport.BackColor = System.Drawing.Color.Ivory;
+            this.btn_new_raport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_new_raport.Location = new System.Drawing.Point(33, 59);
+            this.btn_new_raport.Name = "btn_new_raport";
+            this.btn_new_raport.Size = new System.Drawing.Size(160, 39);
+            this.btn_new_raport.TabIndex = 2;
+            this.btn_new_raport.Text = "Nowy raport";
+            this.btn_new_raport.UseVisualStyleBackColor = false;
+            this.btn_new_raport.Click += new System.EventHandler(this.btn_new_raport_Click);
+            // 
+            // btn_show_raport
+            // 
+            this.btn_show_raport.BackColor = System.Drawing.Color.Ivory;
+            this.btn_show_raport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_show_raport.Location = new System.Drawing.Point(33, 120);
+            this.btn_show_raport.Name = "btn_show_raport";
+            this.btn_show_raport.Size = new System.Drawing.Size(160, 39);
+            this.btn_show_raport.TabIndex = 3;
+            this.btn_show_raport.Text = "Wyświetl raport";
+            this.btn_show_raport.UseVisualStyleBackColor = false;
+            this.btn_show_raport.Click += new System.EventHandler(this.btn_show_raport_Click);
+            // 
+            // btn_print_raport
+            // 
+            this.btn_print_raport.BackColor = System.Drawing.Color.Ivory;
+            this.btn_print_raport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_print_raport.Location = new System.Drawing.Point(33, 182);
+            this.btn_print_raport.Name = "btn_print_raport";
+            this.btn_print_raport.Size = new System.Drawing.Size(160, 39);
+            this.btn_print_raport.TabIndex = 4;
+            this.btn_print_raport.Text = "Drukuj raport";
+            this.btn_print_raport.UseVisualStyleBackColor = false;
+            this.btn_print_raport.Click += new System.EventHandler(this.btn_print_raport_Click);
+            // 
+            // pnl_new_raport
+            // 
+            this.pnl_new_raport.BackColor = System.Drawing.Color.PaleGreen;
+            this.pnl_new_raport.Controls.Add(this.txt_trasa);
+            this.pnl_new_raport.Controls.Add(this.txt_rodzaj);
+            this.pnl_new_raport.Controls.Add(this.txt_ile_smiec);
+            this.pnl_new_raport.Controls.Add(this.txt_date);
+            this.pnl_new_raport.Controls.Add(this.txt_name);
+            this.pnl_new_raport.Controls.Add(this.label19);
+            this.pnl_new_raport.Controls.Add(this.label18);
+            this.pnl_new_raport.Controls.Add(this.label17);
+            this.pnl_new_raport.Controls.Add(this.label16);
+            this.pnl_new_raport.Controls.Add(this.label15);
+            this.pnl_new_raport.Controls.Add(this.label12);
+            this.pnl_new_raport.Location = new System.Drawing.Point(246, 0);
+            this.pnl_new_raport.Name = "pnl_new_raport";
+            this.pnl_new_raport.Size = new System.Drawing.Size(485, 483);
+            this.pnl_new_raport.TabIndex = 14;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
+            this.label12.Location = new System.Drawing.Point(19, 7);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(119, 23);
+            this.label12.TabIndex = 12;
+            this.label12.Text = "Nowy raport";
+            // 
+            // btn_raport_odp
+            // 
+            this.btn_raport_odp.FlatAppearance.BorderSize = 0;
+            this.btn_raport_odp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_raport_odp.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_raport_odp.Image = ((System.Drawing.Image)(resources.GetObject("btn_raport_odp.Image")));
+            this.btn_raport_odp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_raport_odp.Location = new System.Drawing.Point(0, 382);
+            this.btn_raport_odp.Name = "btn_raport_odp";
+            this.btn_raport_odp.Size = new System.Drawing.Size(229, 47);
+            this.btn_raport_odp.TabIndex = 6;
+            this.btn_raport_odp.Text = " Raport dot. odpadów";
+            this.btn_raport_odp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_raport_odp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_raport_odp.UseVisualStyleBackColor = true;
+            this.btn_raport_odp.Click += new System.EventHandler(this.btn_raport_odp_Click);
+            // 
+            // btn_raport_prac
+            // 
+            this.btn_raport_prac.FlatAppearance.BorderSize = 0;
+            this.btn_raport_prac.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_raport_prac.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_raport_prac.Image = ((System.Drawing.Image)(resources.GetObject("btn_raport_prac.Image")));
+            this.btn_raport_prac.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_raport_prac.Location = new System.Drawing.Point(1, 435);
+            this.btn_raport_prac.Name = "btn_raport_prac";
+            this.btn_raport_prac.Size = new System.Drawing.Size(229, 47);
+            this.btn_raport_prac.TabIndex = 7;
+            this.btn_raport_prac.Text = " Raport dot. pracowników";
+            this.btn_raport_prac.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_raport_prac.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_raport_prac.UseVisualStyleBackColor = true;
+            // 
+            // pnl_show_raport
+            // 
+            this.pnl_show_raport.BackColor = System.Drawing.Color.PaleGreen;
+            this.pnl_show_raport.Controls.Add(this.label13);
+            this.pnl_show_raport.Location = new System.Drawing.Point(246, 0);
+            this.pnl_show_raport.Name = "pnl_show_raport";
+            this.pnl_show_raport.Size = new System.Drawing.Size(485, 486);
+            this.pnl_show_raport.TabIndex = 15;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
+            this.label13.Location = new System.Drawing.Point(19, 14);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(149, 23);
+            this.label13.TabIndex = 13;
+            this.label13.Text = "Wyświetl raport";
+            // 
+            // pnl_print_raport
+            // 
+            this.pnl_print_raport.BackColor = System.Drawing.Color.PaleGreen;
+            this.pnl_print_raport.Controls.Add(this.btn_print);
+            this.pnl_print_raport.Controls.Add(this.label14);
+            this.pnl_print_raport.Location = new System.Drawing.Point(246, 0);
+            this.pnl_print_raport.Name = "pnl_print_raport";
+            this.pnl_print_raport.Size = new System.Drawing.Size(485, 483);
+            this.pnl_print_raport.TabIndex = 16;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
+            this.label14.Location = new System.Drawing.Point(19, 14);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(128, 23);
+            this.label14.TabIndex = 13;
+            this.label14.Text = "Drukuj raport";
+            // 
+            // btn_print
+            // 
+            this.btn_print.BackColor = System.Drawing.Color.Ivory;
+            this.btn_print.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_print.Location = new System.Drawing.Point(313, 431);
+            this.btn_print.Name = "btn_print";
+            this.btn_print.Size = new System.Drawing.Size(160, 39);
+            this.btn_print.TabIndex = 17;
+            this.btn_print.Text = "Drukuj";
+            this.btn_print.UseVisualStyleBackColor = false;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(82, 60);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(59, 18);
+            this.label15.TabIndex = 13;
+            this.label15.Text = "Nazwa:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(95, 88);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(46, 18);
+            this.label16.TabIndex = 14;
+            this.label16.Text = "Data:";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(20, 119);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(124, 18);
+            this.label17.TabIndex = 15;
+            this.label17.Text = "Ilość śmieci (kg):";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(84, 153);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(60, 18);
+            this.label18.TabIndex = 16;
+            this.label18.Text = "Rodzaj:";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(93, 181);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(51, 18);
+            this.label19.TabIndex = 17;
+            this.label19.Text = "Trasa:";
+            // 
+            // txt_name
+            // 
+            this.txt_name.Location = new System.Drawing.Point(147, 58);
+            this.txt_name.Name = "txt_name";
+            this.txt_name.Size = new System.Drawing.Size(204, 24);
+            this.txt_name.TabIndex = 18;
+            // 
+            // txt_date
+            // 
+            this.txt_date.Location = new System.Drawing.Point(147, 87);
+            this.txt_date.Name = "txt_date";
+            this.txt_date.Size = new System.Drawing.Size(204, 24);
+            this.txt_date.TabIndex = 19;
+            // 
+            // txt_ile_smiec
+            // 
+            this.txt_ile_smiec.Location = new System.Drawing.Point(147, 118);
+            this.txt_ile_smiec.Name = "txt_ile_smiec";
+            this.txt_ile_smiec.Size = new System.Drawing.Size(204, 24);
+            this.txt_ile_smiec.TabIndex = 20;
+            // 
+            // txt_rodzaj
+            // 
+            this.txt_rodzaj.Location = new System.Drawing.Point(147, 150);
+            this.txt_rodzaj.Name = "txt_rodzaj";
+            this.txt_rodzaj.Size = new System.Drawing.Size(204, 24);
+            this.txt_rodzaj.TabIndex = 21;
+            // 
+            // txt_trasa
+            // 
+            this.txt_trasa.Location = new System.Drawing.Point(147, 180);
+            this.txt_trasa.Name = "txt_trasa";
+            this.txt_trasa.Size = new System.Drawing.Size(204, 24);
+            this.txt_trasa.TabIndex = 22;
+            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -628,10 +1072,11 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(960, 540);
             this.Controls.Add(this.pnl_powiadomienia);
+            this.Controls.Add(this.pnl_edycja_danych);
+            this.Controls.Add(this.pnl_raport_odp);
             this.Controls.Add(this.pnl_druki_pliki);
             this.Controls.Add(this.pnl_wydzialy);
             this.Controls.Add(this.pnl_harmonogramy);
-            this.Controls.Add(this.pnl_edycja_danych);
             this.Controls.Add(this.pnl_up);
             this.Controls.Add(this.pnl_left);
             this.Font = new System.Drawing.Font("Arial Black", 9F, System.Drawing.FontStyle.Bold);
@@ -641,8 +1086,13 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MenuForm";
             this.pnl_left.ResumeLayout(false);
+            this.pnl_raport_odp.ResumeLayout(false);
             this.pnl_up.ResumeLayout(false);
             this.pnl_edycja_danych.ResumeLayout(false);
+            this.pnl_edit_harmonogram.ResumeLayout(false);
+            this.pnl_edit_harmonogram.PerformLayout();
+            this.pnl_edit_wydzial.ResumeLayout(false);
+            this.pnl_edit_wydzial.PerformLayout();
             this.pnl_add_acc.ResumeLayout(false);
             this.pnl_add_acc.PerformLayout();
             this.pnl_harmonogramy.ResumeLayout(false);
@@ -662,6 +1112,12 @@
             this.pnl_administracja.ResumeLayout(false);
             this.pnl_administracja.PerformLayout();
             this.pnl_druki_pliki.ResumeLayout(false);
+            this.pnl_new_raport.ResumeLayout(false);
+            this.pnl_new_raport.PerformLayout();
+            this.pnl_show_raport.ResumeLayout(false);
+            this.pnl_show_raport.PerformLayout();
+            this.pnl_print_raport.ResumeLayout(false);
+            this.pnl_print_raport.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -701,7 +1157,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel pnl_smieciarze;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnl_raport_odp;
         private System.Windows.Forms.Panel pnl_kierowcy;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel pnl_segregacja;
@@ -715,5 +1171,41 @@
         private System.Windows.Forms.Button btn_odznacz;
         private System.Windows.Forms.Button btn_pobierz;
         private System.Windows.Forms.Panel pnl_powiadomienia;
+        private System.Windows.Forms.Panel pnl_edit_wydzial;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btn_edit_admin;
+        private System.Windows.Forms.Button btn_edit_seg;
+        private System.Windows.Forms.Button btn_edit_odbior;
+        private System.Windows.Forms.Button btn_edit_kierowcy;
+        private System.Windows.Forms.Button btn_edit_smieciarze;
+        private System.Windows.Forms.Button btn_edit_harmonogram;
+        private System.Windows.Forms.Button btn_edit_wydzial;
+        private System.Windows.Forms.Button btn_edit_user;
+        private System.Windows.Forms.Panel pnl_edit_harmonogram;
+        private System.Windows.Forms.Button btn_create_harm;
+        private System.Windows.Forms.Button btn_edit_harm;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Panel pnl_new_raport;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button btn_new_raport;
+        private System.Windows.Forms.Button btn_show_raport;
+        private System.Windows.Forms.Button btn_print_raport;
+        private System.Windows.Forms.Button btn_raport_odp;
+        private System.Windows.Forms.Button btn_raport_prac;
+        private System.Windows.Forms.Panel pnl_show_raport;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Panel pnl_print_raport;
+        private System.Windows.Forms.Button btn_print;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txt_trasa;
+        private System.Windows.Forms.TextBox txt_rodzaj;
+        private System.Windows.Forms.TextBox txt_ile_smiec;
+        private System.Windows.Forms.TextBox txt_date;
+        private System.Windows.Forms.TextBox txt_name;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
     }
 }

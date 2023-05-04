@@ -21,15 +21,16 @@ namespace Ecocoon
             pnl_harmonogramy.Visible = false;
             pnl_wydzialy.Visible = false;
             pnl_powiadomienia.Visible = false;
+            pnl_raport_odp.Visible = false;
         }
         private void MenuForm_Load(object sender, EventArgs e)
         {
          
         }
-
         private void button7_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            new Form1().Show();
+            this.Hide();
         }
 
         private void btn_harmonogramy_Click(object sender, EventArgs e)
@@ -41,6 +42,7 @@ namespace Ecocoon
             pnl_wydzialy.Visible = false;
             pnl_druki_pliki.Visible = false;
             pnl_powiadomienia.Visible = false;
+            pnl_raport_odp.Visible = false;
         }
 
         private void btn_wydzialy_Click(object sender, EventArgs e)
@@ -55,6 +57,7 @@ namespace Ecocoon
             pnl_harmonogramy.Visible = false;
             pnl_druki_pliki.Visible = false;
             pnl_powiadomienia.Visible = false;
+            pnl_raport_odp.Visible = false;
         }
 
         private void btn_druki_pliki_Click(object sender, EventArgs e)
@@ -64,6 +67,7 @@ namespace Ecocoon
             pnl_wydzialy.Visible = false;
             pnl_druki_pliki.Visible = true;
             pnl_powiadomienia.Visible = false;
+            pnl_raport_odp.Visible = false;
         }
 
         private void btn_mail_Click(object sender, EventArgs e)
@@ -73,21 +77,27 @@ namespace Ecocoon
             pnl_wydzialy.Visible = false;
             pnl_druki_pliki.Visible = false;
             pnl_powiadomienia.Visible = false;
+            pnl_raport_odp.Visible = false;
         }
 
         private void btn_edycja_danych_Click(object sender, EventArgs e)
         {
             pnl_edycja_danych.Visible = true;
             pnl_add_acc.Visible = false;
+            pnl_edit_wydzial.Visible = false;
+            pnl_edit_harmonogram.Visible = false;
             pnl_harmonogramy.Visible = false;
             pnl_wydzialy.Visible = false;
             pnl_druki_pliki.Visible = false;
             pnl_powiadomienia.Visible = false;
+            pnl_raport_odp.Visible = false;
         }
 
         private void btn_new_acc_Click(object sender, EventArgs e)
         {
             pnl_add_acc.Visible = true;
+            pnl_edit_wydzial.Visible = false;
+            pnl_edit_harmonogram.Visible = false;
         }
 
         private void Segregowane_Click(object sender, EventArgs e)
@@ -136,8 +146,8 @@ namespace Ecocoon
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-            //SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True");
-            SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True");
+            SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True");
+            //SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True");
             string InsertQuery = "Insert into Administrators (Email) Values ('" + txt_add_email.Text + "')";
             con.Open();
             SqlCommand cmd = new SqlCommand(InsertQuery, con);
@@ -180,5 +190,54 @@ namespace Ecocoon
                 pnl_powiadomienia.Visible = true;    
            }
         }
+
+        private void btn_edit_wydzial_Click(object sender, EventArgs e)
+        {
+            pnl_add_acc.Visible = false;
+            pnl_edit_wydzial.Visible = true;
+            pnl_edit_harmonogram.Visible = false;
+        }
+
+        private void btn_edit_harmonogram_Click(object sender, EventArgs e)
+        {
+            pnl_add_acc.Visible = false;
+            pnl_edit_wydzial.Visible = false;
+            pnl_edit_harmonogram.Visible = true;
+        }
+
+        private void btn_raport_odp_Click(object sender, EventArgs e)
+        {
+            pnl_edycja_danych.Visible = false;
+            pnl_harmonogramy.Visible = false;
+            pnl_wydzialy.Visible = false;
+            pnl_druki_pliki.Visible = true;
+            pnl_powiadomienia.Visible = false;
+            pnl_raport_odp.Visible = true;
+            pnl_new_raport.Visible = false;
+            pnl_show_raport.Visible = false;
+            pnl_print_raport.Visible = false;
+        }
+
+        private void btn_new_raport_Click(object sender, EventArgs e)
+        {
+            pnl_new_raport.Visible = true;
+            pnl_show_raport.Visible = false;
+            pnl_print_raport.Visible = false;
+        }
+
+        private void btn_show_raport_Click(object sender, EventArgs e)
+        {
+            pnl_new_raport.Visible = false;
+            pnl_show_raport.Visible = true;
+            pnl_print_raport.Visible = false;
+        }
+
+        private void btn_print_raport_Click(object sender, EventArgs e)
+        {
+            pnl_new_raport.Visible = false;
+            pnl_show_raport.Visible = false;
+            pnl_print_raport.Visible = true;
+        }
+
     }
 }
