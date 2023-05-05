@@ -31,13 +31,12 @@ namespace Ecocoon
             else if (txt_pswd.Text == txt_pswd_again.Text)
             {
 
-                string connectionString = @"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
-                //string connectionString = @"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True";
-                string selectQuery = "SELECT Email FROM Users WHERE Email = @formEmail";
+                //string connectionString = @"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+                string connectionString = @"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+                string selectQuery = "SELECT Email, active FROM Users WHERE Email = @formEmail";
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-
 
                     using (SqlCommand command = new SqlCommand(selectQuery, connection))
                     {
@@ -48,11 +47,11 @@ namespace Ecocoon
                             while (reader.Read())
                             {
                                 string emailzbazy = reader.GetString(0);
+                                bool isActive = reader.GetBoolean(1);
+
                                 if (emailzbazy == txt_email.Text)
                                 {
-                                    updateUser(connectionString);
-                                    /*
-                                    if (txt_pswd.Text!=null)
+                                    if (isActive)
                                     {
                                         MessageBox.Show("Konto już istnieje");
                                     }
@@ -60,7 +59,6 @@ namespace Ecocoon
                                     {
                                         updateUser(connectionString);
                                     }
-                                    */
                                 }
                                 else
                                 {
@@ -72,9 +70,9 @@ namespace Ecocoon
                         {
                             MessageBox.Show("Nie można zweryfikować twojego e-maila, spróbuj ponownie lub skontaktuj się z administracją");
                         }
-
                     }
                 }
+
             }
             else
             {

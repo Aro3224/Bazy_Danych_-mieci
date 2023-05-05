@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Adrian\Desktop\ecocoon\Bazy_Danych_-mieci\Ecocoon\Ecocoon\Model1.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\PC\Desktop\studia\Bazy Danych\Projekt\Bazy_Danych_-mieci\Ecocoon\Ecocoon\Model1.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

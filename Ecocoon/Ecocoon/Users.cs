@@ -20,6 +20,7 @@ namespace Ecocoon
         public string Email { get; set; }
         public byte[] Password { get; set; }
         public int Role { get; set; }
+        public bool Active { get; set; }
     
         public virtual Roles Roles { get; set; }
     }
