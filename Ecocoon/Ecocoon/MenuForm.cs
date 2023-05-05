@@ -148,12 +148,32 @@ namespace Ecocoon
         {
             SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True");
             //SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True");
-            string InsertQuery = "Insert into Administrators (Email) Values ('" + txt_add_email.Text + "')";
-            con.Open();
-            SqlCommand cmd = new SqlCommand(InsertQuery, con);
-            cmd.ExecuteNonQuery();
-            con.Close();
-            MessageBox.Show("Użytkownik został dodany.");
+            if (checkbox_admin.Checked && checkbox_user.Checked)
+            {
+                MessageBox.Show("Musisz zaznaczyć tylko jedną rolę.");
+            }
+            else if (checkbox_admin.Checked) 
+            {
+                string InsertQuery = "Insert into Users (Email, Role) Values ('" + txt_add_email.Text + "', 1)";
+                con.Open();
+                SqlCommand cmd = new SqlCommand(InsertQuery, con);
+                cmd.ExecuteNonQuery();
+                con.Close();
+                MessageBox.Show("Użytkownik został dodany.");
+            }
+            else if (checkbox_user.Checked) 
+            {
+                string InsertQuery2 = "Insert into Users (Email, Role) Values ('" + txt_add_email.Text + "', 2)";
+                con.Open();
+                SqlCommand cmd = new SqlCommand(InsertQuery2, con);
+                cmd.ExecuteNonQuery();
+                con.Close();
+                MessageBox.Show("Użytkownik został dodany.");
+            }
+            else if (!checkbox_admin.Checked && !checkbox_user.Checked)
+            {
+                MessageBox.Show("Musisz zaznaczyć tylko jedną rolę.");
+            }
         }
 
         private void button2_Click(object sender, EventArgs e) //button odbiór

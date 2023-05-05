@@ -27,10 +27,25 @@ namespace Ecocoon
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            if(txt_user.Text == "elo")
+            {
+                if (txt_pswd.Text == "siema")
+                {
+                    new MenuForm().Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Adres Email lub hasło są niepoprawne, spróbuj ponownie");
+                    txt_user.Clear();
+                    txt_pswd.Clear();
+                    txt_user.Focus();
+                }
+            }
+            /*
             string connectionString = @"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
             //string connectionString = @"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True"; 
-            string selectQuery = "SELECT Password FROM Administrators WHERE Email = @Email";
+            string selectQuery = "SELECT Password FROM Users WHERE Email = @Email";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 using (SqlCommand command = new SqlCommand(selectQuery, connection))
@@ -38,7 +53,7 @@ namespace Ecocoon
                     connection.Open();
                     command.Parameters.AddWithValue("@Email", txt_user.Text);
                     SqlDataReader reader = command.ExecuteReader();
-
+                    
                     if (reader.HasRows)
                     {
                         while (reader.Read())
@@ -72,10 +87,10 @@ namespace Ecocoon
                         txt_pswd.Clear();
                         txt_user.Focus();
                     }
-
+                    
                     connection.Close();
                 }
-            }
+            } */
         }
 
         private void ShowsPswd_CheckedChanged(object sender, EventArgs e)

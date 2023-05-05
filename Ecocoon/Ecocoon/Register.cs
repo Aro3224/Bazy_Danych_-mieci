@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Data.Entity.Infrastructure.Design.Executor;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using System.Security.Cryptography;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Ecocoon
 {
@@ -31,7 +33,7 @@ namespace Ecocoon
 
                 string connectionString = @"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
                 //string connectionString = @"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True";
-                string selectQuery = "SELECT Email FROM Administrators WHERE Email = @formEmail";
+                string selectQuery = "SELECT Email FROM Users WHERE Email = @formEmail";
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
@@ -48,14 +50,17 @@ namespace Ecocoon
                                 string emailzbazy = reader.GetString(0);
                                 if (emailzbazy == txt_email.Text)
                                 {
-                                    if(txt_pswd.Text!=null)
+                                    updateUser(connectionString);
+                                    /*
+                                    if (txt_pswd.Text!=null)
                                     {
                                         MessageBox.Show("Konto już istnieje");
                                     }
                                     else
                                     {
                                         updateUser(connectionString);
-                                    }     
+                                    }
+                                    */
                                 }
                                 else
                                 {
@@ -79,7 +84,8 @@ namespace Ecocoon
 
         private void updateUser(String connectionString)
         {
-            string UpdateQuery = "Update Administrators Set Password = @Psswd, Name = @Name, Surname = @Surname WHERE Email = @email";
+            string hashedPassword = HashPassword(txt_pswd.Text);
+            string UpdateQuery = "Update Users Set Password = @Psswd, Name = @Name, Surname = @Surname WHERE Email = @email";
     
             using (SqlConnection updateConnection = new SqlConnection(connectionString))
             {
@@ -89,7 +95,7 @@ namespace Ecocoon
 
                 try
                 {
-                    cmd.Parameters.AddWithValue("@Psswd", txt_pswd.Text);
+                    cmd.Parameters.AddWithValue("@Psswd", hashedPassword);
                     cmd.Parameters.AddWithValue("@email", txt_email.Text);
                     cmd.Parameters.AddWithValue("@Name", txt_name.Text);
                     cmd.Parameters.AddWithValue("@Surname", txt_surname.Text);
@@ -103,6 +109,20 @@ namespace Ecocoon
                 {
                     transaction.Rollback();
                 }
+            }
+        }
+
+        static string HashPassword(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
             }
         }
 
