@@ -33,7 +33,7 @@ namespace Ecocoon
             {
                 if (txt_pswd.Text == "admin")
                 {
-                   // new MenuForm().Show();
+                    //new MenuForm().Show();
                     this.Hide();
                 }
                 else
@@ -45,8 +45,8 @@ namespace Ecocoon
                 }
             }
        
-            string connectionString = @"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            //string connectionString = @"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True"; 
+            //string connectionString = @"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string connectionString = @"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True"; 
             string selectQuery = "SELECT Password FROM Users WHERE Email = @Email";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
