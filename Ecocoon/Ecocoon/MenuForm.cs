@@ -146,34 +146,46 @@ namespace Ecocoon
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True");
-            //SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True");
+            //SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True");
+            SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True");
 
-            if (checkbox_admin.Checked && txt_add_email.Text != "") 
-            {
-                string InsertQuery = "Insert into Users (Email, Role) Values ('" + txt_add_email.Text + "', 1)";
-                con.Open();
-                SqlCommand cmd = new SqlCommand(InsertQuery, con);
-                cmd.ExecuteNonQuery();
-                con.Close();
-                MessageBox.Show("Użytkownik został dodany.");
-            }
-            else if (checkbox_user.Checked && txt_add_email.Text != "") 
-            {
-                string InsertQuery2 = "Insert into Users (Email, Role) Values ('" + txt_add_email.Text + "', 2)";
-                con.Open();
-                SqlCommand cmd = new SqlCommand(InsertQuery2, con);
-                cmd.ExecuteNonQuery();
-                con.Close();
-                MessageBox.Show("Użytkownik został dodany.");
-            }
-            else if (!checkbox_admin.Checked && !checkbox_user.Checked)
-            {
-                MessageBox.Show("Musisz zaznaczyć tylko jedną rolę.");
-            }
-            else if(txt_add_email.Text == "")
+            if (txt_add_email.Text == "")
             {
                 MessageBox.Show("Musisz wprowadzić email");
+                return;
+            }
+
+            int role;
+            switch (true)
+            {
+                case bool _ when checkbox_admin.Checked:
+                    role = 1;
+                    break;
+                case bool _ when checkbox_user.Checked:
+                    role = 2;
+                    break;
+                default:
+                    MessageBox.Show("Musisz zaznaczyć tylko jedną rolę.");
+                    return;
+            }
+
+            string insertQuery = $"INSERT INTO Users (Email, Role) VALUES ('{txt_add_email.Text}', {role})";
+            try
+            {
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand(insertQuery, con))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                MessageBox.Show("Użytkownik został dodany.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Błąd: " + ex.Message);
+            }
+            finally
+            {
+                con.Close();
             }
 
         }

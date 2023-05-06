@@ -28,9 +28,10 @@ namespace Ecocoon
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(txt_user.Text == "elo")
+            
+            if (txt_user.Text == "admin")
             {
-                if (txt_pswd.Text == "siema")
+                if (txt_pswd.Text == "admin")
                 {
                     new MenuForm().Show();
                     this.Hide();
@@ -43,9 +44,9 @@ namespace Ecocoon
                     txt_user.Focus();
                 }
             }
-            
-            string connectionString = @"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            //string connectionString = @"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True"; 
+
+            //string connectionString = @"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string connectionString = @"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True"; 
             string selectQuery = "SELECT Password FROM Users WHERE Email = @Email";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
