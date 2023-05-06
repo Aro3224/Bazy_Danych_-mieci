@@ -83,7 +83,7 @@ namespace Ecocoon
         private void updateUser(String connectionString)
         {
             string hashedPassword = HashPassword(txt_pswd.Text);
-            string UpdateQuery = "Update Users Set Password = @Psswd, Name = @Name, Surname = @Surname WHERE Email = @email";
+            string UpdateQuery = "Update Users Set Password = @Psswd, Name = @Name, Surname = @Surname, Active = 1 WHERE Email = @email";
     
             using (SqlConnection updateConnection = new SqlConnection(connectionString))
             {

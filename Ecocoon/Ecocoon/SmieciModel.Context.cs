@@ -13,10 +13,10 @@ namespace Ecocoon
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DatabaseSmieciEntities : DbContext
+    public partial class DatabaseSmieciEntities1 : DbContext
     {
-        public DatabaseSmieciEntities()
-            : base("name=DatabaseSmieciEntities")
+        public DatabaseSmieciEntities1()
+            : base("name=DatabaseSmieciEntities1")
         {
         }
     

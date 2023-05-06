@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Security.Cryptography;
 
 namespace Ecocoon
 {
@@ -60,8 +61,9 @@ namespace Ecocoon
                         {
                             if (!reader.IsDBNull(0))
                             {
+                                string hashedpassword = HashPassword(txt_pswd.Text);
                                 string haslo = reader.GetString(0);
-                                if (haslo == txt_pswd.Text)
+                                if (haslo == hashedpassword)
                                 {
                                     new MenuForm().Show();
                                     this.Hide();
@@ -90,6 +92,20 @@ namespace Ecocoon
                     
                     connection.Close();
                 }
+            }
+        }
+
+        static string HashPassword(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
             }
         }
 
