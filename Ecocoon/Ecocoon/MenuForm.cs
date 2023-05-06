@@ -148,6 +148,11 @@ namespace Ecocoon
         {
             //SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True");
             SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True");
+            
+            //string connectionString = @"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string connectionString = @"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            
+            string selectQuery = "SELECT Email FROM Users WHERE Email = @addEmail";
 
             if (txt_add_email.Text == "")
             {
@@ -165,29 +170,45 @@ namespace Ecocoon
                     role = 2;
                     break;
                 default:
-                    MessageBox.Show("Musisz zaznaczyć tylko jedną rolę.");
+                    MessageBox.Show("Musisz zaznaczyć rolę.");
                     return;
             }
 
-            string insertQuery = $"INSERT INTO Users (Email, Role) VALUES ('{txt_add_email.Text}', {role})";
-            try
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                con.Open();
-                using (SqlCommand cmd = new SqlCommand(insertQuery, con))
-                {
-                    cmd.ExecuteNonQuery();
-                }
-                MessageBox.Show("Użytkownik został dodany.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Błąd: " + ex.Message);
-            }
-            finally
-            {
-                con.Close();
-            }
+                connection.Open();
 
+                using (SqlCommand command = new SqlCommand(selectQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@addEmail", txt_add_email.Text);
+                    SqlDataReader reader = command.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        MessageBox.Show("Taki e-mail już jest wpisany w bazie");
+                    }
+                    else
+                    {
+                        string insertQuery = $"INSERT INTO Users (Email, Role) VALUES ('{txt_add_email.Text}', {role})";
+                        try
+                        {
+                            con.Open();
+                            using (SqlCommand cmd = new SqlCommand(insertQuery, con))
+                            {
+                                cmd.ExecuteNonQuery();
+                            }
+                            MessageBox.Show("Użytkownik został dodany.");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Błąd: " + ex.Message);
+                        }
+                        finally
+                        {
+                            con.Close();
+                        }
+                    }
+                }
+            }
         }
 
         private void checkbox_admin_CheckedChanged(object sender, EventArgs e)
