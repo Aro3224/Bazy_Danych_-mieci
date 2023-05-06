@@ -82,6 +82,7 @@ namespace Ecocoon
 
         private void updateUser(String connectionString)
         {
+            string email = txt_email.Text;
             string hashedPassword = HashPassword(txt_pswd.Text);
             string UpdateQuery = "Update Users Set Password = @Psswd, Name = @Name, Surname = @Surname, Active = 1 WHERE Email = @email";
     
@@ -100,7 +101,7 @@ namespace Ecocoon
                     cmd.ExecuteNonQuery();
                     transaction.Commit();
                     MessageBox.Show("Rejestracja przebiegła pomyślnie");
-                    new MenuForm().Show();
+                    new MenuForm(email).Show();
                     this.Hide();
                 }
                 catch (SqlException sqlError)

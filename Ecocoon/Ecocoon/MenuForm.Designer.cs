@@ -114,6 +114,16 @@
             this.btn_odznacz = new System.Windows.Forms.Button();
             this.btn_pobierz = new System.Windows.Forms.Button();
             this.pnl_powiadomienia = new System.Windows.Forms.Panel();
+            this.btn_account = new System.Windows.Forms.Button();
+            this.pnl_account = new System.Windows.Forms.Panel();
+            this.opis_imie = new System.Windows.Forms.Label();
+            this.opis_nazwisko = new System.Windows.Forms.Label();
+            this.opis_email = new System.Windows.Forms.Label();
+            this.opis_wydzial = new System.Windows.Forms.Label();
+            this.imie = new System.Windows.Forms.Label();
+            this.nazwisko = new System.Windows.Forms.Label();
+            this.email = new System.Windows.Forms.Label();
+            this.wydzial = new System.Windows.Forms.Label();
             this.pnl_left.SuspendLayout();
             this.pnl_raport_odp.SuspendLayout();
             this.pnl_new_raport.SuspendLayout();
@@ -134,6 +144,7 @@
             this.pnl_smieciarze.SuspendLayout();
             this.pnl_administracja.SuspendLayout();
             this.pnl_druki_pliki.SuspendLayout();
+            this.pnl_account.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnl_left
@@ -497,6 +508,7 @@
             // pnl_up
             // 
             this.pnl_up.BackColor = System.Drawing.Color.DarkGreen;
+            this.pnl_up.Controls.Add(this.btn_account);
             this.pnl_up.Controls.Add(this.button7);
             this.pnl_up.Controls.Add(this.button6);
             this.pnl_up.Location = new System.Drawing.Point(229, 0);
@@ -1091,14 +1103,123 @@
             this.pnl_powiadomienia.Size = new System.Drawing.Size(451, 251);
             this.pnl_powiadomienia.TabIndex = 5;
             // 
+            // btn_account
+            // 
+            this.btn_account.FlatAppearance.BorderSize = 0;
+            this.btn_account.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_account.ForeColor = System.Drawing.Color.White;
+            this.btn_account.Location = new System.Drawing.Point(0, 0);
+            this.btn_account.Name = "btn_account";
+            this.btn_account.Size = new System.Drawing.Size(190, 58);
+            this.btn_account.TabIndex = 2;
+            this.btn_account.Text = "imie i nazwisko";
+            this.btn_account.UseVisualStyleBackColor = true;
+            this.btn_account.Click += new System.EventHandler(this.btn_account_Click);
+            // 
+            // pnl_account
+            // 
+            this.pnl_account.Controls.Add(this.wydzial);
+            this.pnl_account.Controls.Add(this.email);
+            this.pnl_account.Controls.Add(this.nazwisko);
+            this.pnl_account.Controls.Add(this.imie);
+            this.pnl_account.Controls.Add(this.opis_wydzial);
+            this.pnl_account.Controls.Add(this.opis_email);
+            this.pnl_account.Controls.Add(this.opis_nazwisko);
+            this.pnl_account.Controls.Add(this.opis_imie);
+            this.pnl_account.Location = new System.Drawing.Point(229, 58);
+            this.pnl_account.Name = "pnl_account";
+            this.pnl_account.Size = new System.Drawing.Size(731, 483);
+            this.pnl_account.TabIndex = 14;
+            // 
+            // opis_imie
+            // 
+            this.opis_imie.AutoSize = true;
+            this.opis_imie.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Bold);
+            this.opis_imie.Location = new System.Drawing.Point(6, 56);
+            this.opis_imie.Name = "opis_imie";
+            this.opis_imie.Size = new System.Drawing.Size(51, 22);
+            this.opis_imie.TabIndex = 0;
+            this.opis_imie.Text = "Imię:";
+            // 
+            // opis_nazwisko
+            // 
+            this.opis_nazwisko.AutoSize = true;
+            this.opis_nazwisko.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Bold);
+            this.opis_nazwisko.Location = new System.Drawing.Point(3, 89);
+            this.opis_nazwisko.Name = "opis_nazwisko";
+            this.opis_nazwisko.Size = new System.Drawing.Size(93, 22);
+            this.opis_nazwisko.TabIndex = 1;
+            this.opis_nazwisko.Text = "Nazwisko:";
+            // 
+            // opis_email
+            // 
+            this.opis_email.AutoSize = true;
+            this.opis_email.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Bold);
+            this.opis_email.Location = new System.Drawing.Point(6, 127);
+            this.opis_email.Name = "opis_email";
+            this.opis_email.Size = new System.Drawing.Size(61, 22);
+            this.opis_email.TabIndex = 2;
+            this.opis_email.Text = "Email:";
+            // 
+            // opis_wydzial
+            // 
+            this.opis_wydzial.AutoSize = true;
+            this.opis_wydzial.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Bold);
+            this.opis_wydzial.Location = new System.Drawing.Point(6, 165);
+            this.opis_wydzial.Name = "opis_wydzial";
+            this.opis_wydzial.Size = new System.Drawing.Size(77, 22);
+            this.opis_wydzial.TabIndex = 3;
+            this.opis_wydzial.Text = "Wydział:";
+            // 
+            // imie
+            // 
+            this.imie.AutoSize = true;
+            this.imie.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.imie.Location = new System.Drawing.Point(63, 60);
+            this.imie.Name = "imie";
+            this.imie.Size = new System.Drawing.Size(54, 17);
+            this.imie.TabIndex = 4;
+            this.imie.Text = "label20";
+            // 
+            // nazwisko
+            // 
+            this.nazwisko.AutoSize = true;
+            this.nazwisko.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.nazwisko.Location = new System.Drawing.Point(102, 92);
+            this.nazwisko.Name = "nazwisko";
+            this.nazwisko.Size = new System.Drawing.Size(54, 17);
+            this.nazwisko.TabIndex = 5;
+            this.nazwisko.Text = "label21";
+            // 
+            // email
+            // 
+            this.email.AutoSize = true;
+            this.email.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.email.Location = new System.Drawing.Point(73, 130);
+            this.email.Name = "email";
+            this.email.Size = new System.Drawing.Size(54, 17);
+            this.email.TabIndex = 6;
+            this.email.Text = "label22";
+            // 
+            // wydzial
+            // 
+            this.wydzial.AutoSize = true;
+            this.wydzial.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.wydzial.Location = new System.Drawing.Point(89, 168);
+            this.wydzial.Name = "wydzial";
+            this.wydzial.Size = new System.Drawing.Size(54, 17);
+            this.wydzial.TabIndex = 7;
+            this.wydzial.Text = "label23";
+            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(960, 540);
-            this.Controls.Add(this.pnl_edycja_danych);
+            this.Controls.Add(this.pnl_account);
             this.Controls.Add(this.pnl_powiadomienia);
+            this.Controls.Add(this.pnl_edycja_danych);
             this.Controls.Add(this.pnl_raport_odp);
             this.Controls.Add(this.pnl_druki_pliki);
             this.Controls.Add(this.pnl_wydzialy);
@@ -1144,6 +1265,8 @@
             this.pnl_administracja.ResumeLayout(false);
             this.pnl_administracja.PerformLayout();
             this.pnl_druki_pliki.ResumeLayout(false);
+            this.pnl_account.ResumeLayout(false);
+            this.pnl_account.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1235,5 +1358,15 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.CheckBox checkbox_user;
         private System.Windows.Forms.CheckBox checkbox_admin;
+        private System.Windows.Forms.Button btn_account;
+        private System.Windows.Forms.Panel pnl_account;
+        private System.Windows.Forms.Label opis_email;
+        private System.Windows.Forms.Label opis_nazwisko;
+        private System.Windows.Forms.Label opis_imie;
+        private System.Windows.Forms.Label wydzial;
+        private System.Windows.Forms.Label email;
+        private System.Windows.Forms.Label nazwisko;
+        private System.Windows.Forms.Label imie;
+        private System.Windows.Forms.Label opis_wydzial;
     }
 }

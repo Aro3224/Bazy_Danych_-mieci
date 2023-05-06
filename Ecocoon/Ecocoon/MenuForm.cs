@@ -14,7 +14,7 @@ namespace Ecocoon
 {
     public partial class MenuForm : Form
     {
-        public MenuForm()
+        public MenuForm(string email)
         {
             InitializeComponent();
             pnl_edycja_danych.Visible = true;
@@ -22,6 +22,10 @@ namespace Ecocoon
             pnl_wydzialy.Visible = false;
             pnl_powiadomienia.Visible = false;
             pnl_raport_odp.Visible = false;
+            pnl_account.Visible = false;
+
+            string dane = email;
+            account_Text(dane);
         }
         private void MenuForm_Load(object sender, EventArgs e)
         {
@@ -43,6 +47,7 @@ namespace Ecocoon
             pnl_druki_pliki.Visible = false;
             pnl_powiadomienia.Visible = false;
             pnl_raport_odp.Visible = false;
+            pnl_account.Visible = false;
         }
 
         private void btn_wydzialy_Click(object sender, EventArgs e)
@@ -58,6 +63,7 @@ namespace Ecocoon
             pnl_druki_pliki.Visible = false;
             pnl_powiadomienia.Visible = false;
             pnl_raport_odp.Visible = false;
+            pnl_account.Visible = false;
         }
 
         private void btn_druki_pliki_Click(object sender, EventArgs e)
@@ -68,6 +74,7 @@ namespace Ecocoon
             pnl_druki_pliki.Visible = true;
             pnl_powiadomienia.Visible = false;
             pnl_raport_odp.Visible = false;
+            pnl_account.Visible = false;
         }
 
         private void btn_mail_Click(object sender, EventArgs e)
@@ -78,6 +85,7 @@ namespace Ecocoon
             pnl_druki_pliki.Visible = false;
             pnl_powiadomienia.Visible = false;
             pnl_raport_odp.Visible = false;
+            pnl_account.Visible = false;
         }
 
         private void btn_edycja_danych_Click(object sender, EventArgs e)
@@ -91,6 +99,7 @@ namespace Ecocoon
             pnl_druki_pliki.Visible = false;
             pnl_powiadomienia.Visible = false;
             pnl_raport_odp.Visible = false;
+            pnl_account.Visible = false;
         }
 
         private void btn_new_acc_Click(object sender, EventArgs e)
@@ -287,6 +296,7 @@ namespace Ecocoon
             pnl_new_raport.Visible = false;
             pnl_show_raport.Visible = false;
             pnl_print_raport.Visible = false;
+            pnl_account.Visible = false;
         }
 
         private void btn_new_raport_Click(object sender, EventArgs e)
@@ -310,6 +320,77 @@ namespace Ecocoon
             pnl_print_raport.Visible = true;
         }
 
+        private void btn_account_Click(object sender, EventArgs e)
+        {
+            pnl_edycja_danych.Visible = false;
+            pnl_harmonogramy.Visible = false;
+            pnl_wydzialy.Visible = false;
+            pnl_powiadomienia.Visible = false;
+            pnl_raport_odp.Visible = false;
+            pnl_account.Visible = true;
 
+        }
+
+        private void account_Text(string dane)
+        {
+            SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True");
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("SELECT Name, Surname FROM Users WHERE Email = @email", connection);
+                command.Parameters.AddWithValue("@email", dane);
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        string firstName = reader.GetString(0);
+                        string lastName = reader.GetString(1);
+                        string buttonText = firstName + " " + lastName;
+                        btn_account.Text = buttonText;
+                    }
+                }
+
+                //label imie
+                SqlCommand command1 = new SqlCommand("SELECT Name FROM Users WHERE Email = @email", connection);
+                command1.Parameters.AddWithValue("@email", dane);
+
+                using (SqlDataReader reader = command1.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        string Name = reader.GetString(0);
+                        imie.Text = Name;
+                    }
+                }
+
+                //label nazwisko
+                SqlCommand command2 = new SqlCommand("SELECT Surname FROM Users WHERE Email = @email", connection);
+                command2.Parameters.AddWithValue("@email", dane);
+
+                using (SqlDataReader reader = command2.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        string Surname = reader.GetString(0);
+                        nazwisko.Text = Surname;
+                    }
+                }
+
+                //label email
+                SqlCommand command3 = new SqlCommand("SELECT Email FROM Users WHERE Email = @email", connection);
+                command3.Parameters.AddWithValue("@email", dane);
+
+                using (SqlDataReader reader = command3.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        string Email = reader.GetString(0);
+                        email.Text = Email;
+                    }
+                }
+
+
+            }
+        }
     }
 }
