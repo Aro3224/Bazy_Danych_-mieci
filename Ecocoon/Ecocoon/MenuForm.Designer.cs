@@ -63,6 +63,12 @@
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.pnl_edycja_danych = new System.Windows.Forms.Panel();
+            this.pnl_add_acc = new System.Windows.Forms.Panel();
+            this.checkbox_user = new System.Windows.Forms.CheckBox();
+            this.checkbox_admin = new System.Windows.Forms.CheckBox();
+            this.btn_add = new System.Windows.Forms.Button();
+            this.txt_add_email = new System.Windows.Forms.TextBox();
+            this.label_add_email = new System.Windows.Forms.Label();
             this.pnl_edit_harmonogram = new System.Windows.Forms.Panel();
             this.btn_create_harm = new System.Windows.Forms.Button();
             this.btn_edit_harm = new System.Windows.Forms.Button();
@@ -78,10 +84,6 @@
             this.btn_edit_wydzial = new System.Windows.Forms.Button();
             this.btn_edit_user = new System.Windows.Forms.Button();
             this.btn_new_acc = new System.Windows.Forms.Button();
-            this.pnl_add_acc = new System.Windows.Forms.Panel();
-            this.btn_add = new System.Windows.Forms.Button();
-            this.txt_add_email = new System.Windows.Forms.TextBox();
-            this.label_add_email = new System.Windows.Forms.Label();
             this.pnl_harmonogramy = new System.Windows.Forms.Panel();
             this.pnl_niesegregowane = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -112,8 +114,6 @@
             this.btn_odznacz = new System.Windows.Forms.Button();
             this.btn_pobierz = new System.Windows.Forms.Button();
             this.pnl_powiadomienia = new System.Windows.Forms.Panel();
-            this.checkbox_admin = new System.Windows.Forms.CheckBox();
-            this.checkbox_user = new System.Windows.Forms.CheckBox();
             this.pnl_left.SuspendLayout();
             this.pnl_raport_odp.SuspendLayout();
             this.pnl_new_raport.SuspendLayout();
@@ -121,9 +121,9 @@
             this.pnl_show_raport.SuspendLayout();
             this.pnl_up.SuspendLayout();
             this.pnl_edycja_danych.SuspendLayout();
+            this.pnl_add_acc.SuspendLayout();
             this.pnl_edit_harmonogram.SuspendLayout();
             this.pnl_edit_wydzial.SuspendLayout();
-            this.pnl_add_acc.SuspendLayout();
             this.pnl_harmonogramy.SuspendLayout();
             this.pnl_niesegregowane.SuspendLayout();
             this.pnl_segregowane.SuspendLayout();
@@ -543,6 +543,69 @@
             this.pnl_edycja_danych.Size = new System.Drawing.Size(731, 482);
             this.pnl_edycja_danych.TabIndex = 2;
             // 
+            // pnl_add_acc
+            // 
+            this.pnl_add_acc.BackColor = System.Drawing.Color.PaleGreen;
+            this.pnl_add_acc.Controls.Add(this.checkbox_user);
+            this.pnl_add_acc.Controls.Add(this.checkbox_admin);
+            this.pnl_add_acc.Controls.Add(this.btn_add);
+            this.pnl_add_acc.Controls.Add(this.txt_add_email);
+            this.pnl_add_acc.Controls.Add(this.label_add_email);
+            this.pnl_add_acc.Location = new System.Drawing.Point(414, 0);
+            this.pnl_add_acc.Name = "pnl_add_acc";
+            this.pnl_add_acc.Size = new System.Drawing.Size(317, 479);
+            this.pnl_add_acc.TabIndex = 0;
+            // 
+            // checkbox_user
+            // 
+            this.checkbox_user.AutoSize = true;
+            this.checkbox_user.Location = new System.Drawing.Point(22, 183);
+            this.checkbox_user.Name = "checkbox_user";
+            this.checkbox_user.Size = new System.Drawing.Size(96, 21);
+            this.checkbox_user.TabIndex = 4;
+            this.checkbox_user.Text = "Pracownik";
+            this.checkbox_user.UseVisualStyleBackColor = true;
+            this.checkbox_user.CheckedChanged += new System.EventHandler(this.checkbox_user_CheckedChanged);
+            // 
+            // checkbox_admin
+            // 
+            this.checkbox_admin.AutoSize = true;
+            this.checkbox_admin.Location = new System.Drawing.Point(22, 155);
+            this.checkbox_admin.Name = "checkbox_admin";
+            this.checkbox_admin.Size = new System.Drawing.Size(115, 21);
+            this.checkbox_admin.TabIndex = 3;
+            this.checkbox_admin.Text = "Administrator";
+            this.checkbox_admin.UseVisualStyleBackColor = true;
+            this.checkbox_admin.CheckedChanged += new System.EventHandler(this.checkbox_admin_CheckedChanged);
+            // 
+            // btn_add
+            // 
+            this.btn_add.BackColor = System.Drawing.Color.Ivory;
+            this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_add.Location = new System.Drawing.Point(182, 218);
+            this.btn_add.Name = "btn_add";
+            this.btn_add.Size = new System.Drawing.Size(97, 33);
+            this.btn_add.TabIndex = 2;
+            this.btn_add.Text = "Dodaj";
+            this.btn_add.UseVisualStyleBackColor = false;
+            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
+            // 
+            // txt_add_email
+            // 
+            this.txt_add_email.Location = new System.Drawing.Point(22, 112);
+            this.txt_add_email.Name = "txt_add_email";
+            this.txt_add_email.Size = new System.Drawing.Size(257, 24);
+            this.txt_add_email.TabIndex = 1;
+            // 
+            // label_add_email
+            // 
+            this.label_add_email.AutoSize = true;
+            this.label_add_email.Location = new System.Drawing.Point(22, 81);
+            this.label_add_email.Name = "label_add_email";
+            this.label_add_email.Size = new System.Drawing.Size(257, 17);
+            this.label_add_email.TabIndex = 0;
+            this.label_add_email.Text = "Wprowadź Email nowego użytkownika";
+            // 
             // pnl_edit_harmonogram
             // 
             this.pnl_edit_harmonogram.BackColor = System.Drawing.Color.PaleGreen;
@@ -711,47 +774,6 @@
             this.btn_new_acc.Text = "Nowy użytkownik";
             this.btn_new_acc.UseVisualStyleBackColor = false;
             this.btn_new_acc.Click += new System.EventHandler(this.btn_new_acc_Click);
-            // 
-            // pnl_add_acc
-            // 
-            this.pnl_add_acc.BackColor = System.Drawing.Color.PaleGreen;
-            this.pnl_add_acc.Controls.Add(this.checkbox_user);
-            this.pnl_add_acc.Controls.Add(this.checkbox_admin);
-            this.pnl_add_acc.Controls.Add(this.btn_add);
-            this.pnl_add_acc.Controls.Add(this.txt_add_email);
-            this.pnl_add_acc.Controls.Add(this.label_add_email);
-            this.pnl_add_acc.Location = new System.Drawing.Point(414, 0);
-            this.pnl_add_acc.Name = "pnl_add_acc";
-            this.pnl_add_acc.Size = new System.Drawing.Size(317, 479);
-            this.pnl_add_acc.TabIndex = 0;
-            // 
-            // btn_add
-            // 
-            this.btn_add.BackColor = System.Drawing.Color.Ivory;
-            this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_add.Location = new System.Drawing.Point(182, 218);
-            this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(97, 33);
-            this.btn_add.TabIndex = 2;
-            this.btn_add.Text = "Dodaj";
-            this.btn_add.UseVisualStyleBackColor = false;
-            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
-            // 
-            // txt_add_email
-            // 
-            this.txt_add_email.Location = new System.Drawing.Point(22, 112);
-            this.txt_add_email.Name = "txt_add_email";
-            this.txt_add_email.Size = new System.Drawing.Size(257, 24);
-            this.txt_add_email.TabIndex = 1;
-            // 
-            // label_add_email
-            // 
-            this.label_add_email.AutoSize = true;
-            this.label_add_email.Location = new System.Drawing.Point(22, 81);
-            this.label_add_email.Name = "label_add_email";
-            this.label_add_email.Size = new System.Drawing.Size(257, 17);
-            this.label_add_email.TabIndex = 0;
-            this.label_add_email.Text = "Wprowadź Email nowego użytkownika";
             // 
             // pnl_harmonogramy
             // 
@@ -1069,26 +1091,6 @@
             this.pnl_powiadomienia.Size = new System.Drawing.Size(451, 251);
             this.pnl_powiadomienia.TabIndex = 5;
             // 
-            // checkbox_admin
-            // 
-            this.checkbox_admin.AutoSize = true;
-            this.checkbox_admin.Location = new System.Drawing.Point(22, 155);
-            this.checkbox_admin.Name = "checkbox_admin";
-            this.checkbox_admin.Size = new System.Drawing.Size(115, 21);
-            this.checkbox_admin.TabIndex = 3;
-            this.checkbox_admin.Text = "Administrator";
-            this.checkbox_admin.UseVisualStyleBackColor = true;
-            // 
-            // checkbox_user
-            // 
-            this.checkbox_user.AutoSize = true;
-            this.checkbox_user.Location = new System.Drawing.Point(22, 183);
-            this.checkbox_user.Name = "checkbox_user";
-            this.checkbox_user.Size = new System.Drawing.Size(96, 21);
-            this.checkbox_user.TabIndex = 4;
-            this.checkbox_user.Text = "Pracownik";
-            this.checkbox_user.UseVisualStyleBackColor = true;
-            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -1119,12 +1121,12 @@
             this.pnl_show_raport.PerformLayout();
             this.pnl_up.ResumeLayout(false);
             this.pnl_edycja_danych.ResumeLayout(false);
+            this.pnl_add_acc.ResumeLayout(false);
+            this.pnl_add_acc.PerformLayout();
             this.pnl_edit_harmonogram.ResumeLayout(false);
             this.pnl_edit_harmonogram.PerformLayout();
             this.pnl_edit_wydzial.ResumeLayout(false);
             this.pnl_edit_wydzial.PerformLayout();
-            this.pnl_add_acc.ResumeLayout(false);
-            this.pnl_add_acc.PerformLayout();
             this.pnl_harmonogramy.ResumeLayout(false);
             this.pnl_niesegregowane.ResumeLayout(false);
             this.pnl_niesegregowane.PerformLayout();

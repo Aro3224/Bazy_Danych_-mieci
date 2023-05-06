@@ -146,13 +146,10 @@ namespace Ecocoon
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-            //SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True");
-            SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True");
-            if (checkbox_admin.Checked && checkbox_user.Checked)
-            {
-                MessageBox.Show("Musisz zaznaczyć tylko jedną rolę.");
-            }
-            else if (checkbox_admin.Checked) 
+            SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True");
+            //SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True");
+
+            if (checkbox_admin.Checked && txt_add_email.Text != "") 
             {
                 string InsertQuery = "Insert into Users (Email, Role) Values ('" + txt_add_email.Text + "', 1)";
                 con.Open();
@@ -161,7 +158,7 @@ namespace Ecocoon
                 con.Close();
                 MessageBox.Show("Użytkownik został dodany.");
             }
-            else if (checkbox_user.Checked) 
+            else if (checkbox_user.Checked && txt_add_email.Text != "") 
             {
                 string InsertQuery2 = "Insert into Users (Email, Role) Values ('" + txt_add_email.Text + "', 2)";
                 con.Open();
@@ -173,6 +170,27 @@ namespace Ecocoon
             else if (!checkbox_admin.Checked && !checkbox_user.Checked)
             {
                 MessageBox.Show("Musisz zaznaczyć tylko jedną rolę.");
+            }
+            else if(txt_add_email.Text == "")
+            {
+                MessageBox.Show("Musisz wprowadzić email");
+            }
+
+        }
+
+        private void checkbox_admin_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkbox_admin.Checked)
+            {
+                checkbox_user.Checked = false;
+            }
+        }
+
+        private void checkbox_user_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkbox_user.Checked)
+            {
+                checkbox_admin.Checked = false;
             }
         }
 
@@ -258,6 +276,7 @@ namespace Ecocoon
             pnl_show_raport.Visible = false;
             pnl_print_raport.Visible = true;
         }
+
 
     }
 }

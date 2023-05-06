@@ -31,8 +31,8 @@ namespace Ecocoon
             else if (txt_pswd.Text == txt_pswd_again.Text)
             {
 
-                //string connectionString = @"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
-                string connectionString = @"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+                string connectionString = @"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+                //string connectionString = @"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True";
                 string selectQuery = "SELECT Email, active FROM Users WHERE Email = @formEmail";
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
@@ -124,12 +124,6 @@ namespace Ecocoon
             }
         }
 
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
         private void ShowsPswd_CheckedChanged(object sender, EventArgs e)
         {
             txt_pswd_TextChanged(sender, e);
@@ -163,7 +157,7 @@ namespace Ecocoon
         private void label8_Click(object sender, EventArgs e)
         {
             new Form1().Show();
-            this.Hide();
+            this.Close();
         }
     }
 }
