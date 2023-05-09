@@ -58,6 +58,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Departments.cs">
+      <DependentUpon>SmieciModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,9 +81,6 @@
     <Compile Include="Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
-    <Compile Include="Roles.cs">
-      <DependentUpon>SmieciModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="SmieciModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -97,6 +97,9 @@
       <DependentUpon>SmieciModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Users.cs">
+      <DependentUpon>SmieciModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Users_add_info.cs">
       <DependentUpon>SmieciModel.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">

@@ -13,10 +13,10 @@ namespace Ecocoon
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DatabaseSmieciEntities1 : DbContext
+    public partial class DatabaseSmieciEntities : DbContext
     {
-        public DatabaseSmieciEntities1()
-            : base("name=DatabaseSmieciEntities1")
+        public DatabaseSmieciEntities()
+            : base("name=DatabaseSmieciEntities")
         {
         }
     
@@ -25,7 +25,8 @@ namespace Ecocoon
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Roles> Roles { get; set; }
+        public virtual DbSet<Departments> Departments { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<Users_add_info> Users_add_info { get; set; }
     }
 }

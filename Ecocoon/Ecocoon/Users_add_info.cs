@@ -12,17 +12,14 @@ namespace Ecocoon
     using System;
     using System.Collections.Generic;
     
-    public partial class Users
+    public partial class Users_add_info
     {
         public int UserID { get; set; }
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public int Department { get; set; }
-        public bool Active { get; set; }
+        public Nullable<System.DateTime> Birth_date { get; set; }
+        public string Bank_tran_det { get; set; }
+        public string Phone_num { get; set; }
+        public string Domicile { get; set; }
     
-        public virtual Departments Departments { get; set; }
-        public virtual Users_add_info Users_add_info { get; set; }
+        public virtual Users Users { get; set; }
     }
 }

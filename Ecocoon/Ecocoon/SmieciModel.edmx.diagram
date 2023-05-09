@@ -4,10 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5cf0e0cacf214cc68010515e50a467d0" Name="Diagram1">
-        <EntityTypeShape EntityType="DatabaseSmieciModel.Roles" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+      <Diagram DiagramId="1800e047d26b47baa66ed74f283f2d88" Name="Diagram1">
+        <EntityTypeShape EntityType="DatabaseSmieciModel.Departments" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseSmieciModel.Users" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseSmieciModel.Users_add_info" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
         <AssociationConnector Association="DatabaseSmieciModel.FK_Users_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseSmieciModel.FK_Users_add_info_Users" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
