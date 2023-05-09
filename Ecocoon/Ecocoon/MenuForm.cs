@@ -129,6 +129,25 @@ namespace Ecocoon
             pnl_kierowcy.Visible = false;
             pnl_odbiór.Visible = false;
             pnl_segregacja.Visible = false;
+
+            string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT Name, Surname, Email FROM Users WHERE Department = 1 AND Active = 1";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+
+                    widok_administracja.DataSource = dataTable;
+
+                    connection.Close();
+                }
+            }
         }
 
         private void smieciarze_Click(object sender, EventArgs e)

@@ -142,6 +142,7 @@
             this.opis_email = new System.Windows.Forms.Label();
             this.opis_nazwisko = new System.Windows.Forms.Label();
             this.opis_imie = new System.Windows.Forms.Label();
+            this.widok_administracja = new System.Windows.Forms.DataGridView();
             this.pnl_left.SuspendLayout();
             this.pnl_raport_odp.SuspendLayout();
             this.pnl_new_raport.SuspendLayout();
@@ -163,6 +164,7 @@
             this.pnl_administracja.SuspendLayout();
             this.pnl_druki_pliki.SuspendLayout();
             this.pnl_account.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.widok_administracja)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_left
@@ -946,13 +948,13 @@
             // 
             // pnl_wydzialy
             // 
+            this.pnl_wydzialy.Controls.Add(this.pnl_administracja);
             this.pnl_wydzialy.Controls.Add(this.pnl_segregacja);
             this.pnl_wydzialy.Controls.Add(this.administracja);
             this.pnl_wydzialy.Controls.Add(this.pnl_odbiór);
             this.pnl_wydzialy.Controls.Add(this.odbior);
             this.pnl_wydzialy.Controls.Add(this.pnl_kierowcy);
             this.pnl_wydzialy.Controls.Add(this.pnl_smieciarze);
-            this.pnl_wydzialy.Controls.Add(this.pnl_administracja);
             this.pnl_wydzialy.Controls.Add(this.kierowcy);
             this.pnl_wydzialy.Controls.Add(this.smieciarze);
             this.pnl_wydzialy.Controls.Add(this.segregacja);
@@ -1062,10 +1064,11 @@
             // 
             // pnl_administracja
             // 
+            this.pnl_administracja.Controls.Add(this.widok_administracja);
             this.pnl_administracja.Controls.Add(this.label5);
             this.pnl_administracja.Location = new System.Drawing.Point(0, 40);
             this.pnl_administracja.Name = "pnl_administracja";
-            this.pnl_administracja.Size = new System.Drawing.Size(731, 442);
+            this.pnl_administracja.Size = new System.Drawing.Size(731, 443);
             this.pnl_administracja.TabIndex = 4;
             // 
             // label5
@@ -1419,18 +1422,30 @@
             this.opis_imie.TabIndex = 0;
             this.opis_imie.Text = "Imię:";
             // 
+            // widok_administracja
+            // 
+            this.widok_administracja.AllowUserToAddRows = false;
+            this.widok_administracja.AllowUserToDeleteRows = false;
+            this.widok_administracja.BackgroundColor = System.Drawing.Color.Snow;
+            this.widok_administracja.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.widok_administracja.Location = new System.Drawing.Point(10, 30);
+            this.widok_administracja.Name = "widok_administracja";
+            this.widok_administracja.ReadOnly = true;
+            this.widok_administracja.Size = new System.Drawing.Size(709, 406);
+            this.widok_administracja.TabIndex = 1;
+            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(960, 540);
+            this.Controls.Add(this.pnl_wydzialy);
             this.Controls.Add(this.pnl_account);
-            this.Controls.Add(this.pnl_edycja_danych);
             this.Controls.Add(this.pnl_powiadomienia);
+            this.Controls.Add(this.pnl_edycja_danych);
             this.Controls.Add(this.pnl_raport_odp);
             this.Controls.Add(this.pnl_druki_pliki);
-            this.Controls.Add(this.pnl_wydzialy);
             this.Controls.Add(this.pnl_harmonogramy);
             this.Controls.Add(this.pnl_up);
             this.Controls.Add(this.pnl_left);
@@ -1475,6 +1490,7 @@
             this.pnl_druki_pliki.ResumeLayout(false);
             this.pnl_account.ResumeLayout(false);
             this.pnl_account.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.widok_administracja)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1594,5 +1610,6 @@
         private System.Windows.Forms.CheckBox checkbox_segregacja;
         private System.Windows.Forms.CheckBox checkbox_odbior;
         private System.Windows.Forms.CheckBox checkbox_kierowca;
+        private System.Windows.Forms.DataGridView widok_administracja;
     }
 }
