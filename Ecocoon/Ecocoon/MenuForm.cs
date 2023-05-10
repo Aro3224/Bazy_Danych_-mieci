@@ -136,7 +136,8 @@ namespace Ecocoon
             pnl_odbiór.Visible = false;
             pnl_segregacja.Visible = false;
 
-            string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            //string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string connectionString = "Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True";
             string query = "SELECT Name, Surname, Email FROM Users WHERE Department = 1 AND Active = 1";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -164,7 +165,8 @@ namespace Ecocoon
             pnl_odbiór.Visible = false;
             pnl_segregacja.Visible = false;
 
-            string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            //string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string connectionString = "Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True";
             string query = "SELECT Name, Surname, Email FROM Users WHERE Department = 2 AND Active = 1";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -192,7 +194,8 @@ namespace Ecocoon
             pnl_odbiór.Visible = false;
             pnl_segregacja.Visible = false;
 
-            string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            //string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string connectionString = "Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True";
             string query = "SELECT Name, Surname, Email FROM Users WHERE Department = 3 AND Active = 1";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -357,7 +360,8 @@ namespace Ecocoon
             pnl_odbiór.Visible = true;
             pnl_segregacja.Visible = false;
 
-            string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            //string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string connectionString = "Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True";
             string query = "SELECT Name, Surname, Email FROM Users WHERE Department = 4 AND Active = 1";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -385,7 +389,8 @@ namespace Ecocoon
             pnl_odbiór.Visible = false;
             pnl_segregacja.Visible = true;
 
-            string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            //string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string connectionString = "Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True";
             string query = "SELECT Name, Surname, Email FROM Users WHERE Department = 5 AND Active = 1";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -683,7 +688,8 @@ namespace Ecocoon
             else
             {
                 string UpdateQuery = "INSERT INTO Users_add_info VALUES (@UserID, @Birth_date, @Bank_tran_det, @Phone_num, @Domicile);";
-                using (SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True"))
+                //using (SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True"))
+                using (SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True"))
                 {
                     connection.Open();
                     SqlTransaction transaction = connection.BeginTransaction();
