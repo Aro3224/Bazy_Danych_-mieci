@@ -157,6 +157,25 @@ namespace Ecocoon
             pnl_kierowcy.Visible = false;
             pnl_odbiór.Visible = false;
             pnl_segregacja.Visible = false;
+
+            string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT Name, Surname, Email FROM Users WHERE Department = 2 AND Active = 1";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+
+                    widok_smieciarze.DataSource = dataTable;
+
+                    connection.Close();
+                }
+            }
         }
 
         private void kierowcy_Click(object sender, EventArgs e)
@@ -166,6 +185,25 @@ namespace Ecocoon
             pnl_kierowcy.Visible = true;
             pnl_odbiór.Visible = false;
             pnl_segregacja.Visible = false;
+
+            string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT Name, Surname, Email FROM Users WHERE Department = 3 AND Active = 1";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+
+                    widok_kierowcy.DataSource = dataTable;
+
+                    connection.Close();
+                }
+            }
         }
 
         private void pnl_kierowcy_Paint(object sender, PaintEventArgs e)
@@ -312,6 +350,25 @@ namespace Ecocoon
             pnl_kierowcy.Visible = false;
             pnl_odbiór.Visible = true;
             pnl_segregacja.Visible = false;
+
+            string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT Name, Surname, Email FROM Users WHERE Department = 4 AND Active = 1";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+
+                    widok_odbior.DataSource = dataTable;
+
+                    connection.Close();
+                }
+            }
         }
 
         private void button3_Click(object sender, EventArgs e) //button segregacja
@@ -321,6 +378,25 @@ namespace Ecocoon
             pnl_kierowcy.Visible = false;
             pnl_odbiór.Visible = false;
             pnl_segregacja.Visible = true;
+
+            string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT Name, Surname, Email FROM Users WHERE Department = 5 AND Active = 1";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+
+                    widok_segregacja.DataSource = dataTable;
+
+                    connection.Close();
+                }
+            }
         }
 
         private void button3_Click_1(object sender, EventArgs e) //button odznacz
@@ -429,6 +505,21 @@ namespace Ecocoon
                     }
                 }
 
+                //userID
+                SqlCommand commandID = new SqlCommand("SELECT UserID FROM Users WHERE Email = @email", connection);
+                commandID.Parameters.AddWithValue("@email", dane);
+
+                using (SqlDataReader reader = commandID.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        int liczba = reader.GetInt32(0);
+                        string userID = liczba.ToString();
+                        labelUserID.Text = userID;
+                        labelUserID.Visible = false;
+                    }
+                }
+
                 //label imie
                 SqlCommand command1 = new SqlCommand("SELECT Name FROM Users WHERE Email = @email", connection);
                 command1.Parameters.AddWithValue("@email", dane);
@@ -482,13 +573,59 @@ namespace Ecocoon
                 }
 
                 //label data urodzenia
+                string str = labelUserID.Text;
+                int UserID = int.Parse(str);
+                SqlCommand command5 = new SqlCommand("SELECT Birth_date FROM Users_add_info WHERE UserID = @userid", connection);
+                command5.Parameters.AddWithValue("@userid", UserID);
+                using (SqlDataReader reader = command5.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        DateTime dataurodzienia = reader.GetDateTime(0);
+                        string Data = dataurodzienia.ToString();
+                        Data = Data.Substring(0, 10);
+                        data_uro.Text = Data;
+                    }
+                }
 
                 //label numer konta
+                SqlCommand command6 = new SqlCommand("SELECT Bank_tran_det FROM Users_add_info WHERE UserID = @userid", connection);
+                command6.Parameters.AddWithValue("@userid", UserID);
+
+                using (SqlDataReader reader = command6.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        string nrkonta = reader.GetString(0);
+                        nr_konta.Text = nrkonta;
+                    }
+                }
 
                 //label numer telefonu
+                SqlCommand command7 = new SqlCommand("SELECT Phone_num FROM Users_add_info WHERE UserID = @userid", connection);
+                command7.Parameters.AddWithValue("@userid", UserID);
+
+                using (SqlDataReader reader = command7.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        string nrtelefonu = reader.GetString(0);
+                        nr_tel.Text = nrtelefonu;
+                    }
+                }
 
                 //label adres
+                SqlCommand command8 = new SqlCommand("SELECT Domicile FROM Users_add_info WHERE UserID = @userid", connection);
+                command8.Parameters.AddWithValue("@userid", UserID);
 
+                using (SqlDataReader reader = command8.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        string adreszam = reader.GetString(0);
+                        adres.Text = adreszam;
+                    }
+                }
 
             }
         }
@@ -532,5 +669,44 @@ namespace Ecocoon
             btn_decline_changes.Visible = false;
         }
 
+        private void btn_save_changes_Click(object sender, EventArgs e)
+        {
+            string str = labelUserID.Text;
+            int liczba = int.Parse(str);
+            string str_nr_konta = txt_nr_konta.Text;
+            string str_nr_tel = txt_nr_tel.Text;
+            int dlugsc_nr_konta = str_nr_konta.Length;
+            int dlugsc_nr_tel = str_nr_tel.Length;
+            if (dlugsc_nr_konta != 26 || dlugsc_nr_tel != 9)
+            {
+                MessageBox.Show("Wprowadz poprawne dane");
+            }
+            else
+            {
+                string UpdateQuery = "INSERT INTO Users_add_info VALUES (@UserID, @Birth_date, @Bank_tran_det, @Phone_num, @Domicile);";
+                using (SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True"))
+                {
+                    connection.Open();
+                    SqlTransaction transaction = connection.BeginTransaction();
+                    SqlCommand cmd = new SqlCommand(UpdateQuery, connection, transaction);
+
+                    try
+                    {
+                        cmd.Parameters.AddWithValue("@UserID", liczba);
+                        cmd.Parameters.AddWithValue("@Birth_date", data_uro.Text);
+                        cmd.Parameters.AddWithValue("@Bank_tran_det", txt_nr_konta.Text);
+                        cmd.Parameters.AddWithValue("@Phone_num", txt_nr_tel.Text);
+                        cmd.Parameters.AddWithValue("@Domicile", txt_adres.Text);
+                        cmd.ExecuteNonQuery();
+                        transaction.Commit();
+                        MessageBox.Show("Dane zostały zaaktualizowane");
+                    }
+                    catch (SqlException sqlError)
+                    {
+                        transaction.Rollback();
+                    }
+                }
+            } 
+        }
     }
 }
