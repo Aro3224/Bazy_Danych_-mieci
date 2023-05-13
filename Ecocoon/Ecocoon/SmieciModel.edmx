@@ -33,6 +33,7 @@
           <Property Name="Bank_tran_det" Type="char" MaxLength="26" />
           <Property Name="Phone_num" Type="char" MaxLength="9" />
           <Property Name="Domicile" Type="varchar" MaxLength="50" />
+          <Property Name="Completed" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_Users_add_info_Users">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
@@ -107,6 +108,7 @@
           <Property Name="Phone_num" Type="String" MaxLength="9" FixedLength="true" Unicode="false" />
           <Property Name="Domicile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Users_add_info_Users" FromRole="Users_add_info" ToRole="Users" />
+          <Property Name="Completed" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK_Users_Roles">
           <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
@@ -175,6 +177,7 @@
           <EntitySetMapping Name="Users_add_info">
             <EntityTypeMapping TypeName="DatabaseSmieciModel.Users_add_info">
               <MappingFragment StoreEntitySet="Users_add_info">
+                <ScalarProperty Name="Completed" ColumnName="Completed" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Birth_date" ColumnName="Birth_date" />
                 <ScalarProperty Name="Bank_tran_det" ColumnName="Bank_tran_det" />

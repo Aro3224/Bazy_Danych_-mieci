@@ -19,6 +19,7 @@ namespace Ecocoon
         public string Bank_tran_det { get; set; }
         public string Phone_num { get; set; }
         public string Domicile { get; set; }
+        public bool Completed { get; set; }
     
         public virtual Users Users { get; set; }
     }
