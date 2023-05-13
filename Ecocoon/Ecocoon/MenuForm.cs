@@ -101,6 +101,12 @@ namespace Ecocoon
             pnl_powiadomienia.Visible = false;
             pnl_raport_odp.Visible = false;
             pnl_account.Visible = false;
+
+            pnl_edit_admin.Visible = false;
+            pnl_edit_kierowcy.Visible = false;
+            pnl_edit_smieciarze.Visible = false;
+            pnl_edit_odbior.Visible = false;
+            pnl_edit_segregacja.Visible = false;
         }
 
         private void btn_new_acc_Click(object sender, EventArgs e)
@@ -416,13 +422,6 @@ namespace Ecocoon
            }
         }
 
-        private void btn_edit_wydzial_Click(object sender, EventArgs e)
-        {
-            pnl_add_acc.Visible = false;
-            pnl_edit_wydzial.Visible = true;
-            pnl_edit_harmonogram.Visible = false;
-        }
-
         private void btn_edit_harmonogram_Click(object sender, EventArgs e)
         {
             pnl_add_acc.Visible = false;
@@ -707,6 +706,57 @@ namespace Ecocoon
                     }
                 }
             } 
+        }
+
+        private void btn_edit_user_Click(object sender, EventArgs e)
+        {
+            pnl_add_acc.Visible = false;
+            pnl_edit_wydzial.Visible = true;
+            pnl_edit_harmonogram.Visible = false;
+        }
+
+        private void btn_edit_smieciarze_Click(object sender, EventArgs e)
+        {
+            pnl_edit_smieciarze.Visible = true;
+        }
+
+        private void btn_edit_kierowcy_Click(object sender, EventArgs e)
+        {
+            pnl_edit_kierowcy.Visible = true;
+        }
+
+        private void btn_edit_odbior_Click(object sender, EventArgs e)
+        {
+            pnl_edit_odbior.Visible = true;
+        }
+
+        private void btn_edit_seg_Click(object sender, EventArgs e)
+        {
+            pnl_edit_segregacja.Visible = true;
+        }
+
+        private void btn_edit_admin_Click(object sender, EventArgs e)
+        {
+            pnl_edit_admin.Visible = true;
+
+            string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT Name, Surname, Email FROM Users WHERE Department = 2 AND Active = 1";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+
+                    view_edit_admin.DataSource = dataTable;
+
+                    connection.Close();
+                }
+            }
         }
     }
 }
