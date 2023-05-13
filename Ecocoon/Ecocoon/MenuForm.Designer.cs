@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuForm));
             this.pnl_left = new System.Windows.Forms.Panel();
             this.btn_raport_odp = new System.Windows.Forms.Button();
@@ -158,9 +157,7 @@
             this.opis_email = new System.Windows.Forms.Label();
             this.opis_nazwisko = new System.Windows.Forms.Label();
             this.opis_imie = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.databaseSmieciDataSet = new Ecocoon.DatabaseSmieciDataSet();
-            this.databaseSmieciDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.view_edit_admin = new System.Windows.Forms.DataGridView();
             this.pnl_left.SuspendLayout();
             this.pnl_raport_odp.SuspendLayout();
             this.pnl_new_raport.SuspendLayout();
@@ -192,9 +189,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.widok_administracja)).BeginInit();
             this.pnl_druki_pliki.SuspendLayout();
             this.pnl_account.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseSmieciDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseSmieciDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.view_edit_admin)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_left
@@ -625,7 +620,7 @@
             // pnl_edit_admin
             // 
             this.pnl_edit_admin.BackColor = System.Drawing.Color.White;
-            this.pnl_edit_admin.Controls.Add(this.dataGridView1);
+            this.pnl_edit_admin.Controls.Add(this.view_edit_admin);
             this.pnl_edit_admin.Controls.Add(this.label20);
             this.pnl_edit_admin.Location = new System.Drawing.Point(0, 0);
             this.pnl_edit_admin.Name = "pnl_edit_admin";
@@ -1627,26 +1622,14 @@
             this.opis_imie.TabIndex = 0;
             this.opis_imie.Text = "Imię:";
             // 
-            // dataGridView1
+            // view_edit_admin
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.DataSource = this.databaseSmieciDataSetBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(20, 40);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(686, 430);
-            this.dataGridView1.TabIndex = 1;
-            // 
-            // databaseSmieciDataSet
-            // 
-            this.databaseSmieciDataSet.DataSetName = "DatabaseSmieciDataSet";
-            this.databaseSmieciDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // databaseSmieciDataSetBindingSource
-            // 
-            this.databaseSmieciDataSetBindingSource.DataSource = this.databaseSmieciDataSet;
-            this.databaseSmieciDataSetBindingSource.Position = 0;
+            this.view_edit_admin.AllowUserToAddRows = false;
+            this.view_edit_admin.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.view_edit_admin.Location = new System.Drawing.Point(10, 33);
+            this.view_edit_admin.Name = "view_edit_admin";
+            this.view_edit_admin.Size = new System.Drawing.Size(709, 437);
+            this.view_edit_admin.TabIndex = 1;
             // 
             // MenuForm
             // 
@@ -1719,9 +1702,7 @@
             this.pnl_druki_pliki.ResumeLayout(false);
             this.pnl_account.ResumeLayout(false);
             this.pnl_account.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseSmieciDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseSmieciDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.view_edit_admin)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1856,8 +1837,6 @@
         private System.Windows.Forms.Button btn_edit_smieciarze;
         private System.Windows.Forms.Panel pnl_edit_segregacja;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.BindingSource databaseSmieciDataSetBindingSource;
-        private DatabaseSmieciDataSet databaseSmieciDataSet;
+        private System.Windows.Forms.DataGridView view_edit_admin;
     }
 }

@@ -58,11 +58,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DatabaseSmieciDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DatabaseSmieciDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Departments.cs">
       <DependentUpon>SmieciModel.tt</DependentUpon>
     </Compile>
@@ -125,17 +120,6 @@
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="DatabaseSmieciDataSet.xsc">
-      <DependentUpon>DatabaseSmieciDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="DatabaseSmieciDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DatabaseSmieciDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DatabaseSmieciDataSet.xss">
-      <DependentUpon>DatabaseSmieciDataSet.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
