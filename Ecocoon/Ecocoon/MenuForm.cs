@@ -687,7 +687,7 @@ namespace Ecocoon
             }
             else
             {
-                string UpdateQuery = "INSERT INTO Users_add_info VALUES (@UserID, @Birth_date, @Bank_tran_det, @Phone_num, @Domicile);";
+                string UpdateQuery = "UPDATE Users_add_info SET Birth_date=@Birth_date, Bank_tran_det=@Bank_tran_det, Phone_num=@Phone_num, Domicile=@Domicile WHERE UserID=@UserID;";
                 //using (SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True"))
                 using (SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True"))
                 {
@@ -763,6 +763,11 @@ namespace Ecocoon
                     connection.Close();
                 }
             } */
+        }
+
+        private void txt_data_uro_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
