@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Runtime.InteropServices.ComTypes;
+using System.Globalization;
 
 namespace Ecocoon
 {
@@ -101,6 +102,12 @@ namespace Ecocoon
             pnl_powiadomienia.Visible = false;
             pnl_raport_odp.Visible = false;
             pnl_account.Visible = false;
+
+            pnl_edit_admin.Visible = false;
+            pnl_edit_kierowcy.Visible = false;
+            pnl_edit_smieciarze.Visible = false;
+            pnl_edit_odbior.Visible = false;
+            pnl_edit_segregacja.Visible = false;
         }
 
         private void btn_new_acc_Click(object sender, EventArgs e)
@@ -472,6 +479,32 @@ namespace Ecocoon
 
         private void btn_account_Click(object sender, EventArgs e)
         {
+            string connectionString = @"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            //string connectionString = @"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string selectQuery = "SELECT UserID, Completed FROM Users_add_info WHERE UserID = @UserID";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(selectQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@UserID", labelUserID.Text);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        bool isCompleted = reader.GetBoolean(1);
+
+                        if (isCompleted)
+                        {
+                            btn_edit.Visible = false;
+                        }
+                        else
+                        {
+                            btn_edit.Visible = true;
+                        }
+                    }
+                }
+            }
             pnl_edycja_danych.Visible = false;
             pnl_harmonogramy.Visible = false;
             pnl_wydzialy.Visible = false;
@@ -484,10 +517,8 @@ namespace Ecocoon
             txt_nr_tel.Visible = false;
             txt_adres.Visible = false;
 
-            btn_edit.Visible = true;
             btn_save_changes.Visible = false;
             btn_decline_changes.Visible = false;
-
         }
 
         private void account_Text(string dane)
@@ -682,9 +713,13 @@ namespace Ecocoon
             string str_nr_tel = txt_nr_tel.Text;
             int dlugsc_nr_konta = str_nr_konta.Length;
             int dlugsc_nr_tel = str_nr_tel.Length;
-            if (dlugsc_nr_konta != 26 || dlugsc_nr_tel != 9)
+            if (txt_nr_konta.Text == "" || txt_nr_tel.Text == "" || txt_data_uro.Text == "" || txt_adres.Text == "")
             {
-                MessageBox.Show("Wprowadz poprawne dane");
+                MessageBox.Show("Uzupełnij wszystkie pola");
+            }
+            else if (dlugsc_nr_konta != 26 || dlugsc_nr_tel != 9)
+            {
+                MessageBox.Show("Numer konta lub numer telefonu jest zbyt krótki/długi");
             }
             else
             {
@@ -698,14 +733,24 @@ namespace Ecocoon
 
                     try
                     {
-                        cmd.Parameters.AddWithValue("@UserID", liczba);
-                        cmd.Parameters.AddWithValue("@Birth_date", data_uro.Text);
-                        cmd.Parameters.AddWithValue("@Bank_tran_det", txt_nr_konta.Text);
-                        cmd.Parameters.AddWithValue("@Phone_num", txt_nr_tel.Text);
-                        cmd.Parameters.AddWithValue("@Domicile", txt_adres.Text);
-                        cmd.ExecuteNonQuery();
-                        transaction.Commit();
-                        MessageBox.Show("Dane zostały zaaktualizowane");
+                        DateTime birthDate;
+                        if (DateTime.TryParseExact(txt_data_uro.Text, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out birthDate))
+                        {
+                            cmd.Parameters.AddWithValue("@UserID", liczba);
+                            cmd.Parameters.AddWithValue("@Birth_date", birthDate);
+                            cmd.Parameters.AddWithValue("@Bank_tran_det", txt_nr_konta.Text);
+                            cmd.Parameters.AddWithValue("@Phone_num", txt_nr_tel.Text);
+                            cmd.Parameters.AddWithValue("@Domicile", txt_adres.Text);
+                            cmd.ExecuteNonQuery();
+                            transaction.Commit();
+                            MessageBox.Show("Dane zostały zaaktualizowane, zaloguj się ponownie");
+                            new Form1().Show();
+                            this.Hide();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Nieprawidłowy format daty. Wprowadź datę w formacie: DD.MM.YYYY.");
+                        }
                     }
                     catch (SqlException sqlError)
                     {
@@ -713,6 +758,489 @@ namespace Ecocoon
                     }
                 }
             } 
+        }
+
+        private void btn_edit_user_Click(object sender, EventArgs e)
+        {
+            pnl_add_acc.Visible = false;
+            pnl_edit_wydzial.Visible = true;
+            pnl_edit_harmonogram.Visible = false;
+        }
+
+        //edycja smieciarze
+        private void btn_edit_smieciarze_Click(object sender, EventArgs e)
+        {
+            pnl_edit_smieciarze.Visible = true;
+
+            string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT UserID, Name, Surname, Email FROM Users WHERE Department = 2 AND Active = 1";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    view_edit_smieciarze.DataSource = dataTable;
+
+                    view_edit_smieciarze.CellValueChanged += new DataGridViewCellEventHandler(view_edit_smieciarze_Update);
+
+                    connection.Close();
+                }
+            }
+            btn_delete_smieciarze.Click += new EventHandler((s, ev) =>
+            {
+                view_edit_smieciarze.CellValueChanged -= new DataGridViewCellEventHandler(view_edit_smieciarze_Update);
+                view_edit_smieciarze.CellClick += new DataGridViewCellEventHandler(view_edit_smieciarze_Delete);
+                Tryb_smieciarze.Text = "Usuń";
+            });
+
+            btn_smieciarze_edit.Click += new EventHandler((s, ev) =>
+            {
+                view_edit_smieciarze.CellValueChanged += new DataGridViewCellEventHandler(view_edit_smieciarze_Update);
+                view_edit_smieciarze.CellClick -= new DataGridViewCellEventHandler(view_edit_smieciarze_Delete);
+                Tryb_smieciarze.Text = "Aktualizuj";
+            });
+
+            btn_back_smieciarze.Click += new EventHandler((s, ev) =>
+            {
+                pnl_edit_smieciarze.Visible = false;
+            });
+        }
+
+
+        //edycja uzytkownika - smieciarze
+        private void view_edit_smieciarze_Update(object sender, DataGridViewCellEventArgs e)
+        {
+            string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "UPDATE Users SET Name = @Name, Surname = @Surname, Email = @Email WHERE UserID = @UserID";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Name", view_edit_smieciarze.Rows[e.RowIndex].Cells["Name"].Value);
+                    command.Parameters.AddWithValue("@Surname", view_edit_smieciarze.Rows[e.RowIndex].Cells["Surname"].Value);
+                    command.Parameters.AddWithValue("@Email", view_edit_smieciarze.Rows[e.RowIndex].Cells["Email"].Value);
+                    command.Parameters.AddWithValue("@UserID", view_edit_smieciarze.Rows[e.RowIndex].Cells["UserID"].Value);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+
+                }
+            }
+        }
+        //usuniecie uzytkownika - smieciarze
+        private void view_edit_smieciarze_Delete(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DialogResult result = MessageBox.Show("Czy na pewno chcesz usunąć użytkownika?", "Usuwanie użytkownika", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+                    string query = "DELETE FROM Users WHERE UserID = @UserID";
+
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@UserID", view_edit_smieciarze.Rows[e.RowIndex].Cells["UserID"].Value);
+
+                            connection.Open();
+                            command.ExecuteNonQuery();
+                            connection.Close();
+                        }
+                    }
+                    MessageBox.Show("Użytkownik został usunięty.", "Usuwanie użytkownika", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+
+        //edycja kierowcy
+        private void btn_edit_kierowcy_Click(object sender, EventArgs e)
+        {
+            pnl_edit_kierowcy.Visible = true;
+
+            string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT UserID, Name, Surname, Email FROM Users WHERE Department = 3 AND Active = 1";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    view_edit_kierowcy.DataSource = dataTable;
+
+                    view_edit_kierowcy.CellValueChanged += new DataGridViewCellEventHandler(view_edit_kierowcy_Update);
+
+                    connection.Close();
+                }
+            }
+            btn_delete_kierowcy.Click += new EventHandler((s, ev) =>
+            {
+                view_edit_kierowcy.CellValueChanged -= new DataGridViewCellEventHandler(view_edit_kierowcy_Update);
+                view_edit_kierowcy.CellClick += new DataGridViewCellEventHandler(view_edit_kierowcy_Delete);
+                Tryb_kierowcy.Text = "Usuń";
+            });
+
+            btn_kierowcy_edit.Click += new EventHandler((s, ev) =>
+            {
+                view_edit_kierowcy.CellValueChanged += new DataGridViewCellEventHandler(view_edit_kierowcy_Update);
+                view_edit_kierowcy.CellClick -= new DataGridViewCellEventHandler(view_edit_kierowcy_Delete);
+                Tryb_kierowcy.Text = "Aktualizuj";
+            });
+
+            btn_back_kierowcy.Click += new EventHandler((s, ev) =>
+            {
+                pnl_edit_kierowcy.Visible = false;
+            });
+        }
+        //edycja uzytkownika - kierowcy
+        private void view_edit_kierowcy_Update(object sender, DataGridViewCellEventArgs e)
+        {
+            string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "UPDATE Users SET Name = @Name, Surname = @Surname, Email = @Email WHERE UserID = @UserID";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Name", view_edit_kierowcy.Rows[e.RowIndex].Cells["Name"].Value);
+                    command.Parameters.AddWithValue("@Surname", view_edit_kierowcy.Rows[e.RowIndex].Cells["Surname"].Value);
+                    command.Parameters.AddWithValue("@Email", view_edit_kierowcy.Rows[e.RowIndex].Cells["Email"].Value);
+                    command.Parameters.AddWithValue("@UserID", view_edit_kierowcy.Rows[e.RowIndex].Cells["UserID"].Value);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+
+                }
+            }
+        }
+        //usuniecie uzytkownika - kierowcy
+        private void view_edit_kierowcy_Delete(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DialogResult result = MessageBox.Show("Czy na pewno chcesz usunąć użytkownika?", "Usuwanie użytkownika", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+                    string query = "DELETE FROM Users WHERE UserID = @UserID";
+
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@UserID", view_edit_kierowcy.Rows[e.RowIndex].Cells["UserID"].Value);
+
+                            connection.Open();
+                            command.ExecuteNonQuery();
+                            connection.Close();
+                        }
+                    }
+                    MessageBox.Show("Użytkownik został usunięty.", "Usuwanie użytkownika", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+
+        //edycja odbior
+        private void btn_edit_odbior_Click(object sender, EventArgs e)
+        {
+            pnl_edit_odbior.Visible = true;
+
+            string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT UserID, Name, Surname, Email FROM Users WHERE Department = 4 AND Active = 1";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    view_edit_odbior.DataSource = dataTable;
+
+                    view_edit_odbior.CellValueChanged += new DataGridViewCellEventHandler(view_edit_odbior_Update);
+
+                    connection.Close();
+                }
+            }
+            btn_delete_odbior.Click += new EventHandler((s, ev) =>
+            {
+                view_edit_odbior.CellValueChanged -= new DataGridViewCellEventHandler(view_edit_odbior_Update);
+                view_edit_odbior.CellClick += new DataGridViewCellEventHandler(view_edit_odbior_Delete);
+                Tryb_odbior.Text = "Usuń";
+            });
+
+            btn_odbior_edit.Click += new EventHandler((s, ev) =>
+            {
+                view_edit_odbior.CellValueChanged += new DataGridViewCellEventHandler(view_edit_odbior_Update);
+                view_edit_odbior.CellClick -= new DataGridViewCellEventHandler(view_edit_odbior_Delete);
+                Tryb_odbior.Text = "Aktualizuj";
+            });
+
+            btn_back_odbior.Click += new EventHandler((s, ev) =>
+            {
+                pnl_edit_odbior.Visible = false;
+            });
+        }
+        //edycja uzytkownika - odbior
+        private void view_edit_odbior_Update(object sender, DataGridViewCellEventArgs e)
+        {
+            string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "UPDATE Users SET Name = @Name, Surname = @Surname, Email = @Email WHERE UserID = @UserID";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Name", view_edit_odbior.Rows[e.RowIndex].Cells["Name"].Value);
+                    command.Parameters.AddWithValue("@Surname", view_edit_odbior.Rows[e.RowIndex].Cells["Surname"].Value);
+                    command.Parameters.AddWithValue("@Email", view_edit_odbior.Rows[e.RowIndex].Cells["Email"].Value);
+                    command.Parameters.AddWithValue("@UserID", view_edit_odbior.Rows[e.RowIndex].Cells["UserID"].Value);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+
+                }
+            }
+        }
+        //usuniecie uzytkownika - odbior
+        private void view_edit_odbior_Delete(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DialogResult result = MessageBox.Show("Czy na pewno chcesz usunąć użytkownika?", "Usuwanie użytkownika", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+                    string query = "DELETE FROM Users WHERE UserID = @UserID";
+
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@UserID", view_edit_odbior.Rows[e.RowIndex].Cells["UserID"].Value);
+
+                            connection.Open();
+                            command.ExecuteNonQuery();
+                            connection.Close();
+                        }
+                    }
+                    MessageBox.Show("Użytkownik został usunięty.", "Usuwanie użytkownika", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+
+        //edycja segregacja
+        private void btn_edit_seg_Click(object sender, EventArgs e)
+        {
+            pnl_edit_segregacja.Visible = true;
+
+            string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT UserID, Name, Surname, Email FROM Users WHERE Department = 5 AND Active = 1";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    view_edit_segregacja.DataSource = dataTable;
+
+                    view_edit_segregacja.CellValueChanged += new DataGridViewCellEventHandler(view_edit_segregacja_Update);
+
+                    connection.Close();
+                }
+            }
+            btn_delete_segregacja.Click += new EventHandler((s, ev) =>
+            {
+                view_edit_segregacja.CellValueChanged -= new DataGridViewCellEventHandler(view_edit_segregacja_Update);
+                view_edit_segregacja.CellClick += new DataGridViewCellEventHandler(view_edit_segregacja_Delete);
+                Tryb_segregacja.Text = "Usuń";
+            });
+
+            btn_edit_segregacja.Click += new EventHandler((s, ev) =>
+            {
+                view_edit_segregacja.CellValueChanged += new DataGridViewCellEventHandler(view_edit_segregacja_Update);
+                view_edit_segregacja.CellClick -= new DataGridViewCellEventHandler(view_edit_segregacja_Delete);
+                Tryb_segregacja.Text = "Aktualizuj";
+            });
+
+            btn_back_segregacja.Click += new EventHandler((s, ev) =>
+            {
+                pnl_edit_segregacja.Visible = false;
+            });
+        }
+        //edycja uzytkownika - segregacja
+        private void view_edit_segregacja_Update(object sender, DataGridViewCellEventArgs e)
+        {
+            string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "UPDATE Users SET Name = @Name, Surname = @Surname, Email = @Email WHERE UserID = @UserID";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Name", view_edit_segregacja.Rows[e.RowIndex].Cells["Name"].Value);
+                    command.Parameters.AddWithValue("@Surname", view_edit_segregacja.Rows[e.RowIndex].Cells["Surname"].Value);
+                    command.Parameters.AddWithValue("@Email", view_edit_segregacja.Rows[e.RowIndex].Cells["Email"].Value);
+                    command.Parameters.AddWithValue("@UserID", view_edit_segregacja.Rows[e.RowIndex].Cells["UserID"].Value);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+
+                }
+            }
+        }
+        //usuniecie uzytkownika - segregacja
+        private void view_edit_segregacja_Delete(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DialogResult result = MessageBox.Show("Czy na pewno chcesz usunąć użytkownika?", "Usuwanie użytkownika", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+                    string query = "DELETE FROM Users WHERE UserID = @UserID";
+
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@UserID", view_edit_segregacja.Rows[e.RowIndex].Cells["UserID"].Value);
+
+                            connection.Open();
+                            command.ExecuteNonQuery();
+                            connection.Close();
+                        }
+                    }
+                    MessageBox.Show("Użytkownik został usunięty.", "Usuwanie użytkownika", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+
+        //edycja admin
+        private void btn_edit_admin_Click(object sender, EventArgs e)
+        {
+            pnl_edit_admin.Visible = true;
+            
+            string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT UserID, Name, Surname, Email FROM Users WHERE Department = 1 AND Active = 1";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    view_edit_admin.DataSource = dataTable;
+
+                    view_edit_admin.CellValueChanged += new DataGridViewCellEventHandler(view_edit_admin_Update);
+                    
+                    connection.Close();
+                }
+            }
+            btn_delete.Click += new EventHandler((s, ev) =>
+            {
+                view_edit_admin.CellValueChanged -= new DataGridViewCellEventHandler(view_edit_admin_Update);
+                view_edit_admin.CellClick += new DataGridViewCellEventHandler(view_edit_admin_Delete);
+                Tryb_admins.Text = "Usuń";
+            });
+
+            btn_update_admins.Click += new EventHandler((s, ev) =>
+            {
+                view_edit_admin.CellValueChanged += new DataGridViewCellEventHandler(view_edit_admin_Update);
+                view_edit_admin.CellClick -= new DataGridViewCellEventHandler(view_edit_admin_Delete);
+                Tryb_admins.Text = "Aktualizuj";
+            });
+
+            btn_admins_back.Click += new EventHandler((s, ev) =>
+            {
+                pnl_edit_admin.Visible = false;
+            });
+        }
+        //edycja uzytkownika - admin
+        private void view_edit_admin_Update(object sender, DataGridViewCellEventArgs e)
+        {
+            string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "UPDATE Users SET Name = @Name, Surname = @Surname, Email = @Email WHERE UserID = @UserID";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Name", view_edit_admin.Rows[e.RowIndex].Cells["Name"].Value);
+                    command.Parameters.AddWithValue("@Surname", view_edit_admin.Rows[e.RowIndex].Cells["Surname"].Value);
+                    command.Parameters.AddWithValue("@Email", view_edit_admin.Rows[e.RowIndex].Cells["Email"].Value);
+                    command.Parameters.AddWithValue("@UserID", view_edit_admin.Rows[e.RowIndex].Cells["UserID"].Value);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+
+                }
+            }
+        }
+        //usuniecie uzytkownika - admin
+        private void view_edit_admin_Delete(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DialogResult result = MessageBox.Show("Czy na pewno chcesz usunąć użytkownika?", "Usuwanie użytkownika", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+                    string query = "DELETE FROM Users WHERE UserID = @UserID";
+
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@UserID", view_edit_admin.Rows[e.RowIndex].Cells["UserID"].Value);
+
+                            connection.Open();
+                            command.ExecuteNonQuery();
+                            connection.Close();
+                        }
+                    }
+                    MessageBox.Show("Użytkownik został usunięty.", "Usuwanie użytkownika", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void txt_data_uro_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
