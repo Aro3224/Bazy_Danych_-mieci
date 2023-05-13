@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Runtime.InteropServices.ComTypes;
+using System.Globalization;
 
 namespace Ecocoon
 {
@@ -471,6 +472,32 @@ namespace Ecocoon
 
         private void btn_account_Click(object sender, EventArgs e)
         {
+            string connectionString = @"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            //string connectionString = @"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string selectQuery = "SELECT UserID, Completed FROM Users_add_info WHERE UserID = @UserID";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(selectQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@UserID", labelUserID.Text);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        bool isCompleted = reader.GetBoolean(1);
+
+                        if (isCompleted)
+                        {
+                            btn_edit.Visible = false;
+                        }
+                        else
+                        {
+                            btn_edit.Visible = true;
+                        }
+                    }
+                }
+            }
             pnl_edycja_danych.Visible = false;
             pnl_harmonogramy.Visible = false;
             pnl_wydzialy.Visible = false;
@@ -483,10 +510,8 @@ namespace Ecocoon
             txt_nr_tel.Visible = false;
             txt_adres.Visible = false;
 
-            btn_edit.Visible = true;
             btn_save_changes.Visible = false;
             btn_decline_changes.Visible = false;
-
         }
 
         private void account_Text(string dane)
@@ -681,13 +706,17 @@ namespace Ecocoon
             string str_nr_tel = txt_nr_tel.Text;
             int dlugsc_nr_konta = str_nr_konta.Length;
             int dlugsc_nr_tel = str_nr_tel.Length;
-            if (dlugsc_nr_konta != 26 || dlugsc_nr_tel != 9)
+            if (txt_nr_konta.Text == "" || txt_nr_tel.Text == "" || txt_data_uro.Text == "" || txt_adres.Text == "")
             {
-                MessageBox.Show("Wprowadz poprawne dane");
+                MessageBox.Show("Uzupełnij wszystkie pola");
+            }
+            else if (dlugsc_nr_konta != 26 || dlugsc_nr_tel != 9)
+            {
+                MessageBox.Show("Numer konta lub numer telefonu jest zbyt krótki/długi");
             }
             else
             {
-                string UpdateQuery = "INSERT INTO Users_add_info VALUES (@UserID, @Birth_date, @Bank_tran_det, @Phone_num, @Domicile);";
+                string UpdateQuery = "INSERT INTO Users_add_info VALUES (@UserID, @Birth_date, @Bank_tran_det, @Phone_num, @Domicile, DEFAULT);";
                 using (SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True"))
                 //using (SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True"))
                 {
@@ -697,14 +726,24 @@ namespace Ecocoon
 
                     try
                     {
-                        cmd.Parameters.AddWithValue("@UserID", liczba);
-                        cmd.Parameters.AddWithValue("@Birth_date", data_uro.Text);
-                        cmd.Parameters.AddWithValue("@Bank_tran_det", txt_nr_konta.Text);
-                        cmd.Parameters.AddWithValue("@Phone_num", txt_nr_tel.Text);
-                        cmd.Parameters.AddWithValue("@Domicile", txt_adres.Text);
-                        cmd.ExecuteNonQuery();
-                        transaction.Commit();
-                        MessageBox.Show("Dane zostały zaaktualizowane");
+                        DateTime birthDate;
+                        if (DateTime.TryParseExact(txt_data_uro.Text, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out birthDate))
+                        {
+                            cmd.Parameters.AddWithValue("@UserID", liczba);
+                            cmd.Parameters.AddWithValue("@Birth_date", birthDate);
+                            cmd.Parameters.AddWithValue("@Bank_tran_det", txt_nr_konta.Text);
+                            cmd.Parameters.AddWithValue("@Phone_num", txt_nr_tel.Text);
+                            cmd.Parameters.AddWithValue("@Domicile", txt_adres.Text);
+                            cmd.ExecuteNonQuery();
+                            transaction.Commit();
+                            MessageBox.Show("Dane zostały zaaktualizowane, zaloguj się ponownie");
+                            new Form1().Show();
+                            this.Hide();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Nieprawidłowy format daty. Wprowadź datę w formacie: DD.MM.YYYY.");
+                        }
                     }
                     catch (SqlException sqlError)
                     {
@@ -1192,6 +1231,9 @@ namespace Ecocoon
             }
         }
 
+        private void txt_data_uro_TextChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }

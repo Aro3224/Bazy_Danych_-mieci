@@ -1507,7 +1507,7 @@
             this.btn_edit.Name = "btn_edit";
             this.btn_edit.Size = new System.Drawing.Size(160, 39);
             this.btn_edit.TabIndex = 19;
-            this.btn_edit.Text = "Edytuj dane";
+            this.btn_edit.Text = "Uzupełnij dane";
             this.btn_edit.UseVisualStyleBackColor = false;
             this.btn_edit.Click += new System.EventHandler(this.btn_edit_Click);
             // 
@@ -1950,8 +1950,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(960, 540);
-            this.Controls.Add(this.pnl_edycja_danych);
             this.Controls.Add(this.pnl_account);
+            this.Controls.Add(this.pnl_edycja_danych);
             this.Controls.Add(this.pnl_powiadomienia);
             this.Controls.Add(this.pnl_wydzialy);
             this.Controls.Add(this.pnl_raport_odp);
