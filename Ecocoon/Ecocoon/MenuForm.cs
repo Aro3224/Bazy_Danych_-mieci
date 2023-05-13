@@ -744,7 +744,7 @@ namespace Ecocoon
         private void btn_edit_admin_Click(object sender, EventArgs e)
         {
             pnl_edit_admin.Visible = true;
-
+/*
             string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
             string query = "SELECT Name, Surname, Email FROM Users WHERE Department = 2 AND Active = 1";
 
@@ -762,7 +762,7 @@ namespace Ecocoon
 
                     connection.Close();
                 }
-            }
+            } */
         }
     }
 }
