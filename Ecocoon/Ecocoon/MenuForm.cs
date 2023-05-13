@@ -704,7 +704,9 @@ namespace Ecocoon
                         cmd.Parameters.AddWithValue("@Domicile", txt_adres.Text);
                         cmd.ExecuteNonQuery();
                         transaction.Commit();
-                        MessageBox.Show("Dane zostały zaaktualizowane");
+                        MessageBox.Show("Dane zostały zaaktualizowane, zaloguj się ponownie");
+                        //new Form1().Show();
+                        //this.Hide();
                     }
                     catch (SqlException sqlError)
                     {
