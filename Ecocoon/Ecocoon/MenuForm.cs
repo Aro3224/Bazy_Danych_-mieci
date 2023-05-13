@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Runtime.InteropServices.ComTypes;
+using System.Globalization;
 
 namespace Ecocoon
 {
@@ -697,16 +698,24 @@ namespace Ecocoon
 
                     try
                     {
-                        cmd.Parameters.AddWithValue("@UserID", liczba);
-                        cmd.Parameters.AddWithValue("@Birth_date", data_uro.Text);
-                        cmd.Parameters.AddWithValue("@Bank_tran_det", txt_nr_konta.Text);
-                        cmd.Parameters.AddWithValue("@Phone_num", txt_nr_tel.Text);
-                        cmd.Parameters.AddWithValue("@Domicile", txt_adres.Text);
-                        cmd.ExecuteNonQuery();
-                        transaction.Commit();
-                        MessageBox.Show("Dane zostały zaaktualizowane, zaloguj się ponownie");
-                        //new Form1().Show();
-                        //this.Hide();
+                        DateTime birthDate;
+                        if (DateTime.TryParseExact(txt_data_uro.Text, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out birthDate))
+                        {
+                            cmd.Parameters.AddWithValue("@UserID", liczba);
+                            cmd.Parameters.AddWithValue("@Birth_date", birthDate);
+                            cmd.Parameters.AddWithValue("@Bank_tran_det", txt_nr_konta.Text);
+                            cmd.Parameters.AddWithValue("@Phone_num", txt_nr_tel.Text);
+                            cmd.Parameters.AddWithValue("@Domicile", txt_adres.Text);
+                            cmd.ExecuteNonQuery();
+                            transaction.Commit();
+                            MessageBox.Show("Dane zostały zaaktualizowane, zaloguj się ponownie");
+                            new Form1().Show();
+                            this.Hide();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Nieprawidłowy format daty. Wprowadź datę w formacie Dzień/Miesiąc/Rok.");
+                        }
                     }
                     catch (SqlException sqlError)
                     {
