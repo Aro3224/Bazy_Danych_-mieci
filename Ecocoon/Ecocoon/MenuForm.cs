@@ -13,11 +13,15 @@ using System.Runtime.InteropServices.ComTypes;
 using System.Globalization;
 using System.Net.NetworkInformation;
 using System.Configuration;
+using System.Runtime.Remoting.Messaging;
+using System.ComponentModel.Design;
 
 namespace Ecocoon
 {
     public partial class MenuForm : Form
     {
+        private string dane;
+        private int department;
         public MenuForm(string email, int department)
         {
             InitializeComponent();
@@ -28,7 +32,8 @@ namespace Ecocoon
             pnl_raport_odp.Visible = false;
             pnl_account.Visible = false;
 
-            string dane = email;
+            dane = email;
+            this.department = department;
             account_Text(dane);
 
             if(department != 1)
@@ -86,6 +91,37 @@ namespace Ecocoon
             pnl_powiadomienia.Visible = false;
             pnl_raport_odp.Visible = false;
             pnl_account.Visible = false;
+            btn_anuluj.Visible = false;
+            btn_dodaj.Visible = false;
+
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT Department FROM Users WHERE Email = @Email;";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    command.Parameters.AddWithValue("@Email", dane);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        reader.Read();
+                        int departmentID = reader.GetInt32(0);
+
+                        switch (departmentID)
+                        {
+                            case 1:
+                                btn_dodaj_plik.Visible = true;
+                                break;
+                            default:
+                                btn_dodaj_plik.Visible = false;
+                                break;
+                        }
+                    }
+                }
+                connection.Close();
+            }
         }
 
         private void btn_mail_Click(object sender, EventArgs e)
@@ -1253,7 +1289,7 @@ namespace Ecocoon
             }
         }
 
-        private void txt_data_uro_TextChanged(object sender, EventArgs e)
+        private void btn_dodaj_Click(object sender, EventArgs e)
         {
 
         }
