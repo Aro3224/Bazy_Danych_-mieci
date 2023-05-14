@@ -12,6 +12,7 @@ using static System.Data.Entity.Infrastructure.Design.Executor;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using System.Security.Cryptography;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Configuration;
 
 namespace Ecocoon
 {
@@ -31,8 +32,8 @@ namespace Ecocoon
             else if (txt_pswd.Text == txt_pswd_again.Text)
             {
 
-                string connectionString = @"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
-                //string connectionString = @"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+                string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+                string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
                 string selectQuery = "SELECT Email, active FROM Users WHERE Email = @formEmail";
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
