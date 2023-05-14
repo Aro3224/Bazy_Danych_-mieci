@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Security.Cryptography;
+using System.Net.NetworkInformation;
+using System.Configuration;
 
 namespace Ecocoon
 {
@@ -45,8 +47,8 @@ namespace Ecocoon
                 }
             }
 
-            string connectionString = @"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            //string connectionString = @"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True"; 
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
             string selectQuery = "SELECT Password, Department FROM Users WHERE Email = @Email";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

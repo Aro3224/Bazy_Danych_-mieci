@@ -11,6 +11,8 @@ using System.Data.SqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Runtime.InteropServices.ComTypes;
 using System.Globalization;
+using System.Net.NetworkInformation;
+using System.Configuration;
 using static System.Data.Entity.Infrastructure.Design.Executor;
 
 namespace Ecocoon
@@ -145,8 +147,8 @@ namespace Ecocoon
             pnl_odbiór.Visible = false;
             pnl_segregacja.Visible = false;
 
-            string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            //string connectionString = "Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
             string query = "SELECT Name, Surname, Email FROM Users WHERE Department = 1 AND Active = 1";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -174,8 +176,8 @@ namespace Ecocoon
             pnl_odbiór.Visible = false;
             pnl_segregacja.Visible = false;
 
-            string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            //string connectionString = "Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
             string query = "SELECT Name, Surname, Email FROM Users WHERE Department = 2 AND Active = 1";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -203,8 +205,8 @@ namespace Ecocoon
             pnl_odbiór.Visible = false;
             pnl_segregacja.Visible = false;
 
-            string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            //string connectionString = "Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
             string query = "SELECT Name, Surname, Email FROM Users WHERE Department = 3 AND Active = 1";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -231,12 +233,10 @@ namespace Ecocoon
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True");
-            //SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True");
-            
-            string connectionString = @"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            //string connectionString = @"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            SqlConnection con = new SqlConnection($"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True");        
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+
             string selectQuery = "SELECT Email FROM Users WHERE Email = @addEmail";
 
             if (txt_add_email.Text == "")
@@ -369,8 +369,8 @@ namespace Ecocoon
             pnl_odbiór.Visible = true;
             pnl_segregacja.Visible = false;
 
-            string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            //string connectionString = "Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
             string query = "SELECT Name, Surname, Email FROM Users WHERE Department = 4 AND Active = 1";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -398,8 +398,8 @@ namespace Ecocoon
             pnl_odbiór.Visible = false;
             pnl_segregacja.Visible = true;
 
-            string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            //string connectionString = "Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
             string query = "SELECT Name, Surname, Email FROM Users WHERE Department = 5 AND Active = 1";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -480,8 +480,8 @@ namespace Ecocoon
 
         private void btn_account_Click(object sender, EventArgs e)
         {
-            string connectionString = @"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            //string connectionString = @"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
             string selectQuery = "SELECT UserID, Completed FROM Users_add_info WHERE UserID = @UserID";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -524,8 +524,8 @@ namespace Ecocoon
 
         private void account_Text(string dane)
         {
-            SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True");
-            //SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True");
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            SqlConnection connection = new SqlConnection($"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True");
             {
                 connection.Open();
                 SqlCommand command = new SqlCommand("SELECT Name, Surname FROM Users WHERE Email = @email", connection);
@@ -725,8 +725,8 @@ namespace Ecocoon
             else
             {
                 string UpdateQuery = "INSERT INTO Users_add_info VALUES (@UserID, @Birth_date, @Bank_tran_det, @Phone_num, @Domicile, DEFAULT);";
-                using (SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True"))
-                //using (SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True"))
+                string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+                SqlConnection connection = new SqlConnection($"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True");
                 {
                     connection.Open();
                     SqlTransaction transaction = connection.BeginTransaction();
@@ -773,7 +773,8 @@ namespace Ecocoon
         {
             pnl_edit_smieciarze.Visible = true;
 
-            string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
             string query = "SELECT u.UserID, u.Name, u.Surname, u.Email, a.Birth_date, a.Bank_tran_det, a.Phone_num, a.Domicile, a.Completed FROM Users u INNER JOIN Users_add_info a ON u.UserID = a.UserID WHERE u.Department = 2 AND u.Active = 1;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -814,7 +815,8 @@ namespace Ecocoon
         //edycja uzytkownika - smieciarze
         private void view_edit_smieciarze_Update(object sender, DataGridViewCellEventArgs e)
         {
-            string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
             string query = "UPDATE Users SET Name = @Name, Surname = @Surname, Email = @Email WHERE UserID = @UserID;";
             string query2 = "UPDATE Users_add_info SET Birth_date = @Birth_date, Bank_tran_det = @Bank_tran_det, Phone_num = @Phone_num, Domicile = @Domicile, Completed = @Completed WHERE UserID = @UserID;";
 
@@ -858,7 +860,8 @@ namespace Ecocoon
 
                 if (result == DialogResult.Yes)
                 {
-                    string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+                    string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+                    string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
                     string query = "DELETE FROM Users_add_info WHERE UserID = @UserID";
                     string query2 = "DELETE FROM Users WHERE UserID = @UserID;";
 
@@ -892,7 +895,8 @@ namespace Ecocoon
         {
             pnl_edit_kierowcy.Visible = true;
 
-            string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
             string query = "SELECT u.UserID, u.Name, u.Surname, u.Email, a.Birth_date, a.Bank_tran_det, a.Phone_num, a.Domicile, a.Completed FROM Users u INNER JOIN Users_add_info a ON u.UserID = a.UserID WHERE u.Department = 3 AND u.Active = 1;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -933,7 +937,8 @@ namespace Ecocoon
         //edycja uzytkownika - kierowcy
         private void view_edit_kierowcy_Update(object sender, DataGridViewCellEventArgs e)
         {
-            string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
             string query = "UPDATE Users SET Name = @Name, Surname = @Surname, Email = @Email WHERE UserID = @UserID;";
             string query2 = "UPDATE Users_add_info SET Birth_date = @Birth_date, Bank_tran_det = @Bank_tran_det, Phone_num = @Phone_num, Domicile = @Domicile, Completed = @Completed WHERE UserID = @UserID;";
 
@@ -976,7 +981,8 @@ namespace Ecocoon
 
                 if (result == DialogResult.Yes)
                 {
-                    string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+                    string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+                    string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
                     string query = "DELETE FROM Users_add_info WHERE UserID = @UserID";
                     string query2 = "DELETE FROM Users WHERE UserID = @UserID;";
 
@@ -1010,7 +1016,8 @@ namespace Ecocoon
         {
             pnl_edit_odbior.Visible = true;
 
-            string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
             string query = "SELECT u.UserID, u.Name, u.Surname, u.Email, a.Birth_date, a.Bank_tran_det, a.Phone_num, a.Domicile, a.Completed FROM Users u INNER JOIN Users_add_info a ON u.UserID = a.UserID WHERE u.Department = 4 AND u.Active = 1;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -1051,7 +1058,8 @@ namespace Ecocoon
         //edycja uzytkownika - odbior
         private void view_edit_odbior_Update(object sender, DataGridViewCellEventArgs e)
         {
-            string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
             string query = "UPDATE Users SET Name = @Name, Surname = @Surname, Email = @Email WHERE UserID = @UserID;";
             string query2 = "UPDATE Users_add_info SET Birth_date = @Birth_date, Bank_tran_det = @Bank_tran_det, Phone_num = @Phone_num, Domicile = @Domicile, Completed = @Completed WHERE UserID = @UserID;";
 
@@ -1094,7 +1102,8 @@ namespace Ecocoon
 
                 if (result == DialogResult.Yes)
                 {
-                    string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+                    string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+                    string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
                     string query = "DELETE FROM Users_add_info WHERE UserID = @UserID";
                     string query2 = "DELETE FROM Users WHERE UserID = @UserID;";
 
@@ -1128,7 +1137,8 @@ namespace Ecocoon
         {
             pnl_edit_segregacja.Visible = true;
 
-            string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
             string query = "SELECT u.UserID, u.Name, u.Surname, u.Email, a.Birth_date, a.Bank_tran_det, a.Phone_num, a.Domicile, a.Completed FROM Users u INNER JOIN Users_add_info a ON u.UserID = a.UserID WHERE u.Department = 5 AND u.Active = 1;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -1169,7 +1179,8 @@ namespace Ecocoon
         //edycja uzytkownika - segregacja
         private void view_edit_segregacja_Update(object sender, DataGridViewCellEventArgs e)
         {
-            string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
             string query = "UPDATE Users SET Name = @Name, Surname = @Surname, Email = @Email WHERE UserID = @UserID;";
             string query2 = "UPDATE Users_add_info SET Birth_date = @Birth_date, Bank_tran_det = @Bank_tran_det, Phone_num = @Phone_num, Domicile = @Domicile, Completed = @Completed WHERE UserID = @UserID;";
 
@@ -1212,7 +1223,8 @@ namespace Ecocoon
 
                 if (result == DialogResult.Yes)
                 {
-                    string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+                    string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+                    string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
                     string query = "DELETE FROM Users_add_info WHERE UserID = @UserID";
                     string query2 = "DELETE FROM Users WHERE UserID = @UserID;";
 
@@ -1246,8 +1258,9 @@ namespace Ecocoon
         private void btn_edit_admin_Click(object sender, EventArgs e)
         {
             pnl_edit_admin.Visible = true;
-            
-            string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
             string query = "SELECT u.UserID, u.Name, u.Surname, u.Email, a.Birth_date, a.Bank_tran_det, a.Phone_num, a.Domicile, a.Completed FROM Users u INNER JOIN Users_add_info a ON u.UserID = a.UserID WHERE u.Department = 1 AND u.Active = 1;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -1288,7 +1301,8 @@ namespace Ecocoon
         //edycja uzytkownika - admin
         private void view_edit_admin_Update(object sender, DataGridViewCellEventArgs e)
         {
-            string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
             string query = "UPDATE Users SET Name = @Name, Surname = @Surname, Email = @Email WHERE UserID = @UserID;";
             string query2 = "UPDATE Users_add_info SET Birth_date = @Birth_date, Bank_tran_det = @Bank_tran_det, Phone_num = @Phone_num, Domicile = @Domicile, Completed = @Completed WHERE UserID = @UserID;";
 
@@ -1331,7 +1345,8 @@ namespace Ecocoon
 
                 if (result == DialogResult.Yes)
                 {
-                    string connectionString = "Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+                    string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+                    string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
                     string query = "DELETE FROM Users_add_info WHERE UserID = @UserID";
                     string query2 = "DELETE FROM Users WHERE UserID = @UserID;";
 
