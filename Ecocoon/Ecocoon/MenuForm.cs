@@ -16,7 +16,7 @@ namespace Ecocoon
 {
     public partial class MenuForm : Form
     {
-        public MenuForm(string email)
+        public MenuForm(string email, int department)
         {
             InitializeComponent();
             pnl_edycja_danych.Visible = true;
@@ -28,6 +28,13 @@ namespace Ecocoon
 
             string dane = email;
             account_Text(dane);
+
+            if(department != 1)
+            {
+                btn_edycja_danych.Visible = false;
+                btn_raport_odp.Visible = false;
+                btn_raport_prac.Visible = false;
+            }
         }
         private void MenuForm_Load(object sender, EventArgs e)
         {

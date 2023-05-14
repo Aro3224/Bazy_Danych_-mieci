@@ -101,8 +101,10 @@ namespace Ecocoon
                     cmd.ExecuteNonQuery();
                     transaction.Commit();
                     MessageBox.Show("Rejestracja przebiegła pomyślnie");
-                    new MenuForm(email).Show();
-                    this.Hide();
+                    //new MenuForm(email).Show();
+                    //this.Hide();
+                    get_department(email, connectionString);
+
                 }
                 catch (SqlException sqlError)
                 {
@@ -159,6 +161,32 @@ namespace Ecocoon
         {
             new Form1().Show();
             this.Close();
+        }
+
+        private void get_department(string email, string connectionString)
+        {
+            string query = "SELECT Department FROM Users WHERE Email = @email";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@email", txt_email.Text);
+                    connection.Open();
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int department = Convert.ToInt32(reader["Department"]);
+                            email = txt_email.Text;
+                            MenuForm widok = new MenuForm(email, department);
+                            new MenuForm(email, department).Show();
+                            this.Hide();
+                        }
+                    }
+                }
+            }
+
         }
     }
 }
