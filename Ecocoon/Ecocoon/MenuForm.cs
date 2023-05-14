@@ -1412,7 +1412,32 @@ namespace Ecocoon
 
         private void btn_dodaj_Click(object sender, EventArgs e)
         {
+            btn_anuluj.Visible = true;
+            btn_dodaj.Visible = true;
+            btn_dodaj_plik.Visible = false;
+            btn_zaznacz.Visible= false;
+            btn_odznacz.Visible = false;
+            btn_pobierz.Visible = false;
+        }
 
+        private void btn_anuluj_Click(object sender, EventArgs e)
+        {
+            btn_anuluj.Visible = false;
+            btn_dodaj.Visible = false;
+            btn_dodaj_plik.Visible = true;
+            btn_zaznacz.Visible = true;
+            btn_odznacz.Visible = true;
+            btn_pobierz.Visible = true;
+        }
+
+        private void btn_dodaj_Click_1(object sender, EventArgs e)
+        {
+            btn_anuluj.Visible = false;
+            btn_dodaj.Visible = false;
+            btn_dodaj_plik.Visible = true;
+            btn_zaznacz.Visible = true;
+            btn_odznacz.Visible = true;
+            btn_pobierz.Visible = true;
         }
     }
 }

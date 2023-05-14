@@ -1702,6 +1702,7 @@
             this.btn_dodaj.TabIndex = 7;
             this.btn_dodaj.Text = "Dodaj";
             this.btn_dodaj.UseVisualStyleBackColor = false;
+            this.btn_dodaj.Click += new System.EventHandler(this.btn_dodaj_Click_1);
             // 
             // btn_anuluj
             // 
@@ -1713,6 +1714,7 @@
             this.btn_anuluj.TabIndex = 6;
             this.btn_anuluj.Text = "Anuluj";
             this.btn_anuluj.UseVisualStyleBackColor = false;
+            this.btn_anuluj.Click += new System.EventHandler(this.btn_anuluj_Click);
             // 
             // pnl_powiadomienia
             // 
@@ -1990,8 +1992,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(960, 540);
-            this.Controls.Add(this.pnl_edycja_danych);
             this.Controls.Add(this.pnl_druki_pliki);
+            this.Controls.Add(this.pnl_edycja_danych);
             this.Controls.Add(this.pnl_left);
             this.Controls.Add(this.pnl_account);
             this.Controls.Add(this.pnl_powiadomienia);
