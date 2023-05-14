@@ -13,6 +13,7 @@ using System.Runtime.InteropServices.ComTypes;
 using System.Globalization;
 using System.Net.NetworkInformation;
 using System.Configuration;
+using static System.Data.Entity.Infrastructure.Design.Executor;
 using System.Runtime.Remoting.Messaging;
 using System.ComponentModel.Design;
 
@@ -810,7 +811,7 @@ namespace Ecocoon
 
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            string query = "SELECT UserID, Name, Surname, Email FROM Users WHERE Department = 2 AND Active = 1";
+            string query = "SELECT u.UserID, u.Name, u.Surname, u.Email, a.Birth_date, a.Bank_tran_det, a.Phone_num, a.Domicile, a.Completed FROM Users u INNER JOIN Users_add_info a ON u.UserID = a.UserID WHERE u.Department = 2 AND u.Active = 1;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -847,14 +848,13 @@ namespace Ecocoon
                 pnl_edit_smieciarze.Visible = false;
             });
         }
-
-
         //edycja uzytkownika - smieciarze
         private void view_edit_smieciarze_Update(object sender, DataGridViewCellEventArgs e)
         {
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            string query = "UPDATE Users SET Name = @Name, Surname = @Surname, Email = @Email WHERE UserID = @UserID";
+            string query = "UPDATE Users SET Name = @Name, Surname = @Surname, Email = @Email WHERE UserID = @UserID;";
+            string query2 = "UPDATE Users_add_info SET Birth_date = @Birth_date, Bank_tran_det = @Bank_tran_det, Phone_num = @Phone_num, Domicile = @Domicile, Completed = @Completed WHERE UserID = @UserID;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -867,6 +867,20 @@ namespace Ecocoon
 
                     connection.Open();
                     command.ExecuteNonQuery();
+                    connection.Close();
+
+                }
+                using (SqlCommand command2 = new SqlCommand(query2, connection))
+                {
+                    command2.Parameters.AddWithValue("@UserID", view_edit_smieciarze.Rows[e.RowIndex].Cells["UserID"].Value);
+                    command2.Parameters.AddWithValue("@Birth_date", view_edit_smieciarze.Rows[e.RowIndex].Cells["Birth_date"].Value);
+                    command2.Parameters.AddWithValue("@Bank_tran_det", view_edit_smieciarze.Rows[e.RowIndex].Cells["Bank_tran_det"].Value);
+                    command2.Parameters.AddWithValue("@Phone_num", view_edit_smieciarze.Rows[e.RowIndex].Cells["Phone_num"].Value);
+                    command2.Parameters.AddWithValue("@Domicile", view_edit_smieciarze.Rows[e.RowIndex].Cells["Domicile"].Value);
+                    command2.Parameters.AddWithValue("@Completed", view_edit_smieciarze.Rows[e.RowIndex].Cells["Completed"].Value);
+
+                    connection.Open();
+                    command2.ExecuteNonQuery();
                     connection.Close();
 
                 }
@@ -883,7 +897,8 @@ namespace Ecocoon
                 {
                     string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
                     string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-                    string query = "DELETE FROM Users WHERE UserID = @UserID";
+                    string query = "DELETE FROM Users_add_info WHERE UserID = @UserID";
+                    string query2 = "DELETE FROM Users WHERE UserID = @UserID;";
 
                     using (SqlConnection connection = new SqlConnection(connectionString))
                     {
@@ -893,6 +908,14 @@ namespace Ecocoon
 
                             connection.Open();
                             command.ExecuteNonQuery();
+                            connection.Close();
+                        }
+                        using (SqlCommand command2 = new SqlCommand(query2, connection))
+                        {
+                            command2.Parameters.AddWithValue("@UserID", view_edit_smieciarze.Rows[e.RowIndex].Cells["UserID"].Value);
+
+                            connection.Open();
+                            command2.ExecuteNonQuery();
                             connection.Close();
                         }
                     }
@@ -909,7 +932,7 @@ namespace Ecocoon
 
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            string query = "SELECT UserID, Name, Surname, Email FROM Users WHERE Department = 3 AND Active = 1";
+            string query = "SELECT u.UserID, u.Name, u.Surname, u.Email, a.Birth_date, a.Bank_tran_det, a.Phone_num, a.Domicile, a.Completed FROM Users u INNER JOIN Users_add_info a ON u.UserID = a.UserID WHERE u.Department = 3 AND u.Active = 1;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -951,7 +974,8 @@ namespace Ecocoon
         {
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            string query = "UPDATE Users SET Name = @Name, Surname = @Surname, Email = @Email WHERE UserID = @UserID";
+            string query = "UPDATE Users SET Name = @Name, Surname = @Surname, Email = @Email WHERE UserID = @UserID;";
+            string query2 = "UPDATE Users_add_info SET Birth_date = @Birth_date, Bank_tran_det = @Bank_tran_det, Phone_num = @Phone_num, Domicile = @Domicile, Completed = @Completed WHERE UserID = @UserID;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -964,6 +988,20 @@ namespace Ecocoon
 
                     connection.Open();
                     command.ExecuteNonQuery();
+                    connection.Close();
+
+                }
+                using (SqlCommand command2 = new SqlCommand(query2, connection))
+                {
+                    command2.Parameters.AddWithValue("@UserID", view_edit_kierowcy.Rows[e.RowIndex].Cells["UserID"].Value);
+                    command2.Parameters.AddWithValue("@Birth_date", view_edit_kierowcy.Rows[e.RowIndex].Cells["Birth_date"].Value);
+                    command2.Parameters.AddWithValue("@Bank_tran_det", view_edit_kierowcy.Rows[e.RowIndex].Cells["Bank_tran_det"].Value);
+                    command2.Parameters.AddWithValue("@Phone_num", view_edit_kierowcy.Rows[e.RowIndex].Cells["Phone_num"].Value);
+                    command2.Parameters.AddWithValue("@Domicile", view_edit_kierowcy.Rows[e.RowIndex].Cells["Domicile"].Value);
+                    command2.Parameters.AddWithValue("@Completed", view_edit_kierowcy.Rows[e.RowIndex].Cells["Completed"].Value);
+
+                    connection.Open();
+                    command2.ExecuteNonQuery();
                     connection.Close();
 
                 }
@@ -980,7 +1018,8 @@ namespace Ecocoon
                 {
                     string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
                     string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-                    string query = "DELETE FROM Users WHERE UserID = @UserID";
+                    string query = "DELETE FROM Users_add_info WHERE UserID = @UserID";
+                    string query2 = "DELETE FROM Users WHERE UserID = @UserID;";
 
                     using (SqlConnection connection = new SqlConnection(connectionString))
                     {
@@ -990,6 +1029,14 @@ namespace Ecocoon
 
                             connection.Open();
                             command.ExecuteNonQuery();
+                            connection.Close();
+                        }
+                        using (SqlCommand command2 = new SqlCommand(query2, connection))
+                        {
+                            command2.Parameters.AddWithValue("@UserID", view_edit_kierowcy.Rows[e.RowIndex].Cells["UserID"].Value);
+
+                            connection.Open();
+                            command2.ExecuteNonQuery();
                             connection.Close();
                         }
                     }
@@ -1006,7 +1053,7 @@ namespace Ecocoon
 
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            string query = "SELECT UserID, Name, Surname, Email FROM Users WHERE Department = 4 AND Active = 1";
+            string query = "SELECT u.UserID, u.Name, u.Surname, u.Email, a.Birth_date, a.Bank_tran_det, a.Phone_num, a.Domicile, a.Completed FROM Users u INNER JOIN Users_add_info a ON u.UserID = a.UserID WHERE u.Department = 4 AND u.Active = 1;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -1048,7 +1095,8 @@ namespace Ecocoon
         {
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            string query = "UPDATE Users SET Name = @Name, Surname = @Surname, Email = @Email WHERE UserID = @UserID";
+            string query = "UPDATE Users SET Name = @Name, Surname = @Surname, Email = @Email WHERE UserID = @UserID;";
+            string query2 = "UPDATE Users_add_info SET Birth_date = @Birth_date, Bank_tran_det = @Bank_tran_det, Phone_num = @Phone_num, Domicile = @Domicile, Completed = @Completed WHERE UserID = @UserID;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -1061,6 +1109,20 @@ namespace Ecocoon
 
                     connection.Open();
                     command.ExecuteNonQuery();
+                    connection.Close();
+
+                }
+                using (SqlCommand command2 = new SqlCommand(query2, connection))
+                {
+                    command2.Parameters.AddWithValue("@UserID", view_edit_odbior.Rows[e.RowIndex].Cells["UserID"].Value);
+                    command2.Parameters.AddWithValue("@Birth_date", view_edit_odbior.Rows[e.RowIndex].Cells["Birth_date"].Value);
+                    command2.Parameters.AddWithValue("@Bank_tran_det", view_edit_odbior.Rows[e.RowIndex].Cells["Bank_tran_det"].Value);
+                    command2.Parameters.AddWithValue("@Phone_num", view_edit_odbior.Rows[e.RowIndex].Cells["Phone_num"].Value);
+                    command2.Parameters.AddWithValue("@Domicile", view_edit_odbior.Rows[e.RowIndex].Cells["Domicile"].Value);
+                    command2.Parameters.AddWithValue("@Completed", view_edit_odbior.Rows[e.RowIndex].Cells["Completed"].Value);
+
+                    connection.Open();
+                    command2.ExecuteNonQuery();
                     connection.Close();
 
                 }
@@ -1077,7 +1139,8 @@ namespace Ecocoon
                 {
                     string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
                     string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-                    string query = "DELETE FROM Users WHERE UserID = @UserID";
+                    string query = "DELETE FROM Users_add_info WHERE UserID = @UserID";
+                    string query2 = "DELETE FROM Users WHERE UserID = @UserID;";
 
                     using (SqlConnection connection = new SqlConnection(connectionString))
                     {
@@ -1087,6 +1150,14 @@ namespace Ecocoon
 
                             connection.Open();
                             command.ExecuteNonQuery();
+                            connection.Close();
+                        }
+                        using (SqlCommand command2 = new SqlCommand(query2, connection))
+                        {
+                            command2.Parameters.AddWithValue("@UserID", view_edit_odbior.Rows[e.RowIndex].Cells["UserID"].Value);
+
+                            connection.Open();
+                            command2.ExecuteNonQuery();
                             connection.Close();
                         }
                     }
@@ -1103,7 +1174,7 @@ namespace Ecocoon
 
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            string query = "SELECT UserID, Name, Surname, Email FROM Users WHERE Department = 5 AND Active = 1";
+            string query = "SELECT u.UserID, u.Name, u.Surname, u.Email, a.Birth_date, a.Bank_tran_det, a.Phone_num, a.Domicile, a.Completed FROM Users u INNER JOIN Users_add_info a ON u.UserID = a.UserID WHERE u.Department = 5 AND u.Active = 1;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -1145,7 +1216,8 @@ namespace Ecocoon
         {
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            string query = "UPDATE Users SET Name = @Name, Surname = @Surname, Email = @Email WHERE UserID = @UserID";
+            string query = "UPDATE Users SET Name = @Name, Surname = @Surname, Email = @Email WHERE UserID = @UserID;";
+            string query2 = "UPDATE Users_add_info SET Birth_date = @Birth_date, Bank_tran_det = @Bank_tran_det, Phone_num = @Phone_num, Domicile = @Domicile, Completed = @Completed WHERE UserID = @UserID;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -1158,6 +1230,20 @@ namespace Ecocoon
 
                     connection.Open();
                     command.ExecuteNonQuery();
+                    connection.Close();
+
+                }
+                using (SqlCommand command2 = new SqlCommand(query2, connection))
+                {
+                    command2.Parameters.AddWithValue("@UserID", view_edit_segregacja.Rows[e.RowIndex].Cells["UserID"].Value);
+                    command2.Parameters.AddWithValue("@Birth_date", view_edit_segregacja.Rows[e.RowIndex].Cells["Birth_date"].Value);
+                    command2.Parameters.AddWithValue("@Bank_tran_det", view_edit_segregacja.Rows[e.RowIndex].Cells["Bank_tran_det"].Value);
+                    command2.Parameters.AddWithValue("@Phone_num", view_edit_segregacja.Rows[e.RowIndex].Cells["Phone_num"].Value);
+                    command2.Parameters.AddWithValue("@Domicile", view_edit_segregacja.Rows[e.RowIndex].Cells["Domicile"].Value);
+                    command2.Parameters.AddWithValue("@Completed", view_edit_segregacja.Rows[e.RowIndex].Cells["Completed"].Value);
+
+                    connection.Open();
+                    command2.ExecuteNonQuery();
                     connection.Close();
 
                 }
@@ -1174,7 +1260,8 @@ namespace Ecocoon
                 {
                     string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
                     string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-                    string query = "DELETE FROM Users WHERE UserID = @UserID";
+                    string query = "DELETE FROM Users_add_info WHERE UserID = @UserID";
+                    string query2 = "DELETE FROM Users WHERE UserID = @UserID;";
 
                     using (SqlConnection connection = new SqlConnection(connectionString))
                     {
@@ -1184,6 +1271,15 @@ namespace Ecocoon
 
                             connection.Open();
                             command.ExecuteNonQuery();
+                            connection.Close();
+                        }
+
+                        using (SqlCommand command2 = new SqlCommand(query2, connection))
+                        {
+                            command2.Parameters.AddWithValue("@UserID", view_edit_segregacja.Rows[e.RowIndex].Cells["UserID"].Value);
+
+                            connection.Open();
+                            command2.ExecuteNonQuery();
                             connection.Close();
                         }
                     }
@@ -1200,7 +1296,7 @@ namespace Ecocoon
 
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            string query = "SELECT UserID, Name, Surname, Email FROM Users WHERE Department = 1 AND Active = 1";
+            string query = "SELECT u.UserID, u.Name, u.Surname, u.Email, a.Birth_date, a.Bank_tran_det, a.Phone_num, a.Domicile, a.Completed FROM Users u INNER JOIN Users_add_info a ON u.UserID = a.UserID WHERE u.Department = 1 AND u.Active = 1;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -1242,7 +1338,8 @@ namespace Ecocoon
         {
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            string query = "UPDATE Users SET Name = @Name, Surname = @Surname, Email = @Email WHERE UserID = @UserID";
+            string query = "UPDATE Users SET Name = @Name, Surname = @Surname, Email = @Email WHERE UserID = @UserID;";
+            string query2 = "UPDATE Users_add_info SET Birth_date = @Birth_date, Bank_tran_det = @Bank_tran_det, Phone_num = @Phone_num, Domicile = @Domicile, Completed = @Completed WHERE UserID = @UserID;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -1255,6 +1352,20 @@ namespace Ecocoon
 
                     connection.Open();
                     command.ExecuteNonQuery();
+                    connection.Close();
+
+                }
+                using (SqlCommand command2 = new SqlCommand(query2, connection))
+                {
+                    command2.Parameters.AddWithValue("@UserID", view_edit_admin.Rows[e.RowIndex].Cells["UserID"].Value);
+                    command2.Parameters.AddWithValue("@Birth_date", view_edit_admin.Rows[e.RowIndex].Cells["Birth_date"].Value);
+                    command2.Parameters.AddWithValue("@Bank_tran_det", view_edit_admin.Rows[e.RowIndex].Cells["Bank_tran_det"].Value);
+                    command2.Parameters.AddWithValue("@Phone_num", view_edit_admin.Rows[e.RowIndex].Cells["Phone_num"].Value);
+                    command2.Parameters.AddWithValue("@Domicile", view_edit_admin.Rows[e.RowIndex].Cells["Domicile"].Value);
+                    command2.Parameters.AddWithValue("@Completed", view_edit_admin.Rows[e.RowIndex].Cells["Completed"].Value);
+
+                    connection.Open();
+                    command2.ExecuteNonQuery();
                     connection.Close();
 
                 }
@@ -1271,7 +1382,8 @@ namespace Ecocoon
                 {
                     string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
                     string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-                    string query = "DELETE FROM Users WHERE UserID = @UserID";
+                    string query = "DELETE FROM Users_add_info WHERE UserID = @UserID";
+                    string query2 = "DELETE FROM Users WHERE UserID = @UserID;";
 
                     using (SqlConnection connection = new SqlConnection(connectionString))
                     {
@@ -1281,6 +1393,15 @@ namespace Ecocoon
 
                             connection.Open();
                             command.ExecuteNonQuery();
+                            connection.Close();
+                        }
+
+                        using (SqlCommand command2 = new SqlCommand(query2, connection))
+                        {
+                            command2.Parameters.AddWithValue("@UserID", view_edit_admin.Rows[e.RowIndex].Cells["UserID"].Value);
+
+                            connection.Open();
+                            command2.ExecuteNonQuery();
                             connection.Close();
                         }
                     }
