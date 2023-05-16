@@ -32,6 +32,7 @@ namespace Ecocoon
             pnl_powiadomienia.Visible = false;
             pnl_raport_odp.Visible = false;
             pnl_account.Visible = false;
+            pnl_druki_pliki.Visible = false;
 
             dane = email;
             this.department = department;
@@ -484,13 +485,13 @@ namespace Ecocoon
             pnl_edycja_danych.Visible = false;
             pnl_harmonogramy.Visible = false;
             pnl_wydzialy.Visible = false;
-            pnl_druki_pliki.Visible = true;
             pnl_powiadomienia.Visible = false;
             pnl_raport_odp.Visible = true;
             pnl_new_raport.Visible = false;
             pnl_show_raport.Visible = false;
             pnl_print_raport.Visible = false;
             pnl_account.Visible = false;
+            pnl_druki_pliki.Visible = false;
         }
 
         private void btn_new_raport_Click(object sender, EventArgs e)
@@ -548,6 +549,7 @@ namespace Ecocoon
             pnl_powiadomienia.Visible = false;
             pnl_raport_odp.Visible = false;
             pnl_account.Visible = true;
+            pnl_druki_pliki.Visible = false;
 
             txt_data_uro.Visible = false;
             txt_nr_konta.Visible = false;
