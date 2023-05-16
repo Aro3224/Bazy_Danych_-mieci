@@ -28,5 +28,9 @@ namespace Ecocoon
         public virtual DbSet<Departments> Departments { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<Users_add_info> Users_add_info { get; set; }
+        public virtual DbSet<GarbageType> GarbageType { get; set; }
+        public virtual DbSet<Route> Route { get; set; }
+        public virtual DbSet<Schedule> Schedule { get; set; }
+        public virtual DbSet<Truck> Truck { get; set; }
     }
 }

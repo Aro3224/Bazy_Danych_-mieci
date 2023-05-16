@@ -68,6 +68,9 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GarbageType.cs">
+      <DependentUpon>SmieciModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="MenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +84,12 @@
     </Compile>
     <Compile Include="Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Route.cs">
+      <DependentUpon>SmieciModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Schedule.cs">
+      <DependentUpon>SmieciModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SmieciModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -96,6 +105,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SmieciModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Truck.cs">
+      <DependentUpon>SmieciModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Users.cs">
       <DependentUpon>SmieciModel.tt</DependentUpon>

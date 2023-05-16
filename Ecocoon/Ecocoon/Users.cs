@@ -14,6 +14,14 @@ namespace Ecocoon
     
     public partial class Users
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Users()
+        {
+            this.Truck = new HashSet<Truck>();
+            this.Truck1 = new HashSet<Truck>();
+            this.Truck2 = new HashSet<Truck>();
+        }
+    
         public int UserID { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
@@ -24,5 +32,11 @@ namespace Ecocoon
     
         public virtual Departments Departments { get; set; }
         public virtual Users_add_info Users_add_info { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Truck> Truck { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Truck> Truck1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Truck> Truck2 { get; set; }
     }
 }
