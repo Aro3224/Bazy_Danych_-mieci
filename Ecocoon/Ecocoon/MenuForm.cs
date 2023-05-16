@@ -33,6 +33,7 @@ namespace Ecocoon
             pnl_raport_odp.Visible = false;
             pnl_account.Visible = false;
             pnl_druki_pliki.Visible = false;
+            pnl_edit_segregacja.Visible = false;
 
             dane = email;
             this.department = department;
@@ -66,6 +67,7 @@ namespace Ecocoon
             pnl_powiadomienia.Visible = false;
             pnl_raport_odp.Visible = false;
             pnl_account.Visible = false;
+            pnl_Blank.Visible = false;
         }
 
         private void btn_wydzialy_Click(object sender, EventArgs e)
@@ -82,6 +84,7 @@ namespace Ecocoon
             pnl_powiadomienia.Visible = false;
             pnl_raport_odp.Visible = false;
             pnl_account.Visible = false;
+            pnl_Blank.Visible = false;
         }
 
         private void btn_druki_pliki_Click(object sender, EventArgs e)
@@ -135,6 +138,7 @@ namespace Ecocoon
             pnl_powiadomienia.Visible = false;
             pnl_raport_odp.Visible = false;
             pnl_account.Visible = false;
+            pnl_Blank.Visible = false;
         }
 
         private void btn_edycja_danych_Click(object sender, EventArgs e)
@@ -149,6 +153,7 @@ namespace Ecocoon
             pnl_powiadomienia.Visible = false;
             pnl_raport_odp.Visible = false;
             pnl_account.Visible = false;
+            pnl_Blank.Visible = false;
 
             pnl_edit_admin.Visible = false;
             pnl_edit_kierowcy.Visible = false;
@@ -212,6 +217,7 @@ namespace Ecocoon
             pnl_kierowcy.Visible = false;
             pnl_odbiór.Visible = false;
             pnl_segregacja.Visible = false;
+            pnl_Blank.Visible = false;
 
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
@@ -241,6 +247,7 @@ namespace Ecocoon
             pnl_kierowcy.Visible = true;
             pnl_odbiór.Visible = false;
             pnl_segregacja.Visible = false;
+            pnl_Blank.Visible = false;
 
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
@@ -478,6 +485,7 @@ namespace Ecocoon
             pnl_add_acc.Visible = false;
             pnl_edit_wydzial.Visible = false;
             pnl_edit_harmonogram.Visible = true;
+            pnl_Blank.Visible = false;
         }
 
         private void btn_raport_odp_Click(object sender, EventArgs e)
@@ -492,6 +500,7 @@ namespace Ecocoon
             pnl_print_raport.Visible = false;
             pnl_account.Visible = false;
             pnl_druki_pliki.Visible = false;
+            pnl_Blank.Visible = false;
         }
 
         private void btn_new_raport_Click(object sender, EventArgs e)
@@ -550,7 +559,6 @@ namespace Ecocoon
             pnl_raport_odp.Visible = false;
             pnl_account.Visible = true;
             pnl_druki_pliki.Visible = false;
-
             txt_data_uro.Visible = false;
             txt_nr_konta.Visible = false;
             txt_nr_tel.Visible = false;
@@ -558,6 +566,7 @@ namespace Ecocoon
 
             btn_save_changes.Visible = false;
             btn_decline_changes.Visible = false;
+            pnl_Blank.Visible = false;
         }
 
         private void account_Text(string dane)
@@ -1440,6 +1449,11 @@ namespace Ecocoon
             btn_zaznacz.Visible = true;
             btn_odznacz.Visible = true;
             btn_pobierz.Visible = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            pnl_Blank.Visible = true;
         }
     }
 }

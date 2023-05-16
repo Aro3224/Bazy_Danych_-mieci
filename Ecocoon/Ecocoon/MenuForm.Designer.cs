@@ -185,6 +185,7 @@
             this.opis_email = new System.Windows.Forms.Label();
             this.opis_nazwisko = new System.Windows.Forms.Label();
             this.opis_imie = new System.Windows.Forms.Label();
+            this.pnl_Blank = new System.Windows.Forms.Panel();
             this.pnl_left.SuspendLayout();
             this.pnl_raport_odp.SuspendLayout();
             this.pnl_new_raport.SuspendLayout();
@@ -282,6 +283,7 @@
             this.button1.Size = new System.Drawing.Size(225, 58);
             this.button1.TabIndex = 5;
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btn_edycja_danych
             // 
@@ -1986,6 +1988,14 @@
             this.opis_imie.TabIndex = 0;
             this.opis_imie.Text = "Imię:";
             // 
+            // pnl_Blank
+            // 
+            this.pnl_Blank.BackColor = System.Drawing.Color.White;
+            this.pnl_Blank.Location = new System.Drawing.Point(229, 61);
+            this.pnl_Blank.Name = "pnl_Blank";
+            this.pnl_Blank.Size = new System.Drawing.Size(731, 483);
+            this.pnl_Blank.TabIndex = 15;
+            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -1993,6 +2003,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(960, 540);
             this.Controls.Add(this.pnl_powiadomienia);
+            this.Controls.Add(this.pnl_Blank);
             this.Controls.Add(this.pnl_left);
             this.Controls.Add(this.pnl_up);
             this.Controls.Add(this.pnl_account);
@@ -2224,5 +2235,6 @@
         private System.Windows.Forms.Button btn_dodaj_plik;
         private System.Windows.Forms.Button btn_dodaj;
         private System.Windows.Forms.Button btn_anuluj;
+        private System.Windows.Forms.Panel pnl_Blank;
     }
 }
