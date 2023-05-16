@@ -154,6 +154,10 @@ namespace Ecocoon
             pnl_edit_smieciarze.Visible = false;
             pnl_edit_odbior.Visible = false;
             pnl_edit_segregacja.Visible = false;
+            pnl_edit_truck.Visible = false;
+            pnl_create_schedule.Visible = false;
+            pnl_create_team.Visible = false;
+            pnl_edit_team.Visible = false;
         }
 
         private void btn_new_acc_Click(object sender, EventArgs e)
@@ -161,6 +165,8 @@ namespace Ecocoon
             pnl_add_acc.Visible = true;
             pnl_edit_wydzial.Visible = false;
             pnl_edit_harmonogram.Visible = false;
+            pnl_edit_truck.Visible = false;
+            pnl_edit_truck.Visible = false;
         }
 
         private void Segregowane_Click(object sender, EventArgs e)
@@ -477,6 +483,16 @@ namespace Ecocoon
             pnl_add_acc.Visible = false;
             pnl_edit_wydzial.Visible = false;
             pnl_edit_harmonogram.Visible = true;
+            pnl_edit_truck.Visible = false;
+        }
+
+        private void btn_edit_truck_Click(object sender, EventArgs e)
+        {
+            pnl_add_acc.Visible = false;
+            pnl_edit_wydzial.Visible = false;
+            pnl_edit_harmonogram.Visible = false;
+            pnl_edit_truck.Visible = false;
+            pnl_edit_truck.Visible = true;
         }
 
         private void btn_raport_odp_Click(object sender, EventArgs e)
@@ -802,6 +818,8 @@ namespace Ecocoon
             pnl_add_acc.Visible = false;
             pnl_edit_wydzial.Visible = true;
             pnl_edit_harmonogram.Visible = false;
+            pnl_edit_truck.Visible = false;
+            pnl_edit_truck.Visible = false;
         }
 
         //edycja smieciarze
@@ -1413,6 +1431,232 @@ namespace Ecocoon
         private void btn_dodaj_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_create_harm_Click(object sender, EventArgs e)
+        {
+            pnl_create_schedule.Visible = true;
+        }
+
+        private void btn_back_cs_Click(object sender, EventArgs e)
+        {
+            pnl_create_schedule.Visible = false;
+        }
+
+
+        //tu kodzik do tworzenia harmonogramu
+
+        private void btn_create_team_Click(object sender, EventArgs e)
+        {
+            pnl_create_team.Visible = true;
+        }
+
+        private void btn_back_team_Click(object sender, EventArgs e)
+        {
+            pnl_create_team.Visible = false;
+        }
+
+        private void btn_kierowcy_Click(object sender, EventArgs e)
+        {
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT Name, Surname, UserID FROM Users WHERE Department = 3;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    view_create_team.DataSource = dataTable;
+
+                    connection.Close();
+                }
+            }
+        }
+
+        private void btn_odbior_Click(object sender, EventArgs e)
+        {
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT Name, Surname, UserID FROM Users WHERE Department = 2;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    view_create_team.DataSource = dataTable;
+
+                    connection.Close();
+                }
+            }
+        }
+
+        private void btn_teams_Click(object sender, EventArgs e)
+        {
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT COALESCE(KierowcaID,'Kierowca') AS Kierowca, COALESCE(Odbiorca1ID,'Śmieciarz nr.1') AS Smieciarz, COALESCE(Odbiorca2ID,'Śmieciarz nr.2') AS Smieciarz2, COALESCE(RegNumber,'Numer rejestracyjny') AS Rejestracja FROM Truck;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    view_create_team.DataSource = dataTable;
+
+                    connection.Close();
+                }
+            }
+        }
+
+        private void btn_creatTeam_Click(object sender, EventArgs e)
+        {
+            string InsertQuery = "INSERT INTO Truck (KierowcaID, Odbiorca1ID, Odbiorca2ID, RegNumber) VALUES (@kierowcaID, @smieciarz1ID, @smieciarz2ID, @numerRejest);";
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            SqlConnection connection = new SqlConnection($"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True");
+            {
+                connection.Open();
+                SqlTransaction transaction = connection.BeginTransaction();
+                SqlCommand cmd = new SqlCommand(InsertQuery, connection, transaction);
+
+                try
+                {
+                        cmd.Parameters.AddWithValue("@kierowcaID", txt_kierowca.Text);
+                        cmd.Parameters.AddWithValue("@smieciarz1ID", txt_smieciarz_1.Text);
+                        cmd.Parameters.AddWithValue("@smieciarz2ID", txt_smieciarz_2.Text);
+                        cmd.Parameters.AddWithValue("@numerRejest", txt_nr_rejestr.Text);
+                        cmd.ExecuteNonQuery();
+                        transaction.Commit();
+                        MessageBox.Show("Zespół został stworzony");
+                }
+                catch (SqlException sqlError)
+                {
+                    transaction.Rollback();
+                    MessageBox.Show("Wprowadziłeś błędne dane");
+                }
+            }
+        }
+
+        private void btn_edit_team_Click(object sender, EventArgs e)
+        {
+            pnl_edit_team.Visible = true;
+        }
+
+        private void btn_back_editTeam_Click(object sender, EventArgs e)
+        {
+            pnl_edit_team.Visible = false;
+            view_showTeam.Visible = false;
+            view_editTeam.Visible = true;
+        }
+
+        private void btn_kierowcy_editTeam_Click(object sender, EventArgs e)
+        {
+            view_showTeam.Visible = true;
+            view_editTeam.Visible = false;
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT Name, Surname, UserID FROM Users WHERE Department = 3;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    view_showTeam.DataSource = dataTable;
+
+                    connection.Close();
+                }
+            }
+        }
+
+        private void btn_smieciarze_editTeam_Click(object sender, EventArgs e)
+        {
+            view_showTeam.Visible = true;
+            view_editTeam.Visible = false;
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT Name, Surname, UserID FROM Users WHERE Department = 2;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    view_showTeam.DataSource = dataTable;
+
+                    connection.Close();
+                }
+            }
+        }
+
+        private void btn_teams_editTeam_Click(object sender, EventArgs e)
+        {
+            view_showTeam.Visible = false;
+            view_editTeam.Visible = true;
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT COALESCE(TruckID,'id ciezarowki') AS TruckID, COALESCE(KierowcaID,'Kierowca') AS Kierowca, COALESCE(Odbiorca1ID,'Śmieciarz nr.1') AS Smieciarz, COALESCE(Odbiorca2ID,'Śmieciarz nr.2') AS Smieciarz2, COALESCE(RegNumber,'Numer rejestracyjny') AS Rejestracja FROM Truck;";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    view_editTeam.DataSource = dataTable;
+
+                    view_editTeam.CellValueChanged += new DataGridViewCellEventHandler(view_edit_team_Update);
+
+                    connection.Close();
+                }
+            }
+        }
+        //edycja zespołów
+        private void view_edit_team_Update(object sender, DataGridViewCellEventArgs e)
+        {
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "UPDATE Truck SET KierowcaID = @kierowca, Odbiorca1ID = @odbiorca1, Odbiorca2ID = @odbiorca2, RegNumber = @rejestracja WHERE TruckID = @TruckID;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@kierowca", view_editTeam.Rows[e.RowIndex].Cells["Kierowca"].Value);
+                    command.Parameters.AddWithValue("@odbiorca1", view_editTeam.Rows[e.RowIndex].Cells["Smieciarz"].Value);
+                    command.Parameters.AddWithValue("@odbiorca2", view_editTeam.Rows[e.RowIndex].Cells["Smieciarz2"].Value);
+                    command.Parameters.AddWithValue("@rejestracja", view_editTeam.Rows[e.RowIndex].Cells["Rejestracja"].Value);
+                    command.Parameters.AddWithValue("@TruckID", view_editTeam.Rows[e.RowIndex].Cells["TruckID"].Value);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+
+                }
+            }
         }
     }
 }

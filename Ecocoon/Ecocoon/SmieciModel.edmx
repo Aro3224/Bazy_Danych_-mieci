@@ -12,6 +12,43 @@
           <Property Name="ID_Department" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
+        <EntityType Name="GarbageType">
+          <Key>
+            <PropertyRef Name="GarbageTypeID" />
+          </Key>
+          <Property Name="GarbageTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Route">
+          <Key>
+            <PropertyRef Name="RouteID" />
+          </Key>
+          <Property Name="RouteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Start" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="End" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="By" Type="varchar" MaxLength="20" />
+          <Property Name="LengthKM" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="ScheduleID" />
+          </Key>
+          <Property Name="ScheduleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RouteID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="TruckID" Type="int" Nullable="false" />
+          <Property Name="GarbageType" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Truck">
+          <Key>
+            <PropertyRef Name="TruckID" />
+          </Key>
+          <Property Name="TruckID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KierowcaID" Type="int" Nullable="false" />
+          <Property Name="Odbiorca1ID" Type="int" Nullable="false" />
+          <Property Name="Odbiorca2ID" Type="int" Nullable="false" />
+          <Property Name="RegNumber" Type="varchar" MaxLength="10" />
+        </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="UserID" />
@@ -35,6 +72,78 @@
           <Property Name="Domicile" Type="varchar" MaxLength="50" />
           <Property Name="Completed" Type="bit" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Schedule_GarbageType">
+          <End Role="GarbageType" Type="Self.GarbageType" Multiplicity="1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GarbageType">
+              <PropertyRef Name="GarbageTypeID" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="GarbageType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedule_Route">
+          <End Role="Route" Type="Self.Route" Multiplicity="1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Route">
+              <PropertyRef Name="RouteID" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="RouteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedule_Truck">
+          <End Role="Truck" Type="Self.Truck" Multiplicity="1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Truck">
+              <PropertyRef Name="TruckID" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="TruckID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Truck_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Truck" Type="Self.Truck" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Truck">
+              <PropertyRef Name="KierowcaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Truck_Users1">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Truck" Type="Self.Truck" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Truck">
+              <PropertyRef Name="Odbiorca1ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Truck_Users2">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Truck" Type="Self.Truck" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Truck">
+              <PropertyRef Name="Odbiorca2ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Users_add_info_Users">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Users_add_info" Type="Self.Users_add_info" Multiplicity="0..1" />
@@ -61,8 +170,36 @@
         </Association>
         <EntityContainer Name="DatabaseSmieciModelStoreContainer">
           <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GarbageType" EntityType="Self.GarbageType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Route" EntityType="Self.Route" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Schedule" EntityType="Self.Schedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Truck" EntityType="Self.Truck" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users_add_info" EntityType="Self.Users_add_info" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Schedule_GarbageType" Association="Self.FK_Schedule_GarbageType">
+            <End Role="GarbageType" EntitySet="GarbageType" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedule_Route" Association="Self.FK_Schedule_Route">
+            <End Role="Route" EntitySet="Route" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedule_Truck" Association="Self.FK_Schedule_Truck">
+            <End Role="Truck" EntitySet="Truck" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Truck_Users" Association="Self.FK_Truck_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Truck" EntitySet="Truck" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Truck_Users1" Association="Self.FK_Truck_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Truck" EntitySet="Truck" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Truck_Users2" Association="Self.FK_Truck_Users2">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Truck" EntitySet="Truck" />
+          </AssociationSet>
           <AssociationSet Name="FK_Users_add_info_Users" Association="Self.FK_Users_add_info_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Users_add_info" EntitySet="Users_add_info" />
@@ -97,6 +234,9 @@
           <Property Name="Active" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Departments" Relationship="Self.FK_Users_Roles" FromRole="Users" ToRole="Departments" />
           <NavigationProperty Name="Users_add_info" Relationship="Self.FK_Users_add_info_Users" FromRole="Users" ToRole="Users_add_info" />
+          <NavigationProperty Name="Truck" Relationship="DatabaseSmieciModel.FK_Truck_Users" FromRole="Users" ToRole="Truck" />
+          <NavigationProperty Name="Truck1" Relationship="DatabaseSmieciModel.FK_Truck_Users1" FromRole="Users" ToRole="Truck" />
+          <NavigationProperty Name="Truck2" Relationship="DatabaseSmieciModel.FK_Truck_Users2" FromRole="Users" ToRole="Truck" />
         </EntityType>
         <EntityType Name="Users_add_info">
           <Key>
@@ -146,7 +286,153 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Users_add_info" EntitySet="Users_add_info" />
           </AssociationSet>
+          <EntitySet Name="GarbageType" EntityType="DatabaseSmieciModel.GarbageType" />
+          <EntitySet Name="Route" EntityType="DatabaseSmieciModel.Route" />
+          <EntitySet Name="Schedule" EntityType="DatabaseSmieciModel.Schedule" />
+          <EntitySet Name="Truck" EntityType="DatabaseSmieciModel.Truck" />
+          <AssociationSet Name="FK_Schedule_GarbageType" Association="DatabaseSmieciModel.FK_Schedule_GarbageType">
+            <End Role="GarbageType" EntitySet="GarbageType" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedule_Route" Association="DatabaseSmieciModel.FK_Schedule_Route">
+            <End Role="Route" EntitySet="Route" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedule_Truck" Association="DatabaseSmieciModel.FK_Schedule_Truck">
+            <End Role="Truck" EntitySet="Truck" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Truck_Users" Association="DatabaseSmieciModel.FK_Truck_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Truck" EntitySet="Truck" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Truck_Users1" Association="DatabaseSmieciModel.FK_Truck_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Truck" EntitySet="Truck" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Truck_Users2" Association="DatabaseSmieciModel.FK_Truck_Users2">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Truck" EntitySet="Truck" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="GarbageType">
+          <Key>
+            <PropertyRef Name="GarbageTypeID" />
+          </Key>
+          <Property Name="GarbageTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Schedule" Relationship="DatabaseSmieciModel.FK_Schedule_GarbageType" FromRole="GarbageType" ToRole="Schedule" />
+        </EntityType>
+        <EntityType Name="Route">
+          <Key>
+            <PropertyRef Name="RouteID" />
+          </Key>
+          <Property Name="RouteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Start" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="End" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="By" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LengthKM" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Schedule" Relationship="DatabaseSmieciModel.FK_Schedule_Route" FromRole="Route" ToRole="Schedule" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="ScheduleID" />
+          </Key>
+          <Property Name="ScheduleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RouteID" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TruckID" Type="Int32" Nullable="false" />
+          <Property Name="GarbageType" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="GarbageType1" Relationship="DatabaseSmieciModel.FK_Schedule_GarbageType" FromRole="Schedule" ToRole="GarbageType" />
+          <NavigationProperty Name="Route" Relationship="DatabaseSmieciModel.FK_Schedule_Route" FromRole="Schedule" ToRole="Route" />
+          <NavigationProperty Name="Truck" Relationship="DatabaseSmieciModel.FK_Schedule_Truck" FromRole="Schedule" ToRole="Truck" />
+        </EntityType>
+        <EntityType Name="Truck">
+          <Key>
+            <PropertyRef Name="TruckID" />
+          </Key>
+          <Property Name="TruckID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KierowcaID" Type="Int32" Nullable="false" />
+          <Property Name="Odbiorca1ID" Type="Int32" Nullable="false" />
+          <Property Name="Odbiorca2ID" Type="Int32" Nullable="false" />
+          <Property Name="RegNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Schedule" Relationship="DatabaseSmieciModel.FK_Schedule_Truck" FromRole="Truck" ToRole="Schedule" />
+          <NavigationProperty Name="Users" Relationship="DatabaseSmieciModel.FK_Truck_Users" FromRole="Truck" ToRole="Users" />
+          <NavigationProperty Name="Users1" Relationship="DatabaseSmieciModel.FK_Truck_Users1" FromRole="Truck" ToRole="Users" />
+          <NavigationProperty Name="Users2" Relationship="DatabaseSmieciModel.FK_Truck_Users2" FromRole="Truck" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK_Schedule_GarbageType">
+          <End Type="DatabaseSmieciModel.GarbageType" Role="GarbageType" Multiplicity="1" />
+          <End Type="DatabaseSmieciModel.Schedule" Role="Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GarbageType">
+              <PropertyRef Name="GarbageTypeID" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="GarbageType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedule_Route">
+          <End Type="DatabaseSmieciModel.Route" Role="Route" Multiplicity="1" />
+          <End Type="DatabaseSmieciModel.Schedule" Role="Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Route">
+              <PropertyRef Name="RouteID" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="RouteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedule_Truck">
+          <End Type="DatabaseSmieciModel.Truck" Role="Truck" Multiplicity="1" />
+          <End Type="DatabaseSmieciModel.Schedule" Role="Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Truck">
+              <PropertyRef Name="TruckID" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="TruckID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Truck_Users">
+          <End Type="DatabaseSmieciModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="DatabaseSmieciModel.Truck" Role="Truck" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Truck">
+              <PropertyRef Name="KierowcaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Truck_Users1">
+          <End Type="DatabaseSmieciModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="DatabaseSmieciModel.Truck" Role="Truck" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Truck">
+              <PropertyRef Name="Odbiorca1ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Truck_Users2">
+          <End Type="DatabaseSmieciModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="DatabaseSmieciModel.Truck" Role="Truck" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Truck">
+              <PropertyRef Name="Odbiorca2ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -183,6 +469,47 @@
                 <ScalarProperty Name="Bank_tran_det" ColumnName="Bank_tran_det" />
                 <ScalarProperty Name="Phone_num" ColumnName="Phone_num" />
                 <ScalarProperty Name="Domicile" ColumnName="Domicile" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GarbageType">
+            <EntityTypeMapping TypeName="DatabaseSmieciModel.GarbageType">
+              <MappingFragment StoreEntitySet="GarbageType">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GarbageTypeID" ColumnName="GarbageTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Route">
+            <EntityTypeMapping TypeName="DatabaseSmieciModel.Route">
+              <MappingFragment StoreEntitySet="Route">
+                <ScalarProperty Name="LengthKM" ColumnName="LengthKM" />
+                <ScalarProperty Name="By" ColumnName="By" />
+                <ScalarProperty Name="End" ColumnName="End" />
+                <ScalarProperty Name="Start" ColumnName="Start" />
+                <ScalarProperty Name="RouteID" ColumnName="RouteID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schedule">
+            <EntityTypeMapping TypeName="DatabaseSmieciModel.Schedule">
+              <MappingFragment StoreEntitySet="Schedule">
+                <ScalarProperty Name="GarbageType" ColumnName="GarbageType" />
+                <ScalarProperty Name="TruckID" ColumnName="TruckID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="RouteID" ColumnName="RouteID" />
+                <ScalarProperty Name="ScheduleID" ColumnName="ScheduleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Truck">
+            <EntityTypeMapping TypeName="DatabaseSmieciModel.Truck">
+              <MappingFragment StoreEntitySet="Truck">
+                <ScalarProperty Name="RegNumber" ColumnName="RegNumber" />
+                <ScalarProperty Name="Odbiorca2ID" ColumnName="Odbiorca2ID" />
+                <ScalarProperty Name="Odbiorca1ID" ColumnName="Odbiorca1ID" />
+                <ScalarProperty Name="KierowcaID" ColumnName="KierowcaID" />
+                <ScalarProperty Name="TruckID" ColumnName="TruckID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
