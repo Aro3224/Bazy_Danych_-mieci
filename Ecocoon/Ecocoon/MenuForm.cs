@@ -98,6 +98,7 @@ namespace Ecocoon
             pnl_account.Visible = false;
             btn_anuluj.Visible = false;
             btn_dodaj.Visible = false;
+            pnl_Blank.Visible = false;
 
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
