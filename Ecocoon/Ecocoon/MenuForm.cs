@@ -841,7 +841,7 @@ namespace Ecocoon
 
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            string query = "SELECT u.UserID, u.Name, u.Surname, u.Email, a.Birth_date, a.Bank_tran_det, a.Phone_num, a.Domicile, a.Completed FROM Users u INNER JOIN Users_add_info a ON u.UserID = a.UserID WHERE u.Department = 2 AND u.Active = 1;";
+            string query = "SELECT u.UserID, u.Name, u.Surname, u.Email, a.Birth_date, a.Bank_tran_det, a.Phone_num, a.Domicile, a.Completed FROM Users u INNER JOIN Users_add_info a ON u.UserID = a.UserID WHERE u.Department = 2;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -962,7 +962,7 @@ namespace Ecocoon
 
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            string query = "SELECT u.UserID, u.Name, u.Surname, u.Email, a.Birth_date, a.Bank_tran_det, a.Phone_num, a.Domicile, a.Completed FROM Users u INNER JOIN Users_add_info a ON u.UserID = a.UserID WHERE u.Department = 3 AND u.Active = 1;";
+            string query = "SELECT u.UserID, u.Name, u.Surname, u.Email, a.Birth_date, a.Bank_tran_det, a.Phone_num, a.Domicile, a.Completed FROM Users u INNER JOIN Users_add_info a ON u.UserID = a.UserID WHERE u.Department = 3;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -1083,7 +1083,7 @@ namespace Ecocoon
 
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            string query = "SELECT u.UserID, u.Name, u.Surname, u.Email, a.Birth_date, a.Bank_tran_det, a.Phone_num, a.Domicile, a.Completed FROM Users u INNER JOIN Users_add_info a ON u.UserID = a.UserID WHERE u.Department = 4 AND u.Active = 1;";
+            string query = "SELECT u.UserID, u.Name, u.Surname, u.Email, a.Birth_date, a.Bank_tran_det, a.Phone_num, a.Domicile, a.Completed FROM Users u INNER JOIN Users_add_info a ON u.UserID = a.UserID WHERE u.Department = 4;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -1204,7 +1204,7 @@ namespace Ecocoon
 
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            string query = "SELECT u.UserID, u.Name, u.Surname, u.Email, a.Birth_date, a.Bank_tran_det, a.Phone_num, a.Domicile, a.Completed FROM Users u INNER JOIN Users_add_info a ON u.UserID = a.UserID WHERE u.Department = 5 AND u.Active = 1;";
+            string query = "SELECT u.UserID, u.Name, u.Surname, u.Email, a.Birth_date, a.Bank_tran_det, a.Phone_num, a.Domicile, a.Completed FROM Users u INNER JOIN Users_add_info a ON u.UserID = a.UserID WHERE u.Department = 5;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -1326,7 +1326,7 @@ namespace Ecocoon
 
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            string query = "SELECT u.UserID, u.Name, u.Surname, u.Email, a.Birth_date, a.Bank_tran_det, a.Phone_num, a.Domicile, a.Completed FROM Users u INNER JOIN Users_add_info a ON u.UserID = a.UserID WHERE u.Department = 1 AND u.Active = 1;";
+            string query = "SELECT u.UserID, u.Name, u.Surname, u.Email, a.Birth_date, a.Bank_tran_det, a.Phone_num, a.Domicile, a.Completed FROM Users u INNER JOIN Users_add_info a ON u.UserID = a.UserID WHERE u.Department = 1;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -1504,7 +1504,7 @@ namespace Ecocoon
         {
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            string query = "SELECT Name, Surname, UserID FROM Users WHERE Department = 3;";
+            string query = "SELECT Name, Surname, UserID FROM Users WHERE Department = 3 AND Active = 1;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -1526,7 +1526,7 @@ namespace Ecocoon
         {
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            string query = "SELECT Name, Surname, UserID FROM Users WHERE Department = 2;";
+            string query = "SELECT Name, Surname, UserID FROM Users WHERE Department = 2 AND Active = 1;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -1548,7 +1548,7 @@ namespace Ecocoon
         {
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            string query = "SELECT COALESCE(KierowcaID,'Kierowca') AS Kierowca, COALESCE(Odbiorca1ID,'Śmieciarz nr.1') AS Smieciarz, COALESCE(Odbiorca2ID,'Śmieciarz nr.2') AS Smieciarz2, COALESCE(RegNumber,'Numer rejestracyjny') AS Rejestracja FROM Truck;";
+            string query = "SELECT CONCAT(u_kierowca.Name, ' ', u_kierowca.Surname) AS Kierowca, CONCAT(u_smieciarz1.Name, ' ', u_smieciarz1.Surname) AS Smieciarz1, CONCAT(u_smieciarz2.Name, ' ', u_smieciarz2.Surname) AS Smieciarz2, COALESCE(t.RegNumber, 'Numer rejestracyjny') AS Rejestracja FROM Truck t LEFT JOIN Users u_kierowca ON u_kierowca.UserID = t.KierowcaID AND u_kierowca.Department = 3 LEFT JOIN Users u_smieciarz1 ON u_smieciarz1.UserID = t.Odbiorca1ID AND u_smieciarz1.Department = 2 LEFT JOIN Users u_smieciarz2 ON u_smieciarz2.UserID = t.Odbiorca2ID AND u_smieciarz2.Department = 2;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -1699,6 +1699,65 @@ namespace Ecocoon
                     command.ExecuteNonQuery();
                     connection.Close();
 
+                }
+            }
+        }
+
+        private void checkBox_seg_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_seg.Checked)
+            {
+                checkBox_nieseg.Checked = false;
+            }
+        }
+
+        private void checkBox_nieseg_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_nieseg.Checked)
+            {
+                checkBox_seg.Checked = false;
+            }
+        }
+
+        private void btn_create_schedule_Click(object sender, EventArgs e)
+        {
+            int rodzajsmieci;
+            switch (true)
+            {
+                case bool _ when checkBox_seg.Checked:
+                    rodzajsmieci = 1;
+                    break;
+                case bool _ when checkBox_nieseg.Checked:
+                    rodzajsmieci = 2;
+                    break;
+
+                default:
+                    MessageBox.Show("Musisz zaznaczyć rodzaj śmieci.");
+                    return;
+            }
+
+            string InsertQuery = "";
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            SqlConnection connection = new SqlConnection($"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True");
+            {
+                connection.Open();
+                SqlTransaction transaction = connection.BeginTransaction();
+                SqlCommand cmd = new SqlCommand(InsertQuery, connection, transaction);
+
+                try
+                {
+                    cmd.Parameters.AddWithValue("@kierowcaID", txt_kierowca.Text);
+                    cmd.Parameters.AddWithValue("@smieciarz1ID", txt_smieciarz_1.Text);
+                    cmd.Parameters.AddWithValue("@smieciarz2ID", txt_smieciarz_2.Text);
+                    cmd.Parameters.AddWithValue("@numerRejest", txt_nr_rejestr.Text);
+                    cmd.ExecuteNonQuery();
+                    transaction.Commit();
+                    MessageBox.Show("Harmonogram został stworzony");
+                }
+                catch (SqlException sqlError)
+                {
+                    transaction.Rollback();
+                    MessageBox.Show("Wprowadziłeś błędne dane");
                 }
             }
         }

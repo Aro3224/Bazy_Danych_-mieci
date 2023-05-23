@@ -877,6 +877,7 @@
             // 
             this.view_create_team.AllowUserToAddRows = false;
             this.view_create_team.AllowUserToDeleteRows = false;
+            this.view_create_team.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.view_create_team.BackgroundColor = System.Drawing.Color.Snow;
             this.view_create_team.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.view_create_team.Location = new System.Drawing.Point(331, 56);
@@ -999,6 +1000,7 @@
             this.btn_create_schedule.TabIndex = 27;
             this.btn_create_schedule.Text = "Dodaj";
             this.btn_create_schedule.UseVisualStyleBackColor = false;
+            this.btn_create_schedule.Click += new System.EventHandler(this.btn_create_schedule_Click);
             // 
             // btn_back_cs
             // 
@@ -1033,6 +1035,7 @@
             this.checkBox_nieseg.TabIndex = 14;
             this.checkBox_nieseg.Text = "Niesegregowane";
             this.checkBox_nieseg.UseVisualStyleBackColor = true;
+            this.checkBox_nieseg.CheckedChanged += new System.EventHandler(this.checkBox_nieseg_CheckedChanged);
             // 
             // checkBox_seg
             // 
@@ -1043,6 +1046,7 @@
             this.checkBox_seg.TabIndex = 13;
             this.checkBox_seg.Text = "Segregowane";
             this.checkBox_seg.UseVisualStyleBackColor = true;
+            this.checkBox_seg.CheckedChanged += new System.EventHandler(this.checkBox_seg_CheckedChanged);
             // 
             // txt_id_truck
             // 
