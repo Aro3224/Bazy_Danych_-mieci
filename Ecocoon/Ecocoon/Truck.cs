@@ -18,18 +18,17 @@ namespace Ecocoon
         public Truck()
         {
             this.Schedule = new HashSet<Schedule>();
+            this.Team = new HashSet<Team>();
         }
     
         public int TruckID { get; set; }
-        public int KierowcaID { get; set; }
-        public int Odbiorca1ID { get; set; }
-        public int Odbiorca2ID { get; set; }
-        public string RegNumber { get; set; }
+        public string Brand { get; set; }
+        public string PltNumber { get; set; }
+        public int Seats { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Schedule> Schedule { get; set; }
-        public virtual Users Users { get; set; }
-        public virtual Users Users1 { get; set; }
-        public virtual Users Users2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Team> Team { get; set; }
     }
 }
