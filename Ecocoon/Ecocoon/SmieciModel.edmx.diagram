@@ -4,22 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1800e047d26b47baa66ed74f283f2d88" Name="Diagram1">
-        <EntityTypeShape EntityType="DatabaseSmieciModel.Departments" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DatabaseSmieciModel.Users" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="DatabaseSmieciModel.Users_add_info" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+      <Diagram DiagramId="b789ee132a424513a688f5b2a9457c0a" Name="Diagram1">
+        <EntityTypeShape EntityType="DatabaseSmieciModel.Departments" Width="1.5" PointX="13.25" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseSmieciModel.GarbageType" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseSmieciModel.Route" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseSmieciModel.Schedule" Width="1.5" PointX="5.875" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseSmieciModel.Team" Width="1.5" PointX="16.375" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseSmieciModel.Truck" Width="1.5" PointX="8.5" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseSmieciModel.Users" Width="1.5" PointX="11.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseSmieciModel.Users_add_info" Width="1.5" PointX="10" PointY="8.625" IsExpanded="true" />
+        <AssociationConnector Association="DatabaseSmieciModel.FK_Team_Departments" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseSmieciModel.FK_Users_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseSmieciModel.FK_Schedule_GarbageType" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseSmieciModel.FK_Schedule_Route" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseSmieciModel.FK_Schedule_Truck" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseSmieciModel.FK_Team_Truck" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseSmieciModel.FK_Team_Users" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseSmieciModel.FK_Users_add_info_Users" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="DatabaseSmieciModel.GarbageType" Width="1.5" PointX="9.25" PointY="4.75" />
-        <EntityTypeShape EntityType="DatabaseSmieciModel.Route" Width="1.5" PointX="8.125" PointY="7.75" />
-        <EntityTypeShape EntityType="DatabaseSmieciModel.Schedule" Width="1.5" PointX="5" PointY="4.5" />
-        <EntityTypeShape EntityType="DatabaseSmieciModel.Truck" Width="1.5" PointX="2.375" PointY="7.5" />
-        <AssociationConnector Association="DatabaseSmieciModel.FK_Schedule_GarbageType" />
-        <AssociationConnector Association="DatabaseSmieciModel.FK_Schedule_Route" />
-        <AssociationConnector Association="DatabaseSmieciModel.FK_Schedule_Truck" />
-        <AssociationConnector Association="DatabaseSmieciModel.FK_Truck_Users" />
-        <AssociationConnector Association="DatabaseSmieciModel.FK_Truck_Users1" />
-        <AssociationConnector Association="DatabaseSmieciModel.FK_Truck_Users2" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -17,12 +17,15 @@ namespace Ecocoon
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Departments()
         {
+            this.Team = new HashSet<Team>();
             this.Users = new HashSet<Users>();
         }
     
         public int ID_Department { get; set; }
         public string Name { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Team> Team { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Users> Users { get; set; }
     }
