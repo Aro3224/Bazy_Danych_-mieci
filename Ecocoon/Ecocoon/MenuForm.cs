@@ -39,7 +39,7 @@ namespace Ecocoon
             this.department = department;
             account_Text(dane);
 
-            if(department != 1)
+            if (department != 1)
             {
                 btn_edycja_danych.Visible = false;
                 btn_raport_odp.Visible = false;
@@ -48,7 +48,7 @@ namespace Ecocoon
         }
         private void MenuForm_Load(object sender, EventArgs e)
         {
-         
+
         }
         private void button7_Click(object sender, EventArgs e)
         {
@@ -161,10 +161,13 @@ namespace Ecocoon
             pnl_edit_smieciarze.Visible = false;
             pnl_edit_odbior.Visible = false;
             pnl_edit_segregacja.Visible = false;
-            pnl_edit_truck.Visible = false;
+            pnl_edit_team1.Visible = false;
             pnl_create_schedule.Visible = false;
             pnl_create_team.Visible = false;
             pnl_edit_team.Visible = false;
+            pnl_edit_truck.Visible = false;
+            pnl_create_truck.Visible = false;
+            pnl_edit_trucks.Visible = false;
         }
 
         private void btn_new_acc_Click(object sender, EventArgs e)
@@ -172,7 +175,8 @@ namespace Ecocoon
             pnl_add_acc.Visible = true;
             pnl_edit_wydzial.Visible = false;
             pnl_edit_harmonogram.Visible = false;
-            pnl_edit_truck.Visible = false;
+            pnl_edit_team1.Visible = false;
+            pnl_edit_team1.Visible = false;
             pnl_edit_truck.Visible = false;
         }
 
@@ -285,7 +289,7 @@ namespace Ecocoon
         private void btn_add_Click(object sender, EventArgs e)
         {
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
-            SqlConnection con = new SqlConnection($"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True");        
+            SqlConnection con = new SqlConnection($"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True");
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
 
             string selectQuery = "SELECT Email FROM Users WHERE Email = @addEmail";
@@ -477,14 +481,14 @@ namespace Ecocoon
 
         private void button6_Click(object sender, EventArgs e)
         {
-           if(pnl_powiadomienia.Visible)
+            if (pnl_powiadomienia.Visible)
             {
-                pnl_powiadomienia.Visible= false;
+                pnl_powiadomienia.Visible = false;
             }
-           else
-           {
-                pnl_powiadomienia.Visible = true;    
-           }
+            else
+            {
+                pnl_powiadomienia.Visible = true;
+            }
         }
 
         private void btn_edit_harmonogram_Click(object sender, EventArgs e)
@@ -493,6 +497,7 @@ namespace Ecocoon
             pnl_edit_wydzial.Visible = false;
             pnl_edit_harmonogram.Visible = true;
             pnl_Blank.Visible = false;
+            pnl_edit_team1.Visible = false;
             pnl_edit_truck.Visible = false;
         }
 
@@ -501,8 +506,9 @@ namespace Ecocoon
             pnl_add_acc.Visible = false;
             pnl_edit_wydzial.Visible = false;
             pnl_edit_harmonogram.Visible = false;
+            pnl_edit_team1.Visible = false;
+            pnl_edit_team1.Visible = true;
             pnl_edit_truck.Visible = false;
-            pnl_edit_truck.Visible = true;
         }
 
         private void btn_raport_odp_Click(object sender, EventArgs e)
@@ -822,7 +828,7 @@ namespace Ecocoon
                         transaction.Rollback();
                     }
                 }
-            } 
+            }
         }
 
         private void btn_edit_user_Click(object sender, EventArgs e)
@@ -830,7 +836,8 @@ namespace Ecocoon
             pnl_add_acc.Visible = false;
             pnl_edit_wydzial.Visible = true;
             pnl_edit_harmonogram.Visible = false;
-            pnl_edit_truck.Visible = false;
+            pnl_edit_team1.Visible = false;
+            pnl_edit_team1.Visible = false;
             pnl_edit_truck.Visible = false;
         }
 
@@ -1340,7 +1347,7 @@ namespace Ecocoon
                     view_edit_admin.DataSource = dataTable;
 
                     view_edit_admin.CellValueChanged += new DataGridViewCellEventHandler(view_edit_admin_Update);
-                    
+
                     connection.Close();
                 }
             }
@@ -1502,6 +1509,7 @@ namespace Ecocoon
 
         private void btn_kierowcy_Click(object sender, EventArgs e)
         {
+            cb_kierowca.Checked = true;
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
             string query = "SELECT Name, Surname, UserID FROM Users WHERE Department = 3 AND Active = 1;";
@@ -1522,8 +1530,31 @@ namespace Ecocoon
             }
         }
 
+        private void btn_trucks_Click(object sender, EventArgs e)
+        {
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT * FROM Truck;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    view_create_team.DataSource = dataTable;
+
+                    connection.Close();
+                }
+            }
+        }
+
         private void btn_odbior_Click(object sender, EventArgs e)
         {
+            cb_smieciarz.Checked = true;
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
             string query = "SELECT Name, Surname, UserID FROM Users WHERE Department = 2 AND Active = 1;";
@@ -1543,12 +1574,12 @@ namespace Ecocoon
                 }
             }
         }
-
+        //button stworzone zespoly w edycji zespolow
         private void btn_teams_Click(object sender, EventArgs e)
         {
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            string query = "SELECT CONCAT(u_kierowca.Name, ' ', u_kierowca.Surname) AS Kierowca, CONCAT(u_smieciarz1.Name, ' ', u_smieciarz1.Surname) AS Smieciarz1, CONCAT(u_smieciarz2.Name, ' ', u_smieciarz2.Surname) AS Smieciarz2, COALESCE(t.RegNumber, 'Numer rejestracyjny') AS Rejestracja FROM Truck t LEFT JOIN Users u_kierowca ON u_kierowca.UserID = t.KierowcaID AND u_kierowca.Department = 3 LEFT JOIN Users u_smieciarz1 ON u_smieciarz1.UserID = t.Odbiorca1ID AND u_smieciarz1.Department = 2 LEFT JOIN Users u_smieciarz2 ON u_smieciarz2.UserID = t.Odbiorca2ID AND u_smieciarz2.Department = 2;";
+            string query = "SELECT * FROM Team;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -1565,10 +1596,24 @@ namespace Ecocoon
                 }
             }
         }
-
+        //btn stworz team
         private void btn_creatTeam_Click(object sender, EventArgs e)
         {
-            string InsertQuery = "INSERT INTO Truck (KierowcaID, Odbiorca1ID, Odbiorca2ID, RegNumber) VALUES (@kierowcaID, @smieciarz1ID, @smieciarz2ID, @numerRejest);";
+            int rola;
+            switch (true)
+            {
+                case bool _ when cb_kierowca.Checked:
+                    rola = 3;
+                    break;
+                case bool _ when cb_smieciarz.Checked:
+                    rola = 2;
+                    break;
+
+                default:
+                    MessageBox.Show("Musisz zaznaczyć role pracownika.");
+                    return;
+            }
+            string InsertQuery = "INSERT INTO Team (TruckID, UserID, DepartmentID) VALUES (@truckid, @userid, @departmentid);";
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             SqlConnection connection = new SqlConnection($"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True");
             {
@@ -1578,13 +1623,12 @@ namespace Ecocoon
 
                 try
                 {
-                        cmd.Parameters.AddWithValue("@kierowcaID", txt_kierowca.Text);
-                        cmd.Parameters.AddWithValue("@smieciarz1ID", txt_smieciarz_1.Text);
-                        cmd.Parameters.AddWithValue("@smieciarz2ID", txt_smieciarz_2.Text);
-                        cmd.Parameters.AddWithValue("@numerRejest", txt_nr_rejestr.Text);
-                        cmd.ExecuteNonQuery();
-                        transaction.Commit();
-                        MessageBox.Show("Zespół został stworzony");
+                    cmd.Parameters.AddWithValue("@truckid", txt_nr_rejestr.Text);
+                    cmd.Parameters.AddWithValue("@userid", txt_kierowca.Text);
+                    cmd.Parameters.AddWithValue("@departmentid", rola);
+                    cmd.ExecuteNonQuery();
+                    transaction.Commit();
+                    MessageBox.Show("Zespół został stworzony");
                 }
                 catch (SqlException sqlError)
                 {
@@ -1653,7 +1697,7 @@ namespace Ecocoon
                 }
             }
         }
-
+        //wyswietlanie edycji teamu
         private void btn_teams_editTeam_Click(object sender, EventArgs e)
         {
             view_showTeam.Visible = false;
@@ -1747,8 +1791,8 @@ namespace Ecocoon
                 try
                 {
                     cmd.Parameters.AddWithValue("@kierowcaID", txt_kierowca.Text);
-                    cmd.Parameters.AddWithValue("@smieciarz1ID", txt_smieciarz_1.Text);
-                    cmd.Parameters.AddWithValue("@smieciarz2ID", txt_smieciarz_2.Text);
+                    cmd.Parameters.AddWithValue("@smieciarz1ID", txt_kierowca.Text);
+                    cmd.Parameters.AddWithValue("@smieciarz2ID", txt_kierowca.Text);
                     cmd.Parameters.AddWithValue("@numerRejest", txt_nr_rejestr.Text);
                     cmd.ExecuteNonQuery();
                     transaction.Commit();
@@ -1759,6 +1803,192 @@ namespace Ecocoon
                     transaction.Rollback();
                     MessageBox.Show("Wprowadziłeś błędne dane");
                 }
+            }
+        }
+
+        private void btn_edit_truck_Click_1(object sender, EventArgs e)
+        {
+            pnl_add_acc.Visible = false;
+            pnl_edit_wydzial.Visible = false;
+            pnl_edit_harmonogram.Visible = false;
+            pnl_edit_team1.Visible = false;
+            pnl_edit_team1.Visible = false;
+            pnl_edit_truck.Visible = true;
+        }
+
+        private void btn_created_truck_Click(object sender, EventArgs e)
+        {
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT * FROM Truck";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    view_create_truck.DataSource = dataTable;
+
+                    connection.Close();
+                }
+            }
+        }
+
+        private void btn_add_createtruck_Click(object sender, EventArgs e)
+        {
+            string siedzenia = txt_seats.Text;
+            int liczbasiedzen = int.Parse(siedzenia);
+            string InsertQuery = "INSERT INTO Truck (Brand, PltNumber, Seats) VALUES (@brand, @pltnumber, @seats);";
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            SqlConnection connection = new SqlConnection($"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True");
+            {
+                connection.Open();
+                SqlTransaction transaction = connection.BeginTransaction();
+                SqlCommand cmd = new SqlCommand(InsertQuery, connection, transaction);
+
+                try
+                {
+                    cmd.Parameters.AddWithValue("@brand", txt_brand.Text);
+                    cmd.Parameters.AddWithValue("@pltnumber", txt_pltNumber.Text);
+                    cmd.Parameters.AddWithValue("@seats", liczbasiedzen);
+                    cmd.ExecuteNonQuery();
+                    transaction.Commit();
+                    MessageBox.Show("Ciężarówka została dodana");
+                }
+                catch (SqlException sqlError)
+                {
+                    transaction.Rollback();
+                    MessageBox.Show("Wprowadziłeś błędne dane");
+                }
+            }
+        }
+
+        private void btn_back_createtruck_Click(object sender, EventArgs e)
+        {
+            pnl_create_truck.Visible = false;
+        }
+
+        private void btn_create_truck_Click(object sender, EventArgs e)
+        {
+            pnl_create_truck.Visible = true;
+        }
+
+        private void btn_back_edit_trucks_Click(object sender, EventArgs e)
+        {
+            pnl_edit_trucks.Visible = false;
+        }
+        //wyswietlanie edycji ciezarowek
+        private void btn_ed_created_trucks_Click(object sender, EventArgs e)
+        {
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT * FROM Truck;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    view_edit_trucks.DataSource = dataTable;
+
+                    view_edit_trucks.CellValueChanged += new DataGridViewCellEventHandler(view_edit_truck_Update);
+
+                    connection.Close();
+                }
+            }
+            btn_delete_trucks.Click += new EventHandler((s, ev) =>
+            {
+                view_edit_trucks.CellValueChanged -= new DataGridViewCellEventHandler(view_edit_truck_Update);
+                view_edit_trucks.CellClick += new DataGridViewCellEventHandler(view_edit_trucks_Delete);
+                Tryb_trucks.Text = "Usuń";
+            });
+
+            btn_edit_trucks.Click += new EventHandler((s, ev) =>
+            {
+                view_edit_trucks.CellValueChanged += new DataGridViewCellEventHandler(view_edit_truck_Update);
+                view_edit_trucks.CellClick -= new DataGridViewCellEventHandler(view_edit_trucks_Delete);
+                Tryb_trucks.Text = "Aktualizuj";
+            });
+        }
+        //edycja trucków
+        private void view_edit_truck_Update(object sender, DataGridViewCellEventArgs e)
+        {
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "UPDATE Truck SET Brand = @brand, PltNumber = @pltnumber, Seats = @seats WHERE TruckID = @TruckID;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@brand", view_edit_trucks.Rows[e.RowIndex].Cells["Brand"].Value);
+                    command.Parameters.AddWithValue("@pltnumber", view_edit_trucks.Rows[e.RowIndex].Cells["PltNumber"].Value);
+                    command.Parameters.AddWithValue("@seats", view_edit_trucks.Rows[e.RowIndex].Cells["Seats"].Value);
+                    command.Parameters.AddWithValue("@truckid", view_edit_trucks.Rows[e.RowIndex].Cells["TruckID"].Value);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+
+                }
+            }
+        }
+        //uwuwanie trucków
+        private void view_edit_trucks_Delete(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DialogResult result = MessageBox.Show("Czy na pewno chcesz usunąć ciężarówkę?", "Usuwanie ciężarówki", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+                    string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+                    string query = "DELETE FROM Truck WHERE TruckID = @TruckID";
+
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@TruckID", view_edit_trucks.Rows[e.RowIndex].Cells["TruckID"].Value);
+
+                            connection.Open();
+                            command.ExecuteNonQuery();
+                            connection.Close();
+                        }
+                    }
+                    MessageBox.Show("Ciężarówka została usunięta.", "Usuwanie ciężarówki", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void btn_edit_trucks_Click(object sender, EventArgs e)
+        {
+            pnl_edit_trucks.Visible = true;
+
+        }
+
+        private void cb_kierowca_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cb_kierowca.Checked)
+            {
+                cb_smieciarz.Checked = false;
+            }
+        }
+
+        private void cb_smieciarz_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cb_smieciarz.Checked)
+            {
+                cb_kierowca.Checked = false;
             }
         }
     }

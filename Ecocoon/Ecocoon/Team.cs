@@ -14,7 +14,6 @@ namespace Ecocoon
     
     public partial class Team
     {
-        public int TeamID { get; set; }
         public int TruckID { get; set; }
         public int UserID { get; set; }
         public int DepartmentID { get; set; }
