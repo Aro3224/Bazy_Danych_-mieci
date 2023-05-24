@@ -106,9 +106,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SmeciModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Team.cs">
-      <DependentUpon>SmeciModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Truck.cs">
       <DependentUpon>SmeciModel.tt</DependentUpon>
     </Compile>

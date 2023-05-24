@@ -1509,7 +1509,6 @@ namespace Ecocoon
 
         private void btn_kierowcy_Click(object sender, EventArgs e)
         {
-            cb_kierowca.Checked = true;
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
             string query = "SELECT Name, Surname, UserID FROM Users WHERE Department = 3 AND Active = 1;";
@@ -1554,7 +1553,6 @@ namespace Ecocoon
 
         private void btn_odbior_Click(object sender, EventArgs e)
         {
-            cb_smieciarz.Checked = true;
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
             string query = "SELECT Name, Surname, UserID FROM Users WHERE Department = 2 AND Active = 1;";
@@ -1579,7 +1577,7 @@ namespace Ecocoon
         {
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            string query = "SELECT * FROM Team;";
+            string query = "SELECT t.PltNumber, CONCAT(u.Name, ' ', u.Surname) AS ImieNazwisko, d.Name AS Department FROM Users u INNER JOIN Truck t ON u.Team = t.TruckID INNER JOIN Departments d ON u.Department = d.ID_Department;;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -1599,21 +1597,7 @@ namespace Ecocoon
         //btn stworz team
         private void btn_creatTeam_Click(object sender, EventArgs e)
         {
-            int rola;
-            switch (true)
-            {
-                case bool _ when cb_kierowca.Checked:
-                    rola = 3;
-                    break;
-                case bool _ when cb_smieciarz.Checked:
-                    rola = 2;
-                    break;
-
-                default:
-                    MessageBox.Show("Musisz zaznaczyć role pracownika.");
-                    return;
-            }
-            string InsertQuery = "INSERT INTO Team (TruckID, UserID, DepartmentID) VALUES (@truckid, @userid, @departmentid);";
+            string InsertQuery = "UPDATE Users SET Team = @team WHERE UserID = @userid;";
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             SqlConnection connection = new SqlConnection($"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True");
             {
@@ -1623,9 +1607,8 @@ namespace Ecocoon
 
                 try
                 {
-                    cmd.Parameters.AddWithValue("@truckid", txt_nr_rejestr.Text);
+                    cmd.Parameters.AddWithValue("@team", txt_nr_rejestr.Text);
                     cmd.Parameters.AddWithValue("@userid", txt_kierowca.Text);
-                    cmd.Parameters.AddWithValue("@departmentid", rola);
                     cmd.ExecuteNonQuery();
                     transaction.Commit();
                     MessageBox.Show("Zespół został stworzony");
@@ -1646,14 +1629,10 @@ namespace Ecocoon
         private void btn_back_editTeam_Click(object sender, EventArgs e)
         {
             pnl_edit_team.Visible = false;
-            view_showTeam.Visible = false;
-            view_editTeam.Visible = true;
         }
 
         private void btn_kierowcy_editTeam_Click(object sender, EventArgs e)
         {
-            view_showTeam.Visible = true;
-            view_editTeam.Visible = false;
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
             string query = "SELECT Name, Surname, UserID FROM Users WHERE Department = 3;";
@@ -1676,8 +1655,6 @@ namespace Ecocoon
 
         private void btn_smieciarze_editTeam_Click(object sender, EventArgs e)
         {
-            view_showTeam.Visible = true;
-            view_editTeam.Visible = false;
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
             string query = "SELECT Name, Surname, UserID FROM Users WHERE Department = 2;";
@@ -1700,11 +1677,9 @@ namespace Ecocoon
         //wyswietlanie edycji teamu
         private void btn_teams_editTeam_Click(object sender, EventArgs e)
         {
-            view_showTeam.Visible = false;
-            view_editTeam.Visible = true;
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            string query = "SELECT COALESCE(TruckID,'id ciezarowki') AS TruckID, COALESCE(KierowcaID,'Kierowca') AS Kierowca, COALESCE(Odbiorca1ID,'Śmieciarz nr.1') AS Smieciarz, COALESCE(Odbiorca2ID,'Śmieciarz nr.2') AS Smieciarz2, COALESCE(RegNumber,'Numer rejestracyjny') AS Rejestracja FROM Truck;";
+            string query = "SELECT t.PltNumber, t.TruckID, u.UserID FROM Users u INNER JOIN Truck t ON u.Team = t.TruckID;";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
@@ -1727,23 +1702,38 @@ namespace Ecocoon
         {
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            string query = "UPDATE Truck SET KierowcaID = @kierowca, Odbiorca1ID = @odbiorca1, Odbiorca2ID = @odbiorca2, RegNumber = @rejestracja WHERE TruckID = @TruckID;";
+            string query = "UPDATE Users SET Team = NULL WHERE UserID = @olduserid";
+            string query2 = "UPDATE Users SET Team = @truckid WHERE UserID = @newuserid;";
+            string query3 = "UPDATE Truck SET PltNumber = @pltnumber WHERE TruckID = @truckid;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
+                connection.Open();
+
+                // Ustaw wartość Team na NULL dla starego UserID
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@kierowca", view_editTeam.Rows[e.RowIndex].Cells["Kierowca"].Value);
-                    command.Parameters.AddWithValue("@odbiorca1", view_editTeam.Rows[e.RowIndex].Cells["Smieciarz"].Value);
-                    command.Parameters.AddWithValue("@odbiorca2", view_editTeam.Rows[e.RowIndex].Cells["Smieciarz2"].Value);
-                    command.Parameters.AddWithValue("@rejestracja", view_editTeam.Rows[e.RowIndex].Cells["Rejestracja"].Value);
-                    command.Parameters.AddWithValue("@TruckID", view_editTeam.Rows[e.RowIndex].Cells["TruckID"].Value);
-
-                    connection.Open();
+                    command.Parameters.AddWithValue("@olduserid", view_editTeam.Rows[e.RowIndex].Cells["UserID"].Value);
                     command.ExecuteNonQuery();
-                    connection.Close();
-
                 }
+
+                // Aktualizuj wartość Team dla nowego UserID
+                using (SqlCommand command = new SqlCommand(query2, connection))
+                {
+                    command.Parameters.AddWithValue("@newuserid", view_editTeam.Rows[e.RowIndex].Cells["UserID"].EditedFormattedValue);
+                    command.Parameters.AddWithValue("@truckid", view_editTeam.Rows[e.RowIndex].Cells["TruckID"].Value);
+                    command.ExecuteNonQuery();
+                }
+
+                // Aktualizuj wartość PltNumber dla danego TruckID
+                using (SqlCommand command = new SqlCommand(query3, connection))
+                {
+                    command.Parameters.AddWithValue("@pltnumber", view_editTeam.Rows[e.RowIndex].Cells["PltNumber"].Value);
+                    command.Parameters.AddWithValue("@truckid", view_editTeam.Rows[e.RowIndex].Cells["TruckID"].Value);
+                    command.ExecuteNonQuery();
+                }
+
+                connection.Close();
             }
         }
 
@@ -1941,7 +1931,7 @@ namespace Ecocoon
                 }
             }
         }
-        //uwuwanie trucków
+        //usuwanie trucków
         private void view_edit_trucks_Delete(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -1976,20 +1966,5 @@ namespace Ecocoon
 
         }
 
-        private void cb_kierowca_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cb_kierowca.Checked)
-            {
-                cb_smieciarz.Checked = false;
-            }
-        }
-
-        private void cb_smieciarz_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cb_smieciarz.Checked)
-            {
-                cb_kierowca.Checked = false;
-            }
-        }
     }
 }

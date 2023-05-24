@@ -18,6 +18,7 @@ namespace Ecocoon
         public Truck()
         {
             this.Schedule = new HashSet<Schedule>();
+            this.Users = new HashSet<Users>();
         }
     
         public int TruckID { get; set; }
@@ -27,6 +28,7 @@ namespace Ecocoon
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Schedule> Schedule { get; set; }
-        public virtual Team Team { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Users> Users { get; set; }
     }
 }
