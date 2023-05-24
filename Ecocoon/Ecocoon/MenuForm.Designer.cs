@@ -196,6 +196,8 @@
             this.widok_administracja = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
             this.pnl_druki_pliki = new System.Windows.Forms.Panel();
+            this.dGVFilesList = new System.Windows.Forms.DataGridView();
+            this.textBox_FilePath = new System.Windows.Forms.TextBox();
             this.btn_dodaj_plik = new System.Windows.Forms.Button();
             this.btn_zaznacz = new System.Windows.Forms.Button();
             this.btn_odznacz = new System.Windows.Forms.Button();
@@ -273,6 +275,7 @@
             this.pnl_administracja.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.widok_administracja)).BeginInit();
             this.pnl_druki_pliki.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dGVFilesList)).BeginInit();
             this.pnl_account.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -2176,6 +2179,8 @@
             // 
             // pnl_druki_pliki
             // 
+            this.pnl_druki_pliki.Controls.Add(this.dGVFilesList);
+            this.pnl_druki_pliki.Controls.Add(this.textBox_FilePath);
             this.pnl_druki_pliki.Controls.Add(this.btn_dodaj_plik);
             this.pnl_druki_pliki.Controls.Add(this.btn_zaznacz);
             this.pnl_druki_pliki.Controls.Add(this.btn_odznacz);
@@ -2187,11 +2192,26 @@
             this.pnl_druki_pliki.Size = new System.Drawing.Size(731, 482);
             this.pnl_druki_pliki.TabIndex = 3;
             // 
+            // dGVFilesList
+            // 
+            this.dGVFilesList.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dGVFilesList.Location = new System.Drawing.Point(9, 7);
+            this.dGVFilesList.Name = "dGVFilesList";
+            this.dGVFilesList.Size = new System.Drawing.Size(710, 417);
+            this.dGVFilesList.TabIndex = 0;
+            // 
+            // textBox_FilePath
+            // 
+            this.textBox_FilePath.Location = new System.Drawing.Point(7, 446);
+            this.textBox_FilePath.Name = "textBox_FilePath";
+            this.textBox_FilePath.Size = new System.Drawing.Size(378, 24);
+            this.textBox_FilePath.TabIndex = 8;
+            // 
             // btn_dodaj_plik
             // 
             this.btn_dodaj_plik.BackColor = System.Drawing.Color.Ivory;
             this.btn_dodaj_plik.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_dodaj_plik.Location = new System.Drawing.Point(61, 431);
+            this.btn_dodaj_plik.Location = new System.Drawing.Point(59, 431);
             this.btn_dodaj_plik.Name = "btn_dodaj_plik";
             this.btn_dodaj_plik.Size = new System.Drawing.Size(160, 39);
             this.btn_dodaj_plik.TabIndex = 5;
@@ -2203,7 +2223,7 @@
             // 
             this.btn_zaznacz.BackColor = System.Drawing.Color.Ivory;
             this.btn_zaznacz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_zaznacz.Location = new System.Drawing.Point(227, 431);
+            this.btn_zaznacz.Location = new System.Drawing.Point(225, 431);
             this.btn_zaznacz.Name = "btn_zaznacz";
             this.btn_zaznacz.Size = new System.Drawing.Size(160, 39);
             this.btn_zaznacz.TabIndex = 4;
@@ -2541,13 +2561,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(960, 540);
+            this.Controls.Add(this.pnl_druki_pliki);
             this.Controls.Add(this.pnl_powiadomienia);
             this.Controls.Add(this.pnl_Blank);
             this.Controls.Add(this.pnl_left);
             this.Controls.Add(this.pnl_account);
             this.Controls.Add(this.pnl_harmonogramy);
             this.Controls.Add(this.pnl_wydzialy);
-            this.Controls.Add(this.pnl_druki_pliki);
             this.Controls.Add(this.pnl_edycja_danych);
             this.Controls.Add(this.pnl_raport_odp);
             this.Controls.Add(this.pnl_up);
@@ -2621,6 +2641,8 @@
             this.pnl_administracja.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.widok_administracja)).EndInit();
             this.pnl_druki_pliki.ResumeLayout(false);
+            this.pnl_druki_pliki.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dGVFilesList)).EndInit();
             this.pnl_account.ResumeLayout(false);
             this.pnl_account.PerformLayout();
             this.ResumeLayout(false);
@@ -2830,5 +2852,7 @@
         private System.Windows.Forms.Button btn_smieciarze_editTeam;
         private System.Windows.Forms.DataGridView view_editTeam;
         private System.Windows.Forms.Panel pnl_Blank;
+        private System.Windows.Forms.TextBox textBox_FilePath;
+        private System.Windows.Forms.DataGridView dGVFilesList;
     }
 }

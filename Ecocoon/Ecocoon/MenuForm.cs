@@ -16,6 +16,7 @@ using System.Configuration;
 using static System.Data.Entity.Infrastructure.Design.Executor;
 using System.Runtime.Remoting.Messaging;
 using System.ComponentModel.Design;
+using System.IO;
 
 namespace Ecocoon
 {
@@ -99,12 +100,23 @@ namespace Ecocoon
             btn_anuluj.Visible = false;
             btn_dodaj.Visible = false;
             pnl_Blank.Visible = false;
+            textBox_FilePath.Visible= false;
 
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
             string query = "SELECT Department FROM Users WHERE Email = @Email;";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
+                string query2 = "SELECT FileID,FileName,Extension FROM Files";
+                SqlDataAdapter adp = new SqlDataAdapter(query2, connection);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+
+                if (dt.Rows.Count > 0)
+                {
+                    dGVFilesList.DataSource = dt;
+                }
+
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     connection.Open();
@@ -1448,6 +1460,11 @@ namespace Ecocoon
             btn_zaznacz.Visible = false;
             btn_odznacz.Visible = false;
             btn_pobierz.Visible = false;
+            textBox_FilePath.Visible = true;
+
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.ShowDialog();
+            textBox_FilePath.Text = dlg.FileName;
         }
 
         private void btn_anuluj_Click(object sender, EventArgs e)
@@ -1458,6 +1475,7 @@ namespace Ecocoon
             btn_zaznacz.Visible = true;
             btn_odznacz.Visible = true;
             btn_pobierz.Visible = true;
+            textBox_FilePath.Visible = false;
         }
 
 
@@ -1469,6 +1487,47 @@ namespace Ecocoon
             btn_zaznacz.Visible = true;
             btn_odznacz.Visible = true;
             btn_pobierz.Visible = true;
+            textBox_FilePath.Visible = false;
+
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+
+            using (Stream stream = File.OpenRead(textBox_FilePath.Text))
+            {
+                byte[] buffer = new byte[stream.Length];
+                stream.Read(buffer, 0, buffer.Length);
+
+                string extn = new FileInfo(textBox_FilePath.Text).Extension;
+                string name = new FileInfo(textBox_FilePath.Text).Name;
+
+                string query = "INSERT INTO Files VALUES (@FileName,@Extension,@File)";
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        connection.Open();
+
+                        command.Parameters.Add("@FileName", SqlDbType.VarChar).Value = name;
+                        command.Parameters.Add("@Extension", SqlDbType.Char).Value = extn;
+                        command.Parameters.Add("@File", SqlDbType.VarBinary).Value = buffer;
+
+                        command.ExecuteNonQuery();
+
+                        connection.Close();
+                    }
+                    string query2 = "SELECT FileID,FileName,Extension FROM Files";
+                    SqlDataAdapter adp = new SqlDataAdapter(query2, connection);
+                    DataTable dt = new DataTable();
+                    adp.Fill(dt);
+
+                    if (dt.Rows.Count > 0)
+                    {
+                        dGVFilesList.DataSource = dt;
+                    }
+                }
+            }
+            MessageBox.Show("Zapisano plik.");
         }
 
         private void button1_Click(object sender, EventArgs e)
