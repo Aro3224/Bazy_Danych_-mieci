@@ -1814,5 +1814,33 @@ namespace Ecocoon
                 }
             }
         }
+
+        private void btn_otworz_Click(object sender, EventArgs e)
+        {
+            var selectedRow = dGVFilesList.SelectedRows;
+            foreach(var row in selectedRow)
+            {
+                int id = (int)((DataGridViewRow)row).Cells[0].Value;
+                string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+                string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = "SELECT FileName, Extension, [File] FROM Files WHERE FileID = @id";
+                    SqlCommand cmd = new SqlCommand(query, connection);
+                    connection.Open();
+                    cmd.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                    var reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        var name = reader["Filename"].ToString();
+                        var data = (byte[])reader["File"];
+                        var extn = reader["Extension"].ToString();
+                        var newFileName = name.Replace(extn, DateTime.Now.ToString("ddMMyyyy")) + extn;
+                        File.WriteAllBytes(newFileName, data);
+                        System.Diagnostics.Process.Start(newFileName);
+                    }
+                }
+            }   
+        }
     }
 }

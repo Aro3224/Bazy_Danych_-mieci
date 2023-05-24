@@ -2225,6 +2225,7 @@
             this.btn_otworz.TabIndex = 2;
             this.btn_otworz.Text = "Otwórz";
             this.btn_otworz.UseVisualStyleBackColor = false;
+            this.btn_otworz.Click += new System.EventHandler(this.btn_otworz_Click);
             // 
             // btn_dodaj
             // 
