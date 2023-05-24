@@ -1457,9 +1457,7 @@ namespace Ecocoon
             btn_anuluj.Visible = true;
             btn_dodaj.Visible = true;
             btn_dodaj_plik.Visible = false;
-            btn_zaznacz.Visible = false;
-            btn_odznacz.Visible = false;
-            btn_pobierz.Visible = false;
+            btn_otworz.Visible = false;
             textBox_FilePath.Visible = true;
 
             OpenFileDialog dlg = new OpenFileDialog();
@@ -1472,9 +1470,7 @@ namespace Ecocoon
             btn_anuluj.Visible = false;
             btn_dodaj.Visible = false;
             btn_dodaj_plik.Visible = true;
-            btn_zaznacz.Visible = true;
-            btn_odznacz.Visible = true;
-            btn_pobierz.Visible = true;
+            btn_otworz.Visible = true;
             textBox_FilePath.Visible = false;
         }
 
@@ -1484,9 +1480,7 @@ namespace Ecocoon
             btn_anuluj.Visible = false;
             btn_dodaj.Visible = false;
             btn_dodaj_plik.Visible = true;
-            btn_zaznacz.Visible = true;
-            btn_odznacz.Visible = true;
-            btn_pobierz.Visible = true;
+            btn_otworz.Visible = true;
             textBox_FilePath.Visible = false;
 
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];

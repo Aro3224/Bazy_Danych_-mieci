@@ -199,9 +199,7 @@
             this.dGVFilesList = new System.Windows.Forms.DataGridView();
             this.textBox_FilePath = new System.Windows.Forms.TextBox();
             this.btn_dodaj_plik = new System.Windows.Forms.Button();
-            this.btn_zaznacz = new System.Windows.Forms.Button();
-            this.btn_odznacz = new System.Windows.Forms.Button();
-            this.btn_pobierz = new System.Windows.Forms.Button();
+            this.btn_otworz = new System.Windows.Forms.Button();
             this.btn_dodaj = new System.Windows.Forms.Button();
             this.btn_anuluj = new System.Windows.Forms.Button();
             this.pnl_powiadomienia = new System.Windows.Forms.Panel();
@@ -2182,9 +2180,7 @@
             this.pnl_druki_pliki.Controls.Add(this.dGVFilesList);
             this.pnl_druki_pliki.Controls.Add(this.textBox_FilePath);
             this.pnl_druki_pliki.Controls.Add(this.btn_dodaj_plik);
-            this.pnl_druki_pliki.Controls.Add(this.btn_zaznacz);
-            this.pnl_druki_pliki.Controls.Add(this.btn_odznacz);
-            this.pnl_druki_pliki.Controls.Add(this.btn_pobierz);
+            this.pnl_druki_pliki.Controls.Add(this.btn_otworz);
             this.pnl_druki_pliki.Controls.Add(this.btn_dodaj);
             this.pnl_druki_pliki.Controls.Add(this.btn_anuluj);
             this.pnl_druki_pliki.Location = new System.Drawing.Point(229, 58);
@@ -2211,7 +2207,7 @@
             // 
             this.btn_dodaj_plik.BackColor = System.Drawing.Color.Ivory;
             this.btn_dodaj_plik.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_dodaj_plik.Location = new System.Drawing.Point(59, 431);
+            this.btn_dodaj_plik.Location = new System.Drawing.Point(393, 431);
             this.btn_dodaj_plik.Name = "btn_dodaj_plik";
             this.btn_dodaj_plik.Size = new System.Drawing.Size(160, 39);
             this.btn_dodaj_plik.TabIndex = 5;
@@ -2219,39 +2215,16 @@
             this.btn_dodaj_plik.UseVisualStyleBackColor = false;
             this.btn_dodaj_plik.Click += new System.EventHandler(this.btn_dodaj_Click);
             // 
-            // btn_zaznacz
+            // btn_otworz
             // 
-            this.btn_zaznacz.BackColor = System.Drawing.Color.Ivory;
-            this.btn_zaznacz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_zaznacz.Location = new System.Drawing.Point(225, 431);
-            this.btn_zaznacz.Name = "btn_zaznacz";
-            this.btn_zaznacz.Size = new System.Drawing.Size(160, 39);
-            this.btn_zaznacz.TabIndex = 4;
-            this.btn_zaznacz.Text = "Zaznacz wszystko";
-            this.btn_zaznacz.UseVisualStyleBackColor = false;
-            // 
-            // btn_odznacz
-            // 
-            this.btn_odznacz.BackColor = System.Drawing.Color.Ivory;
-            this.btn_odznacz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_odznacz.Location = new System.Drawing.Point(393, 431);
-            this.btn_odznacz.Name = "btn_odznacz";
-            this.btn_odznacz.Size = new System.Drawing.Size(160, 39);
-            this.btn_odznacz.TabIndex = 3;
-            this.btn_odznacz.Text = "Odznacz";
-            this.btn_odznacz.UseVisualStyleBackColor = false;
-            this.btn_odznacz.Click += new System.EventHandler(this.button3_Click_1);
-            // 
-            // btn_pobierz
-            // 
-            this.btn_pobierz.BackColor = System.Drawing.Color.Ivory;
-            this.btn_pobierz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_pobierz.Location = new System.Drawing.Point(557, 431);
-            this.btn_pobierz.Name = "btn_pobierz";
-            this.btn_pobierz.Size = new System.Drawing.Size(160, 39);
-            this.btn_pobierz.TabIndex = 2;
-            this.btn_pobierz.Text = "Pobierz";
-            this.btn_pobierz.UseVisualStyleBackColor = false;
+            this.btn_otworz.BackColor = System.Drawing.Color.Ivory;
+            this.btn_otworz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_otworz.Location = new System.Drawing.Point(557, 431);
+            this.btn_otworz.Name = "btn_otworz";
+            this.btn_otworz.Size = new System.Drawing.Size(160, 39);
+            this.btn_otworz.TabIndex = 2;
+            this.btn_otworz.Text = "Otwórz";
+            this.btn_otworz.UseVisualStyleBackColor = false;
             // 
             // btn_dodaj
             // 
@@ -2694,9 +2667,7 @@
         private System.Windows.Forms.Button odbior;
         private System.Windows.Forms.Button segregacja;
         private System.Windows.Forms.Panel pnl_druki_pliki;
-        private System.Windows.Forms.Button btn_zaznacz;
-        private System.Windows.Forms.Button btn_odznacz;
-        private System.Windows.Forms.Button btn_pobierz;
+        private System.Windows.Forms.Button btn_otworz;
         private System.Windows.Forms.Panel pnl_powiadomienia;
         private System.Windows.Forms.Button btn_edit_harmonogram;
         private System.Windows.Forms.Button btn_edit_user;
