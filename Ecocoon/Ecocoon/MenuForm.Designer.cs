@@ -250,6 +250,31 @@
             this.opis_imie = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.pnl_Blank = new System.Windows.Forms.Panel();
+            this.btn_edit_routes = new System.Windows.Forms.Button();
+            this.pnl_edit_routes = new System.Windows.Forms.Panel();
+            this.btn_create_route = new System.Windows.Forms.Button();
+            this.btn_edit_route = new System.Windows.Forms.Button();
+            this.label30 = new System.Windows.Forms.Label();
+            this.pnl_create_route = new System.Windows.Forms.Panel();
+            this.btn_show_routes = new System.Windows.Forms.Button();
+            this.txt_by = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.txt_end = new System.Windows.Forms.TextBox();
+            this.btn_add_route = new System.Windows.Forms.Button();
+            this.btn_back_route = new System.Windows.Forms.Button();
+            this.view_created_route = new System.Windows.Forms.DataGridView();
+            this.txt_start = new System.Windows.Forms.TextBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.txt_length = new System.Windows.Forms.TextBox();
+            this.pnl_edit_route = new System.Windows.Forms.Panel();
+            this.label_edit_route = new System.Windows.Forms.Label();
+            this.btn_edit_route_back = new System.Windows.Forms.Button();
+            this.btn_update_route = new System.Windows.Forms.Button();
+            this.view_edit_route = new System.Windows.Forms.DataGridView();
+            this.btn_delete_route = new System.Windows.Forms.Button();
+            this.btn_show_route = new System.Windows.Forms.Button();
             this.pnl_left.SuspendLayout();
             this.pnl_raport_odp.SuspendLayout();
             this.pnl_new_raport.SuspendLayout();
@@ -300,6 +325,11 @@
             this.pnl_druki_pliki.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGVFilesList)).BeginInit();
             this.pnl_account.SuspendLayout();
+            this.pnl_edit_routes.SuspendLayout();
+            this.pnl_create_route.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.view_created_route)).BeginInit();
+            this.pnl_edit_route.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.view_edit_route)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_left
@@ -712,6 +742,8 @@
             // 
             // pnl_edycja_danych
             // 
+            this.pnl_edycja_danych.Controls.Add(this.pnl_edit_route);
+            this.pnl_edycja_danych.Controls.Add(this.pnl_create_route);
             this.pnl_edycja_danych.Controls.Add(this.pnl_edit_team);
             this.pnl_edycja_danych.Controls.Add(this.pnl_create_team);
             this.pnl_edycja_danych.Controls.Add(this.pnl_create_truck);
@@ -727,6 +759,8 @@
             this.pnl_edycja_danych.Controls.Add(this.pnl_edit_harmonogram);
             this.pnl_edycja_danych.Controls.Add(this.pnl_edit_truck);
             this.pnl_edycja_danych.Controls.Add(this.pnl_edit_team1);
+            this.pnl_edycja_danych.Controls.Add(this.pnl_edit_routes);
+            this.pnl_edycja_danych.Controls.Add(this.btn_edit_routes);
             this.pnl_edycja_danych.Controls.Add(this.btn_edit_truck);
             this.pnl_edycja_danych.Controls.Add(this.btn_edit_team1);
             this.pnl_edycja_danych.Controls.Add(this.btn_edit_user);
@@ -2789,6 +2823,277 @@
             this.pnl_Blank.Size = new System.Drawing.Size(731, 486);
             this.pnl_Blank.TabIndex = 15;
             // 
+            // btn_edit_routes
+            // 
+            this.btn_edit_routes.BackColor = System.Drawing.Color.Ivory;
+            this.btn_edit_routes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_edit_routes.Location = new System.Drawing.Point(30, 360);
+            this.btn_edit_routes.Name = "btn_edit_routes";
+            this.btn_edit_routes.Size = new System.Drawing.Size(160, 39);
+            this.btn_edit_routes.TabIndex = 25;
+            this.btn_edit_routes.Text = "Trasy";
+            this.btn_edit_routes.UseVisualStyleBackColor = false;
+            this.btn_edit_routes.Click += new System.EventHandler(this.btn_edit_routes_Click);
+            // 
+            // pnl_edit_routes
+            // 
+            this.pnl_edit_routes.BackColor = System.Drawing.Color.PaleGreen;
+            this.pnl_edit_routes.Controls.Add(this.btn_create_route);
+            this.pnl_edit_routes.Controls.Add(this.btn_edit_route);
+            this.pnl_edit_routes.Controls.Add(this.label30);
+            this.pnl_edit_routes.Location = new System.Drawing.Point(414, 0);
+            this.pnl_edit_routes.Name = "pnl_edit_routes";
+            this.pnl_edit_routes.Size = new System.Drawing.Size(317, 482);
+            this.pnl_edit_routes.TabIndex = 26;
+            // 
+            // btn_create_route
+            // 
+            this.btn_create_route.BackColor = System.Drawing.Color.Ivory;
+            this.btn_create_route.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_create_route.Location = new System.Drawing.Point(23, 120);
+            this.btn_create_route.Name = "btn_create_route";
+            this.btn_create_route.Size = new System.Drawing.Size(160, 39);
+            this.btn_create_route.TabIndex = 15;
+            this.btn_create_route.Text = "Stwórz Trasy";
+            this.btn_create_route.UseVisualStyleBackColor = false;
+            this.btn_create_route.Click += new System.EventHandler(this.btn_create_route_Click);
+            // 
+            // btn_edit_route
+            // 
+            this.btn_edit_route.BackColor = System.Drawing.Color.Ivory;
+            this.btn_edit_route.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_edit_route.Location = new System.Drawing.Point(23, 59);
+            this.btn_edit_route.Name = "btn_edit_route";
+            this.btn_edit_route.Size = new System.Drawing.Size(160, 39);
+            this.btn_edit_route.TabIndex = 14;
+            this.btn_edit_route.Text = "Edytuj Trasy";
+            this.btn_edit_route.UseVisualStyleBackColor = false;
+            this.btn_edit_route.Click += new System.EventHandler(this.btn_edit_route_Click);
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
+            this.label30.Location = new System.Drawing.Point(19, 7);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(59, 23);
+            this.label30.TabIndex = 12;
+            this.label30.Text = "Trasy";
+            // 
+            // pnl_create_route
+            // 
+            this.pnl_create_route.BackColor = System.Drawing.Color.White;
+            this.pnl_create_route.Controls.Add(this.txt_length);
+            this.pnl_create_route.Controls.Add(this.label40);
+            this.pnl_create_route.Controls.Add(this.btn_show_routes);
+            this.pnl_create_route.Controls.Add(this.txt_by);
+            this.pnl_create_route.Controls.Add(this.label32);
+            this.pnl_create_route.Controls.Add(this.txt_end);
+            this.pnl_create_route.Controls.Add(this.btn_add_route);
+            this.pnl_create_route.Controls.Add(this.btn_back_route);
+            this.pnl_create_route.Controls.Add(this.view_created_route);
+            this.pnl_create_route.Controls.Add(this.txt_start);
+            this.pnl_create_route.Controls.Add(this.label36);
+            this.pnl_create_route.Controls.Add(this.label39);
+            this.pnl_create_route.Location = new System.Drawing.Point(0, 0);
+            this.pnl_create_route.Name = "pnl_create_route";
+            this.pnl_create_route.Size = new System.Drawing.Size(731, 483);
+            this.pnl_create_route.TabIndex = 27;
+            // 
+            // btn_show_routes
+            // 
+            this.btn_show_routes.BackColor = System.Drawing.Color.PaleGreen;
+            this.btn_show_routes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_show_routes.Location = new System.Drawing.Point(596, 0);
+            this.btn_show_routes.Name = "btn_show_routes";
+            this.btn_show_routes.Size = new System.Drawing.Size(135, 52);
+            this.btn_show_routes.TabIndex = 34;
+            this.btn_show_routes.Text = "Stworzone Trasy";
+            this.btn_show_routes.UseVisualStyleBackColor = false;
+            this.btn_show_routes.Click += new System.EventHandler(this.btn_show_routes_Click);
+            // 
+            // txt_by
+            // 
+            this.txt_by.Location = new System.Drawing.Point(166, 147);
+            this.txt_by.Name = "txt_by";
+            this.txt_by.Size = new System.Drawing.Size(179, 24);
+            this.txt_by.TabIndex = 32;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold);
+            this.label32.Location = new System.Drawing.Point(3, 150);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(157, 19);
+            this.label32.TabIndex = 31;
+            this.label32.Text = "Przez (opcjonalnie):";
+            // 
+            // txt_end
+            // 
+            this.txt_end.Location = new System.Drawing.Point(75, 110);
+            this.txt_end.Name = "txt_end";
+            this.txt_end.Size = new System.Drawing.Size(179, 24);
+            this.txt_end.TabIndex = 30;
+            // 
+            // btn_add_route
+            // 
+            this.btn_add_route.BackColor = System.Drawing.Color.Ivory;
+            this.btn_add_route.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_add_route.Location = new System.Drawing.Point(196, 244);
+            this.btn_add_route.Name = "btn_add_route";
+            this.btn_add_route.Size = new System.Drawing.Size(160, 39);
+            this.btn_add_route.TabIndex = 27;
+            this.btn_add_route.Text = "Dodaj";
+            this.btn_add_route.UseVisualStyleBackColor = false;
+            // 
+            // btn_back_route
+            // 
+            this.btn_back_route.BackColor = System.Drawing.Color.Ivory;
+            this.btn_back_route.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_back_route.Location = new System.Drawing.Point(6, 431);
+            this.btn_back_route.Name = "btn_back_route";
+            this.btn_back_route.Size = new System.Drawing.Size(160, 39);
+            this.btn_back_route.TabIndex = 26;
+            this.btn_back_route.Text = "Wróć";
+            this.btn_back_route.UseVisualStyleBackColor = false;
+            // 
+            // view_created_route
+            // 
+            this.view_created_route.AllowUserToAddRows = false;
+            this.view_created_route.AllowUserToDeleteRows = false;
+            this.view_created_route.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.view_created_route.BackgroundColor = System.Drawing.Color.Snow;
+            this.view_created_route.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.view_created_route.Location = new System.Drawing.Point(373, 56);
+            this.view_created_route.Name = "view_created_route";
+            this.view_created_route.ReadOnly = true;
+            this.view_created_route.Size = new System.Drawing.Size(355, 420);
+            this.view_created_route.TabIndex = 15;
+            // 
+            // txt_start
+            // 
+            this.txt_start.Location = new System.Drawing.Point(92, 74);
+            this.txt_start.Name = "txt_start";
+            this.txt_start.Size = new System.Drawing.Size(179, 24);
+            this.txt_start.TabIndex = 10;
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold);
+            this.label36.Location = new System.Drawing.Point(3, 112);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(67, 19);
+            this.label36.TabIndex = 7;
+            this.label36.Text = "Koniec:";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold);
+            this.label39.Location = new System.Drawing.Point(3, 77);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(83, 19);
+            this.label39.TabIndex = 5;
+            this.label39.Text = "Początek:";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold);
+            this.label40.Location = new System.Drawing.Point(3, 187);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(113, 19);
+            this.label40.TabIndex = 35;
+            this.label40.Text = "Długość (km):";
+            // 
+            // txt_length
+            // 
+            this.txt_length.Location = new System.Drawing.Point(122, 185);
+            this.txt_length.Name = "txt_length";
+            this.txt_length.Size = new System.Drawing.Size(179, 24);
+            this.txt_length.TabIndex = 36;
+            // 
+            // pnl_edit_route
+            // 
+            this.pnl_edit_route.BackColor = System.Drawing.Color.White;
+            this.pnl_edit_route.Controls.Add(this.btn_show_route);
+            this.pnl_edit_route.Controls.Add(this.label_edit_route);
+            this.pnl_edit_route.Controls.Add(this.btn_edit_route_back);
+            this.pnl_edit_route.Controls.Add(this.btn_update_route);
+            this.pnl_edit_route.Controls.Add(this.view_edit_route);
+            this.pnl_edit_route.Controls.Add(this.btn_delete_route);
+            this.pnl_edit_route.Location = new System.Drawing.Point(0, 0);
+            this.pnl_edit_route.Name = "pnl_edit_route";
+            this.pnl_edit_route.Size = new System.Drawing.Size(731, 482);
+            this.pnl_edit_route.TabIndex = 28;
+            // 
+            // label_edit_route
+            // 
+            this.label_edit_route.AutoSize = true;
+            this.label_edit_route.Location = new System.Drawing.Point(10, 12);
+            this.label_edit_route.Name = "label_edit_route";
+            this.label_edit_route.Size = new System.Drawing.Size(73, 17);
+            this.label_edit_route.TabIndex = 26;
+            this.label_edit_route.Text = "Aktualizuj";
+            // 
+            // btn_edit_route_back
+            // 
+            this.btn_edit_route_back.BackColor = System.Drawing.Color.Ivory;
+            this.btn_edit_route_back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_edit_route_back.Location = new System.Drawing.Point(10, 431);
+            this.btn_edit_route_back.Name = "btn_edit_route_back";
+            this.btn_edit_route_back.Size = new System.Drawing.Size(160, 39);
+            this.btn_edit_route_back.TabIndex = 25;
+            this.btn_edit_route_back.Text = "Wróć";
+            this.btn_edit_route_back.UseVisualStyleBackColor = false;
+            // 
+            // btn_update_route
+            // 
+            this.btn_update_route.BackColor = System.Drawing.Color.Ivory;
+            this.btn_update_route.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_update_route.Location = new System.Drawing.Point(393, 431);
+            this.btn_update_route.Name = "btn_update_route";
+            this.btn_update_route.Size = new System.Drawing.Size(160, 39);
+            this.btn_update_route.TabIndex = 24;
+            this.btn_update_route.Text = "Aktualizuj";
+            this.btn_update_route.UseVisualStyleBackColor = false;
+            // 
+            // view_edit_route
+            // 
+            this.view_edit_route.AllowUserToAddRows = false;
+            this.view_edit_route.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.view_edit_route.BackgroundColor = System.Drawing.Color.Snow;
+            this.view_edit_route.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.view_edit_route.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.view_edit_route.Location = new System.Drawing.Point(10, 47);
+            this.view_edit_route.Name = "view_edit_route";
+            this.view_edit_route.Size = new System.Drawing.Size(709, 378);
+            this.view_edit_route.TabIndex = 23;
+            // 
+            // btn_delete_route
+            // 
+            this.btn_delete_route.BackColor = System.Drawing.Color.Ivory;
+            this.btn_delete_route.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_delete_route.Location = new System.Drawing.Point(559, 431);
+            this.btn_delete_route.Name = "btn_delete_route";
+            this.btn_delete_route.Size = new System.Drawing.Size(160, 39);
+            this.btn_delete_route.TabIndex = 22;
+            this.btn_delete_route.Text = "Usuń";
+            this.btn_delete_route.UseVisualStyleBackColor = false;
+            // 
+            // btn_show_route
+            // 
+            this.btn_show_route.BackColor = System.Drawing.Color.PaleGreen;
+            this.btn_show_route.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_show_route.Location = new System.Drawing.Point(301, 0);
+            this.btn_show_route.Name = "btn_show_route";
+            this.btn_show_route.Size = new System.Drawing.Size(135, 41);
+            this.btn_show_route.TabIndex = 27;
+            this.btn_show_route.Text = "Trasy";
+            this.btn_show_route.UseVisualStyleBackColor = false;
+            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -2887,6 +3192,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.dGVFilesList)).EndInit();
             this.pnl_account.ResumeLayout(false);
             this.pnl_account.PerformLayout();
+            this.pnl_edit_routes.ResumeLayout(false);
+            this.pnl_edit_routes.PerformLayout();
+            this.pnl_create_route.ResumeLayout(false);
+            this.pnl_create_route.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.view_created_route)).EndInit();
+            this.pnl_edit_route.ResumeLayout(false);
+            this.pnl_edit_route.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.view_edit_route)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3114,5 +3427,30 @@
         private System.Windows.Forms.Button btn_delete_trucks;
         private System.Windows.Forms.TextBox textBox_FilePath;
         private System.Windows.Forms.DataGridView dGVFilesList;
+        private System.Windows.Forms.Button btn_edit_routes;
+        private System.Windows.Forms.Panel pnl_edit_routes;
+        private System.Windows.Forms.Button btn_create_route;
+        private System.Windows.Forms.Button btn_edit_route;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Panel pnl_create_route;
+        private System.Windows.Forms.TextBox txt_length;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Button btn_show_routes;
+        private System.Windows.Forms.TextBox txt_by;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.TextBox txt_end;
+        private System.Windows.Forms.Button btn_add_route;
+        private System.Windows.Forms.Button btn_back_route;
+        private System.Windows.Forms.DataGridView view_created_route;
+        private System.Windows.Forms.TextBox txt_start;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Panel pnl_edit_route;
+        private System.Windows.Forms.Label label_edit_route;
+        private System.Windows.Forms.Button btn_edit_route_back;
+        private System.Windows.Forms.Button btn_update_route;
+        private System.Windows.Forms.DataGridView view_edit_route;
+        private System.Windows.Forms.Button btn_delete_route;
+        private System.Windows.Forms.Button btn_show_route;
     }
 }

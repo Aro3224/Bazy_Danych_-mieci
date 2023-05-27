@@ -180,6 +180,9 @@ namespace Ecocoon
             pnl_edit_truck.Visible = false;
             pnl_create_truck.Visible = false;
             pnl_edit_trucks.Visible = false;
+            pnl_edit_routes.Visible = false;
+            pnl_create_route.Visible = false;
+            pnl_edit_route.Visible = false;
         }
 
         private void btn_new_acc_Click(object sender, EventArgs e)
@@ -190,6 +193,9 @@ namespace Ecocoon
             pnl_edit_team1.Visible = false;
             pnl_edit_team1.Visible = false;
             pnl_edit_truck.Visible = false;
+            pnl_edit_routes.Visible = false;
+            pnl_create_route.Visible = false;
+            pnl_edit_route.Visible = false;
         }
 
         private void Segregowane_Click(object sender, EventArgs e)
@@ -511,6 +517,9 @@ namespace Ecocoon
             pnl_Blank.Visible = false;
             pnl_edit_team1.Visible = false;
             pnl_edit_truck.Visible = false;
+            pnl_edit_routes.Visible = false;
+            pnl_create_route.Visible = false;
+            pnl_edit_route.Visible = false;
         }
 
         private void btn_edit_truck_Click(object sender, EventArgs e)
@@ -521,6 +530,9 @@ namespace Ecocoon
             pnl_edit_team1.Visible = false;
             pnl_edit_team1.Visible = true;
             pnl_edit_truck.Visible = false;
+            pnl_edit_routes.Visible = false;
+            pnl_create_route.Visible = false;
+            pnl_edit_route.Visible = false;
         }
 
         private void btn_raport_odp_Click(object sender, EventArgs e)
@@ -850,6 +862,9 @@ namespace Ecocoon
             pnl_edit_harmonogram.Visible = false;
             pnl_edit_team1.Visible = false;
             pnl_edit_truck.Visible = false;
+            pnl_edit_routes.Visible = false;
+            pnl_create_route.Visible = false;
+            pnl_edit_route.Visible = false;
         }
 
         //edycja smieciarze
@@ -1862,6 +1877,9 @@ namespace Ecocoon
             pnl_edit_team1.Visible = false;
             pnl_edit_team1.Visible = false;
             pnl_edit_truck.Visible = true;
+            pnl_edit_routes.Visible = false;
+            pnl_create_route.Visible = false;
+            pnl_edit_route.Visible = false;
         }
 
         private void btn_created_truck_Click(object sender, EventArgs e)
@@ -2051,6 +2069,216 @@ namespace Ecocoon
                     }
                 }
             }   
+        }
+
+        private void btn_edit_routes_Click(object sender, EventArgs e)
+        {
+            pnl_add_acc.Visible = false;
+            pnl_edit_wydzial.Visible = false;
+            pnl_edit_harmonogram.Visible = false;
+            pnl_edit_team1.Visible = false;
+            pnl_edit_team1.Visible = false;
+            pnl_edit_truck.Visible = false;
+            pnl_edit_routes.Visible = true;
+            pnl_create_route.Visible = false;
+            pnl_edit_route.Visible = false;
+        }
+
+        private void btn_create_route_Click(object sender, EventArgs e)
+        {
+            pnl_create_route.Visible = true;
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT * FROM Route;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    view_created_route.DataSource = dataTable;
+
+
+                    connection.Close();
+                }
+            }
+
+            btn_add_route.Click += new EventHandler((s, ev) =>
+            {
+                float length = float.Parse(txt_length.Text);
+
+                string InsertQuery = "INSERT INTO Route VALUES (@start, @end, @by, @length);";
+                SqlConnection connection = new SqlConnection($"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True");
+                {
+                    connection.Open();
+                    SqlTransaction transaction = connection.BeginTransaction();
+                    SqlCommand cmd = new SqlCommand(InsertQuery, connection, transaction);
+
+                    try
+                    {
+                        cmd.Parameters.AddWithValue("@start", txt_start.Text);
+                        cmd.Parameters.AddWithValue("@end", txt_end.Text);
+                        cmd.Parameters.AddWithValue("@by", txt_by.Text);
+                        cmd.Parameters.AddWithValue("@length", length);
+                        cmd.ExecuteNonQuery();
+                        transaction.Commit();
+                        MessageBox.Show("Trasa została stworzona");
+                    }
+                    catch (SqlException sqlError)
+                    {
+                        transaction.Rollback();
+                        MessageBox.Show("Wprowadziłeś błędne dane");
+                    }
+                }
+            });
+
+            btn_back_route.Click += new EventHandler((s, ev) =>
+            {
+                pnl_create_route.Visible = false;
+            });
+        }
+
+        private void btn_show_routes_Click(object sender, EventArgs e)
+        {
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT * FROM Route;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    view_created_route.DataSource = dataTable;
+
+
+                    connection.Close();
+                }
+            }
+        }
+        //widok edycja trasy
+        private void btn_edit_route_Click(object sender, EventArgs e)
+        {
+            pnl_edit_route.Visible = true;
+
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT * FROM Route;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    view_edit_route.DataSource = dataTable;
+
+                    view_edit_route.CellValueChanged += new DataGridViewCellEventHandler(view_edit_route_Update);
+
+                    connection.Close();
+                }
+            }
+            btn_delete_route.Click += new EventHandler((s, ev) =>
+            {
+                view_edit_route.CellValueChanged -= new DataGridViewCellEventHandler(view_edit_route_Update);
+                view_edit_route.CellClick += new DataGridViewCellEventHandler(view_edit_route_Delete);
+                label_edit_route.Text = "Usuń";
+            });
+
+            btn_update_route.Click += new EventHandler((s, ev) =>
+            {
+                view_edit_route.CellValueChanged += new DataGridViewCellEventHandler(view_edit_route_Update);
+                view_edit_route.CellClick -= new DataGridViewCellEventHandler(view_edit_route_Delete);
+                label_edit_route.Text = "Aktualizuj";
+            });
+
+            btn_show_route.Click += new EventHandler((s, ev) =>
+            {
+                string query2 = "SELECT * FROM Route;";
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand command = new SqlCommand(query2, connection))
+                    {
+                        connection.Open();
+
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        view_edit_route.DataSource = dataTable;
+
+                        connection.Close();
+                    }
+                }
+            });
+
+            btn_edit_route_back.Click += new EventHandler((s, ev) =>
+            {
+                pnl_edit_route.Visible = false;
+            });
+        }
+        //edycja trasy
+        private void view_edit_route_Update(object sender, DataGridViewCellEventArgs e)
+        {
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "UPDATE Route SET [Start] = @start, [End] = @end, [By] = @by, [LengthKM] = @length WHERE [RouteID] = @routeid;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@start", view_edit_route.Rows[e.RowIndex].Cells["Start"].Value);
+                    command.Parameters.AddWithValue("@end", view_edit_route.Rows[e.RowIndex].Cells["End"].Value);
+                    command.Parameters.AddWithValue("@by", view_edit_route.Rows[e.RowIndex].Cells["By"].Value);
+                    command.Parameters.AddWithValue("@length", view_edit_route.Rows[e.RowIndex].Cells["LengthKM"].Value);
+                    command.Parameters.AddWithValue("@routeid", view_edit_route.Rows[e.RowIndex].Cells["RouteID"].Value);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+
+                }
+            }
+        }
+        //usuniecie trasy
+        private void view_edit_route_Delete(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DialogResult result = MessageBox.Show("Czy na pewno chcesz usunąć trasę?", "Usuwanie trasy", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+                    string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+                    string query = "DELETE FROM Route WHERE RouteID = @routeid";
+
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@routeid", view_edit_route.Rows[e.RowIndex].Cells["RouteID"].Value);
+
+                            connection.Open();
+                            command.ExecuteNonQuery();
+                            connection.Close();
+                        }
+                    }
+                    MessageBox.Show("Trasa została usunięta.", "Usuwanie trasy", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
     }
 }
