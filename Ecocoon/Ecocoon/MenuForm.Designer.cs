@@ -216,10 +216,10 @@
             this.widok_administracja = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
             this.pnl_druki_pliki = new System.Windows.Forms.Panel();
+            this.dGVFilesList = new System.Windows.Forms.DataGridView();
+            this.textBox_FilePath = new System.Windows.Forms.TextBox();
             this.btn_dodaj_plik = new System.Windows.Forms.Button();
-            this.btn_zaznacz = new System.Windows.Forms.Button();
-            this.btn_odznacz = new System.Windows.Forms.Button();
-            this.btn_pobierz = new System.Windows.Forms.Button();
+            this.btn_otworz = new System.Windows.Forms.Button();
             this.btn_dodaj = new System.Windows.Forms.Button();
             this.btn_anuluj = new System.Windows.Forms.Button();
             this.pnl_powiadomienia = new System.Windows.Forms.Panel();
@@ -298,6 +298,7 @@
             this.pnl_administracja.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.widok_administracja)).BeginInit();
             this.pnl_druki_pliki.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dGVFilesList)).BeginInit();
             this.pnl_account.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -2436,10 +2437,10 @@
             // 
             // pnl_druki_pliki
             // 
+            this.pnl_druki_pliki.Controls.Add(this.dGVFilesList);
+            this.pnl_druki_pliki.Controls.Add(this.textBox_FilePath);
             this.pnl_druki_pliki.Controls.Add(this.btn_dodaj_plik);
-            this.pnl_druki_pliki.Controls.Add(this.btn_zaznacz);
-            this.pnl_druki_pliki.Controls.Add(this.btn_odznacz);
-            this.pnl_druki_pliki.Controls.Add(this.btn_pobierz);
+            this.pnl_druki_pliki.Controls.Add(this.btn_otworz);
             this.pnl_druki_pliki.Controls.Add(this.btn_dodaj);
             this.pnl_druki_pliki.Controls.Add(this.btn_anuluj);
             this.pnl_druki_pliki.Location = new System.Drawing.Point(229, 58);
@@ -2447,11 +2448,26 @@
             this.pnl_druki_pliki.Size = new System.Drawing.Size(731, 482);
             this.pnl_druki_pliki.TabIndex = 3;
             // 
+            // dGVFilesList
+            // 
+            this.dGVFilesList.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dGVFilesList.Location = new System.Drawing.Point(9, 7);
+            this.dGVFilesList.Name = "dGVFilesList";
+            this.dGVFilesList.Size = new System.Drawing.Size(710, 417);
+            this.dGVFilesList.TabIndex = 0;
+            // 
+            // textBox_FilePath
+            // 
+            this.textBox_FilePath.Location = new System.Drawing.Point(7, 446);
+            this.textBox_FilePath.Name = "textBox_FilePath";
+            this.textBox_FilePath.Size = new System.Drawing.Size(378, 24);
+            this.textBox_FilePath.TabIndex = 8;
+            // 
             // btn_dodaj_plik
             // 
             this.btn_dodaj_plik.BackColor = System.Drawing.Color.Ivory;
             this.btn_dodaj_plik.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_dodaj_plik.Location = new System.Drawing.Point(61, 431);
+            this.btn_dodaj_plik.Location = new System.Drawing.Point(393, 431);
             this.btn_dodaj_plik.Name = "btn_dodaj_plik";
             this.btn_dodaj_plik.Size = new System.Drawing.Size(160, 39);
             this.btn_dodaj_plik.TabIndex = 5;
@@ -2459,39 +2475,17 @@
             this.btn_dodaj_plik.UseVisualStyleBackColor = false;
             this.btn_dodaj_plik.Click += new System.EventHandler(this.btn_dodaj_Click);
             // 
-            // btn_zaznacz
+            // btn_otworz
             // 
-            this.btn_zaznacz.BackColor = System.Drawing.Color.Ivory;
-            this.btn_zaznacz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_zaznacz.Location = new System.Drawing.Point(227, 431);
-            this.btn_zaznacz.Name = "btn_zaznacz";
-            this.btn_zaznacz.Size = new System.Drawing.Size(160, 39);
-            this.btn_zaznacz.TabIndex = 4;
-            this.btn_zaznacz.Text = "Zaznacz wszystko";
-            this.btn_zaznacz.UseVisualStyleBackColor = false;
-            // 
-            // btn_odznacz
-            // 
-            this.btn_odznacz.BackColor = System.Drawing.Color.Ivory;
-            this.btn_odznacz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_odznacz.Location = new System.Drawing.Point(393, 431);
-            this.btn_odznacz.Name = "btn_odznacz";
-            this.btn_odznacz.Size = new System.Drawing.Size(160, 39);
-            this.btn_odznacz.TabIndex = 3;
-            this.btn_odznacz.Text = "Odznacz";
-            this.btn_odznacz.UseVisualStyleBackColor = false;
-            this.btn_odznacz.Click += new System.EventHandler(this.button3_Click_1);
-            // 
-            // btn_pobierz
-            // 
-            this.btn_pobierz.BackColor = System.Drawing.Color.Ivory;
-            this.btn_pobierz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_pobierz.Location = new System.Drawing.Point(557, 431);
-            this.btn_pobierz.Name = "btn_pobierz";
-            this.btn_pobierz.Size = new System.Drawing.Size(160, 39);
-            this.btn_pobierz.TabIndex = 2;
-            this.btn_pobierz.Text = "Pobierz";
-            this.btn_pobierz.UseVisualStyleBackColor = false;
+            this.btn_otworz.BackColor = System.Drawing.Color.Ivory;
+            this.btn_otworz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_otworz.Location = new System.Drawing.Point(557, 431);
+            this.btn_otworz.Name = "btn_otworz";
+            this.btn_otworz.Size = new System.Drawing.Size(160, 39);
+            this.btn_otworz.TabIndex = 2;
+            this.btn_otworz.Text = "Otwórz";
+            this.btn_otworz.UseVisualStyleBackColor = false;
+            this.btn_otworz.Click += new System.EventHandler(this.btn_otworz_Click);
             // 
             // btn_dodaj
             // 
@@ -2801,14 +2795,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(960, 540);
-            this.Controls.Add(this.pnl_edycja_danych);
+            this.Controls.Add(this.pnl_druki_pliki);
             this.Controls.Add(this.pnl_powiadomienia);
             this.Controls.Add(this.pnl_Blank);
             this.Controls.Add(this.pnl_left);
             this.Controls.Add(this.pnl_account);
             this.Controls.Add(this.pnl_harmonogramy);
             this.Controls.Add(this.pnl_wydzialy);
-            this.Controls.Add(this.pnl_druki_pliki);
+            this.Controls.Add(this.pnl_edycja_danych);
             this.Controls.Add(this.pnl_raport_odp);
             this.Controls.Add(this.pnl_up);
             this.Font = new System.Drawing.Font("Arial Black", 9F, System.Drawing.FontStyle.Bold);
@@ -2889,6 +2883,8 @@
             this.pnl_administracja.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.widok_administracja)).EndInit();
             this.pnl_druki_pliki.ResumeLayout(false);
+            this.pnl_druki_pliki.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dGVFilesList)).EndInit();
             this.pnl_account.ResumeLayout(false);
             this.pnl_account.PerformLayout();
             this.ResumeLayout(false);
@@ -2940,9 +2936,7 @@
         private System.Windows.Forms.Button odbior;
         private System.Windows.Forms.Button segregacja;
         private System.Windows.Forms.Panel pnl_druki_pliki;
-        private System.Windows.Forms.Button btn_zaznacz;
-        private System.Windows.Forms.Button btn_odznacz;
-        private System.Windows.Forms.Button btn_pobierz;
+        private System.Windows.Forms.Button btn_otworz;
         private System.Windows.Forms.Panel pnl_powiadomienia;
         private System.Windows.Forms.Button btn_edit_harmonogram;
         private System.Windows.Forms.Button btn_edit_user;
@@ -3118,5 +3112,7 @@
         private System.Windows.Forms.Label Tryb_trucks;
         private System.Windows.Forms.Button btn_update_trucks;
         private System.Windows.Forms.Button btn_delete_trucks;
+        private System.Windows.Forms.TextBox textBox_FilePath;
+        private System.Windows.Forms.DataGridView dGVFilesList;
     }
 }

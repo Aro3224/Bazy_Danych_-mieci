@@ -16,6 +16,7 @@ using System.Configuration;
 using static System.Data.Entity.Infrastructure.Design.Executor;
 using System.Runtime.Remoting.Messaging;
 using System.ComponentModel.Design;
+using System.IO;
 
 namespace Ecocoon
 {
@@ -99,12 +100,23 @@ namespace Ecocoon
             btn_anuluj.Visible = false;
             btn_dodaj.Visible = false;
             pnl_Blank.Visible = false;
+            textBox_FilePath.Visible= false;
 
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
             string query = "SELECT Department FROM Users WHERE Email = @Email;";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
+                string query2 = "SELECT FileID,FileName,Extension FROM Files";
+                SqlDataAdapter adp = new SqlDataAdapter(query2, connection);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+
+                if (dt.Rows.Count > 0)
+                {
+                    dGVFilesList.DataSource = dt;
+                }
+
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     connection.Open();
@@ -289,7 +301,7 @@ namespace Ecocoon
         private void btn_add_Click(object sender, EventArgs e)
         {
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
-            SqlConnection con = new SqlConnection($"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True");
+            SqlConnection con = new SqlConnection($"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True");        
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
 
             string selectQuery = "SELECT Email FROM Users WHERE Email = @addEmail";
@@ -836,7 +848,6 @@ namespace Ecocoon
             pnl_add_acc.Visible = false;
             pnl_edit_wydzial.Visible = true;
             pnl_edit_harmonogram.Visible = false;
-            pnl_edit_team1.Visible = false;
             pnl_edit_team1.Visible = false;
             pnl_edit_truck.Visible = false;
         }
@@ -1452,9 +1463,12 @@ namespace Ecocoon
             btn_anuluj.Visible = true;
             btn_dodaj.Visible = true;
             btn_dodaj_plik.Visible = false;
-            btn_zaznacz.Visible = false;
-            btn_odznacz.Visible = false;
-            btn_pobierz.Visible = false;
+            btn_otworz.Visible = false;
+            textBox_FilePath.Visible = true;
+
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.ShowDialog();
+            textBox_FilePath.Text = dlg.FileName;
         }
 
         private void btn_anuluj_Click(object sender, EventArgs e)
@@ -1462,9 +1476,8 @@ namespace Ecocoon
             btn_anuluj.Visible = false;
             btn_dodaj.Visible = false;
             btn_dodaj_plik.Visible = true;
-            btn_zaznacz.Visible = true;
-            btn_odznacz.Visible = true;
-            btn_pobierz.Visible = true;
+            btn_otworz.Visible = true;
+            textBox_FilePath.Visible = false;
         }
 
 
@@ -1473,9 +1486,63 @@ namespace Ecocoon
             btn_anuluj.Visible = false;
             btn_dodaj.Visible = false;
             btn_dodaj_plik.Visible = true;
-            btn_zaznacz.Visible = true;
-            btn_odznacz.Visible = true;
-            btn_pobierz.Visible = true;
+            btn_otworz.Visible = true;
+            textBox_FilePath.Visible = false;
+
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+
+            if (!string.IsNullOrEmpty(textBox_FilePath.Text))
+            {
+                using (Stream stream = File.OpenRead(textBox_FilePath.Text))
+                {
+                    byte[] buffer = new byte[stream.Length];
+                    stream.Read(buffer, 0, buffer.Length);
+
+                    string extn = new FileInfo(textBox_FilePath.Text).Extension;
+
+                    if (extn == ".pdf")
+                    {
+                        string name = new FileInfo(textBox_FilePath.Text).Name;
+
+                        string query = "INSERT INTO Files VALUES (@FileName,@Extension,@File)";
+
+                        using (SqlConnection connection = new SqlConnection(connectionString))
+                        {
+                            using (SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                connection.Open();
+
+                                command.Parameters.Add("@FileName", SqlDbType.VarChar).Value = name;
+                                command.Parameters.Add("@Extension", SqlDbType.Char).Value = extn;
+                                command.Parameters.Add("@File", SqlDbType.VarBinary).Value = buffer;
+
+                                command.ExecuteNonQuery();
+
+                                connection.Close();
+                            }
+                            string query2 = "SELECT FileID,FileName,Extension FROM Files";
+                            SqlDataAdapter adp = new SqlDataAdapter(query2, connection);
+                            DataTable dt = new DataTable();
+                            adp.Fill(dt);
+
+                            if (dt.Rows.Count > 0)
+                            {
+                                dGVFilesList.DataSource = dt;
+                            }
+                        }
+                        MessageBox.Show("Zapisano plik.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Format pliku musi być .pdf");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ścieżka pliku jest pusta.");
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -1957,5 +2024,33 @@ namespace Ecocoon
 
         }
 
+
+        private void btn_otworz_Click(object sender, EventArgs e)
+        {
+            var selectedRow = dGVFilesList.SelectedRows;
+            foreach(var row in selectedRow)
+            {
+                int id = (int)((DataGridViewRow)row).Cells[0].Value;
+                string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+                string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = "SELECT FileName, Extension, [File] FROM Files WHERE FileID = @id";
+                    SqlCommand cmd = new SqlCommand(query, connection);
+                    connection.Open();
+                    cmd.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                    var reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        var name = reader["Filename"].ToString();
+                        var data = (byte[])reader["File"];
+                        var extn = reader["Extension"].ToString();
+                        var newFileName = name.Replace(extn, DateTime.Now.ToString("ddMMyyyy")) + extn;
+                        File.WriteAllBytes(newFileName, data);
+                        System.Diagnostics.Process.Start(newFileName);
+                    }
+                }
+            }   
+        }
     }
 }

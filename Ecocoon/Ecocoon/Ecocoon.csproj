@@ -60,7 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Departments.cs">
-      <DependentUpon>SmeciModel.tt</DependentUpon>
+      <DependentUpon>SmieciModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -69,7 +69,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="GarbageType.cs">
-      <DependentUpon>SmeciModel.tt</DependentUpon>
+      <DependentUpon>SmieciModel.tt</DependentUpon>
     </Compile>
     <Compile Include="MenuForm.cs">
       <SubType>Form</SubType>
@@ -86,34 +86,34 @@
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
     <Compile Include="Route.cs">
-      <DependentUpon>SmeciModel.tt</DependentUpon>
+      <DependentUpon>SmieciModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Schedule.cs">
-      <DependentUpon>SmeciModel.tt</DependentUpon>
+      <DependentUpon>SmieciModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SmeciModel.Context.cs">
+    <Compile Include="SmieciModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SmeciModel.Context.tt</DependentUpon>
+      <DependentUpon>SmieciModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="SmeciModel.cs">
+    <Compile Include="SmieciModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SmeciModel.tt</DependentUpon>
+      <DependentUpon>SmieciModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SmeciModel.Designer.cs">
+    <Compile Include="SmieciModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SmeciModel.edmx</DependentUpon>
+      <DependentUpon>SmieciModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Truck.cs">
-      <DependentUpon>SmeciModel.tt</DependentUpon>
+      <DependentUpon>SmieciModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Users.cs">
-      <DependentUpon>SmeciModel.tt</DependentUpon>
+      <DependentUpon>SmieciModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Users_add_info.cs">
-      <DependentUpon>SmeciModel.tt</DependentUpon>
+      <DependentUpon>SmieciModel.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -143,12 +143,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EntityDeploy Include="SmeciModel.edmx">
+    <EntityDeploy Include="SmieciModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SmeciModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>SmieciModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="SmeciModel.edmx.diagram">
-      <DependentUpon>SmeciModel.edmx</DependentUpon>
+    <None Include="SmieciModel.edmx.diagram">
+      <DependentUpon>SmieciModel.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -158,15 +158,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SmeciModel.Context.tt">
+    <Content Include="SmieciModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SmeciModel.edmx</DependentUpon>
-      <LastGenOutput>SmeciModel.Context.cs</LastGenOutput>
+      <DependentUpon>SmieciModel.edmx</DependentUpon>
+      <LastGenOutput>SmieciModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="SmeciModel.tt">
+    <Content Include="SmieciModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SmeciModel.edmx</DependentUpon>
-      <LastGenOutput>SmeciModel.cs</LastGenOutput>
+      <DependentUpon>SmieciModel.edmx</DependentUpon>
+      <LastGenOutput>SmieciModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
