@@ -1691,49 +1691,40 @@ namespace Ecocoon
                     adapter.Fill(dataTable);
                     view_editTeam.DataSource = dataTable;
 
-                    view_editTeam.CellValueChanged += new DataGridViewCellEventHandler(view_edit_team_Update);
+                    view_editTeam.CellClick += new DataGridViewCellEventHandler(view_edit_team_Delete);
+
 
                     connection.Close();
                 }
-            }
+            } 
         }
         //edycja zespołów
-        private void view_edit_team_Update(object sender, DataGridViewCellEventArgs e)
+        private void view_edit_team_Delete(object sender, DataGridViewCellEventArgs e)
         {
-            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
-            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            string query = "UPDATE Users SET Team = NULL WHERE UserID = @olduserid";
-            string query2 = "UPDATE Users SET Team = @truckid WHERE UserID = @newuserid;";
-            string query3 = "UPDATE Truck SET PltNumber = @pltnumber WHERE TruckID = @truckid;";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            if (e.RowIndex >= 0)
             {
-                connection.Open();
+                DialogResult result = MessageBox.Show("Czy na pewno chcesz usunąć użytkownika z teamu?", "Usuwanie użytkownika", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                // Ustaw wartość Team na NULL dla starego UserID
-                using (SqlCommand command = new SqlCommand(query, connection))
+                if (result == DialogResult.Yes)
                 {
-                    command.Parameters.AddWithValue("@olduserid", view_editTeam.Rows[e.RowIndex].Cells["UserID"].Value);
-                    command.ExecuteNonQuery();
-                }
+                    string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+                    string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+                    string query = "UPDATE Users SET Team = NULL WHERE UserID = @UserID;";
 
-                // Aktualizuj wartość Team dla nowego UserID
-                using (SqlCommand command = new SqlCommand(query2, connection))
-                {
-                    command.Parameters.AddWithValue("@newuserid", view_editTeam.Rows[e.RowIndex].Cells["UserID"].EditedFormattedValue);
-                    command.Parameters.AddWithValue("@truckid", view_editTeam.Rows[e.RowIndex].Cells["TruckID"].Value);
-                    command.ExecuteNonQuery();
-                }
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@UserID", view_editTeam.Rows[e.RowIndex].Cells["UserID"].Value);
 
-                // Aktualizuj wartość PltNumber dla danego TruckID
-                using (SqlCommand command = new SqlCommand(query3, connection))
-                {
-                    command.Parameters.AddWithValue("@pltnumber", view_editTeam.Rows[e.RowIndex].Cells["PltNumber"].Value);
-                    command.Parameters.AddWithValue("@truckid", view_editTeam.Rows[e.RowIndex].Cells["TruckID"].Value);
-                    command.ExecuteNonQuery();
-                }
+                            connection.Open();
+                            command.ExecuteNonQuery();
+                            connection.Close();
+                        }
 
-                connection.Close();
+                    }
+                    MessageBox.Show("Użytkownik został usunięty.", "Usuwanie użytkownika", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 
