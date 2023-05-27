@@ -1464,6 +1464,7 @@ namespace Ecocoon
             btn_dodaj.Visible = true;
             btn_dodaj_plik.Visible = false;
             btn_otworz.Visible = false;
+            btn_usun_plik.Visible = false;
             textBox_FilePath.Visible = true;
 
             OpenFileDialog dlg = new OpenFileDialog();
@@ -1487,6 +1488,7 @@ namespace Ecocoon
             btn_dodaj.Visible = false;
             btn_dodaj_plik.Visible = true;
             btn_otworz.Visible = true;
+            btn_usun_plik.Visible = true;
             textBox_FilePath.Visible = false;
 
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
@@ -2028,7 +2030,7 @@ namespace Ecocoon
         private void btn_otworz_Click(object sender, EventArgs e)
         {
             var selectedRow = dGVFilesList.SelectedRows;
-            foreach(var row in selectedRow)
+            foreach (var row in selectedRow)
             {
                 int id = (int)((DataGridViewRow)row).Cells[0].Value;
                 string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
@@ -2050,7 +2052,43 @@ namespace Ecocoon
                         System.Diagnostics.Process.Start(newFileName);
                     }
                 }
-            }   
+            }
+        }
+
+        private void btn_usun_plik_Click(object sender, EventArgs e)
+        {
+            var selectedRow = dGVFilesList.SelectedRows;
+            foreach (var row in selectedRow)
+            {
+                int id = (int)((DataGridViewRow)row).Cells[0].Value;
+                string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+                string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = "DELETE FROM Files WHERE FileID = @id";
+                    SqlCommand cmd = new SqlCommand(query, connection);
+                    connection.Open();
+                    cmd.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Plik został usunięty z bazy danych.");
+                        string query2 = "SELECT FileID,FileName,Extension FROM Files";
+                        SqlDataAdapter adp = new SqlDataAdapter(query2, connection);
+                        DataTable dt = new DataTable();
+                        adp.Fill(dt);
+
+                        if (dt.Rows.Count >= 0)
+                        {
+                            dGVFilesList.DataSource = dt;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nie udało się usunąć pliku z bazy danych.");
+                    }
+                }
+            }
         }
     }
 }

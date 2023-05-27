@@ -250,6 +250,7 @@
             this.opis_imie = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.pnl_Blank = new System.Windows.Forms.Panel();
+            this.btn_usun_plik = new System.Windows.Forms.Button();
             this.pnl_left.SuspendLayout();
             this.pnl_raport_odp.SuspendLayout();
             this.pnl_new_raport.SuspendLayout();
@@ -2437,6 +2438,7 @@
             // 
             // pnl_druki_pliki
             // 
+            this.pnl_druki_pliki.Controls.Add(this.btn_usun_plik);
             this.pnl_druki_pliki.Controls.Add(this.dGVFilesList);
             this.pnl_druki_pliki.Controls.Add(this.textBox_FilePath);
             this.pnl_druki_pliki.Controls.Add(this.btn_dodaj_plik);
@@ -2789,6 +2791,18 @@
             this.pnl_Blank.Size = new System.Drawing.Size(731, 486);
             this.pnl_Blank.TabIndex = 15;
             // 
+            // btn_usun_plik
+            // 
+            this.btn_usun_plik.BackColor = System.Drawing.Color.Ivory;
+            this.btn_usun_plik.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_usun_plik.Location = new System.Drawing.Point(227, 431);
+            this.btn_usun_plik.Name = "btn_usun_plik";
+            this.btn_usun_plik.Size = new System.Drawing.Size(160, 39);
+            this.btn_usun_plik.TabIndex = 9;
+            this.btn_usun_plik.Text = "Usuń Plik";
+            this.btn_usun_plik.UseVisualStyleBackColor = false;
+            this.btn_usun_plik.Click += new System.EventHandler(this.btn_usun_plik_Click);
+            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -3114,5 +3128,6 @@
         private System.Windows.Forms.Button btn_delete_trucks;
         private System.Windows.Forms.TextBox textBox_FilePath;
         private System.Windows.Forms.DataGridView dGVFilesList;
+        private System.Windows.Forms.Button btn_usun_plik;
     }
 }
