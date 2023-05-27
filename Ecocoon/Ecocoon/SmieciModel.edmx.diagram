@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c0db55d5fb524852a7bbacc63b6bdcef" Name="Diagram1">
+        <EntityTypeShape EntityType="DatabaseSmieciModel.Departments" Width="1.5" PointX="3.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseSmieciModel.Files" Width="1.5" PointX="2.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseSmieciModel.GarbageType" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseSmieciModel.Route" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseSmieciModel.Schedule" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseSmieciModel.Truck" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseSmieciModel.Users" Width="1.5" PointX="6" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseSmieciModel.Users_add_info" Width="1.5" PointX="8.25" PointY="3.875" IsExpanded="true" />
+        <AssociationConnector Association="DatabaseSmieciModel.FK_Users_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseSmieciModel.FK_Schedule_GarbageType" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseSmieciModel.FK_Schedule_Route" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseSmieciModel.FK_Schedule_Truck" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseSmieciModel.FK_Users_Truck" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseSmieciModel.FK_Users_add_info_Users" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

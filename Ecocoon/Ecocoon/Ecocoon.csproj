@@ -62,6 +62,9 @@
     <Compile Include="Departments.cs">
       <DependentUpon>SmieciModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Files.cs">
+      <DependentUpon>SmieciModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
