@@ -1486,42 +1486,57 @@ namespace Ecocoon
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
 
-            using (Stream stream = File.OpenRead(textBox_FilePath.Text))
+            if (!string.IsNullOrEmpty(textBox_FilePath.Text))
             {
-                byte[] buffer = new byte[stream.Length];
-                stream.Read(buffer, 0, buffer.Length);
-
-                string extn = new FileInfo(textBox_FilePath.Text).Extension;
-                string name = new FileInfo(textBox_FilePath.Text).Name;
-
-                string query = "INSERT INTO Files VALUES (@FileName,@Extension,@File)";
-
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (Stream stream = File.OpenRead(textBox_FilePath.Text))
                 {
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    byte[] buffer = new byte[stream.Length];
+                    stream.Read(buffer, 0, buffer.Length);
+
+                    string extn = new FileInfo(textBox_FilePath.Text).Extension;
+
+                    if (extn == ".pdf")
                     {
-                        connection.Open();
+                        string name = new FileInfo(textBox_FilePath.Text).Name;
 
-                        command.Parameters.Add("@FileName", SqlDbType.VarChar).Value = name;
-                        command.Parameters.Add("@Extension", SqlDbType.Char).Value = extn;
-                        command.Parameters.Add("@File", SqlDbType.VarBinary).Value = buffer;
+                        string query = "INSERT INTO Files VALUES (@FileName,@Extension,@File)";
 
-                        command.ExecuteNonQuery();
+                        using (SqlConnection connection = new SqlConnection(connectionString))
+                        {
+                            using (SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                connection.Open();
 
-                        connection.Close();
+                                command.Parameters.Add("@FileName", SqlDbType.VarChar).Value = name;
+                                command.Parameters.Add("@Extension", SqlDbType.Char).Value = extn;
+                                command.Parameters.Add("@File", SqlDbType.VarBinary).Value = buffer;
+
+                                command.ExecuteNonQuery();
+
+                                connection.Close();
+                            }
+                            string query2 = "SELECT FileID,FileName,Extension FROM Files";
+                            SqlDataAdapter adp = new SqlDataAdapter(query2, connection);
+                            DataTable dt = new DataTable();
+                            adp.Fill(dt);
+
+                            if (dt.Rows.Count > 0)
+                            {
+                                dGVFilesList.DataSource = dt;
+                            }
+                        }
+                        MessageBox.Show("Zapisano plik.");
                     }
-                    string query2 = "SELECT FileID,FileName,Extension FROM Files";
-                    SqlDataAdapter adp = new SqlDataAdapter(query2, connection);
-                    DataTable dt = new DataTable();
-                    adp.Fill(dt);
-
-                    if (dt.Rows.Count > 0)
+                    else
                     {
-                        dGVFilesList.DataSource = dt;
+                        MessageBox.Show("Format pliku musi być .pdf");
                     }
                 }
             }
-            MessageBox.Show("Zapisano plik.");
+            else
+            {
+                MessageBox.Show("Ścieżka pliku jest pusta.");
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
