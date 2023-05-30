@@ -49,7 +49,7 @@ namespace Ecocoon
         }
         private void MenuForm_Load(object sender, EventArgs e)
         {
-
+  
         }
         private void button7_Click(object sender, EventArgs e)
         {
@@ -69,6 +69,150 @@ namespace Ecocoon
             pnl_raport_odp.Visible = false;
             pnl_account.Visible = false;
             pnl_Blank.Visible = false;
+
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT s.[Date] AS 'Data', r.[Start] AS 'Początek', r.[End] AS 'Koniec', r.[By] AS 'Przez', r.LengthKM AS 'Długość KM', t.Brand AS 'Marka', t.PltNumber AS 'Nr rejestracyjny' FROM Schedule s JOIN Route r ON s.RouteID = r.RouteID JOIN Truck t ON s.TruckID = t.TruckID WHERE s.GarbageType = 1;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    view_segregowane.DataSource = dataTable;
+
+                    connection.Close();
+                }
+            }
+        }
+        private void btn_seg_yours_Click(object sender, EventArgs e)
+        {
+            int team = 0;
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand commandTeam = new SqlCommand("SELECT Team FROM Users WHERE Email = @Email", connection);
+                commandTeam.Parameters.AddWithValue("@Email", dane);
+
+                connection.Open();
+                using (SqlDataReader reader = commandTeam.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        if (!reader.IsDBNull(0))
+                        {
+                            team = reader.GetInt32(0);
+                        }
+                    }
+                }
+                connection.Close();
+            }
+            string query = "SELECT s.[Date] AS 'Data', r.[Start] AS 'Początek', r.[End] AS 'Koniec', r.[By] AS 'Przez', r.LengthKM AS 'Długość KM', t.Brand AS 'Marka', t.PltNumber AS 'Nr rejestracyjny' FROM Schedule s JOIN Route r ON s.RouteID = r.RouteID JOIN Truck t ON s.TruckID = t.TruckID WHERE s.GarbageType = 1 AND t.TruckID = @team;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+                    command.Parameters.AddWithValue("@team", team);
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    view_segregowane.DataSource = dataTable;
+
+                    connection.Close();
+                }
+            }
+        }
+
+        private void btn_seg_all_Click(object sender, EventArgs e)
+        {
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT s.[Date] AS 'Data', r.[Start] AS 'Początek', r.[End] AS 'Koniec', r.[By] AS 'Przez', r.LengthKM AS 'Długość KM', t.Brand AS 'Marka', t.PltNumber AS 'Nr rejestracyjny' FROM Schedule s JOIN Route r ON s.RouteID = r.RouteID JOIN Truck t ON s.TruckID = t.TruckID WHERE s.GarbageType = 1;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    view_segregowane.DataSource = dataTable;
+
+                    connection.Close();
+                }
+            }
+        }
+
+        private void btn_nieseg_yours_Click(object sender, EventArgs e)
+        {
+            int team = 0;
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand commandTeam = new SqlCommand("SELECT Team FROM Users WHERE Email = @Email", connection);
+                commandTeam.Parameters.AddWithValue("@Email", dane);
+
+                connection.Open();
+                using (SqlDataReader reader = commandTeam.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        if (!reader.IsDBNull(0))
+                        {
+                            team = reader.GetInt32(0);
+                        }
+                    }
+                }
+                connection.Close();
+            }
+            string query = "SELECT s.[Date] AS 'Data', r.[Start] AS 'Początek', r.[End] AS 'Koniec', r.[By] AS 'Przez', r.LengthKM AS 'Długość KM', t.Brand AS 'Marka', t.PltNumber AS 'Nr rejestracyjny' FROM Schedule s JOIN Route r ON s.RouteID = r.RouteID JOIN Truck t ON s.TruckID = t.TruckID WHERE s.GarbageType = 2 AND t.TruckID = @team;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+                    command.Parameters.AddWithValue("@team", team);
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    view_niesegregowane.DataSource = dataTable;
+
+                    connection.Close();
+                }
+            }
+        }
+
+        private void btn_nieseg_all_Click(object sender, EventArgs e)
+        {
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT s.[Date] AS 'Data', r.[Start] AS 'Początek', r.[End] AS 'Koniec', r.[By] AS 'Przez', r.LengthKM AS 'Długość KM', t.Brand AS 'Marka', t.PltNumber AS 'Nr rejestracyjny' FROM Schedule s JOIN Route r ON s.RouteID = r.RouteID JOIN Truck t ON s.TruckID = t.TruckID WHERE s.GarbageType = 2;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    view_niesegregowane.DataSource = dataTable;
+
+                    connection.Close();
+                }
+            }
         }
 
         private void btn_wydzialy_Click(object sender, EventArgs e)
@@ -203,12 +347,50 @@ namespace Ecocoon
         {
             pnl_segregowane.Visible = true;
             pnl_niesegregowane.Visible = false;
+
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT s.[Date] AS 'Data', r.[Start] AS 'Początek', r.[End] AS 'Koniec', r.[By] AS 'Przez', r.LengthKM AS 'Długość KM', t.Brand AS 'Marka', t.PltNumber AS 'Nr rejestracyjny' FROM Schedule s JOIN Route r ON s.RouteID = r.RouteID JOIN Truck t ON s.TruckID = t.TruckID WHERE s.GarbageType = 1;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    view_segregowane.DataSource = dataTable;
+
+                    connection.Close();
+                }
+            }
         }
 
         private void Niesegregowane_Click(object sender, EventArgs e)
         {
             pnl_niesegregowane.Visible = true;
             pnl_segregowane.Visible = false;
+
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT s.[Date] AS 'Data', r.[Start] AS 'Początek', r.[End] AS 'Koniec', r.[By] AS 'Przez', r.LengthKM AS 'Długość KM', t.Brand AS 'Marka', t.PltNumber AS 'Nr rejestracyjny' FROM Schedule s JOIN Route r ON s.RouteID = r.RouteID JOIN Truck t ON s.TruckID = t.TruckID WHERE s.GarbageType = 2;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    view_niesegregowane.DataSource = dataTable;
+
+                    connection.Close();
+                }
+            }
         }
 
         private void administracja_Click(object sender, EventArgs e)
@@ -2589,5 +2771,6 @@ namespace Ecocoon
                 }
             }
         }
+
     }
 }
