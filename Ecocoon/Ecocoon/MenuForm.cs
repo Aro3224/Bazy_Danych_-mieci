@@ -60,7 +60,7 @@ namespace Ecocoon
         private void btn_harmonogramy_Click(object sender, EventArgs e)
         {
             pnl_harmonogramy.Visible = true;
-            pnl_segregowane.Visible = false;
+            pnl_segregowane.Visible = true;
             pnl_niesegregowane.Visible = false;
             pnl_edycja_danych.Visible = false;
             pnl_wydzialy.Visible = false;
@@ -180,6 +180,10 @@ namespace Ecocoon
             pnl_edit_truck.Visible = false;
             pnl_create_truck.Visible = false;
             pnl_edit_trucks.Visible = false;
+            pnl_edit_routes.Visible = false;
+            pnl_create_route.Visible = false;
+            pnl_edit_route.Visible = false;
+            pnl_edit_schedules.Visible = false;
         }
 
         private void btn_new_acc_Click(object sender, EventArgs e)
@@ -190,6 +194,9 @@ namespace Ecocoon
             pnl_edit_team1.Visible = false;
             pnl_edit_team1.Visible = false;
             pnl_edit_truck.Visible = false;
+            pnl_edit_routes.Visible = false;
+            pnl_create_route.Visible = false;
+            pnl_edit_route.Visible = false;
         }
 
         private void Segregowane_Click(object sender, EventArgs e)
@@ -511,6 +518,9 @@ namespace Ecocoon
             pnl_Blank.Visible = false;
             pnl_edit_team1.Visible = false;
             pnl_edit_truck.Visible = false;
+            pnl_edit_routes.Visible = false;
+            pnl_create_route.Visible = false;
+            pnl_edit_route.Visible = false;
         }
 
         private void btn_edit_truck_Click(object sender, EventArgs e)
@@ -521,6 +531,9 @@ namespace Ecocoon
             pnl_edit_team1.Visible = false;
             pnl_edit_team1.Visible = true;
             pnl_edit_truck.Visible = false;
+            pnl_edit_routes.Visible = false;
+            pnl_create_route.Visible = false;
+            pnl_edit_route.Visible = false;
         }
 
         private void btn_raport_odp_Click(object sender, EventArgs e)
@@ -850,6 +863,9 @@ namespace Ecocoon
             pnl_edit_harmonogram.Visible = false;
             pnl_edit_team1.Visible = false;
             pnl_edit_truck.Visible = false;
+            pnl_edit_routes.Visible = false;
+            pnl_create_route.Visible = false;
+            pnl_edit_route.Visible = false;
         }
 
         //edycja smieciarze
@@ -1556,6 +1572,26 @@ namespace Ecocoon
         private void btn_create_harm_Click(object sender, EventArgs e)
         {
             pnl_create_schedule.Visible = true;
+            checkBox_seg.Checked = true;
+
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT * FROM Schedule;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    view_create_schedule.DataSource = dataTable;
+
+                    connection.Close();
+                }
+            }
         }
 
         private void btn_back_cs_Click(object sender, EventArgs e)
@@ -1563,8 +1599,6 @@ namespace Ecocoon
             pnl_create_schedule.Visible = false;
         }
 
-
-        //tu kodzik do tworzenia harmonogramu
 
         private void btn_create_team_Click(object sender, EventArgs e)
         {
@@ -1830,28 +1864,42 @@ namespace Ecocoon
                     return;
             }
 
-            string InsertQuery = "";
-            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
-            SqlConnection connection = new SqlConnection($"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True");
+            if (txt_id_route.Text == "" || txt_id_truck.Text == "" || txt_data.Text == "")
             {
-                connection.Open();
-                SqlTransaction transaction = connection.BeginTransaction();
-                SqlCommand cmd = new SqlCommand(InsertQuery, connection, transaction);
+                MessageBox.Show("Uzupełnij wszystkie pola");
+            }
+            else
+            {
+                string InsertQuery = "INSERT INTO Schedule VALUES (@routeid, @truckid, @date, @garbage);";
+                string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+                SqlConnection connection = new SqlConnection($"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True");
+                {
+                    connection.Open();
+                    SqlTransaction transaction = connection.BeginTransaction();
+                    SqlCommand cmd = new SqlCommand(InsertQuery, connection, transaction);
 
-                try
-                {
-                    cmd.Parameters.AddWithValue("@kierowcaID", txt_kierowca.Text);
-                    cmd.Parameters.AddWithValue("@smieciarz1ID", txt_kierowca.Text);
-                    cmd.Parameters.AddWithValue("@smieciarz2ID", txt_kierowca.Text);
-                    cmd.Parameters.AddWithValue("@numerRejest", txt_nr_rejestr.Text);
-                    cmd.ExecuteNonQuery();
-                    transaction.Commit();
-                    MessageBox.Show("Harmonogram został stworzony");
-                }
-                catch (SqlException sqlError)
-                {
-                    transaction.Rollback();
-                    MessageBox.Show("Wprowadziłeś błędne dane");
+                    try
+                    {
+                        DateTime DateSchedule;
+                        if (DateTime.TryParseExact(txt_data.Text, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateSchedule))
+                        {
+                            cmd.Parameters.AddWithValue("@routeid", txt_id_route.Text);
+                            cmd.Parameters.AddWithValue("@date", DateSchedule);
+                            cmd.Parameters.AddWithValue("@truckid", txt_id_truck.Text);
+                            cmd.Parameters.AddWithValue("@garbage", rodzajsmieci);
+                            cmd.ExecuteNonQuery();
+                            transaction.Commit();
+                            MessageBox.Show("Harmonogram został stworzony");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Nieprawidłowy format daty. Wprowadź datę w formacie: DD.MM.YYYY.");
+                        }
+                    }
+                    catch (SqlException sqlError)
+                    {
+                        transaction.Rollback();
+                    }
                 }
             }
         }
@@ -1864,6 +1912,9 @@ namespace Ecocoon
             pnl_edit_team1.Visible = false;
             pnl_edit_team1.Visible = false;
             pnl_edit_truck.Visible = true;
+            pnl_edit_routes.Visible = false;
+            pnl_create_route.Visible = false;
+            pnl_edit_route.Visible = false;
         }
 
         private void btn_created_truck_Click(object sender, EventArgs e)
@@ -2087,6 +2138,454 @@ namespace Ecocoon
                     {
                         MessageBox.Show("Nie udało się usunąć pliku z bazy danych.");
                     }
+                }
+            }
+        }
+
+        private void btn_edit_routes_Click(object sender, EventArgs e)
+        {
+            pnl_add_acc.Visible = false;
+            pnl_edit_wydzial.Visible = false;
+            pnl_edit_harmonogram.Visible = false;
+            pnl_edit_team1.Visible = false;
+            pnl_edit_team1.Visible = false;
+            pnl_edit_truck.Visible = false;
+            pnl_edit_routes.Visible = true;
+            pnl_create_route.Visible = false;
+            pnl_edit_route.Visible = false;
+        }
+
+        private void btn_create_route_Click(object sender, EventArgs e)
+        {
+            pnl_create_route.Visible = true;
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT * FROM Route;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    view_created_route.DataSource = dataTable;
+
+
+                    connection.Close();
+                }
+            }
+
+            btn_add_route.Click += new EventHandler((s, ev) =>
+            {
+                float length = float.Parse(txt_length.Text);
+
+                string InsertQuery = "INSERT INTO Route VALUES (@start, @end, @by, @length);";
+                SqlConnection connection = new SqlConnection($"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True");
+                {
+                    connection.Open();
+                    SqlTransaction transaction = connection.BeginTransaction();
+                    SqlCommand cmd = new SqlCommand(InsertQuery, connection, transaction);
+
+                    try
+                    {
+                        cmd.Parameters.AddWithValue("@start", txt_start.Text);
+                        cmd.Parameters.AddWithValue("@end", txt_end.Text);
+                        cmd.Parameters.AddWithValue("@by", txt_by.Text);
+                        cmd.Parameters.AddWithValue("@length", length);
+                        cmd.ExecuteNonQuery();
+                        transaction.Commit();
+                        MessageBox.Show("Trasa została stworzona");
+                    }
+                    catch (SqlException sqlError)
+                    {
+                        transaction.Rollback();
+                        MessageBox.Show("Wprowadziłeś błędne dane");
+                    }
+                }
+            });
+
+            btn_back_route.Click += new EventHandler((s, ev) =>
+            {
+                pnl_create_route.Visible = false;
+            });
+        }
+
+        private void btn_show_routes_Click(object sender, EventArgs e)
+        {
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT * FROM Route;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    view_created_route.DataSource = dataTable;
+
+
+                    connection.Close();
+                }
+            }
+        }
+        //widok edycja trasy
+        private void btn_edit_route_Click(object sender, EventArgs e)
+        {
+            pnl_edit_route.Visible = true;
+
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT * FROM Route;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    view_edit_route.DataSource = dataTable;
+
+                    view_edit_route.CellValueChanged += new DataGridViewCellEventHandler(view_edit_route_Update);
+
+                    connection.Close();
+                }
+            }
+            btn_delete_route.Click += new EventHandler((s, ev) =>
+            {
+                view_edit_route.CellValueChanged -= new DataGridViewCellEventHandler(view_edit_route_Update);
+                view_edit_route.CellClick += new DataGridViewCellEventHandler(view_edit_route_Delete);
+                label_edit_route.Text = "Usuń";
+            });
+
+            btn_update_route.Click += new EventHandler((s, ev) =>
+            {
+                view_edit_route.CellValueChanged += new DataGridViewCellEventHandler(view_edit_route_Update);
+                view_edit_route.CellClick -= new DataGridViewCellEventHandler(view_edit_route_Delete);
+                label_edit_route.Text = "Aktualizuj";
+            });
+
+            btn_show_route.Click += new EventHandler((s, ev) =>
+            {
+                string query2 = "SELECT * FROM Route;";
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand command = new SqlCommand(query2, connection))
+                    {
+                        connection.Open();
+
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        view_edit_route.DataSource = dataTable;
+
+                        connection.Close();
+                    }
+                }
+            });
+
+            btn_edit_route_back.Click += new EventHandler((s, ev) =>
+            {
+                pnl_edit_route.Visible = false;
+            });
+        }
+        //edycja trasy
+        private void view_edit_route_Update(object sender, DataGridViewCellEventArgs e)
+        {
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "UPDATE Route SET [Start] = @start, [End] = @end, [By] = @by, [LengthKM] = @length WHERE [RouteID] = @routeid;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@start", view_edit_route.Rows[e.RowIndex].Cells["Start"].Value);
+                    command.Parameters.AddWithValue("@end", view_edit_route.Rows[e.RowIndex].Cells["End"].Value);
+                    command.Parameters.AddWithValue("@by", view_edit_route.Rows[e.RowIndex].Cells["By"].Value);
+                    command.Parameters.AddWithValue("@length", view_edit_route.Rows[e.RowIndex].Cells["LengthKM"].Value);
+                    command.Parameters.AddWithValue("@routeid", view_edit_route.Rows[e.RowIndex].Cells["RouteID"].Value);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+
+                }
+            }
+        }
+        //usuniecie trasy
+        private void view_edit_route_Delete(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DialogResult result = MessageBox.Show("Czy na pewno chcesz usunąć trasę?", "Usuwanie trasy", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+                    string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+                    string query = "DELETE FROM Route WHERE RouteID = @routeid";
+
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@routeid", view_edit_route.Rows[e.RowIndex].Cells["RouteID"].Value);
+
+                            connection.Open();
+                            command.ExecuteNonQuery();
+                            connection.Close();
+                        }
+                    }
+                    MessageBox.Show("Trasa została usunięta.", "Usuwanie trasy", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void btn_ciezarowki_Click(object sender, EventArgs e)
+        {
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT * FROM Truck;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    view_create_schedule.DataSource = dataTable;
+
+                    connection.Close();
+                }
+            }
+        }
+
+        private void btn_trasy_Click(object sender, EventArgs e)
+        {
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT * FROM Route;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    view_create_schedule.DataSource = dataTable;
+
+                    connection.Close();
+                }
+            }
+        }
+
+        private void btn_created_schedules_Click(object sender, EventArgs e)
+        {
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT * FROM Schedule;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    view_create_schedule.DataSource = dataTable;
+
+                    connection.Close();
+                }
+            }
+        }
+        //wyswietl edycja harmonogramu
+        private void btn_edit_harm_Click(object sender, EventArgs e)
+        {
+            pnl_edit_schedules.Visible = true;
+
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT * FROM Schedule;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    view_edit_schedule.DataSource = dataTable;
+
+                    view_edit_schedule.CellValueChanged += new DataGridViewCellEventHandler(view_edit_schedule_Update);
+
+                    connection.Close();
+                }
+            }
+
+            btn_sch_show_routes.Click += new EventHandler((s, ev) =>
+            {
+                string queryroute = "SELECT * FROM Route;";
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand command = new SqlCommand(queryroute, connection))
+                    {
+                        connection.Open();
+
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        view_show_trucks_routes.DataSource = dataTable;
+
+                        connection.Close();
+                    }
+                }
+            });
+
+            btn_sch_show_trucks.Click += new EventHandler((s, ev) =>
+            {
+                string querytruck = "SELECT * FROM Truck;";
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand command = new SqlCommand(querytruck, connection))
+                    {
+                        connection.Open();
+
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        view_show_trucks_routes.DataSource = dataTable;
+
+                        connection.Close();
+                    }
+                }
+            });
+
+            btn_show_schedules.Click += new EventHandler((s, ev) =>
+            {
+                string queryschedule = "SELECT * FROM Schedule;";
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand command = new SqlCommand(queryschedule, connection))
+                    {
+                        connection.Open();
+
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        view_edit_schedule.DataSource = dataTable;
+
+                        connection.Close();
+                    }
+                }
+            });
+
+            btn_sch_back.Click += new EventHandler((s, ev) =>
+            {
+                pnl_edit_schedules.Visible = false;
+            });
+
+            btn_delete_schedule.Click += new EventHandler((s, ev) =>
+            {
+                view_edit_schedule.CellValueChanged -= new DataGridViewCellEventHandler(view_edit_schedule_Update);
+                view_edit_schedule.CellClick += new DataGridViewCellEventHandler(view_edit_schedule_Delete);
+                label_edit_schedule.Text = "Usuń";
+            });
+
+            btn_update_schedule.Click += new EventHandler((s, ev) =>
+            {
+                view_edit_schedule.CellValueChanged += new DataGridViewCellEventHandler(view_edit_schedule_Update);
+                view_edit_schedule.CellClick -= new DataGridViewCellEventHandler(view_edit_schedule_Delete);
+                label_edit_schedule.Text = "Aktualizuj";
+            });
+        }
+        //aktualizuj harmonogramy
+        private void view_edit_schedule_Update(object sender, DataGridViewCellEventArgs e)
+        {
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "UPDATE Schedule SET RouteID = @routeid, TruckID = @truckid, [Date] = @data, GarbageType = @garbage WHERE ScheduleID = @scheduleid;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlTransaction transaction = connection.BeginTransaction();
+
+                try
+                {
+                    using (SqlCommand command = new SqlCommand(query, connection, transaction))
+                    {
+                        command.Parameters.AddWithValue("@routeid", view_edit_schedule.Rows[e.RowIndex].Cells["RouteID"].Value);
+                        command.Parameters.AddWithValue("@truckid", view_edit_schedule.Rows[e.RowIndex].Cells["TruckID"].Value);
+                        command.Parameters.AddWithValue("@data", view_edit_schedule.Rows[e.RowIndex].Cells["Date"].Value);
+                        command.Parameters.AddWithValue("@garbage", view_edit_schedule.Rows[e.RowIndex].Cells["GarbageType"].Value);
+                        command.Parameters.AddWithValue("@scheduleid", view_edit_schedule.Rows[e.RowIndex].Cells["ScheduleID"].Value);
+
+                        command.ExecuteNonQuery();
+                    }
+
+                    transaction.Commit();
+                }
+                catch (SqlException sqlError)
+                {
+                    MessageBox.Show("Wprowadź poprawne dane");
+                    transaction.Rollback();
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+        //usun harmonogram
+        private void view_edit_schedule_Delete(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DialogResult result = MessageBox.Show("Czy na pewno chcesz usunąć harmonogram?", "Usuwanie harmonogramu", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+                    string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+                    string query = "DELETE FROM Schedule WHERE ScheduleID = @scheduleid";
+
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@scheduleid", view_edit_schedule.Rows[e.RowIndex].Cells["ScheduleID"].Value);
+
+                            connection.Open();
+                            command.ExecuteNonQuery();
+                            connection.Close();
+                        }
+
+                    }
+                    MessageBox.Show("Harmonogram został usunięty.", "Usuwanie harmonogramu", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
