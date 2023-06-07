@@ -41,7 +41,6 @@
             this.pnl_raport_odp = new System.Windows.Forms.Panel();
             this.pnl_new_raport = new System.Windows.Forms.Panel();
             this.txt_trasa = new System.Windows.Forms.TextBox();
-            this.txt_rodzaj = new System.Windows.Forms.TextBox();
             this.txt_ile_smiec = new System.Windows.Forms.TextBox();
             this.txt_date = new System.Windows.Forms.TextBox();
             this.txt_name = new System.Windows.Forms.TextBox();
@@ -292,6 +291,9 @@
             this.opis_imie = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.pnl_Blank = new System.Windows.Forms.Panel();
+            this.checkBox_segregowane = new System.Windows.Forms.CheckBox();
+            this.checkBox_niesegregowane = new System.Windows.Forms.CheckBox();
+            this.btn_create_gr = new System.Windows.Forms.Button();
             this.pnl_left.SuspendLayout();
             this.pnl_raport_odp.SuspendLayout();
             this.pnl_new_raport.SuspendLayout();
@@ -516,8 +518,10 @@
             // pnl_new_raport
             // 
             this.pnl_new_raport.BackColor = System.Drawing.Color.PaleGreen;
+            this.pnl_new_raport.Controls.Add(this.btn_create_gr);
+            this.pnl_new_raport.Controls.Add(this.checkBox_niesegregowane);
+            this.pnl_new_raport.Controls.Add(this.checkBox_segregowane);
             this.pnl_new_raport.Controls.Add(this.txt_trasa);
-            this.pnl_new_raport.Controls.Add(this.txt_rodzaj);
             this.pnl_new_raport.Controls.Add(this.txt_ile_smiec);
             this.pnl_new_raport.Controls.Add(this.txt_date);
             this.pnl_new_raport.Controls.Add(this.txt_name);
@@ -538,13 +542,6 @@
             this.txt_trasa.Name = "txt_trasa";
             this.txt_trasa.Size = new System.Drawing.Size(204, 24);
             this.txt_trasa.TabIndex = 22;
-            // 
-            // txt_rodzaj
-            // 
-            this.txt_rodzaj.Location = new System.Drawing.Point(147, 150);
-            this.txt_rodzaj.Name = "txt_rodzaj";
-            this.txt_rodzaj.Size = new System.Drawing.Size(204, 24);
-            this.txt_rodzaj.TabIndex = 21;
             // 
             // txt_ile_smiec
             // 
@@ -571,11 +568,11 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(93, 181);
+            this.label19.Location = new System.Drawing.Point(75, 182);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(51, 18);
+            this.label19.Size = new System.Drawing.Size(68, 18);
             this.label19.TabIndex = 17;
-            this.label19.Text = "Trasa:";
+            this.label19.Text = "ID Trasy:";
             // 
             // label18
             // 
@@ -3334,12 +3331,47 @@
             this.pnl_Blank.Size = new System.Drawing.Size(731, 486);
             this.pnl_Blank.TabIndex = 15;
             // 
+            // checkBox_segregowane
+            // 
+            this.checkBox_segregowane.AutoSize = true;
+            this.checkBox_segregowane.Location = new System.Drawing.Point(150, 153);
+            this.checkBox_segregowane.Name = "checkBox_segregowane";
+            this.checkBox_segregowane.Size = new System.Drawing.Size(116, 21);
+            this.checkBox_segregowane.TabIndex = 23;
+            this.checkBox_segregowane.Text = "Segregowane";
+            this.checkBox_segregowane.UseVisualStyleBackColor = true;
+            this.checkBox_segregowane.CheckedChanged += new System.EventHandler(this.checkBox_segregowane_CheckedChanged);
+            // 
+            // checkBox_niesegregowane
+            // 
+            this.checkBox_niesegregowane.AutoSize = true;
+            this.checkBox_niesegregowane.Location = new System.Drawing.Point(272, 153);
+            this.checkBox_niesegregowane.Name = "checkBox_niesegregowane";
+            this.checkBox_niesegregowane.Size = new System.Drawing.Size(136, 21);
+            this.checkBox_niesegregowane.TabIndex = 24;
+            this.checkBox_niesegregowane.Text = "Niesegregowane";
+            this.checkBox_niesegregowane.UseVisualStyleBackColor = true;
+            this.checkBox_niesegregowane.CheckedChanged += new System.EventHandler(this.checkBox_niesegregowane_CheckedChanged);
+            // 
+            // btn_create_gr
+            // 
+            this.btn_create_gr.BackColor = System.Drawing.Color.Ivory;
+            this.btn_create_gr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_create_gr.Location = new System.Drawing.Point(244, 341);
+            this.btn_create_gr.Name = "btn_create_gr";
+            this.btn_create_gr.Size = new System.Drawing.Size(160, 39);
+            this.btn_create_gr.TabIndex = 17;
+            this.btn_create_gr.Text = "Stwórz";
+            this.btn_create_gr.UseVisualStyleBackColor = false;
+            this.btn_create_gr.Click += new System.EventHandler(this.btn_create_gr_Click);
+            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(960, 540);
+            this.Controls.Add(this.pnl_raport_odp);
             this.Controls.Add(this.pnl_powiadomienia);
             this.Controls.Add(this.pnl_druki_pliki);
             this.Controls.Add(this.pnl_Blank);
@@ -3348,7 +3380,6 @@
             this.Controls.Add(this.pnl_harmonogramy);
             this.Controls.Add(this.pnl_wydzialy);
             this.Controls.Add(this.pnl_edycja_danych);
-            this.Controls.Add(this.pnl_raport_odp);
             this.Controls.Add(this.pnl_up);
             this.Font = new System.Drawing.Font("Arial Black", 9F, System.Drawing.FontStyle.Bold);
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -3516,7 +3547,6 @@
         private System.Windows.Forms.Button btn_print;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txt_trasa;
-        private System.Windows.Forms.TextBox txt_rodzaj;
         private System.Windows.Forms.TextBox txt_ile_smiec;
         private System.Windows.Forms.TextBox txt_date;
         private System.Windows.Forms.TextBox txt_name;
@@ -3715,5 +3745,8 @@
         private System.Windows.Forms.Button btn_seg_yours;
         private System.Windows.Forms.Button btn_nieseg_all;
         private System.Windows.Forms.Button btn_nieseg_yours;
+        private System.Windows.Forms.CheckBox checkBox_niesegregowane;
+        private System.Windows.Forms.CheckBox checkBox_segregowane;
+        private System.Windows.Forms.Button btn_create_gr;
     }
 }

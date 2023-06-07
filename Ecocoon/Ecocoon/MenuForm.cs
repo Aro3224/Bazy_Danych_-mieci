@@ -2235,11 +2235,37 @@ namespace Ecocoon
                 {
                     string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
                     string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-                    string query = "DELETE FROM Truck WHERE TruckID = @TruckID";
+                    string query1 = "DELETE FROM Schedule WHERE TruckID = @TruckID";
+                    string query2 = "UPDATE Users SET Team = NULL WHERE Team = @TruckID";
+                    string query3 = "DELETE FROM Truck WHERE TruckID = @TruckID";
 
                     using (SqlConnection connection = new SqlConnection(connectionString))
                     {
-                        using (SqlCommand command = new SqlCommand(query, connection))
+                        using (SqlCommand command = new SqlCommand(query1, connection))
+                        {
+                            command.Parameters.AddWithValue("@TruckID", view_edit_trucks.Rows[e.RowIndex].Cells["TruckID"].Value);
+
+                            connection.Open();
+                            command.ExecuteNonQuery();
+                            connection.Close();
+                        }
+                    }
+
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        using (SqlCommand command = new SqlCommand(query2, connection))
+                        {
+                            command.Parameters.AddWithValue("@TruckID", view_edit_trucks.Rows[e.RowIndex].Cells["TruckID"].Value);
+
+                            connection.Open();
+                            command.ExecuteNonQuery();
+                            connection.Close();
+                        }
+                    }
+
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        using (SqlCommand command = new SqlCommand(query3, connection))
                         {
                             command.Parameters.AddWithValue("@TruckID", view_edit_trucks.Rows[e.RowIndex].Cells["TruckID"].Value);
 
@@ -2516,11 +2542,24 @@ namespace Ecocoon
                 {
                     string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
                     string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-                    string query = "DELETE FROM Route WHERE RouteID = @routeid";
+                    string query1 = "DELETE FROM Schedule WHERE RouteID = @routeid";
+                    string query2 = "DELETE FROM Route WHERE RouteID = @routeid";
 
                     using (SqlConnection connection = new SqlConnection(connectionString))
                     {
-                        using (SqlCommand command = new SqlCommand(query, connection))
+                        using (SqlCommand command = new SqlCommand(query1, connection))
+                        {
+                            command.Parameters.AddWithValue("@routeid", view_edit_route.Rows[e.RowIndex].Cells["RouteID"].Value);
+
+                            connection.Open();
+                            command.ExecuteNonQuery();
+                            connection.Close();
+                        }
+                    }
+
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        using (SqlCommand command = new SqlCommand(query2, connection))
                         {
                             command.Parameters.AddWithValue("@routeid", view_edit_route.Rows[e.RowIndex].Cells["RouteID"].Value);
 
@@ -2772,5 +2811,78 @@ namespace Ecocoon
             }
         }
 
+        private void checkBox_segregowane_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_segregowane.Checked)
+            {
+                checkBox_niesegregowane.Checked = false;
+            }
+        }
+
+        private void checkBox_niesegregowane_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_niesegregowane.Checked)
+            {
+                checkBox_segregowane.Checked = false;
+            }
+        }
+
+        private void btn_create_gr_Click(object sender, EventArgs e)
+        {
+            int rodzajsmieci;
+            switch (true)
+            {
+                case bool _ when checkBox_segregowane.Checked:
+                    rodzajsmieci = 1;
+                    break;
+                case bool _ when checkBox_niesegregowane.Checked:
+                    rodzajsmieci = 2;
+                    break;
+
+                default:
+                    MessageBox.Show("Musisz zaznaczyć rodzaj śmieci.");
+                    return;
+            }
+
+            if (txt_name.Text == "" || txt_date.Text == "" || txt_ile_smiec.Text == "" || txt_trasa.Text == "")
+            {
+                MessageBox.Show("Uzupełnij wszystkie pola");
+            }
+            else
+            {
+                string InsertQuery = "INSERT INTO GarbageRaport VALUES (@name, @date, @garbageamount, @garbage, @route);";
+                string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+                SqlConnection connection = new SqlConnection($"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True");
+                {
+                    connection.Open();
+                    SqlTransaction transaction = connection.BeginTransaction();
+                    SqlCommand cmd = new SqlCommand(InsertQuery, connection, transaction);
+
+                    try
+                    {
+                        DateTime DateRaport;
+                        if (DateTime.TryParseExact(txt_date.Text, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateRaport))
+                        {
+                            cmd.Parameters.AddWithValue("@name", txt_name.Text);
+                            cmd.Parameters.AddWithValue("@date", DateRaport);
+                            cmd.Parameters.AddWithValue("@garbageamount", txt_ile_smiec.Text);
+                            cmd.Parameters.AddWithValue("@garbage", rodzajsmieci);
+                            cmd.Parameters.AddWithValue("@route", txt_trasa.Text);
+                            cmd.ExecuteNonQuery();
+                            transaction.Commit();
+                            MessageBox.Show("Raport został stworzony");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Nieprawidłowy format daty. Wprowadź datę w formacie: DD.MM.YYYY.");
+                        }
+                    }
+                    catch (SqlException sqlError)
+                    {
+                        transaction.Rollback();
+                    }
+                }
+            }
+        }
     }
 }
