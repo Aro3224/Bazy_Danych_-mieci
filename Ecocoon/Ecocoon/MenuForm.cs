@@ -745,6 +745,27 @@ namespace Ecocoon
             pnl_new_raport.Visible = false;
             pnl_show_raport.Visible = true;
             pnl_print_raport.Visible = false;
+
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string query = "SELECT * FROM GarbageRaport;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    view_show_gr.DataSource = dataTable;
+
+                    //view_show_gr.CellValueChanged += new DataGridViewCellEventHandler(view_edit_schedule_Update);
+
+                    connection.Close();
+                }
+            }
         }
 
         private void btn_print_raport_Click(object sender, EventArgs e)
@@ -2850,7 +2871,7 @@ namespace Ecocoon
             }
             else
             {
-                string InsertQuery = "INSERT INTO GarbageRaport VALUES (@name, @date, @garbageamount, @garbage, @route);";
+                string InsertQuery = "INSERT INTO GarbageRaport ([Name], [Date], [GarbageAmount], [GarbageType], [Route]) VALUES (@name, @date, @garbageamount, @garbage, @route);";
                 string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
                 SqlConnection connection = new SqlConnection($"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True");
                 {
@@ -2879,6 +2900,7 @@ namespace Ecocoon
                     }
                     catch (SqlException sqlError)
                     {
+                        MessageBox.Show("Podaj poprawne dane.");
                         transaction.Rollback();
                     }
                 }

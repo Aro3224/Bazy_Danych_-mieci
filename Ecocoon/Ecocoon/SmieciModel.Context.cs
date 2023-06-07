@@ -13,10 +13,10 @@ namespace Ecocoon
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DatabaseSmieciEntities4 : DbContext
+    public partial class DatabaseSmieciEntities8 : DbContext
     {
-        public DatabaseSmieciEntities4()
-            : base("name=DatabaseSmieciEntities4")
+        public DatabaseSmieciEntities8()
+            : base("name=DatabaseSmieciEntities8")
         {
         }
     
@@ -27,6 +27,7 @@ namespace Ecocoon
     
         public virtual DbSet<Departments> Departments { get; set; }
         public virtual DbSet<Files> Files { get; set; }
+        public virtual DbSet<GarbageRaport> GarbageRaport { get; set; }
         public virtual DbSet<GarbageType> GarbageType { get; set; }
         public virtual DbSet<Route> Route { get; set; }
         public virtual DbSet<Schedule> Schedule { get; set; }

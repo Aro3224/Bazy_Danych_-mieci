@@ -17,6 +17,7 @@ namespace Ecocoon
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Route()
         {
+            this.GarbageRaport = new HashSet<GarbageRaport>();
             this.Schedule = new HashSet<Schedule>();
         }
     
@@ -26,6 +27,8 @@ namespace Ecocoon
         public string By { get; set; }
         public double LengthKM { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GarbageRaport> GarbageRaport { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Schedule> Schedule { get; set; }
     }

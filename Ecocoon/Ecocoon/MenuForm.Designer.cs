@@ -294,6 +294,7 @@
             this.checkBox_segregowane = new System.Windows.Forms.CheckBox();
             this.checkBox_niesegregowane = new System.Windows.Forms.CheckBox();
             this.btn_create_gr = new System.Windows.Forms.Button();
+            this.view_show_gr = new System.Windows.Forms.DataGridView();
             this.pnl_left.SuspendLayout();
             this.pnl_raport_odp.SuspendLayout();
             this.pnl_new_raport.SuspendLayout();
@@ -354,6 +355,7 @@
             this.pnl_druki_pliki.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGVFilesList)).BeginInit();
             this.pnl_account.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.view_show_gr)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_left
@@ -504,9 +506,9 @@
             // 
             // pnl_raport_odp
             // 
+            this.pnl_raport_odp.Controls.Add(this.pnl_show_raport);
             this.pnl_raport_odp.Controls.Add(this.pnl_new_raport);
             this.pnl_raport_odp.Controls.Add(this.pnl_print_raport);
-            this.pnl_raport_odp.Controls.Add(this.pnl_show_raport);
             this.pnl_raport_odp.Controls.Add(this.btn_new_raport);
             this.pnl_raport_odp.Controls.Add(this.btn_show_raport);
             this.pnl_raport_odp.Controls.Add(this.btn_print_raport);
@@ -658,6 +660,7 @@
             // pnl_show_raport
             // 
             this.pnl_show_raport.BackColor = System.Drawing.Color.PaleGreen;
+            this.pnl_show_raport.Controls.Add(this.view_show_gr);
             this.pnl_show_raport.Controls.Add(this.label13);
             this.pnl_show_raport.Location = new System.Drawing.Point(246, 0);
             this.pnl_show_raport.Name = "pnl_show_raport";
@@ -3365,6 +3368,18 @@
             this.btn_create_gr.UseVisualStyleBackColor = false;
             this.btn_create_gr.Click += new System.EventHandler(this.btn_create_gr_Click);
             // 
+            // view_show_gr
+            // 
+            this.view_show_gr.AllowUserToAddRows = false;
+            this.view_show_gr.AllowUserToDeleteRows = false;
+            this.view_show_gr.BackgroundColor = System.Drawing.Color.Snow;
+            this.view_show_gr.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.view_show_gr.Location = new System.Drawing.Point(23, 67);
+            this.view_show_gr.Name = "view_show_gr";
+            this.view_show_gr.ReadOnly = true;
+            this.view_show_gr.Size = new System.Drawing.Size(448, 213);
+            this.view_show_gr.TabIndex = 14;
+            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -3477,6 +3492,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dGVFilesList)).EndInit();
             this.pnl_account.ResumeLayout(false);
             this.pnl_account.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.view_show_gr)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3748,5 +3764,6 @@
         private System.Windows.Forms.CheckBox checkBox_niesegregowane;
         private System.Windows.Forms.CheckBox checkBox_segregowane;
         private System.Windows.Forms.Button btn_create_gr;
+        private System.Windows.Forms.DataGridView view_show_gr;
     }
 }
