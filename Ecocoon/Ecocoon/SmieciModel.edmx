@@ -352,7 +352,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DatabaseSmieciEntities4" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DatabaseSmieciEntities9" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Departments" EntityType="Self.Departments" />
           <EntitySet Name="Files" EntityType="Self.Files" />
           <EntitySet Name="GarbageType" EntityType="Self.GarbageType" />
@@ -391,7 +391,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DatabaseSmieciModelStoreContainer" CdmEntityContainer="DatabaseSmieciEntities4">
+        <EntityContainerMapping StorageEntityContainer="DatabaseSmieciModelStoreContainer" CdmEntityContainer="DatabaseSmieciEntities9">
           <EntitySetMapping Name="Departments">
             <EntityTypeMapping TypeName="DatabaseSmieciModel.Departments">
               <MappingFragment StoreEntitySet="Departments">
