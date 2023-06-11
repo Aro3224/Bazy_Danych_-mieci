@@ -39,7 +39,13 @@
             this.btn_wydzialy = new System.Windows.Forms.Button();
             this.btn_harmonogramy = new System.Windows.Forms.Button();
             this.pnl_raport_odp = new System.Windows.Forms.Panel();
+            this.pnl_show_raport = new System.Windows.Forms.Panel();
+            this.view_show_gr = new System.Windows.Forms.DataGridView();
+            this.label13 = new System.Windows.Forms.Label();
             this.pnl_new_raport = new System.Windows.Forms.Panel();
+            this.btn_create_gr = new System.Windows.Forms.Button();
+            this.checkBox_niesegregowane = new System.Windows.Forms.CheckBox();
+            this.checkBox_segregowane = new System.Windows.Forms.CheckBox();
             this.txt_trasa = new System.Windows.Forms.TextBox();
             this.txt_ile_smiec = new System.Windows.Forms.TextBox();
             this.txt_date = new System.Windows.Forms.TextBox();
@@ -53,15 +59,12 @@
             this.pnl_print_raport = new System.Windows.Forms.Panel();
             this.btn_print = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
-            this.pnl_show_raport = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
             this.btn_new_raport = new System.Windows.Forms.Button();
             this.btn_show_raport = new System.Windows.Forms.Button();
             this.btn_print_raport = new System.Windows.Forms.Button();
             this.pnl_up = new System.Windows.Forms.Panel();
             this.btn_account = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.pnl_edycja_danych = new System.Windows.Forms.Panel();
             this.pnl_edit_schedules = new System.Windows.Forms.Panel();
             this.label_edit_schedule = new System.Windows.Forms.Label();
@@ -291,15 +294,13 @@
             this.opis_imie = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.pnl_Blank = new System.Windows.Forms.Panel();
-            this.checkBox_segregowane = new System.Windows.Forms.CheckBox();
-            this.checkBox_niesegregowane = new System.Windows.Forms.CheckBox();
-            this.btn_create_gr = new System.Windows.Forms.Button();
-            this.view_show_gr = new System.Windows.Forms.DataGridView();
+            this.button6 = new System.Windows.Forms.Button();
             this.pnl_left.SuspendLayout();
             this.pnl_raport_odp.SuspendLayout();
+            this.pnl_show_raport.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.view_show_gr)).BeginInit();
             this.pnl_new_raport.SuspendLayout();
             this.pnl_print_raport.SuspendLayout();
-            this.pnl_show_raport.SuspendLayout();
             this.pnl_up.SuspendLayout();
             this.pnl_edycja_danych.SuspendLayout();
             this.pnl_edit_schedules.SuspendLayout();
@@ -355,7 +356,6 @@
             this.pnl_druki_pliki.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dGVFilesList)).BeginInit();
             this.pnl_account.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.view_show_gr)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_left
@@ -517,6 +517,38 @@
             this.pnl_raport_odp.Size = new System.Drawing.Size(731, 482);
             this.pnl_raport_odp.TabIndex = 6;
             // 
+            // pnl_show_raport
+            // 
+            this.pnl_show_raport.BackColor = System.Drawing.Color.PaleGreen;
+            this.pnl_show_raport.Controls.Add(this.view_show_gr);
+            this.pnl_show_raport.Controls.Add(this.label13);
+            this.pnl_show_raport.Location = new System.Drawing.Point(246, 0);
+            this.pnl_show_raport.Name = "pnl_show_raport";
+            this.pnl_show_raport.Size = new System.Drawing.Size(485, 486);
+            this.pnl_show_raport.TabIndex = 15;
+            // 
+            // view_show_gr
+            // 
+            this.view_show_gr.AllowUserToAddRows = false;
+            this.view_show_gr.AllowUserToDeleteRows = false;
+            this.view_show_gr.BackgroundColor = System.Drawing.Color.Snow;
+            this.view_show_gr.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.view_show_gr.Location = new System.Drawing.Point(23, 67);
+            this.view_show_gr.Name = "view_show_gr";
+            this.view_show_gr.ReadOnly = true;
+            this.view_show_gr.Size = new System.Drawing.Size(448, 213);
+            this.view_show_gr.TabIndex = 14;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
+            this.label13.Location = new System.Drawing.Point(19, 14);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(149, 23);
+            this.label13.TabIndex = 13;
+            this.label13.Text = "Wyświetl raport";
+            // 
             // pnl_new_raport
             // 
             this.pnl_new_raport.BackColor = System.Drawing.Color.PaleGreen;
@@ -537,6 +569,40 @@
             this.pnl_new_raport.Name = "pnl_new_raport";
             this.pnl_new_raport.Size = new System.Drawing.Size(485, 483);
             this.pnl_new_raport.TabIndex = 14;
+            // 
+            // btn_create_gr
+            // 
+            this.btn_create_gr.BackColor = System.Drawing.Color.Ivory;
+            this.btn_create_gr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_create_gr.Location = new System.Drawing.Point(244, 341);
+            this.btn_create_gr.Name = "btn_create_gr";
+            this.btn_create_gr.Size = new System.Drawing.Size(160, 39);
+            this.btn_create_gr.TabIndex = 17;
+            this.btn_create_gr.Text = "Stwórz";
+            this.btn_create_gr.UseVisualStyleBackColor = false;
+            this.btn_create_gr.Click += new System.EventHandler(this.btn_create_gr_Click);
+            // 
+            // checkBox_niesegregowane
+            // 
+            this.checkBox_niesegregowane.AutoSize = true;
+            this.checkBox_niesegregowane.Location = new System.Drawing.Point(272, 153);
+            this.checkBox_niesegregowane.Name = "checkBox_niesegregowane";
+            this.checkBox_niesegregowane.Size = new System.Drawing.Size(136, 21);
+            this.checkBox_niesegregowane.TabIndex = 24;
+            this.checkBox_niesegregowane.Text = "Niesegregowane";
+            this.checkBox_niesegregowane.UseVisualStyleBackColor = true;
+            this.checkBox_niesegregowane.CheckedChanged += new System.EventHandler(this.checkBox_niesegregowane_CheckedChanged);
+            // 
+            // checkBox_segregowane
+            // 
+            this.checkBox_segregowane.AutoSize = true;
+            this.checkBox_segregowane.Location = new System.Drawing.Point(150, 153);
+            this.checkBox_segregowane.Name = "checkBox_segregowane";
+            this.checkBox_segregowane.Size = new System.Drawing.Size(116, 21);
+            this.checkBox_segregowane.TabIndex = 23;
+            this.checkBox_segregowane.Text = "Segregowane";
+            this.checkBox_segregowane.UseVisualStyleBackColor = true;
+            this.checkBox_segregowane.CheckedChanged += new System.EventHandler(this.checkBox_segregowane_CheckedChanged);
             // 
             // txt_trasa
             // 
@@ -657,26 +723,6 @@
             this.label14.TabIndex = 13;
             this.label14.Text = "Drukuj raport";
             // 
-            // pnl_show_raport
-            // 
-            this.pnl_show_raport.BackColor = System.Drawing.Color.PaleGreen;
-            this.pnl_show_raport.Controls.Add(this.view_show_gr);
-            this.pnl_show_raport.Controls.Add(this.label13);
-            this.pnl_show_raport.Location = new System.Drawing.Point(246, 0);
-            this.pnl_show_raport.Name = "pnl_show_raport";
-            this.pnl_show_raport.Size = new System.Drawing.Size(485, 486);
-            this.pnl_show_raport.TabIndex = 15;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
-            this.label13.Location = new System.Drawing.Point(19, 14);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(149, 23);
-            this.label13.TabIndex = 13;
-            this.label13.Text = "Wyświetl raport";
-            // 
             // btn_new_raport
             // 
             this.btn_new_raport.BackColor = System.Drawing.Color.Ivory;
@@ -748,19 +794,6 @@
             this.button7.TabIndex = 1;
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // button6
-            // 
-            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
-            this.button6.Location = new System.Drawing.Point(575, 0);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 61);
-            this.button6.TabIndex = 0;
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // pnl_edycja_danych
             // 
@@ -3334,51 +3367,18 @@
             this.pnl_Blank.Size = new System.Drawing.Size(731, 486);
             this.pnl_Blank.TabIndex = 15;
             // 
-            // checkBox_segregowane
+            // button6
             // 
-            this.checkBox_segregowane.AutoSize = true;
-            this.checkBox_segregowane.Location = new System.Drawing.Point(150, 153);
-            this.checkBox_segregowane.Name = "checkBox_segregowane";
-            this.checkBox_segregowane.Size = new System.Drawing.Size(116, 21);
-            this.checkBox_segregowane.TabIndex = 23;
-            this.checkBox_segregowane.Text = "Segregowane";
-            this.checkBox_segregowane.UseVisualStyleBackColor = true;
-            this.checkBox_segregowane.CheckedChanged += new System.EventHandler(this.checkBox_segregowane_CheckedChanged);
-            // 
-            // checkBox_niesegregowane
-            // 
-            this.checkBox_niesegregowane.AutoSize = true;
-            this.checkBox_niesegregowane.Location = new System.Drawing.Point(272, 153);
-            this.checkBox_niesegregowane.Name = "checkBox_niesegregowane";
-            this.checkBox_niesegregowane.Size = new System.Drawing.Size(136, 21);
-            this.checkBox_niesegregowane.TabIndex = 24;
-            this.checkBox_niesegregowane.Text = "Niesegregowane";
-            this.checkBox_niesegregowane.UseVisualStyleBackColor = true;
-            this.checkBox_niesegregowane.CheckedChanged += new System.EventHandler(this.checkBox_niesegregowane_CheckedChanged);
-            // 
-            // btn_create_gr
-            // 
-            this.btn_create_gr.BackColor = System.Drawing.Color.Ivory;
-            this.btn_create_gr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_create_gr.Location = new System.Drawing.Point(244, 341);
-            this.btn_create_gr.Name = "btn_create_gr";
-            this.btn_create_gr.Size = new System.Drawing.Size(160, 39);
-            this.btn_create_gr.TabIndex = 17;
-            this.btn_create_gr.Text = "Stwórz";
-            this.btn_create_gr.UseVisualStyleBackColor = false;
-            this.btn_create_gr.Click += new System.EventHandler(this.btn_create_gr_Click);
-            // 
-            // view_show_gr
-            // 
-            this.view_show_gr.AllowUserToAddRows = false;
-            this.view_show_gr.AllowUserToDeleteRows = false;
-            this.view_show_gr.BackgroundColor = System.Drawing.Color.Snow;
-            this.view_show_gr.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.view_show_gr.Location = new System.Drawing.Point(23, 67);
-            this.view_show_gr.Name = "view_show_gr";
-            this.view_show_gr.ReadOnly = true;
-            this.view_show_gr.Size = new System.Drawing.Size(448, 213);
-            this.view_show_gr.TabIndex = 14;
+            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
+            this.button6.Location = new System.Drawing.Point(575, 0);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 61);
+            this.button6.TabIndex = 0;
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // MenuForm
             // 
@@ -3404,12 +3404,13 @@
             this.Text = "MenuForm";
             this.pnl_left.ResumeLayout(false);
             this.pnl_raport_odp.ResumeLayout(false);
+            this.pnl_show_raport.ResumeLayout(false);
+            this.pnl_show_raport.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.view_show_gr)).EndInit();
             this.pnl_new_raport.ResumeLayout(false);
             this.pnl_new_raport.PerformLayout();
             this.pnl_print_raport.ResumeLayout(false);
             this.pnl_print_raport.PerformLayout();
-            this.pnl_show_raport.ResumeLayout(false);
-            this.pnl_show_raport.PerformLayout();
             this.pnl_up.ResumeLayout(false);
             this.pnl_edycja_danych.ResumeLayout(false);
             this.pnl_edit_schedules.ResumeLayout(false);
@@ -3492,7 +3493,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dGVFilesList)).EndInit();
             this.pnl_account.ResumeLayout(false);
             this.pnl_account.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.view_show_gr)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3507,7 +3507,6 @@
         private System.Windows.Forms.Button btn_mail;
         private System.Windows.Forms.Button btn_druki_pliki;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Panel pnl_edycja_danych;
         private System.Windows.Forms.Button btn_new_acc;
         private System.Windows.Forms.Panel pnl_add_acc;
@@ -3765,5 +3764,6 @@
         private System.Windows.Forms.CheckBox checkBox_segregowane;
         private System.Windows.Forms.Button btn_create_gr;
         private System.Windows.Forms.DataGridView view_show_gr;
+        private System.Windows.Forms.Button button6;
     }
 }

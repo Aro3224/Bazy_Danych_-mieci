@@ -21,17 +21,6 @@
           <Property Name="Extension" Type="char" MaxLength="4" Nullable="false" />
           <Property Name="File" Type="varbinary(max)" Nullable="false" />
         </EntityType>
-        <EntityType Name="GarbageRaport">
-          <Key>
-            <PropertyRef Name="RaportID" />
-          </Key>
-          <Property Name="RaportID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="Date" Type="date" Nullable="false" />
-          <Property Name="GarbageAmount" Type="float" Nullable="false" />
-          <Property Name="GarbageType" Type="int" Nullable="false" />
-          <Property Name="Route" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="GarbageType">
           <Key>
             <PropertyRef Name="GarbageTypeID" />
@@ -92,30 +81,6 @@
           <Property Name="Domicile" Type="varchar" MaxLength="50" />
           <Property Name="Completed" Type="bit" Nullable="false" />
         </EntityType>
-        <Association Name="FK_GarbageRaport_GarbageType">
-          <End Role="GarbageType" Type="Self.GarbageType" Multiplicity="1" />
-          <End Role="GarbageRaport" Type="Self.GarbageRaport" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GarbageType">
-              <PropertyRef Name="GarbageTypeID" />
-            </Principal>
-            <Dependent Role="GarbageRaport">
-              <PropertyRef Name="GarbageType" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_GarbageRaport_Route">
-          <End Role="Route" Type="Self.Route" Multiplicity="1" />
-          <End Role="GarbageRaport" Type="Self.GarbageRaport" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Route">
-              <PropertyRef Name="RouteID" />
-            </Principal>
-            <Dependent Role="GarbageRaport">
-              <PropertyRef Name="Route" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Schedule_GarbageType">
           <End Role="GarbageType" Type="Self.GarbageType" Multiplicity="1" />
           <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
@@ -191,21 +156,12 @@
         <EntityContainer Name="DatabaseSmieciModelStoreContainer">
           <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Files" EntityType="Self.Files" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="GarbageRaport" EntityType="Self.GarbageRaport" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GarbageType" EntityType="Self.GarbageType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Route" EntityType="Self.Route" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Schedule" EntityType="Self.Schedule" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Truck" EntityType="Self.Truck" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users_add_info" EntityType="Self.Users_add_info" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_GarbageRaport_GarbageType" Association="Self.FK_GarbageRaport_GarbageType">
-            <End Role="GarbageType" EntitySet="GarbageType" />
-            <End Role="GarbageRaport" EntitySet="GarbageRaport" />
-          </AssociationSet>
-          <AssociationSet Name="FK_GarbageRaport_Route" Association="Self.FK_GarbageRaport_Route">
-            <End Role="Route" EntitySet="Route" />
-            <End Role="GarbageRaport" EntitySet="GarbageRaport" />
-          </AssociationSet>
           <AssociationSet Name="FK_Schedule_GarbageType" Association="Self.FK_Schedule_GarbageType">
             <End Role="GarbageType" EntitySet="GarbageType" />
             <End Role="Schedule" EntitySet="Schedule" />
@@ -253,26 +209,12 @@
           <Property Name="Extension" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="File" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
         </EntityType>
-        <EntityType Name="GarbageRaport">
-          <Key>
-            <PropertyRef Name="RaportID" />
-          </Key>
-          <Property Name="RaportID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="GarbageAmount" Type="Double" Nullable="false" />
-          <Property Name="GarbageType" Type="Int32" Nullable="false" />
-          <Property Name="Route" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="GarbageType1" Relationship="Self.FK_GarbageRaport_GarbageType" FromRole="GarbageRaport" ToRole="GarbageType" />
-          <NavigationProperty Name="Route1" Relationship="Self.FK_GarbageRaport_Route" FromRole="GarbageRaport" ToRole="Route" />
-        </EntityType>
         <EntityType Name="GarbageType">
           <Key>
             <PropertyRef Name="GarbageTypeID" />
           </Key>
           <Property Name="GarbageTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="GarbageRaport" Relationship="Self.FK_GarbageRaport_GarbageType" FromRole="GarbageType" ToRole="GarbageRaport" />
           <NavigationProperty Name="Schedule" Relationship="Self.FK_Schedule_GarbageType" FromRole="GarbageType" ToRole="Schedule" />
         </EntityType>
         <EntityType Name="Route">
@@ -284,7 +226,6 @@
           <Property Name="End" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="By" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="LengthKM" Type="Double" Nullable="false" />
-          <NavigationProperty Name="GarbageRaport" Relationship="Self.FK_GarbageRaport_Route" FromRole="Route" ToRole="GarbageRaport" />
           <NavigationProperty Name="Schedule" Relationship="Self.FK_Schedule_Route" FromRole="Route" ToRole="Schedule" />
         </EntityType>
         <EntityType Name="Schedule">
@@ -351,30 +292,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_GarbageRaport_GarbageType">
-          <End Role="GarbageType" Type="Self.GarbageType" Multiplicity="1" />
-          <End Role="GarbageRaport" Type="Self.GarbageRaport" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GarbageType">
-              <PropertyRef Name="GarbageTypeID" />
-            </Principal>
-            <Dependent Role="GarbageRaport">
-              <PropertyRef Name="GarbageType" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_GarbageRaport_Route">
-          <End Role="Route" Type="Self.Route" Multiplicity="1" />
-          <End Role="GarbageRaport" Type="Self.GarbageRaport" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Route">
-              <PropertyRef Name="RouteID" />
-            </Principal>
-            <Dependent Role="GarbageRaport">
-              <PropertyRef Name="Route" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Schedule_GarbageType">
           <End Role="GarbageType" Type="Self.GarbageType" Multiplicity="1" />
           <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
@@ -435,10 +352,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DatabaseSmieciEntities8" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DatabaseSmieciEntities9" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Departments" EntityType="Self.Departments" />
           <EntitySet Name="Files" EntityType="Self.Files" />
-          <EntitySet Name="GarbageRaport" EntityType="Self.GarbageRaport" />
           <EntitySet Name="GarbageType" EntityType="Self.GarbageType" />
           <EntitySet Name="Route" EntityType="Self.Route" />
           <EntitySet Name="Schedule" EntityType="Self.Schedule" />
@@ -448,14 +364,6 @@
           <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
             <End Role="Departments" EntitySet="Departments" />
             <End Role="Users" EntitySet="Users" />
-          </AssociationSet>
-          <AssociationSet Name="FK_GarbageRaport_GarbageType" Association="Self.FK_GarbageRaport_GarbageType">
-            <End Role="GarbageType" EntitySet="GarbageType" />
-            <End Role="GarbageRaport" EntitySet="GarbageRaport" />
-          </AssociationSet>
-          <AssociationSet Name="FK_GarbageRaport_Route" Association="Self.FK_GarbageRaport_Route">
-            <End Role="Route" EntitySet="Route" />
-            <End Role="GarbageRaport" EntitySet="GarbageRaport" />
           </AssociationSet>
           <AssociationSet Name="FK_Schedule_GarbageType" Association="Self.FK_Schedule_GarbageType">
             <End Role="GarbageType" EntitySet="GarbageType" />
@@ -483,7 +391,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DatabaseSmieciModelStoreContainer" CdmEntityContainer="DatabaseSmieciEntities8">
+        <EntityContainerMapping StorageEntityContainer="DatabaseSmieciModelStoreContainer" CdmEntityContainer="DatabaseSmieciEntities9">
           <EntitySetMapping Name="Departments">
             <EntityTypeMapping TypeName="DatabaseSmieciModel.Departments">
               <MappingFragment StoreEntitySet="Departments">
@@ -499,18 +407,6 @@
                 <ScalarProperty Name="FileName" ColumnName="FileName" />
                 <ScalarProperty Name="Extension" ColumnName="Extension" />
                 <ScalarProperty Name="File" ColumnName="File" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="GarbageRaport">
-            <EntityTypeMapping TypeName="DatabaseSmieciModel.GarbageRaport">
-              <MappingFragment StoreEntitySet="GarbageRaport">
-                <ScalarProperty Name="RaportID" ColumnName="RaportID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="GarbageAmount" ColumnName="GarbageAmount" />
-                <ScalarProperty Name="GarbageType" ColumnName="GarbageType" />
-                <ScalarProperty Name="Route" ColumnName="Route" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
