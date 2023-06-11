@@ -30,8 +30,6 @@ namespace Ecocoon
             pnl_edycja_danych.Visible = true;
             pnl_harmonogramy.Visible = false;
             pnl_wydzialy.Visible = false;
-            pnl_powiadomienia.Visible = false;
-            pnl_raport_odp.Visible = false;
             pnl_account.Visible = false;
             pnl_druki_pliki.Visible = false;
             pnl_edit_segregacja.Visible = false;
@@ -43,8 +41,6 @@ namespace Ecocoon
             if (department != 1)
             {
                 btn_edycja_danych.Visible = false;
-                btn_raport_odp.Visible = false;
-                btn_raport_prac.Visible = false;
             }
         }
         private void MenuForm_Load(object sender, EventArgs e)
@@ -56,7 +52,6 @@ namespace Ecocoon
             new Form1().Show();
             this.Hide();
         }
-
         private void btn_harmonogramy_Click(object sender, EventArgs e)
         {
             pnl_harmonogramy.Visible = true;
@@ -65,8 +60,6 @@ namespace Ecocoon
             pnl_edycja_danych.Visible = false;
             pnl_wydzialy.Visible = false;
             pnl_druki_pliki.Visible = false;
-            pnl_powiadomienia.Visible = false;
-            pnl_raport_odp.Visible = false;
             pnl_account.Visible = false;
             pnl_Blank.Visible = false;
 
@@ -226,8 +219,6 @@ namespace Ecocoon
             pnl_edycja_danych.Visible = false;
             pnl_harmonogramy.Visible = false;
             pnl_druki_pliki.Visible = false;
-            pnl_powiadomienia.Visible = false;
-            pnl_raport_odp.Visible = false;
             pnl_account.Visible = false;
             pnl_Blank.Visible = false;
         }
@@ -238,8 +229,6 @@ namespace Ecocoon
             pnl_harmonogramy.Visible = false;
             pnl_wydzialy.Visible = false;
             pnl_druki_pliki.Visible = true;
-            pnl_powiadomienia.Visible = false;
-            pnl_raport_odp.Visible = false;
             pnl_account.Visible = false;
             btn_anuluj.Visible = false;
             btn_dodaj.Visible = false;
@@ -286,18 +275,6 @@ namespace Ecocoon
             }
         }
 
-        private void btn_mail_Click(object sender, EventArgs e)
-        {
-            pnl_edycja_danych.Visible = false;
-            pnl_harmonogramy.Visible = false;
-            pnl_wydzialy.Visible = false;
-            pnl_druki_pliki.Visible = false;
-            pnl_powiadomienia.Visible = false;
-            pnl_raport_odp.Visible = false;
-            pnl_account.Visible = false;
-            pnl_Blank.Visible = false;
-        }
-
         private void btn_edycja_danych_Click(object sender, EventArgs e)
         {
             pnl_edycja_danych.Visible = true;
@@ -307,8 +284,6 @@ namespace Ecocoon
             pnl_harmonogramy.Visible = false;
             pnl_wydzialy.Visible = false;
             pnl_druki_pliki.Visible = false;
-            pnl_powiadomienia.Visible = false;
-            pnl_raport_odp.Visible = false;
             pnl_account.Visible = false;
             pnl_Blank.Visible = false;
 
@@ -401,23 +376,47 @@ namespace Ecocoon
             pnl_odbiór.Visible = false;
             pnl_segregacja.Visible = false;
 
-            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
-            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            string query = "SELECT Name, Surname, Email FROM Users WHERE Department = 1 AND Active = 1";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            if (department == 1)
             {
-                using (SqlCommand command = new SqlCommand(query, connection))
+                string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+                string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+                string query = "SELECT u.UserID, u.Name, u.Surname, u.Email, a.Birth_date, a.Bank_tran_det, a.Phone_num, a.Domicile, a.Completed FROM Users u INNER JOIN Users_add_info a ON u.UserID = a.UserID WHERE u.Department = 1;";
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        connection.Open();
 
-                    SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    DataTable dataTable = new DataTable();
-                    adapter.Fill(dataTable);
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        widok_administracja.DataSource = dataTable;
 
-                    widok_administracja.DataSource = dataTable;
+                        connection.Close();
+                    }
+                }
+            }
+            else 
+            {
+                string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+                string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+                string query = "SELECT Name, Surname, Email FROM Users WHERE Department = 1 AND Active = 1";
 
-                    connection.Close();
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        connection.Open();
+
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        widok_administracja.DataSource = dataTable;
+
+                        connection.Close();
+                    }
                 }
             }
         }
@@ -431,23 +430,47 @@ namespace Ecocoon
             pnl_segregacja.Visible = false;
             pnl_Blank.Visible = false;
 
-            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
-            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            string query = "SELECT Name, Surname, Email FROM Users WHERE Department = 2 AND Active = 1";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            if (department == 1)
             {
-                using (SqlCommand command = new SqlCommand(query, connection))
+                string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+                string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+                string query = "SELECT u.UserID, u.Name, u.Surname, u.Email, a.Birth_date, a.Bank_tran_det, a.Phone_num, a.Domicile, a.Completed FROM Users u INNER JOIN Users_add_info a ON u.UserID = a.UserID WHERE u.Department = 2;";
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        connection.Open();
 
-                    SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    DataTable dataTable = new DataTable();
-                    adapter.Fill(dataTable);
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        widok_smieciarze.DataSource = dataTable;
 
-                    widok_smieciarze.DataSource = dataTable;
+                        connection.Close();
+                    }
+                }
+            }
+            else 
+            {
+                string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+                string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+                string query = "SELECT Name, Surname, Email FROM Users WHERE Department = 2 AND Active = 1";
 
-                    connection.Close();
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        connection.Open();
+
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        widok_smieciarze.DataSource = dataTable;
+
+                        connection.Close();
+                    }
                 }
             }
         }
@@ -461,25 +484,49 @@ namespace Ecocoon
             pnl_segregacja.Visible = false;
             pnl_Blank.Visible = false;
 
-            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
-            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            string query = "SELECT Name, Surname, Email FROM Users WHERE Department = 3 AND Active = 1";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            if (department == 1)
             {
-                using (SqlCommand command = new SqlCommand(query, connection))
+                string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+                string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+                string query = "SELECT u.UserID, u.Name, u.Surname, u.Email, a.Birth_date, a.Bank_tran_det, a.Phone_num, a.Domicile, a.Completed FROM Users u INNER JOIN Users_add_info a ON u.UserID = a.UserID WHERE u.Department = 3;";
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        connection.Open();
 
-                    SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    DataTable dataTable = new DataTable();
-                    adapter.Fill(dataTable);
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        widok_kierowcy.DataSource = dataTable;
 
-                    widok_kierowcy.DataSource = dataTable;
-
-                    connection.Close();
+                        connection.Close();
+                    }
                 }
             }
+            else
+            {
+                string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+                string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+                string query = "SELECT Name, Surname, Email FROM Users WHERE Department = 3 AND Active = 1";
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        connection.Open();
+
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        widok_kierowcy.DataSource = dataTable;
+
+                        connection.Close();
+                    }
+                }
+            }   
         }
 
         private void pnl_kierowcy_Paint(object sender, PaintEventArgs e)
@@ -490,7 +537,7 @@ namespace Ecocoon
         private void btn_add_Click(object sender, EventArgs e)
         {
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
-            SqlConnection con = new SqlConnection($"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True");        
+            SqlConnection con = new SqlConnection($"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True");
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
 
             string selectQuery = "SELECT Email FROM Users WHERE Email = @addEmail";
@@ -498,6 +545,13 @@ namespace Ecocoon
             if (txt_add_email.Text == "")
             {
                 MessageBox.Show("Musisz wprowadzić email");
+                return;
+            }
+
+            string email = txt_add_email.Text.Trim();
+            if (!CheckEmail(email))
+            {
+                MessageBox.Show("Wprowadzona wartość nie jest adresem email");
                 return;
             }
 
@@ -519,7 +573,6 @@ namespace Ecocoon
                 case bool _ when checkbox_segregacja.Checked:
                     department = 5;
                     break;
-
                 default:
                     MessageBox.Show("Musisz zaznaczyć wydział.");
                     return;
@@ -531,7 +584,7 @@ namespace Ecocoon
 
                 using (SqlCommand command = new SqlCommand(selectQuery, connection))
                 {
-                    command.Parameters.AddWithValue("@addEmail", txt_add_email.Text);
+                    command.Parameters.AddWithValue("@addEmail", email);
                     SqlDataReader reader = command.ExecuteReader();
                     if (reader.HasRows)
                     {
@@ -539,7 +592,7 @@ namespace Ecocoon
                     }
                     else
                     {
-                        string insertQuery = $"INSERT INTO Users (Email, Department) VALUES ('{txt_add_email.Text}', {department})";
+                        string insertQuery = $"INSERT INTO Users (Email, Department) VALUES ('{email}', {department})";
                         try
                         {
                             con.Open();
@@ -559,6 +612,19 @@ namespace Ecocoon
                         }
                     }
                 }
+            }
+        }
+
+        private bool CheckEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
             }
         }
 
@@ -625,25 +691,49 @@ namespace Ecocoon
             pnl_odbiór.Visible = true;
             pnl_segregacja.Visible = false;
 
-            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
-            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            string query = "SELECT Name, Surname, Email FROM Users WHERE Department = 4 AND Active = 1";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            if (department == 1)
             {
-                using (SqlCommand command = new SqlCommand(query, connection))
+                string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+                string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+                string query = "SELECT u.UserID, u.Name, u.Surname, u.Email, a.Birth_date, a.Bank_tran_det, a.Phone_num, a.Domicile, a.Completed FROM Users u INNER JOIN Users_add_info a ON u.UserID = a.UserID WHERE u.Department = 4;";
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        connection.Open();
 
-                    SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    DataTable dataTable = new DataTable();
-                    adapter.Fill(dataTable);
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        widok_odbior.DataSource = dataTable;
 
-                    widok_odbior.DataSource = dataTable;
-
-                    connection.Close();
+                        connection.Close();
+                    }
                 }
             }
+            else 
+            {
+                string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+                string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+                string query = "SELECT Name, Surname, Email FROM Users WHERE Department = 4 AND Active = 1";
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        connection.Open();
+
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        widok_odbior.DataSource = dataTable;
+
+                        connection.Close();
+                    }
+                }
+            }  
         }
 
         private void button3_Click(object sender, EventArgs e) //button segregacja
@@ -654,23 +744,47 @@ namespace Ecocoon
             pnl_odbiór.Visible = false;
             pnl_segregacja.Visible = true;
 
-            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
-            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            string query = "SELECT Name, Surname, Email FROM Users WHERE Department = 5 AND Active = 1";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            if (department == 1)
             {
-                using (SqlCommand command = new SqlCommand(query, connection))
+                string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+                string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+                string query = "SELECT u.UserID, u.Name, u.Surname, u.Email, a.Birth_date, a.Bank_tran_det, a.Phone_num, a.Domicile, a.Completed FROM Users u INNER JOIN Users_add_info a ON u.UserID = a.UserID WHERE u.Department = 5;";
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        connection.Open();
 
-                    SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    DataTable dataTable = new DataTable();
-                    adapter.Fill(dataTable);
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        widok_segregacja.DataSource = dataTable;
 
-                    widok_segregacja.DataSource = dataTable;
+                        connection.Close();
+                    }
+                }
+            }
+            else 
+            {
+                string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+                string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+                string query = "SELECT Name, Surname, Email FROM Users WHERE Department = 5 AND Active = 1";
 
-                    connection.Close();
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        connection.Open();
+
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        widok_segregacja.DataSource = dataTable;
+
+                        connection.Close();
+                    }
                 }
             }
         }
@@ -678,18 +792,6 @@ namespace Ecocoon
         private void button3_Click_1(object sender, EventArgs e) //button odznacz
         {
 
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            if (pnl_powiadomienia.Visible)
-            {
-                pnl_powiadomienia.Visible = false;
-            }
-            else
-            {
-                pnl_powiadomienia.Visible = true;
-            }
         }
 
         private void btn_edit_harmonogram_Click(object sender, EventArgs e)
@@ -716,63 +818,6 @@ namespace Ecocoon
             pnl_edit_routes.Visible = false;
             pnl_create_route.Visible = false;
             pnl_edit_route.Visible = false;
-        }
-
-        private void btn_raport_odp_Click(object sender, EventArgs e)
-        {
-            pnl_edycja_danych.Visible = false;
-            pnl_harmonogramy.Visible = false;
-            pnl_wydzialy.Visible = false;
-            pnl_powiadomienia.Visible = false;
-            pnl_raport_odp.Visible = true;
-            pnl_new_raport.Visible = false;
-            pnl_show_raport.Visible = false;
-            pnl_print_raport.Visible = false;
-            pnl_account.Visible = false;
-            pnl_druki_pliki.Visible = false;
-            pnl_Blank.Visible = false;
-        }
-
-        private void btn_new_raport_Click(object sender, EventArgs e)
-        {
-            pnl_new_raport.Visible = true;
-            pnl_show_raport.Visible = false;
-            pnl_print_raport.Visible = false;
-        }
-
-        private void btn_show_raport_Click(object sender, EventArgs e)
-        {
-            pnl_new_raport.Visible = false;
-            pnl_show_raport.Visible = true;
-            pnl_print_raport.Visible = false;
-
-            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
-            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            string query = "SELECT * FROM GarbageRaport;";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    connection.Open();
-
-                    SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    DataTable dataTable = new DataTable();
-                    adapter.Fill(dataTable);
-                    view_show_gr.DataSource = dataTable;
-
-                    //view_show_gr.CellValueChanged += new DataGridViewCellEventHandler(view_edit_schedule_Update);
-
-                    connection.Close();
-                }
-            }
-        }
-
-        private void btn_print_raport_Click(object sender, EventArgs e)
-        {
-            pnl_new_raport.Visible = false;
-            pnl_show_raport.Visible = false;
-            pnl_print_raport.Visible = true;
         }
 
         private void btn_account_Click(object sender, EventArgs e)
@@ -806,8 +851,6 @@ namespace Ecocoon
             pnl_edycja_danych.Visible = false;
             pnl_harmonogramy.Visible = false;
             pnl_wydzialy.Visible = false;
-            pnl_powiadomienia.Visible = false;
-            pnl_raport_odp.Visible = false;
             pnl_account.Visible = true;
             pnl_druki_pliki.Visible = false;
             txt_data_uro.Visible = false;
@@ -2832,79 +2875,5 @@ namespace Ecocoon
             }
         }
 
-        private void checkBox_segregowane_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox_segregowane.Checked)
-            {
-                checkBox_niesegregowane.Checked = false;
-            }
-        }
-
-        private void checkBox_niesegregowane_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox_niesegregowane.Checked)
-            {
-                checkBox_segregowane.Checked = false;
-            }
-        }
-
-        private void btn_create_gr_Click(object sender, EventArgs e)
-        {
-            int rodzajsmieci;
-            switch (true)
-            {
-                case bool _ when checkBox_segregowane.Checked:
-                    rodzajsmieci = 1;
-                    break;
-                case bool _ when checkBox_niesegregowane.Checked:
-                    rodzajsmieci = 2;
-                    break;
-
-                default:
-                    MessageBox.Show("Musisz zaznaczyć rodzaj śmieci.");
-                    return;
-            }
-
-            if (txt_name.Text == "" || txt_date.Text == "" || txt_ile_smiec.Text == "" || txt_trasa.Text == "")
-            {
-                MessageBox.Show("Uzupełnij wszystkie pola");
-            }
-            else
-            {
-                string InsertQuery = "INSERT INTO GarbageRaport ([Name], [Date], [GarbageAmount], [GarbageType], [Route]) VALUES (@name, @date, @garbageamount, @garbage, @route);";
-                string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
-                SqlConnection connection = new SqlConnection($"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True");
-                {
-                    connection.Open();
-                    SqlTransaction transaction = connection.BeginTransaction();
-                    SqlCommand cmd = new SqlCommand(InsertQuery, connection, transaction);
-
-                    try
-                    {
-                        DateTime DateRaport;
-                        if (DateTime.TryParseExact(txt_date.Text, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateRaport))
-                        {
-                            cmd.Parameters.AddWithValue("@name", txt_name.Text);
-                            cmd.Parameters.AddWithValue("@date", DateRaport);
-                            cmd.Parameters.AddWithValue("@garbageamount", txt_ile_smiec.Text);
-                            cmd.Parameters.AddWithValue("@garbage", rodzajsmieci);
-                            cmd.Parameters.AddWithValue("@route", txt_trasa.Text);
-                            cmd.ExecuteNonQuery();
-                            transaction.Commit();
-                            MessageBox.Show("Raport został stworzony");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Nieprawidłowy format daty. Wprowadź datę w formacie: DD.MM.YYYY.");
-                        }
-                    }
-                    catch (SqlException sqlError)
-                    {
-                        MessageBox.Show("Podaj poprawne dane.");
-                        transaction.Rollback();
-                    }
-                }
-            }
-        }
     }
 }

@@ -30,38 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuForm));
             this.pnl_left = new System.Windows.Forms.Panel();
-            this.btn_raport_odp = new System.Windows.Forms.Button();
-            this.btn_raport_prac = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btn_edycja_danych = new System.Windows.Forms.Button();
-            this.btn_mail = new System.Windows.Forms.Button();
             this.btn_druki_pliki = new System.Windows.Forms.Button();
             this.btn_wydzialy = new System.Windows.Forms.Button();
             this.btn_harmonogramy = new System.Windows.Forms.Button();
-            this.pnl_raport_odp = new System.Windows.Forms.Panel();
-            this.pnl_show_raport = new System.Windows.Forms.Panel();
-            this.view_show_gr = new System.Windows.Forms.DataGridView();
-            this.label13 = new System.Windows.Forms.Label();
-            this.pnl_new_raport = new System.Windows.Forms.Panel();
-            this.btn_create_gr = new System.Windows.Forms.Button();
-            this.checkBox_niesegregowane = new System.Windows.Forms.CheckBox();
-            this.checkBox_segregowane = new System.Windows.Forms.CheckBox();
-            this.txt_trasa = new System.Windows.Forms.TextBox();
-            this.txt_ile_smiec = new System.Windows.Forms.TextBox();
-            this.txt_date = new System.Windows.Forms.TextBox();
-            this.txt_name = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.pnl_print_raport = new System.Windows.Forms.Panel();
-            this.btn_print = new System.Windows.Forms.Button();
-            this.label14 = new System.Windows.Forms.Label();
-            this.btn_new_raport = new System.Windows.Forms.Button();
-            this.btn_show_raport = new System.Windows.Forms.Button();
-            this.btn_print_raport = new System.Windows.Forms.Button();
             this.pnl_up = new System.Windows.Forms.Panel();
             this.btn_account = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
@@ -266,7 +239,6 @@
             this.btn_otworz = new System.Windows.Forms.Button();
             this.btn_dodaj = new System.Windows.Forms.Button();
             this.btn_anuluj = new System.Windows.Forms.Button();
-            this.pnl_powiadomienia = new System.Windows.Forms.Panel();
             this.pnl_account = new System.Windows.Forms.Panel();
             this.labelUserID = new System.Windows.Forms.Label();
             this.btn_decline_changes = new System.Windows.Forms.Button();
@@ -294,13 +266,7 @@
             this.opis_imie = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.pnl_Blank = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
             this.pnl_left.SuspendLayout();
-            this.pnl_raport_odp.SuspendLayout();
-            this.pnl_show_raport.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.view_show_gr)).BeginInit();
-            this.pnl_new_raport.SuspendLayout();
-            this.pnl_print_raport.SuspendLayout();
             this.pnl_up.SuspendLayout();
             this.pnl_edycja_danych.SuspendLayout();
             this.pnl_edit_schedules.SuspendLayout();
@@ -361,11 +327,8 @@
             // pnl_left
             // 
             this.pnl_left.BackColor = System.Drawing.Color.Green;
-            this.pnl_left.Controls.Add(this.btn_raport_odp);
-            this.pnl_left.Controls.Add(this.btn_raport_prac);
             this.pnl_left.Controls.Add(this.button1);
             this.pnl_left.Controls.Add(this.btn_edycja_danych);
-            this.pnl_left.Controls.Add(this.btn_mail);
             this.pnl_left.Controls.Add(this.btn_druki_pliki);
             this.pnl_left.Controls.Add(this.btn_wydzialy);
             this.pnl_left.Controls.Add(this.btn_harmonogramy);
@@ -373,39 +336,6 @@
             this.pnl_left.Name = "pnl_left";
             this.pnl_left.Size = new System.Drawing.Size(229, 540);
             this.pnl_left.TabIndex = 0;
-            // 
-            // btn_raport_odp
-            // 
-            this.btn_raport_odp.FlatAppearance.BorderSize = 0;
-            this.btn_raport_odp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_raport_odp.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btn_raport_odp.Image = ((System.Drawing.Image)(resources.GetObject("btn_raport_odp.Image")));
-            this.btn_raport_odp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_raport_odp.Location = new System.Drawing.Point(0, 382);
-            this.btn_raport_odp.Name = "btn_raport_odp";
-            this.btn_raport_odp.Size = new System.Drawing.Size(229, 47);
-            this.btn_raport_odp.TabIndex = 6;
-            this.btn_raport_odp.Text = " Raport dot. odpadów";
-            this.btn_raport_odp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_raport_odp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_raport_odp.UseVisualStyleBackColor = true;
-            this.btn_raport_odp.Click += new System.EventHandler(this.btn_raport_odp_Click);
-            // 
-            // btn_raport_prac
-            // 
-            this.btn_raport_prac.FlatAppearance.BorderSize = 0;
-            this.btn_raport_prac.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_raport_prac.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btn_raport_prac.Image = ((System.Drawing.Image)(resources.GetObject("btn_raport_prac.Image")));
-            this.btn_raport_prac.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_raport_prac.Location = new System.Drawing.Point(1, 435);
-            this.btn_raport_prac.Name = "btn_raport_prac";
-            this.btn_raport_prac.Size = new System.Drawing.Size(229, 47);
-            this.btn_raport_prac.TabIndex = 7;
-            this.btn_raport_prac.Text = " Raport dot. pracowników";
-            this.btn_raport_prac.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_raport_prac.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_raport_prac.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -426,7 +356,7 @@
             this.btn_edycja_danych.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btn_edycja_danych.Image = ((System.Drawing.Image)(resources.GetObject("btn_edycja_danych.Image")));
             this.btn_edycja_danych.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_edycja_danych.Location = new System.Drawing.Point(0, 329);
+            this.btn_edycja_danych.Location = new System.Drawing.Point(0, 275);
             this.btn_edycja_danych.Name = "btn_edycja_danych";
             this.btn_edycja_danych.Size = new System.Drawing.Size(229, 47);
             this.btn_edycja_danych.TabIndex = 4;
@@ -435,23 +365,6 @@
             this.btn_edycja_danych.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_edycja_danych.UseVisualStyleBackColor = true;
             this.btn_edycja_danych.Click += new System.EventHandler(this.btn_edycja_danych_Click);
-            // 
-            // btn_mail
-            // 
-            this.btn_mail.FlatAppearance.BorderSize = 0;
-            this.btn_mail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_mail.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btn_mail.Image = ((System.Drawing.Image)(resources.GetObject("btn_mail.Image")));
-            this.btn_mail.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_mail.Location = new System.Drawing.Point(0, 276);
-            this.btn_mail.Name = "btn_mail";
-            this.btn_mail.Size = new System.Drawing.Size(229, 47);
-            this.btn_mail.TabIndex = 3;
-            this.btn_mail.Text = "   Mail";
-            this.btn_mail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_mail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_mail.UseVisualStyleBackColor = true;
-            this.btn_mail.Click += new System.EventHandler(this.btn_mail_Click);
             // 
             // btn_druki_pliki
             // 
@@ -504,267 +417,11 @@
             this.btn_harmonogramy.UseVisualStyleBackColor = true;
             this.btn_harmonogramy.Click += new System.EventHandler(this.btn_harmonogramy_Click);
             // 
-            // pnl_raport_odp
-            // 
-            this.pnl_raport_odp.Controls.Add(this.pnl_show_raport);
-            this.pnl_raport_odp.Controls.Add(this.pnl_new_raport);
-            this.pnl_raport_odp.Controls.Add(this.pnl_print_raport);
-            this.pnl_raport_odp.Controls.Add(this.btn_new_raport);
-            this.pnl_raport_odp.Controls.Add(this.btn_show_raport);
-            this.pnl_raport_odp.Controls.Add(this.btn_print_raport);
-            this.pnl_raport_odp.Location = new System.Drawing.Point(229, 58);
-            this.pnl_raport_odp.Name = "pnl_raport_odp";
-            this.pnl_raport_odp.Size = new System.Drawing.Size(731, 482);
-            this.pnl_raport_odp.TabIndex = 6;
-            // 
-            // pnl_show_raport
-            // 
-            this.pnl_show_raport.BackColor = System.Drawing.Color.PaleGreen;
-            this.pnl_show_raport.Controls.Add(this.view_show_gr);
-            this.pnl_show_raport.Controls.Add(this.label13);
-            this.pnl_show_raport.Location = new System.Drawing.Point(246, 0);
-            this.pnl_show_raport.Name = "pnl_show_raport";
-            this.pnl_show_raport.Size = new System.Drawing.Size(485, 486);
-            this.pnl_show_raport.TabIndex = 15;
-            // 
-            // view_show_gr
-            // 
-            this.view_show_gr.AllowUserToAddRows = false;
-            this.view_show_gr.AllowUserToDeleteRows = false;
-            this.view_show_gr.BackgroundColor = System.Drawing.Color.Snow;
-            this.view_show_gr.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.view_show_gr.Location = new System.Drawing.Point(23, 67);
-            this.view_show_gr.Name = "view_show_gr";
-            this.view_show_gr.ReadOnly = true;
-            this.view_show_gr.Size = new System.Drawing.Size(448, 213);
-            this.view_show_gr.TabIndex = 14;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
-            this.label13.Location = new System.Drawing.Point(19, 14);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(149, 23);
-            this.label13.TabIndex = 13;
-            this.label13.Text = "Wyświetl raport";
-            // 
-            // pnl_new_raport
-            // 
-            this.pnl_new_raport.BackColor = System.Drawing.Color.PaleGreen;
-            this.pnl_new_raport.Controls.Add(this.btn_create_gr);
-            this.pnl_new_raport.Controls.Add(this.checkBox_niesegregowane);
-            this.pnl_new_raport.Controls.Add(this.checkBox_segregowane);
-            this.pnl_new_raport.Controls.Add(this.txt_trasa);
-            this.pnl_new_raport.Controls.Add(this.txt_ile_smiec);
-            this.pnl_new_raport.Controls.Add(this.txt_date);
-            this.pnl_new_raport.Controls.Add(this.txt_name);
-            this.pnl_new_raport.Controls.Add(this.label19);
-            this.pnl_new_raport.Controls.Add(this.label18);
-            this.pnl_new_raport.Controls.Add(this.label17);
-            this.pnl_new_raport.Controls.Add(this.label16);
-            this.pnl_new_raport.Controls.Add(this.label15);
-            this.pnl_new_raport.Controls.Add(this.label12);
-            this.pnl_new_raport.Location = new System.Drawing.Point(246, 0);
-            this.pnl_new_raport.Name = "pnl_new_raport";
-            this.pnl_new_raport.Size = new System.Drawing.Size(485, 483);
-            this.pnl_new_raport.TabIndex = 14;
-            // 
-            // btn_create_gr
-            // 
-            this.btn_create_gr.BackColor = System.Drawing.Color.Ivory;
-            this.btn_create_gr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_create_gr.Location = new System.Drawing.Point(244, 341);
-            this.btn_create_gr.Name = "btn_create_gr";
-            this.btn_create_gr.Size = new System.Drawing.Size(160, 39);
-            this.btn_create_gr.TabIndex = 17;
-            this.btn_create_gr.Text = "Stwórz";
-            this.btn_create_gr.UseVisualStyleBackColor = false;
-            this.btn_create_gr.Click += new System.EventHandler(this.btn_create_gr_Click);
-            // 
-            // checkBox_niesegregowane
-            // 
-            this.checkBox_niesegregowane.AutoSize = true;
-            this.checkBox_niesegregowane.Location = new System.Drawing.Point(272, 153);
-            this.checkBox_niesegregowane.Name = "checkBox_niesegregowane";
-            this.checkBox_niesegregowane.Size = new System.Drawing.Size(136, 21);
-            this.checkBox_niesegregowane.TabIndex = 24;
-            this.checkBox_niesegregowane.Text = "Niesegregowane";
-            this.checkBox_niesegregowane.UseVisualStyleBackColor = true;
-            this.checkBox_niesegregowane.CheckedChanged += new System.EventHandler(this.checkBox_niesegregowane_CheckedChanged);
-            // 
-            // checkBox_segregowane
-            // 
-            this.checkBox_segregowane.AutoSize = true;
-            this.checkBox_segregowane.Location = new System.Drawing.Point(150, 153);
-            this.checkBox_segregowane.Name = "checkBox_segregowane";
-            this.checkBox_segregowane.Size = new System.Drawing.Size(116, 21);
-            this.checkBox_segregowane.TabIndex = 23;
-            this.checkBox_segregowane.Text = "Segregowane";
-            this.checkBox_segregowane.UseVisualStyleBackColor = true;
-            this.checkBox_segregowane.CheckedChanged += new System.EventHandler(this.checkBox_segregowane_CheckedChanged);
-            // 
-            // txt_trasa
-            // 
-            this.txt_trasa.Location = new System.Drawing.Point(147, 180);
-            this.txt_trasa.Name = "txt_trasa";
-            this.txt_trasa.Size = new System.Drawing.Size(204, 24);
-            this.txt_trasa.TabIndex = 22;
-            // 
-            // txt_ile_smiec
-            // 
-            this.txt_ile_smiec.Location = new System.Drawing.Point(147, 118);
-            this.txt_ile_smiec.Name = "txt_ile_smiec";
-            this.txt_ile_smiec.Size = new System.Drawing.Size(204, 24);
-            this.txt_ile_smiec.TabIndex = 20;
-            // 
-            // txt_date
-            // 
-            this.txt_date.Location = new System.Drawing.Point(147, 87);
-            this.txt_date.Name = "txt_date";
-            this.txt_date.Size = new System.Drawing.Size(204, 24);
-            this.txt_date.TabIndex = 19;
-            // 
-            // txt_name
-            // 
-            this.txt_name.Location = new System.Drawing.Point(147, 58);
-            this.txt_name.Name = "txt_name";
-            this.txt_name.Size = new System.Drawing.Size(204, 24);
-            this.txt_name.TabIndex = 18;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(75, 182);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(68, 18);
-            this.label19.TabIndex = 17;
-            this.label19.Text = "ID Trasy:";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(84, 153);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(60, 18);
-            this.label18.TabIndex = 16;
-            this.label18.Text = "Rodzaj:";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(20, 119);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(124, 18);
-            this.label17.TabIndex = 15;
-            this.label17.Text = "Ilość śmieci (kg):";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(95, 88);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(46, 18);
-            this.label16.TabIndex = 14;
-            this.label16.Text = "Data:";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(82, 60);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(59, 18);
-            this.label15.TabIndex = 13;
-            this.label15.Text = "Nazwa:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
-            this.label12.Location = new System.Drawing.Point(19, 7);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(119, 23);
-            this.label12.TabIndex = 12;
-            this.label12.Text = "Nowy raport";
-            // 
-            // pnl_print_raport
-            // 
-            this.pnl_print_raport.BackColor = System.Drawing.Color.PaleGreen;
-            this.pnl_print_raport.Controls.Add(this.btn_print);
-            this.pnl_print_raport.Controls.Add(this.label14);
-            this.pnl_print_raport.Location = new System.Drawing.Point(246, 0);
-            this.pnl_print_raport.Name = "pnl_print_raport";
-            this.pnl_print_raport.Size = new System.Drawing.Size(485, 483);
-            this.pnl_print_raport.TabIndex = 16;
-            // 
-            // btn_print
-            // 
-            this.btn_print.BackColor = System.Drawing.Color.Ivory;
-            this.btn_print.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_print.Location = new System.Drawing.Point(313, 431);
-            this.btn_print.Name = "btn_print";
-            this.btn_print.Size = new System.Drawing.Size(160, 39);
-            this.btn_print.TabIndex = 17;
-            this.btn_print.Text = "Drukuj";
-            this.btn_print.UseVisualStyleBackColor = false;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
-            this.label14.Location = new System.Drawing.Point(19, 14);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(128, 23);
-            this.label14.TabIndex = 13;
-            this.label14.Text = "Drukuj raport";
-            // 
-            // btn_new_raport
-            // 
-            this.btn_new_raport.BackColor = System.Drawing.Color.Ivory;
-            this.btn_new_raport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_new_raport.Location = new System.Drawing.Point(33, 59);
-            this.btn_new_raport.Name = "btn_new_raport";
-            this.btn_new_raport.Size = new System.Drawing.Size(160, 39);
-            this.btn_new_raport.TabIndex = 2;
-            this.btn_new_raport.Text = "Nowy raport";
-            this.btn_new_raport.UseVisualStyleBackColor = false;
-            this.btn_new_raport.Click += new System.EventHandler(this.btn_new_raport_Click);
-            // 
-            // btn_show_raport
-            // 
-            this.btn_show_raport.BackColor = System.Drawing.Color.Ivory;
-            this.btn_show_raport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_show_raport.Location = new System.Drawing.Point(33, 120);
-            this.btn_show_raport.Name = "btn_show_raport";
-            this.btn_show_raport.Size = new System.Drawing.Size(160, 39);
-            this.btn_show_raport.TabIndex = 3;
-            this.btn_show_raport.Text = "Wyświetl raport";
-            this.btn_show_raport.UseVisualStyleBackColor = false;
-            this.btn_show_raport.Click += new System.EventHandler(this.btn_show_raport_Click);
-            // 
-            // btn_print_raport
-            // 
-            this.btn_print_raport.BackColor = System.Drawing.Color.Ivory;
-            this.btn_print_raport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_print_raport.Location = new System.Drawing.Point(33, 182);
-            this.btn_print_raport.Name = "btn_print_raport";
-            this.btn_print_raport.Size = new System.Drawing.Size(160, 39);
-            this.btn_print_raport.TabIndex = 4;
-            this.btn_print_raport.Text = "Drukuj raport";
-            this.btn_print_raport.UseVisualStyleBackColor = false;
-            this.btn_print_raport.Click += new System.EventHandler(this.btn_print_raport_Click);
-            // 
             // pnl_up
             // 
             this.pnl_up.BackColor = System.Drawing.Color.DarkGreen;
             this.pnl_up.Controls.Add(this.btn_account);
             this.pnl_up.Controls.Add(this.button7);
-            this.pnl_up.Controls.Add(this.button6);
             this.pnl_up.Location = new System.Drawing.Point(229, 0);
             this.pnl_up.Name = "pnl_up";
             this.pnl_up.Size = new System.Drawing.Size(731, 61);
@@ -3089,15 +2746,6 @@
             this.btn_anuluj.UseVisualStyleBackColor = false;
             this.btn_anuluj.Click += new System.EventHandler(this.btn_anuluj_Click);
             // 
-            // pnl_powiadomienia
-            // 
-            this.pnl_powiadomienia.BackColor = System.Drawing.Color.PaleGreen;
-            this.pnl_powiadomienia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnl_powiadomienia.Location = new System.Drawing.Point(428, 58);
-            this.pnl_powiadomienia.Name = "pnl_powiadomienia";
-            this.pnl_powiadomienia.Size = new System.Drawing.Size(451, 251);
-            this.pnl_powiadomienia.TabIndex = 5;
-            // 
             // pnl_account
             // 
             this.pnl_account.Controls.Add(this.labelUserID);
@@ -3367,29 +3015,14 @@
             this.pnl_Blank.Size = new System.Drawing.Size(731, 486);
             this.pnl_Blank.TabIndex = 15;
             // 
-            // button6
-            // 
-            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
-            this.button6.Location = new System.Drawing.Point(575, 0);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 61);
-            this.button6.TabIndex = 0;
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(960, 540);
-            this.Controls.Add(this.pnl_raport_odp);
-            this.Controls.Add(this.pnl_powiadomienia);
-            this.Controls.Add(this.pnl_druki_pliki);
             this.Controls.Add(this.pnl_Blank);
+            this.Controls.Add(this.pnl_druki_pliki);
             this.Controls.Add(this.pnl_left);
             this.Controls.Add(this.pnl_account);
             this.Controls.Add(this.pnl_harmonogramy);
@@ -3403,14 +3036,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MenuForm";
             this.pnl_left.ResumeLayout(false);
-            this.pnl_raport_odp.ResumeLayout(false);
-            this.pnl_show_raport.ResumeLayout(false);
-            this.pnl_show_raport.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.view_show_gr)).EndInit();
-            this.pnl_new_raport.ResumeLayout(false);
-            this.pnl_new_raport.PerformLayout();
-            this.pnl_print_raport.ResumeLayout(false);
-            this.pnl_print_raport.PerformLayout();
             this.pnl_up.ResumeLayout(false);
             this.pnl_edycja_danych.ResumeLayout(false);
             this.pnl_edit_schedules.ResumeLayout(false);
@@ -3504,7 +3129,6 @@
         private System.Windows.Forms.Button btn_wydzialy;
         private System.Windows.Forms.Button btn_harmonogramy;
         private System.Windows.Forms.Button btn_edycja_danych;
-        private System.Windows.Forms.Button btn_mail;
         private System.Windows.Forms.Button btn_druki_pliki;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Panel pnl_edycja_danych;
@@ -3531,7 +3155,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel pnl_smieciarze;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Panel pnl_raport_odp;
         private System.Windows.Forms.Panel pnl_kierowcy;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel pnl_segregacja;
@@ -3542,34 +3165,12 @@
         private System.Windows.Forms.Button segregacja;
         private System.Windows.Forms.Panel pnl_druki_pliki;
         private System.Windows.Forms.Button btn_otworz;
-        private System.Windows.Forms.Panel pnl_powiadomienia;
         private System.Windows.Forms.Button btn_edit_harmonogram;
         private System.Windows.Forms.Button btn_edit_user;
         private System.Windows.Forms.Panel pnl_edit_harmonogram;
         private System.Windows.Forms.Button btn_create_harm;
         private System.Windows.Forms.Button btn_edit_harm;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Panel pnl_new_raport;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Button btn_new_raport;
-        private System.Windows.Forms.Button btn_show_raport;
-        private System.Windows.Forms.Button btn_print_raport;
-        private System.Windows.Forms.Button btn_raport_odp;
-        private System.Windows.Forms.Button btn_raport_prac;
-        private System.Windows.Forms.Panel pnl_show_raport;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Panel pnl_print_raport;
-        private System.Windows.Forms.Button btn_print;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox txt_trasa;
-        private System.Windows.Forms.TextBox txt_ile_smiec;
-        private System.Windows.Forms.TextBox txt_date;
-        private System.Windows.Forms.TextBox txt_name;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.CheckBox checkbox_smieciarz;
         private System.Windows.Forms.CheckBox checkbox_admin;
         private System.Windows.Forms.Button btn_account;
@@ -3760,10 +3361,5 @@
         private System.Windows.Forms.Button btn_seg_yours;
         private System.Windows.Forms.Button btn_nieseg_all;
         private System.Windows.Forms.Button btn_nieseg_yours;
-        private System.Windows.Forms.CheckBox checkBox_niesegregowane;
-        private System.Windows.Forms.CheckBox checkBox_segregowane;
-        private System.Windows.Forms.Button btn_create_gr;
-        private System.Windows.Forms.DataGridView view_show_gr;
-        private System.Windows.Forms.Button button6;
     }
 }
