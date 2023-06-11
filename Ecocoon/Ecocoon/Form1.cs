@@ -31,9 +31,10 @@ namespace Ecocoon
         private void button1_Click(object sender, EventArgs e)
         {
 
+            /*
             if (txt_user.Text == "admin")
             {
-                if (txt_pswd.Text == "admin")
+                if (txt_pswd.Text == "12345")
                 {
                     //new MenuForm().Show();
                     this.Hide();
@@ -46,6 +47,7 @@ namespace Ecocoon
                     txt_user.Focus();
                 }
             }
+            */
 
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
