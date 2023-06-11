@@ -2598,7 +2598,7 @@ namespace Ecocoon
         //usuniecie trasy
         private void view_edit_route_Delete(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            if (e.RowIndex >= 0) //błąd
             {
                 DialogResult result = MessageBox.Show("Czy na pewno chcesz usunąć trasę?", "Usuwanie trasy", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
