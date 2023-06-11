@@ -267,6 +267,7 @@ namespace Ecocoon
                                 break;
                             default:
                                 btn_dodaj_plik.Visible = false;
+                                btn_usun_plik.Visible = false;
                                 break;
                         }
                     }
