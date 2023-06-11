@@ -12,15 +12,6 @@
           <Property Name="ID_Department" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
-        <EntityType Name="Files">
-          <Key>
-            <PropertyRef Name="FileID" />
-          </Key>
-          <Property Name="FileID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FileName" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Extension" Type="char" MaxLength="4" Nullable="false" />
-          <Property Name="File" Type="varbinary(max)" Nullable="false" />
-        </EntityType>
         <EntityType Name="GarbageType">
           <Key>
             <PropertyRef Name="GarbageTypeID" />
@@ -155,7 +146,6 @@
         </Association>
         <EntityContainer Name="DatabaseSmieciModelStoreContainer">
           <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Files" EntityType="Self.Files" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GarbageType" EntityType="Self.GarbageType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Route" EntityType="Self.Route" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Schedule" EntityType="Self.Schedule" Schema="dbo" store:Type="Tables" />
@@ -199,15 +189,6 @@
           <Property Name="ID_Department" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Users_Roles" FromRole="Departments" ToRole="Users" />
-        </EntityType>
-        <EntityType Name="Files">
-          <Key>
-            <PropertyRef Name="FileID" />
-          </Key>
-          <Property Name="FileID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FileName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Extension" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="File" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
         </EntityType>
         <EntityType Name="GarbageType">
           <Key>
@@ -352,9 +333,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DatabaseSmieciEntities9" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DatabaseSmieciEntities3" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Departments" EntityType="Self.Departments" />
-          <EntitySet Name="Files" EntityType="Self.Files" />
           <EntitySet Name="GarbageType" EntityType="Self.GarbageType" />
           <EntitySet Name="Route" EntityType="Self.Route" />
           <EntitySet Name="Schedule" EntityType="Self.Schedule" />
@@ -391,22 +371,12 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DatabaseSmieciModelStoreContainer" CdmEntityContainer="DatabaseSmieciEntities9">
+        <EntityContainerMapping StorageEntityContainer="DatabaseSmieciModelStoreContainer" CdmEntityContainer="DatabaseSmieciEntities3">
           <EntitySetMapping Name="Departments">
             <EntityTypeMapping TypeName="DatabaseSmieciModel.Departments">
               <MappingFragment StoreEntitySet="Departments">
                 <ScalarProperty Name="ID_Department" ColumnName="ID_Department" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Files">
-            <EntityTypeMapping TypeName="DatabaseSmieciModel.Files">
-              <MappingFragment StoreEntitySet="Files">
-                <ScalarProperty Name="FileID" ColumnName="FileID" />
-                <ScalarProperty Name="FileName" ColumnName="FileName" />
-                <ScalarProperty Name="Extension" ColumnName="Extension" />
-                <ScalarProperty Name="File" ColumnName="File" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Security.Cryptography;
+using System.Net.NetworkInformation;
+using System.Configuration;
 
 namespace Ecocoon
 {
@@ -28,10 +30,11 @@ namespace Ecocoon
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+
+            /*
             if (txt_user.Text == "admin")
             {
-                if (txt_pswd.Text == "admin")
+                if (txt_pswd.Text == "12345")
                 {
                     //new MenuForm().Show();
                     this.Hide();
@@ -44,10 +47,11 @@ namespace Ecocoon
                     txt_user.Focus();
                 }
             }
-       
-            //string connectionString = @"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            string connectionString = @"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True"; 
-            string selectQuery = "SELECT Password FROM Users WHERE Email = @Email";
+            */
+
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string selectQuery = "SELECT Password, Department FROM Users WHERE Email = @Email";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 using (SqlCommand command = new SqlCommand(selectQuery, connection))
@@ -55,7 +59,7 @@ namespace Ecocoon
                     connection.Open();
                     command.Parameters.AddWithValue("@Email", txt_user.Text);
                     SqlDataReader reader = command.ExecuteReader();
-                    
+
                     if (reader.HasRows)
                     {
                         while (reader.Read())
@@ -67,9 +71,13 @@ namespace Ecocoon
                                 if (haslo == hashedpassword)
                                 {
                                     string email = txt_user.Text;
+                                    get_department(email, connectionString);
+                                    /*
+                                    string email = txt_user.Text;
+                                    int department = Convert.ToInt32(row["Department"]);
                                     MenuForm widok = new MenuForm(email);
                                     new MenuForm(email).Show();
-                                    this.Hide();
+                                    this.Hide(); */
                                 }
                                 else
                                 {
@@ -92,7 +100,7 @@ namespace Ecocoon
                         txt_pswd.Clear();
                         txt_user.Focus();
                     }
-                    
+
                     connection.Close();
                 }
             }
@@ -134,5 +142,32 @@ namespace Ecocoon
             new Register().Show();
             this.Hide();
         }
+
+        private void get_department(string email, string connectionString)
+        {
+            string query = "SELECT Department FROM Users WHERE Email = @email";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@email", txt_user.Text);
+                    connection.Open();
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int department = Convert.ToInt32(reader["Department"]);
+                            email = txt_user.Text;
+                            MenuForm widok = new MenuForm(email, department);
+                            new MenuForm(email, department).Show();
+                            this.Hide();
+                        }
+                    }
+                }
+            }
+
+        }
+
     }
 }

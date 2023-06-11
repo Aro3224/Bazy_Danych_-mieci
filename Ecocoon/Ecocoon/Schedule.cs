@@ -12,19 +12,16 @@ namespace Ecocoon
     using System;
     using System.Collections.Generic;
     
-    public partial class Users
+    public partial class Schedule
     {
-        public int UserID { get; set; }
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public int Department { get; set; }
-        public bool Active { get; set; }
-        public Nullable<int> Team { get; set; }
+        public int ScheduleID { get; set; }
+        public int RouteID { get; set; }
+        public int TruckID { get; set; }
+        public System.DateTime Date { get; set; }
+        public int GarbageType { get; set; }
     
-        public virtual Departments Departments { get; set; }
+        public virtual GarbageType GarbageType1 { get; set; }
+        public virtual Route Route { get; set; }
         public virtual Truck Truck { get; set; }
-        public virtual Users_add_info Users_add_info { get; set; }
     }
 }

@@ -12,6 +12,7 @@ using static System.Data.Entity.Infrastructure.Design.Executor;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using System.Security.Cryptography;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Configuration;
 
 namespace Ecocoon
 {
@@ -31,8 +32,8 @@ namespace Ecocoon
             else if (txt_pswd.Text == txt_pswd_again.Text)
             {
 
-                //string connectionString = @"Data Source=DESKTOP-16M54NJ;Initial Catalog=DatabaseSmieci;Integrated Security=True";
-                string connectionString = @"Data Source=DESKTOP-FIO40UV;Initial Catalog=DatabaseSmieci;Integrated Security=True";
+                string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+                string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
                 string selectQuery = "SELECT Email, active FROM Users WHERE Email = @formEmail";
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
@@ -101,8 +102,10 @@ namespace Ecocoon
                     cmd.ExecuteNonQuery();
                     transaction.Commit();
                     MessageBox.Show("Rejestracja przebiegła pomyślnie");
-                    new MenuForm(email).Show();
-                    this.Hide();
+                    //new MenuForm(email).Show();
+                    //this.Hide();
+                    get_department(email, connectionString);
+
                 }
                 catch (SqlException sqlError)
                 {
@@ -159,6 +162,32 @@ namespace Ecocoon
         {
             new Form1().Show();
             this.Close();
+        }
+
+        private void get_department(string email, string connectionString)
+        {
+            string query = "SELECT Department FROM Users WHERE Email = @email";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@email", txt_email.Text);
+                    connection.Open();
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int department = Convert.ToInt32(reader["Department"]);
+                            email = txt_email.Text;
+                            MenuForm widok = new MenuForm(email, department);
+                            new MenuForm(email, department).Show();
+                            this.Hide();
+                        }
+                    }
+                }
+            }
+
         }
     }
 }

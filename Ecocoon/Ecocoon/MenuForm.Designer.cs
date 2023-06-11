@@ -30,50 +30,133 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuForm));
             this.pnl_left = new System.Windows.Forms.Panel();
-            this.btn_raport_odp = new System.Windows.Forms.Button();
-            this.btn_raport_prac = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btn_edycja_danych = new System.Windows.Forms.Button();
-            this.btn_mail = new System.Windows.Forms.Button();
             this.btn_druki_pliki = new System.Windows.Forms.Button();
             this.btn_wydzialy = new System.Windows.Forms.Button();
             this.btn_harmonogramy = new System.Windows.Forms.Button();
-            this.pnl_raport_odp = new System.Windows.Forms.Panel();
-            this.pnl_new_raport = new System.Windows.Forms.Panel();
-            this.txt_trasa = new System.Windows.Forms.TextBox();
-            this.txt_rodzaj = new System.Windows.Forms.TextBox();
-            this.txt_ile_smiec = new System.Windows.Forms.TextBox();
-            this.txt_date = new System.Windows.Forms.TextBox();
-            this.txt_name = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.pnl_print_raport = new System.Windows.Forms.Panel();
-            this.btn_print = new System.Windows.Forms.Button();
-            this.label14 = new System.Windows.Forms.Label();
-            this.pnl_show_raport = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
-            this.btn_new_raport = new System.Windows.Forms.Button();
-            this.btn_show_raport = new System.Windows.Forms.Button();
-            this.btn_print_raport = new System.Windows.Forms.Button();
             this.pnl_up = new System.Windows.Forms.Panel();
             this.btn_account = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.pnl_edycja_danych = new System.Windows.Forms.Panel();
+            this.pnl_edit_schedules = new System.Windows.Forms.Panel();
+            this.label_edit_schedule = new System.Windows.Forms.Label();
+            this.btn_update_schedule = new System.Windows.Forms.Button();
+            this.btn_delete_schedule = new System.Windows.Forms.Button();
+            this.btn_sch_back = new System.Windows.Forms.Button();
+            this.view_edit_schedule = new System.Windows.Forms.DataGridView();
+            this.view_show_trucks_routes = new System.Windows.Forms.DataGridView();
+            this.btn_sch_show_routes = new System.Windows.Forms.Button();
+            this.btn_show_schedules = new System.Windows.Forms.Button();
+            this.btn_sch_show_trucks = new System.Windows.Forms.Button();
+            this.pnl_create_schedule = new System.Windows.Forms.Panel();
+            this.btn_created_schedules = new System.Windows.Forms.Button();
+            this.btn_create_schedule = new System.Windows.Forms.Button();
+            this.btn_back_cs = new System.Windows.Forms.Button();
+            this.view_create_schedule = new System.Windows.Forms.DataGridView();
+            this.checkBox_nieseg = new System.Windows.Forms.CheckBox();
+            this.checkBox_seg = new System.Windows.Forms.CheckBox();
+            this.txt_id_truck = new System.Windows.Forms.TextBox();
+            this.txt_data = new System.Windows.Forms.TextBox();
+            this.txt_id_route = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.btn_trasy = new System.Windows.Forms.Button();
+            this.label25 = new System.Windows.Forms.Label();
+            this.btn_ciezarowki = new System.Windows.Forms.Button();
+            this.pnl_edit_route = new System.Windows.Forms.Panel();
+            this.btn_show_route = new System.Windows.Forms.Button();
+            this.label_edit_route = new System.Windows.Forms.Label();
+            this.btn_edit_route_back = new System.Windows.Forms.Button();
+            this.btn_update_route = new System.Windows.Forms.Button();
+            this.view_edit_route = new System.Windows.Forms.DataGridView();
+            this.btn_delete_route = new System.Windows.Forms.Button();
+            this.pnl_create_route = new System.Windows.Forms.Panel();
+            this.txt_length = new System.Windows.Forms.TextBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.btn_show_routes = new System.Windows.Forms.Button();
+            this.txt_by = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.txt_end = new System.Windows.Forms.TextBox();
+            this.btn_add_route = new System.Windows.Forms.Button();
+            this.btn_back_route = new System.Windows.Forms.Button();
+            this.view_created_route = new System.Windows.Forms.DataGridView();
+            this.txt_start = new System.Windows.Forms.TextBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
+            this.pnl_edit_team = new System.Windows.Forms.Panel();
+            this.btn_back_editTeam = new System.Windows.Forms.Button();
+            this.view_editTeam = new System.Windows.Forms.DataGridView();
+            this.view_showTeam = new System.Windows.Forms.DataGridView();
+            this.btn_kierowcy_editTeam = new System.Windows.Forms.Button();
+            this.btn_teams_editTeam = new System.Windows.Forms.Button();
+            this.btn_smieciarze_editTeam = new System.Windows.Forms.Button();
+            this.pnl_create_team = new System.Windows.Forms.Panel();
+            this.txt_nr_rejestr = new System.Windows.Forms.TextBox();
+            this.btn_trucks = new System.Windows.Forms.Button();
+            this.label31 = new System.Windows.Forms.Label();
+            this.btn_creatTeam = new System.Windows.Forms.Button();
+            this.btn_back_team = new System.Windows.Forms.Button();
+            this.view_create_team = new System.Windows.Forms.DataGridView();
+            this.txt_kierowca = new System.Windows.Forms.TextBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.btn_kierowcy = new System.Windows.Forms.Button();
+            this.btn_teams = new System.Windows.Forms.Button();
+            this.btn_odbior = new System.Windows.Forms.Button();
+            this.pnl_create_truck = new System.Windows.Forms.Panel();
+            this.btn_created_truck = new System.Windows.Forms.Button();
+            this.txt_pltNumber = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.txt_seats = new System.Windows.Forms.TextBox();
+            this.btn_add_createtruck = new System.Windows.Forms.Button();
+            this.btn_back_createtruck = new System.Windows.Forms.Button();
+            this.view_create_truck = new System.Windows.Forms.DataGridView();
+            this.txt_brand = new System.Windows.Forms.TextBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.pnl_edit_trucks = new System.Windows.Forms.Panel();
+            this.Tryb_trucks = new System.Windows.Forms.Label();
+            this.btn_update_trucks = new System.Windows.Forms.Button();
+            this.btn_delete_trucks = new System.Windows.Forms.Button();
+            this.btn_back_edit_trucks = new System.Windows.Forms.Button();
+            this.view_edit_trucks = new System.Windows.Forms.DataGridView();
+            this.btn_ed_created_trucks = new System.Windows.Forms.Button();
+            this.pnl_edit_segregacja = new System.Windows.Forms.Panel();
+            this.Tryb_segregacja = new System.Windows.Forms.Label();
+            this.btn_back_segregacja = new System.Windows.Forms.Button();
+            this.btn_edit_segregacja = new System.Windows.Forms.Button();
+            this.view_edit_segregacja = new System.Windows.Forms.DataGridView();
+            this.btn_delete_segregacja = new System.Windows.Forms.Button();
+            this.label24 = new System.Windows.Forms.Label();
             this.pnl_edit_admin = new System.Windows.Forms.Panel();
+            this.btn_delete = new System.Windows.Forms.Button();
+            this.btn_admins_back = new System.Windows.Forms.Button();
+            this.Tryb_admins = new System.Windows.Forms.Label();
+            this.btn_update_admins = new System.Windows.Forms.Button();
             this.view_edit_admin = new System.Windows.Forms.DataGridView();
             this.label20 = new System.Windows.Forms.Label();
-            this.pnl_edit_wydzial = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
-            this.btn_edit_admin = new System.Windows.Forms.Button();
-            this.btn_edit_seg = new System.Windows.Forms.Button();
-            this.btn_edit_odbior = new System.Windows.Forms.Button();
-            this.btn_edit_kierowcy = new System.Windows.Forms.Button();
-            this.btn_edit_smieciarze = new System.Windows.Forms.Button();
+            this.pnl_edit_smieciarze = new System.Windows.Forms.Panel();
+            this.btn_back_smieciarze = new System.Windows.Forms.Button();
+            this.btn_smieciarze_edit = new System.Windows.Forms.Button();
+            this.btn_delete_smieciarze = new System.Windows.Forms.Button();
+            this.view_edit_smieciarze = new System.Windows.Forms.DataGridView();
+            this.Tryb_smieciarze = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.pnl_edit_kierowcy = new System.Windows.Forms.Panel();
+            this.btn_delete_kierowcy = new System.Windows.Forms.Button();
+            this.btn_kierowcy_edit = new System.Windows.Forms.Button();
+            this.Tryb_kierowcy = new System.Windows.Forms.Label();
+            this.view_edit_kierowcy = new System.Windows.Forms.DataGridView();
+            this.btn_back_kierowcy = new System.Windows.Forms.Button();
+            this.label22 = new System.Windows.Forms.Label();
+            this.pnl_edit_odbior = new System.Windows.Forms.Panel();
+            this.Tryb_odbior = new System.Windows.Forms.Label();
+            this.btn_back_odbior = new System.Windows.Forms.Button();
+            this.btn_delete_odbior = new System.Windows.Forms.Button();
+            this.btn_odbior_edit = new System.Windows.Forms.Button();
+            this.view_edit_odbior = new System.Windows.Forms.DataGridView();
+            this.label23 = new System.Windows.Forms.Label();
             this.pnl_add_acc = new System.Windows.Forms.Panel();
             this.checkbox_segregacja = new System.Windows.Forms.CheckBox();
             this.checkbox_odbior = new System.Windows.Forms.CheckBox();
@@ -83,26 +166,46 @@
             this.btn_add = new System.Windows.Forms.Button();
             this.txt_add_email = new System.Windows.Forms.TextBox();
             this.label_add_email = new System.Windows.Forms.Label();
+            this.pnl_edit_wydzial = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btn_edit_admin = new System.Windows.Forms.Button();
+            this.btn_edit_seg = new System.Windows.Forms.Button();
+            this.btn_edit_odbior = new System.Windows.Forms.Button();
+            this.btn_edit_kierowcy = new System.Windows.Forms.Button();
+            this.btn_edit_smieciarze = new System.Windows.Forms.Button();
+            this.pnl_edit_truck = new System.Windows.Forms.Panel();
+            this.btn_create_truck = new System.Windows.Forms.Button();
+            this.btn_edit_trucks = new System.Windows.Forms.Button();
+            this.label34 = new System.Windows.Forms.Label();
             this.pnl_edit_harmonogram = new System.Windows.Forms.Panel();
             this.btn_create_harm = new System.Windows.Forms.Button();
             this.btn_edit_harm = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
-            this.btn_edit_harmonogram = new System.Windows.Forms.Button();
+            this.pnl_edit_team1 = new System.Windows.Forms.Panel();
+            this.btn_create_team = new System.Windows.Forms.Button();
+            this.btn_edit_team = new System.Windows.Forms.Button();
+            this.label29 = new System.Windows.Forms.Label();
+            this.pnl_edit_routes = new System.Windows.Forms.Panel();
+            this.btn_create_route = new System.Windows.Forms.Button();
+            this.btn_edit_route = new System.Windows.Forms.Button();
+            this.label30 = new System.Windows.Forms.Label();
+            this.btn_edit_routes = new System.Windows.Forms.Button();
+            this.btn_edit_truck = new System.Windows.Forms.Button();
+            this.btn_edit_team1 = new System.Windows.Forms.Button();
             this.btn_edit_user = new System.Windows.Forms.Button();
+            this.btn_edit_harmonogram = new System.Windows.Forms.Button();
             this.btn_new_acc = new System.Windows.Forms.Button();
-            this.pnl_edit_smieciarze = new System.Windows.Forms.Panel();
-            this.label21 = new System.Windows.Forms.Label();
-            this.pnl_edit_kierowcy = new System.Windows.Forms.Panel();
-            this.label22 = new System.Windows.Forms.Label();
-            this.pnl_edit_odbior = new System.Windows.Forms.Panel();
-            this.label23 = new System.Windows.Forms.Label();
-            this.pnl_edit_segregacja = new System.Windows.Forms.Panel();
-            this.label24 = new System.Windows.Forms.Label();
             this.pnl_harmonogramy = new System.Windows.Forms.Panel();
             this.pnl_niesegregowane = new System.Windows.Forms.Panel();
+            this.btn_nieseg_all = new System.Windows.Forms.Button();
+            this.btn_nieseg_yours = new System.Windows.Forms.Button();
+            this.view_niesegregowane = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pnl_segregowane = new System.Windows.Forms.Panel();
+            this.btn_seg_all = new System.Windows.Forms.Button();
+            this.btn_seg_yours = new System.Windows.Forms.Button();
+            this.view_segregowane = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.Niesegregowane = new System.Windows.Forms.Button();
@@ -129,10 +232,13 @@
             this.widok_administracja = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
             this.pnl_druki_pliki = new System.Windows.Forms.Panel();
-            this.btn_zaznacz = new System.Windows.Forms.Button();
-            this.btn_odznacz = new System.Windows.Forms.Button();
-            this.btn_pobierz = new System.Windows.Forms.Button();
-            this.pnl_powiadomienia = new System.Windows.Forms.Panel();
+            this.btn_usun_plik = new System.Windows.Forms.Button();
+            this.dGVFilesList = new System.Windows.Forms.DataGridView();
+            this.textBox_FilePath = new System.Windows.Forms.TextBox();
+            this.btn_dodaj_plik = new System.Windows.Forms.Button();
+            this.btn_otworz = new System.Windows.Forms.Button();
+            this.btn_dodaj = new System.Windows.Forms.Button();
+            this.btn_anuluj = new System.Windows.Forms.Button();
             this.pnl_account = new System.Windows.Forms.Panel();
             this.labelUserID = new System.Windows.Forms.Label();
             this.btn_decline_changes = new System.Windows.Forms.Button();
@@ -158,49 +264,50 @@
             this.opis_email = new System.Windows.Forms.Label();
             this.opis_nazwisko = new System.Windows.Forms.Label();
             this.opis_imie = new System.Windows.Forms.Label();
-            this.btn_update_admins = new System.Windows.Forms.Button();
-            this.Tryb_admins = new System.Windows.Forms.Label();
-            this.btn_admins_back = new System.Windows.Forms.Button();
-            this.btn_delete = new System.Windows.Forms.Button();
-            this.btn_delete_segregacja = new System.Windows.Forms.Button();
-            this.view_edit_segregacja = new System.Windows.Forms.DataGridView();
-            this.btn_edit_segregacja = new System.Windows.Forms.Button();
-            this.btn_back_segregacja = new System.Windows.Forms.Button();
-            this.Tryb_segregacja = new System.Windows.Forms.Label();
-            this.Tryb_smieciarze = new System.Windows.Forms.Label();
-            this.view_edit_smieciarze = new System.Windows.Forms.DataGridView();
-            this.btn_delete_smieciarze = new System.Windows.Forms.Button();
-            this.btn_smieciarze_edit = new System.Windows.Forms.Button();
-            this.btn_back_smieciarze = new System.Windows.Forms.Button();
-            this.btn_back_kierowcy = new System.Windows.Forms.Button();
-            this.view_edit_kierowcy = new System.Windows.Forms.DataGridView();
-            this.Tryb_kierowcy = new System.Windows.Forms.Label();
-            this.btn_kierowcy_edit = new System.Windows.Forms.Button();
-            this.btn_delete_kierowcy = new System.Windows.Forms.Button();
-            this.view_edit_odbior = new System.Windows.Forms.DataGridView();
-            this.btn_delete_odbior = new System.Windows.Forms.Button();
-            this.btn_odbior_edit = new System.Windows.Forms.Button();
-            this.btn_back_odbior = new System.Windows.Forms.Button();
-            this.Tryb_odbior = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.pnl_Blank = new System.Windows.Forms.Panel();
             this.pnl_left.SuspendLayout();
-            this.pnl_raport_odp.SuspendLayout();
-            this.pnl_new_raport.SuspendLayout();
-            this.pnl_print_raport.SuspendLayout();
-            this.pnl_show_raport.SuspendLayout();
             this.pnl_up.SuspendLayout();
             this.pnl_edycja_danych.SuspendLayout();
+            this.pnl_edit_schedules.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.view_edit_schedule)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.view_show_trucks_routes)).BeginInit();
+            this.pnl_create_schedule.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.view_create_schedule)).BeginInit();
+            this.pnl_edit_route.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.view_edit_route)).BeginInit();
+            this.pnl_create_route.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.view_created_route)).BeginInit();
+            this.pnl_edit_team.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.view_editTeam)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.view_showTeam)).BeginInit();
+            this.pnl_create_team.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.view_create_team)).BeginInit();
+            this.pnl_create_truck.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.view_create_truck)).BeginInit();
+            this.pnl_edit_trucks.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.view_edit_trucks)).BeginInit();
+            this.pnl_edit_segregacja.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.view_edit_segregacja)).BeginInit();
             this.pnl_edit_admin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.view_edit_admin)).BeginInit();
-            this.pnl_edit_wydzial.SuspendLayout();
-            this.pnl_add_acc.SuspendLayout();
-            this.pnl_edit_harmonogram.SuspendLayout();
             this.pnl_edit_smieciarze.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.view_edit_smieciarze)).BeginInit();
             this.pnl_edit_kierowcy.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.view_edit_kierowcy)).BeginInit();
             this.pnl_edit_odbior.SuspendLayout();
-            this.pnl_edit_segregacja.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.view_edit_odbior)).BeginInit();
+            this.pnl_add_acc.SuspendLayout();
+            this.pnl_edit_wydzial.SuspendLayout();
+            this.pnl_edit_truck.SuspendLayout();
+            this.pnl_edit_harmonogram.SuspendLayout();
+            this.pnl_edit_team1.SuspendLayout();
+            this.pnl_edit_routes.SuspendLayout();
             this.pnl_harmonogramy.SuspendLayout();
             this.pnl_niesegregowane.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.view_niesegregowane)).BeginInit();
             this.pnl_segregowane.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.view_segregowane)).BeginInit();
             this.pnl_wydzialy.SuspendLayout();
             this.pnl_odbiór.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.widok_odbior)).BeginInit();
@@ -213,21 +320,15 @@
             this.pnl_administracja.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.widok_administracja)).BeginInit();
             this.pnl_druki_pliki.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dGVFilesList)).BeginInit();
             this.pnl_account.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.view_edit_segregacja)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.view_edit_smieciarze)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.view_edit_kierowcy)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.view_edit_odbior)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_left
             // 
             this.pnl_left.BackColor = System.Drawing.Color.Green;
-            this.pnl_left.Controls.Add(this.btn_raport_odp);
-            this.pnl_left.Controls.Add(this.btn_raport_prac);
             this.pnl_left.Controls.Add(this.button1);
             this.pnl_left.Controls.Add(this.btn_edycja_danych);
-            this.pnl_left.Controls.Add(this.btn_mail);
             this.pnl_left.Controls.Add(this.btn_druki_pliki);
             this.pnl_left.Controls.Add(this.btn_wydzialy);
             this.pnl_left.Controls.Add(this.btn_harmonogramy);
@@ -235,39 +336,6 @@
             this.pnl_left.Name = "pnl_left";
             this.pnl_left.Size = new System.Drawing.Size(229, 540);
             this.pnl_left.TabIndex = 0;
-            // 
-            // btn_raport_odp
-            // 
-            this.btn_raport_odp.FlatAppearance.BorderSize = 0;
-            this.btn_raport_odp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_raport_odp.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btn_raport_odp.Image = ((System.Drawing.Image)(resources.GetObject("btn_raport_odp.Image")));
-            this.btn_raport_odp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_raport_odp.Location = new System.Drawing.Point(0, 382);
-            this.btn_raport_odp.Name = "btn_raport_odp";
-            this.btn_raport_odp.Size = new System.Drawing.Size(229, 47);
-            this.btn_raport_odp.TabIndex = 6;
-            this.btn_raport_odp.Text = " Raport dot. odpadów";
-            this.btn_raport_odp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_raport_odp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_raport_odp.UseVisualStyleBackColor = true;
-            this.btn_raport_odp.Click += new System.EventHandler(this.btn_raport_odp_Click);
-            // 
-            // btn_raport_prac
-            // 
-            this.btn_raport_prac.FlatAppearance.BorderSize = 0;
-            this.btn_raport_prac.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_raport_prac.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btn_raport_prac.Image = ((System.Drawing.Image)(resources.GetObject("btn_raport_prac.Image")));
-            this.btn_raport_prac.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_raport_prac.Location = new System.Drawing.Point(1, 435);
-            this.btn_raport_prac.Name = "btn_raport_prac";
-            this.btn_raport_prac.Size = new System.Drawing.Size(229, 47);
-            this.btn_raport_prac.TabIndex = 7;
-            this.btn_raport_prac.Text = " Raport dot. pracowników";
-            this.btn_raport_prac.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_raport_prac.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_raport_prac.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -279,6 +347,7 @@
             this.button1.Size = new System.Drawing.Size(225, 58);
             this.button1.TabIndex = 5;
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btn_edycja_danych
             // 
@@ -287,7 +356,7 @@
             this.btn_edycja_danych.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btn_edycja_danych.Image = ((System.Drawing.Image)(resources.GetObject("btn_edycja_danych.Image")));
             this.btn_edycja_danych.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_edycja_danych.Location = new System.Drawing.Point(0, 329);
+            this.btn_edycja_danych.Location = new System.Drawing.Point(0, 275);
             this.btn_edycja_danych.Name = "btn_edycja_danych";
             this.btn_edycja_danych.Size = new System.Drawing.Size(229, 47);
             this.btn_edycja_danych.TabIndex = 4;
@@ -296,23 +365,6 @@
             this.btn_edycja_danych.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_edycja_danych.UseVisualStyleBackColor = true;
             this.btn_edycja_danych.Click += new System.EventHandler(this.btn_edycja_danych_Click);
-            // 
-            // btn_mail
-            // 
-            this.btn_mail.FlatAppearance.BorderSize = 0;
-            this.btn_mail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_mail.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btn_mail.Image = ((System.Drawing.Image)(resources.GetObject("btn_mail.Image")));
-            this.btn_mail.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_mail.Location = new System.Drawing.Point(0, 276);
-            this.btn_mail.Name = "btn_mail";
-            this.btn_mail.Size = new System.Drawing.Size(229, 47);
-            this.btn_mail.TabIndex = 3;
-            this.btn_mail.Text = "   Mail";
-            this.btn_mail.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_mail.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_mail.UseVisualStyleBackColor = true;
-            this.btn_mail.Click += new System.EventHandler(this.btn_mail_Click);
             // 
             // btn_druki_pliki
             // 
@@ -365,225 +417,11 @@
             this.btn_harmonogramy.UseVisualStyleBackColor = true;
             this.btn_harmonogramy.Click += new System.EventHandler(this.btn_harmonogramy_Click);
             // 
-            // pnl_raport_odp
-            // 
-            this.pnl_raport_odp.Controls.Add(this.pnl_new_raport);
-            this.pnl_raport_odp.Controls.Add(this.pnl_print_raport);
-            this.pnl_raport_odp.Controls.Add(this.pnl_show_raport);
-            this.pnl_raport_odp.Controls.Add(this.btn_new_raport);
-            this.pnl_raport_odp.Controls.Add(this.btn_show_raport);
-            this.pnl_raport_odp.Controls.Add(this.btn_print_raport);
-            this.pnl_raport_odp.Location = new System.Drawing.Point(229, 58);
-            this.pnl_raport_odp.Name = "pnl_raport_odp";
-            this.pnl_raport_odp.Size = new System.Drawing.Size(731, 482);
-            this.pnl_raport_odp.TabIndex = 6;
-            // 
-            // pnl_new_raport
-            // 
-            this.pnl_new_raport.BackColor = System.Drawing.Color.PaleGreen;
-            this.pnl_new_raport.Controls.Add(this.txt_trasa);
-            this.pnl_new_raport.Controls.Add(this.txt_rodzaj);
-            this.pnl_new_raport.Controls.Add(this.txt_ile_smiec);
-            this.pnl_new_raport.Controls.Add(this.txt_date);
-            this.pnl_new_raport.Controls.Add(this.txt_name);
-            this.pnl_new_raport.Controls.Add(this.label19);
-            this.pnl_new_raport.Controls.Add(this.label18);
-            this.pnl_new_raport.Controls.Add(this.label17);
-            this.pnl_new_raport.Controls.Add(this.label16);
-            this.pnl_new_raport.Controls.Add(this.label15);
-            this.pnl_new_raport.Controls.Add(this.label12);
-            this.pnl_new_raport.Location = new System.Drawing.Point(246, 0);
-            this.pnl_new_raport.Name = "pnl_new_raport";
-            this.pnl_new_raport.Size = new System.Drawing.Size(485, 483);
-            this.pnl_new_raport.TabIndex = 14;
-            // 
-            // txt_trasa
-            // 
-            this.txt_trasa.Location = new System.Drawing.Point(147, 180);
-            this.txt_trasa.Name = "txt_trasa";
-            this.txt_trasa.Size = new System.Drawing.Size(204, 24);
-            this.txt_trasa.TabIndex = 22;
-            // 
-            // txt_rodzaj
-            // 
-            this.txt_rodzaj.Location = new System.Drawing.Point(147, 150);
-            this.txt_rodzaj.Name = "txt_rodzaj";
-            this.txt_rodzaj.Size = new System.Drawing.Size(204, 24);
-            this.txt_rodzaj.TabIndex = 21;
-            // 
-            // txt_ile_smiec
-            // 
-            this.txt_ile_smiec.Location = new System.Drawing.Point(147, 118);
-            this.txt_ile_smiec.Name = "txt_ile_smiec";
-            this.txt_ile_smiec.Size = new System.Drawing.Size(204, 24);
-            this.txt_ile_smiec.TabIndex = 20;
-            // 
-            // txt_date
-            // 
-            this.txt_date.Location = new System.Drawing.Point(147, 87);
-            this.txt_date.Name = "txt_date";
-            this.txt_date.Size = new System.Drawing.Size(204, 24);
-            this.txt_date.TabIndex = 19;
-            // 
-            // txt_name
-            // 
-            this.txt_name.Location = new System.Drawing.Point(147, 58);
-            this.txt_name.Name = "txt_name";
-            this.txt_name.Size = new System.Drawing.Size(204, 24);
-            this.txt_name.TabIndex = 18;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(93, 181);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(51, 18);
-            this.label19.TabIndex = 17;
-            this.label19.Text = "Trasa:";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(84, 153);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(60, 18);
-            this.label18.TabIndex = 16;
-            this.label18.Text = "Rodzaj:";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(20, 119);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(124, 18);
-            this.label17.TabIndex = 15;
-            this.label17.Text = "Ilość śmieci (kg):";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(95, 88);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(46, 18);
-            this.label16.TabIndex = 14;
-            this.label16.Text = "Data:";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(82, 60);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(59, 18);
-            this.label15.TabIndex = 13;
-            this.label15.Text = "Nazwa:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
-            this.label12.Location = new System.Drawing.Point(19, 7);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(119, 23);
-            this.label12.TabIndex = 12;
-            this.label12.Text = "Nowy raport";
-            // 
-            // pnl_print_raport
-            // 
-            this.pnl_print_raport.BackColor = System.Drawing.Color.PaleGreen;
-            this.pnl_print_raport.Controls.Add(this.btn_print);
-            this.pnl_print_raport.Controls.Add(this.label14);
-            this.pnl_print_raport.Location = new System.Drawing.Point(246, 0);
-            this.pnl_print_raport.Name = "pnl_print_raport";
-            this.pnl_print_raport.Size = new System.Drawing.Size(485, 483);
-            this.pnl_print_raport.TabIndex = 16;
-            // 
-            // btn_print
-            // 
-            this.btn_print.BackColor = System.Drawing.Color.Ivory;
-            this.btn_print.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_print.Location = new System.Drawing.Point(313, 431);
-            this.btn_print.Name = "btn_print";
-            this.btn_print.Size = new System.Drawing.Size(160, 39);
-            this.btn_print.TabIndex = 17;
-            this.btn_print.Text = "Drukuj";
-            this.btn_print.UseVisualStyleBackColor = false;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
-            this.label14.Location = new System.Drawing.Point(19, 14);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(128, 23);
-            this.label14.TabIndex = 13;
-            this.label14.Text = "Drukuj raport";
-            // 
-            // pnl_show_raport
-            // 
-            this.pnl_show_raport.BackColor = System.Drawing.Color.PaleGreen;
-            this.pnl_show_raport.Controls.Add(this.label13);
-            this.pnl_show_raport.Location = new System.Drawing.Point(246, 0);
-            this.pnl_show_raport.Name = "pnl_show_raport";
-            this.pnl_show_raport.Size = new System.Drawing.Size(485, 486);
-            this.pnl_show_raport.TabIndex = 15;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
-            this.label13.Location = new System.Drawing.Point(19, 14);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(149, 23);
-            this.label13.TabIndex = 13;
-            this.label13.Text = "Wyświetl raport";
-            // 
-            // btn_new_raport
-            // 
-            this.btn_new_raport.BackColor = System.Drawing.Color.Ivory;
-            this.btn_new_raport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_new_raport.Location = new System.Drawing.Point(33, 59);
-            this.btn_new_raport.Name = "btn_new_raport";
-            this.btn_new_raport.Size = new System.Drawing.Size(160, 39);
-            this.btn_new_raport.TabIndex = 2;
-            this.btn_new_raport.Text = "Nowy raport";
-            this.btn_new_raport.UseVisualStyleBackColor = false;
-            this.btn_new_raport.Click += new System.EventHandler(this.btn_new_raport_Click);
-            // 
-            // btn_show_raport
-            // 
-            this.btn_show_raport.BackColor = System.Drawing.Color.Ivory;
-            this.btn_show_raport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_show_raport.Location = new System.Drawing.Point(33, 120);
-            this.btn_show_raport.Name = "btn_show_raport";
-            this.btn_show_raport.Size = new System.Drawing.Size(160, 39);
-            this.btn_show_raport.TabIndex = 3;
-            this.btn_show_raport.Text = "Wyświetl raport";
-            this.btn_show_raport.UseVisualStyleBackColor = false;
-            this.btn_show_raport.Click += new System.EventHandler(this.btn_show_raport_Click);
-            // 
-            // btn_print_raport
-            // 
-            this.btn_print_raport.BackColor = System.Drawing.Color.Ivory;
-            this.btn_print_raport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_print_raport.Location = new System.Drawing.Point(33, 182);
-            this.btn_print_raport.Name = "btn_print_raport";
-            this.btn_print_raport.Size = new System.Drawing.Size(160, 39);
-            this.btn_print_raport.TabIndex = 4;
-            this.btn_print_raport.Text = "Drukuj raport";
-            this.btn_print_raport.UseVisualStyleBackColor = false;
-            this.btn_print_raport.Click += new System.EventHandler(this.btn_print_raport_Click);
-            // 
             // pnl_up
             // 
             this.pnl_up.BackColor = System.Drawing.Color.DarkGreen;
             this.pnl_up.Controls.Add(this.btn_account);
             this.pnl_up.Controls.Add(this.button7);
-            this.pnl_up.Controls.Add(this.button6);
             this.pnl_up.Location = new System.Drawing.Point(229, 0);
             this.pnl_up.Name = "pnl_up";
             this.pnl_up.Size = new System.Drawing.Size(731, 61);
@@ -614,36 +452,1046 @@
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
-            // button6
-            // 
-            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
-            this.button6.Location = new System.Drawing.Point(575, 0);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 61);
-            this.button6.TabIndex = 0;
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
             // pnl_edycja_danych
             // 
-            this.pnl_edycja_danych.Controls.Add(this.pnl_edit_odbior);
-            this.pnl_edycja_danych.Controls.Add(this.pnl_edit_kierowcy);
-            this.pnl_edycja_danych.Controls.Add(this.pnl_edit_smieciarze);
+            this.pnl_edycja_danych.Controls.Add(this.pnl_edit_schedules);
+            this.pnl_edycja_danych.Controls.Add(this.pnl_create_schedule);
+            this.pnl_edycja_danych.Controls.Add(this.pnl_edit_route);
+            this.pnl_edycja_danych.Controls.Add(this.pnl_create_route);
+            this.pnl_edycja_danych.Controls.Add(this.pnl_edit_team);
+            this.pnl_edycja_danych.Controls.Add(this.pnl_create_team);
+            this.pnl_edycja_danych.Controls.Add(this.pnl_create_truck);
+            this.pnl_edycja_danych.Controls.Add(this.pnl_edit_trucks);
             this.pnl_edycja_danych.Controls.Add(this.pnl_edit_segregacja);
             this.pnl_edycja_danych.Controls.Add(this.pnl_edit_admin);
-            this.pnl_edycja_danych.Controls.Add(this.pnl_edit_wydzial);
+            this.pnl_edycja_danych.Controls.Add(this.pnl_edit_smieciarze);
+            this.pnl_edycja_danych.Controls.Add(this.pnl_edit_kierowcy);
+            this.pnl_edycja_danych.Controls.Add(this.pnl_edit_odbior);
             this.pnl_edycja_danych.Controls.Add(this.pnl_add_acc);
+            this.pnl_edycja_danych.Controls.Add(this.pnl_edit_wydzial);
+            this.pnl_edycja_danych.Controls.Add(this.pnl_edit_truck);
             this.pnl_edycja_danych.Controls.Add(this.pnl_edit_harmonogram);
-            this.pnl_edycja_danych.Controls.Add(this.btn_edit_harmonogram);
+            this.pnl_edycja_danych.Controls.Add(this.pnl_edit_team1);
+            this.pnl_edycja_danych.Controls.Add(this.pnl_edit_routes);
+            this.pnl_edycja_danych.Controls.Add(this.btn_edit_routes);
+            this.pnl_edycja_danych.Controls.Add(this.btn_edit_truck);
+            this.pnl_edycja_danych.Controls.Add(this.btn_edit_team1);
             this.pnl_edycja_danych.Controls.Add(this.btn_edit_user);
+            this.pnl_edycja_danych.Controls.Add(this.btn_edit_harmonogram);
             this.pnl_edycja_danych.Controls.Add(this.btn_new_acc);
             this.pnl_edycja_danych.Location = new System.Drawing.Point(229, 58);
             this.pnl_edycja_danych.Name = "pnl_edycja_danych";
             this.pnl_edycja_danych.Size = new System.Drawing.Size(731, 482);
             this.pnl_edycja_danych.TabIndex = 2;
+            // 
+            // pnl_edit_schedules
+            // 
+            this.pnl_edit_schedules.BackColor = System.Drawing.Color.White;
+            this.pnl_edit_schedules.Controls.Add(this.label_edit_schedule);
+            this.pnl_edit_schedules.Controls.Add(this.btn_update_schedule);
+            this.pnl_edit_schedules.Controls.Add(this.btn_delete_schedule);
+            this.pnl_edit_schedules.Controls.Add(this.btn_sch_back);
+            this.pnl_edit_schedules.Controls.Add(this.view_edit_schedule);
+            this.pnl_edit_schedules.Controls.Add(this.view_show_trucks_routes);
+            this.pnl_edit_schedules.Controls.Add(this.btn_sch_show_routes);
+            this.pnl_edit_schedules.Controls.Add(this.btn_show_schedules);
+            this.pnl_edit_schedules.Controls.Add(this.btn_sch_show_trucks);
+            this.pnl_edit_schedules.Location = new System.Drawing.Point(0, 0);
+            this.pnl_edit_schedules.Name = "pnl_edit_schedules";
+            this.pnl_edit_schedules.Size = new System.Drawing.Size(731, 483);
+            this.pnl_edit_schedules.TabIndex = 29;
+            // 
+            // label_edit_schedule
+            // 
+            this.label_edit_schedule.AutoSize = true;
+            this.label_edit_schedule.Location = new System.Drawing.Point(141, 18);
+            this.label_edit_schedule.Name = "label_edit_schedule";
+            this.label_edit_schedule.Size = new System.Drawing.Size(73, 17);
+            this.label_edit_schedule.TabIndex = 32;
+            this.label_edit_schedule.Text = "Aktualizuj";
+            // 
+            // btn_update_schedule
+            // 
+            this.btn_update_schedule.BackColor = System.Drawing.Color.Ivory;
+            this.btn_update_schedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_update_schedule.Location = new System.Drawing.Point(402, 431);
+            this.btn_update_schedule.Name = "btn_update_schedule";
+            this.btn_update_schedule.Size = new System.Drawing.Size(160, 39);
+            this.btn_update_schedule.TabIndex = 31;
+            this.btn_update_schedule.Text = "Aktualizuj";
+            this.btn_update_schedule.UseVisualStyleBackColor = false;
+            // 
+            // btn_delete_schedule
+            // 
+            this.btn_delete_schedule.BackColor = System.Drawing.Color.Ivory;
+            this.btn_delete_schedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_delete_schedule.Location = new System.Drawing.Point(568, 431);
+            this.btn_delete_schedule.Name = "btn_delete_schedule";
+            this.btn_delete_schedule.Size = new System.Drawing.Size(160, 39);
+            this.btn_delete_schedule.TabIndex = 30;
+            this.btn_delete_schedule.Text = "Usuń";
+            this.btn_delete_schedule.UseVisualStyleBackColor = false;
+            // 
+            // btn_sch_back
+            // 
+            this.btn_sch_back.BackColor = System.Drawing.Color.Ivory;
+            this.btn_sch_back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_sch_back.Location = new System.Drawing.Point(6, 431);
+            this.btn_sch_back.Name = "btn_sch_back";
+            this.btn_sch_back.Size = new System.Drawing.Size(160, 39);
+            this.btn_sch_back.TabIndex = 26;
+            this.btn_sch_back.Text = "Wróć";
+            this.btn_sch_back.UseVisualStyleBackColor = false;
+            // 
+            // view_edit_schedule
+            // 
+            this.view_edit_schedule.AllowUserToAddRows = false;
+            this.view_edit_schedule.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.view_edit_schedule.BackgroundColor = System.Drawing.Color.Snow;
+            this.view_edit_schedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.view_edit_schedule.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.view_edit_schedule.Location = new System.Drawing.Point(6, 56);
+            this.view_edit_schedule.Name = "view_edit_schedule";
+            this.view_edit_schedule.Size = new System.Drawing.Size(356, 369);
+            this.view_edit_schedule.TabIndex = 29;
+            // 
+            // view_show_trucks_routes
+            // 
+            this.view_show_trucks_routes.AllowUserToAddRows = false;
+            this.view_show_trucks_routes.AllowUserToDeleteRows = false;
+            this.view_show_trucks_routes.BackgroundColor = System.Drawing.Color.Snow;
+            this.view_show_trucks_routes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.view_show_trucks_routes.Location = new System.Drawing.Point(368, 56);
+            this.view_show_trucks_routes.Name = "view_show_trucks_routes";
+            this.view_show_trucks_routes.ReadOnly = true;
+            this.view_show_trucks_routes.Size = new System.Drawing.Size(360, 369);
+            this.view_show_trucks_routes.TabIndex = 15;
+            // 
+            // btn_sch_show_routes
+            // 
+            this.btn_sch_show_routes.BackColor = System.Drawing.Color.PaleGreen;
+            this.btn_sch_show_routes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_sch_show_routes.Location = new System.Drawing.Point(458, 0);
+            this.btn_sch_show_routes.Name = "btn_sch_show_routes";
+            this.btn_sch_show_routes.Size = new System.Drawing.Size(135, 52);
+            this.btn_sch_show_routes.TabIndex = 6;
+            this.btn_sch_show_routes.Text = "Trasy";
+            this.btn_sch_show_routes.UseVisualStyleBackColor = false;
+            // 
+            // btn_show_schedules
+            // 
+            this.btn_show_schedules.BackColor = System.Drawing.Color.PaleGreen;
+            this.btn_show_schedules.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_show_schedules.Location = new System.Drawing.Point(0, 0);
+            this.btn_show_schedules.Name = "btn_show_schedules";
+            this.btn_show_schedules.Size = new System.Drawing.Size(135, 52);
+            this.btn_show_schedules.TabIndex = 28;
+            this.btn_show_schedules.Text = "Harmonogramy";
+            this.btn_show_schedules.UseVisualStyleBackColor = false;
+            // 
+            // btn_sch_show_trucks
+            // 
+            this.btn_sch_show_trucks.BackColor = System.Drawing.Color.PaleGreen;
+            this.btn_sch_show_trucks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_sch_show_trucks.Location = new System.Drawing.Point(593, 0);
+            this.btn_sch_show_trucks.Name = "btn_sch_show_trucks";
+            this.btn_sch_show_trucks.Size = new System.Drawing.Size(135, 52);
+            this.btn_sch_show_trucks.TabIndex = 2;
+            this.btn_sch_show_trucks.Text = "Ciężarówki";
+            this.btn_sch_show_trucks.UseVisualStyleBackColor = false;
+            // 
+            // pnl_create_schedule
+            // 
+            this.pnl_create_schedule.BackColor = System.Drawing.Color.White;
+            this.pnl_create_schedule.Controls.Add(this.btn_created_schedules);
+            this.pnl_create_schedule.Controls.Add(this.btn_create_schedule);
+            this.pnl_create_schedule.Controls.Add(this.btn_back_cs);
+            this.pnl_create_schedule.Controls.Add(this.view_create_schedule);
+            this.pnl_create_schedule.Controls.Add(this.checkBox_nieseg);
+            this.pnl_create_schedule.Controls.Add(this.checkBox_seg);
+            this.pnl_create_schedule.Controls.Add(this.txt_id_truck);
+            this.pnl_create_schedule.Controls.Add(this.txt_data);
+            this.pnl_create_schedule.Controls.Add(this.txt_id_route);
+            this.pnl_create_schedule.Controls.Add(this.label28);
+            this.pnl_create_schedule.Controls.Add(this.label27);
+            this.pnl_create_schedule.Controls.Add(this.label26);
+            this.pnl_create_schedule.Controls.Add(this.btn_trasy);
+            this.pnl_create_schedule.Controls.Add(this.label25);
+            this.pnl_create_schedule.Controls.Add(this.btn_ciezarowki);
+            this.pnl_create_schedule.Location = new System.Drawing.Point(0, 0);
+            this.pnl_create_schedule.Name = "pnl_create_schedule";
+            this.pnl_create_schedule.Size = new System.Drawing.Size(731, 483);
+            this.pnl_create_schedule.TabIndex = 16;
+            // 
+            // btn_created_schedules
+            // 
+            this.btn_created_schedules.BackColor = System.Drawing.Color.PaleGreen;
+            this.btn_created_schedules.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_created_schedules.Location = new System.Drawing.Point(331, 0);
+            this.btn_created_schedules.Name = "btn_created_schedules";
+            this.btn_created_schedules.Size = new System.Drawing.Size(135, 52);
+            this.btn_created_schedules.TabIndex = 29;
+            this.btn_created_schedules.Text = "Stworzone harmonogramy";
+            this.btn_created_schedules.UseVisualStyleBackColor = false;
+            this.btn_created_schedules.Click += new System.EventHandler(this.btn_created_schedules_Click);
+            // 
+            // btn_create_schedule
+            // 
+            this.btn_create_schedule.BackColor = System.Drawing.Color.Ivory;
+            this.btn_create_schedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_create_schedule.Location = new System.Drawing.Point(147, 254);
+            this.btn_create_schedule.Name = "btn_create_schedule";
+            this.btn_create_schedule.Size = new System.Drawing.Size(160, 39);
+            this.btn_create_schedule.TabIndex = 27;
+            this.btn_create_schedule.Text = "Dodaj";
+            this.btn_create_schedule.UseVisualStyleBackColor = false;
+            this.btn_create_schedule.Click += new System.EventHandler(this.btn_create_schedule_Click);
+            // 
+            // btn_back_cs
+            // 
+            this.btn_back_cs.BackColor = System.Drawing.Color.Ivory;
+            this.btn_back_cs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_back_cs.Location = new System.Drawing.Point(6, 431);
+            this.btn_back_cs.Name = "btn_back_cs";
+            this.btn_back_cs.Size = new System.Drawing.Size(160, 39);
+            this.btn_back_cs.TabIndex = 26;
+            this.btn_back_cs.Text = "Wróć";
+            this.btn_back_cs.UseVisualStyleBackColor = false;
+            this.btn_back_cs.Click += new System.EventHandler(this.btn_back_cs_Click);
+            // 
+            // view_create_schedule
+            // 
+            this.view_create_schedule.AllowUserToAddRows = false;
+            this.view_create_schedule.AllowUserToDeleteRows = false;
+            this.view_create_schedule.BackgroundColor = System.Drawing.Color.Snow;
+            this.view_create_schedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.view_create_schedule.Location = new System.Drawing.Point(331, 56);
+            this.view_create_schedule.Name = "view_create_schedule";
+            this.view_create_schedule.ReadOnly = true;
+            this.view_create_schedule.Size = new System.Drawing.Size(397, 420);
+            this.view_create_schedule.TabIndex = 15;
+            // 
+            // checkBox_nieseg
+            // 
+            this.checkBox_nieseg.AutoSize = true;
+            this.checkBox_nieseg.Location = new System.Drawing.Point(130, 210);
+            this.checkBox_nieseg.Name = "checkBox_nieseg";
+            this.checkBox_nieseg.Size = new System.Drawing.Size(136, 21);
+            this.checkBox_nieseg.TabIndex = 14;
+            this.checkBox_nieseg.Text = "Niesegregowane";
+            this.checkBox_nieseg.UseVisualStyleBackColor = true;
+            this.checkBox_nieseg.CheckedChanged += new System.EventHandler(this.checkBox_nieseg_CheckedChanged);
+            // 
+            // checkBox_seg
+            // 
+            this.checkBox_seg.AutoSize = true;
+            this.checkBox_seg.Location = new System.Drawing.Point(130, 187);
+            this.checkBox_seg.Name = "checkBox_seg";
+            this.checkBox_seg.Size = new System.Drawing.Size(116, 21);
+            this.checkBox_seg.TabIndex = 13;
+            this.checkBox_seg.Text = "Segregowane";
+            this.checkBox_seg.UseVisualStyleBackColor = true;
+            this.checkBox_seg.CheckedChanged += new System.EventHandler(this.checkBox_seg_CheckedChanged);
+            // 
+            // txt_id_truck
+            // 
+            this.txt_id_truck.Location = new System.Drawing.Point(128, 148);
+            this.txt_id_truck.Name = "txt_id_truck";
+            this.txt_id_truck.Size = new System.Drawing.Size(179, 24);
+            this.txt_id_truck.TabIndex = 12;
+            // 
+            // txt_data
+            // 
+            this.txt_data.Location = new System.Drawing.Point(58, 110);
+            this.txt_data.Name = "txt_data";
+            this.txt_data.Size = new System.Drawing.Size(179, 24);
+            this.txt_data.TabIndex = 11;
+            // 
+            // txt_id_route
+            // 
+            this.txt_id_route.Location = new System.Drawing.Point(86, 75);
+            this.txt_id_route.Name = "txt_id_route";
+            this.txt_id_route.Size = new System.Drawing.Size(179, 24);
+            this.txt_id_route.TabIndex = 10;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold);
+            this.label28.Location = new System.Drawing.Point(3, 187);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(121, 19);
+            this.label28.TabIndex = 9;
+            this.label28.Text = "Rodzaj śmieci:";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold);
+            this.label27.Location = new System.Drawing.Point(3, 150);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(119, 19);
+            this.label27.TabIndex = 8;
+            this.label27.Text = "ID Ciężarówki:";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold);
+            this.label26.Location = new System.Drawing.Point(3, 112);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(49, 19);
+            this.label26.TabIndex = 7;
+            this.label26.Text = "Data:";
+            // 
+            // btn_trasy
+            // 
+            this.btn_trasy.BackColor = System.Drawing.Color.PaleGreen;
+            this.btn_trasy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_trasy.Location = new System.Drawing.Point(462, 0);
+            this.btn_trasy.Name = "btn_trasy";
+            this.btn_trasy.Size = new System.Drawing.Size(135, 52);
+            this.btn_trasy.TabIndex = 6;
+            this.btn_trasy.Text = "Trasy";
+            this.btn_trasy.UseVisualStyleBackColor = false;
+            this.btn_trasy.Click += new System.EventHandler(this.btn_trasy_Click);
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold);
+            this.label25.Location = new System.Drawing.Point(3, 77);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(77, 19);
+            this.label25.TabIndex = 5;
+            this.label25.Text = "ID Trasy:";
+            // 
+            // btn_ciezarowki
+            // 
+            this.btn_ciezarowki.BackColor = System.Drawing.Color.PaleGreen;
+            this.btn_ciezarowki.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_ciezarowki.Location = new System.Drawing.Point(596, 0);
+            this.btn_ciezarowki.Name = "btn_ciezarowki";
+            this.btn_ciezarowki.Size = new System.Drawing.Size(135, 52);
+            this.btn_ciezarowki.TabIndex = 2;
+            this.btn_ciezarowki.Text = "Ciężarówki";
+            this.btn_ciezarowki.UseVisualStyleBackColor = false;
+            this.btn_ciezarowki.Click += new System.EventHandler(this.btn_ciezarowki_Click);
+            // 
+            // pnl_edit_route
+            // 
+            this.pnl_edit_route.BackColor = System.Drawing.Color.White;
+            this.pnl_edit_route.Controls.Add(this.btn_show_route);
+            this.pnl_edit_route.Controls.Add(this.label_edit_route);
+            this.pnl_edit_route.Controls.Add(this.btn_edit_route_back);
+            this.pnl_edit_route.Controls.Add(this.btn_update_route);
+            this.pnl_edit_route.Controls.Add(this.view_edit_route);
+            this.pnl_edit_route.Controls.Add(this.btn_delete_route);
+            this.pnl_edit_route.Location = new System.Drawing.Point(0, 0);
+            this.pnl_edit_route.Name = "pnl_edit_route";
+            this.pnl_edit_route.Size = new System.Drawing.Size(731, 482);
+            this.pnl_edit_route.TabIndex = 28;
+            // 
+            // btn_show_route
+            // 
+            this.btn_show_route.BackColor = System.Drawing.Color.PaleGreen;
+            this.btn_show_route.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_show_route.Location = new System.Drawing.Point(301, 0);
+            this.btn_show_route.Name = "btn_show_route";
+            this.btn_show_route.Size = new System.Drawing.Size(135, 41);
+            this.btn_show_route.TabIndex = 27;
+            this.btn_show_route.Text = "Trasy";
+            this.btn_show_route.UseVisualStyleBackColor = false;
+            // 
+            // label_edit_route
+            // 
+            this.label_edit_route.AutoSize = true;
+            this.label_edit_route.Location = new System.Drawing.Point(10, 12);
+            this.label_edit_route.Name = "label_edit_route";
+            this.label_edit_route.Size = new System.Drawing.Size(73, 17);
+            this.label_edit_route.TabIndex = 26;
+            this.label_edit_route.Text = "Aktualizuj";
+            // 
+            // btn_edit_route_back
+            // 
+            this.btn_edit_route_back.BackColor = System.Drawing.Color.Ivory;
+            this.btn_edit_route_back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_edit_route_back.Location = new System.Drawing.Point(10, 431);
+            this.btn_edit_route_back.Name = "btn_edit_route_back";
+            this.btn_edit_route_back.Size = new System.Drawing.Size(160, 39);
+            this.btn_edit_route_back.TabIndex = 25;
+            this.btn_edit_route_back.Text = "Wróć";
+            this.btn_edit_route_back.UseVisualStyleBackColor = false;
+            // 
+            // btn_update_route
+            // 
+            this.btn_update_route.BackColor = System.Drawing.Color.Ivory;
+            this.btn_update_route.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_update_route.Location = new System.Drawing.Point(393, 431);
+            this.btn_update_route.Name = "btn_update_route";
+            this.btn_update_route.Size = new System.Drawing.Size(160, 39);
+            this.btn_update_route.TabIndex = 24;
+            this.btn_update_route.Text = "Aktualizuj";
+            this.btn_update_route.UseVisualStyleBackColor = false;
+            // 
+            // view_edit_route
+            // 
+            this.view_edit_route.AllowUserToAddRows = false;
+            this.view_edit_route.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.view_edit_route.BackgroundColor = System.Drawing.Color.Snow;
+            this.view_edit_route.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.view_edit_route.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.view_edit_route.Location = new System.Drawing.Point(10, 47);
+            this.view_edit_route.Name = "view_edit_route";
+            this.view_edit_route.Size = new System.Drawing.Size(709, 378);
+            this.view_edit_route.TabIndex = 23;
+            // 
+            // btn_delete_route
+            // 
+            this.btn_delete_route.BackColor = System.Drawing.Color.Ivory;
+            this.btn_delete_route.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_delete_route.Location = new System.Drawing.Point(559, 431);
+            this.btn_delete_route.Name = "btn_delete_route";
+            this.btn_delete_route.Size = new System.Drawing.Size(160, 39);
+            this.btn_delete_route.TabIndex = 22;
+            this.btn_delete_route.Text = "Usuń";
+            this.btn_delete_route.UseVisualStyleBackColor = false;
+            // 
+            // pnl_create_route
+            // 
+            this.pnl_create_route.BackColor = System.Drawing.Color.White;
+            this.pnl_create_route.Controls.Add(this.txt_length);
+            this.pnl_create_route.Controls.Add(this.label40);
+            this.pnl_create_route.Controls.Add(this.btn_show_routes);
+            this.pnl_create_route.Controls.Add(this.txt_by);
+            this.pnl_create_route.Controls.Add(this.label32);
+            this.pnl_create_route.Controls.Add(this.txt_end);
+            this.pnl_create_route.Controls.Add(this.btn_add_route);
+            this.pnl_create_route.Controls.Add(this.btn_back_route);
+            this.pnl_create_route.Controls.Add(this.view_created_route);
+            this.pnl_create_route.Controls.Add(this.txt_start);
+            this.pnl_create_route.Controls.Add(this.label36);
+            this.pnl_create_route.Controls.Add(this.label39);
+            this.pnl_create_route.Location = new System.Drawing.Point(0, 0);
+            this.pnl_create_route.Name = "pnl_create_route";
+            this.pnl_create_route.Size = new System.Drawing.Size(731, 483);
+            this.pnl_create_route.TabIndex = 27;
+            // 
+            // txt_length
+            // 
+            this.txt_length.Location = new System.Drawing.Point(122, 185);
+            this.txt_length.Name = "txt_length";
+            this.txt_length.Size = new System.Drawing.Size(179, 24);
+            this.txt_length.TabIndex = 36;
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold);
+            this.label40.Location = new System.Drawing.Point(3, 187);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(113, 19);
+            this.label40.TabIndex = 35;
+            this.label40.Text = "Długość (km):";
+            // 
+            // btn_show_routes
+            // 
+            this.btn_show_routes.BackColor = System.Drawing.Color.PaleGreen;
+            this.btn_show_routes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_show_routes.Location = new System.Drawing.Point(596, 0);
+            this.btn_show_routes.Name = "btn_show_routes";
+            this.btn_show_routes.Size = new System.Drawing.Size(135, 52);
+            this.btn_show_routes.TabIndex = 34;
+            this.btn_show_routes.Text = "Stworzone Trasy";
+            this.btn_show_routes.UseVisualStyleBackColor = false;
+            this.btn_show_routes.Click += new System.EventHandler(this.btn_show_routes_Click);
+            // 
+            // txt_by
+            // 
+            this.txt_by.Location = new System.Drawing.Point(166, 147);
+            this.txt_by.Name = "txt_by";
+            this.txt_by.Size = new System.Drawing.Size(179, 24);
+            this.txt_by.TabIndex = 32;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold);
+            this.label32.Location = new System.Drawing.Point(3, 150);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(157, 19);
+            this.label32.TabIndex = 31;
+            this.label32.Text = "Przez (opcjonalnie):";
+            // 
+            // txt_end
+            // 
+            this.txt_end.Location = new System.Drawing.Point(75, 110);
+            this.txt_end.Name = "txt_end";
+            this.txt_end.Size = new System.Drawing.Size(179, 24);
+            this.txt_end.TabIndex = 30;
+            // 
+            // btn_add_route
+            // 
+            this.btn_add_route.BackColor = System.Drawing.Color.Ivory;
+            this.btn_add_route.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_add_route.Location = new System.Drawing.Point(196, 244);
+            this.btn_add_route.Name = "btn_add_route";
+            this.btn_add_route.Size = new System.Drawing.Size(160, 39);
+            this.btn_add_route.TabIndex = 27;
+            this.btn_add_route.Text = "Dodaj";
+            this.btn_add_route.UseVisualStyleBackColor = false;
+            // 
+            // btn_back_route
+            // 
+            this.btn_back_route.BackColor = System.Drawing.Color.Ivory;
+            this.btn_back_route.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_back_route.Location = new System.Drawing.Point(6, 431);
+            this.btn_back_route.Name = "btn_back_route";
+            this.btn_back_route.Size = new System.Drawing.Size(160, 39);
+            this.btn_back_route.TabIndex = 26;
+            this.btn_back_route.Text = "Wróć";
+            this.btn_back_route.UseVisualStyleBackColor = false;
+            // 
+            // view_created_route
+            // 
+            this.view_created_route.AllowUserToAddRows = false;
+            this.view_created_route.AllowUserToDeleteRows = false;
+            this.view_created_route.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.view_created_route.BackgroundColor = System.Drawing.Color.Snow;
+            this.view_created_route.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.view_created_route.Location = new System.Drawing.Point(373, 56);
+            this.view_created_route.Name = "view_created_route";
+            this.view_created_route.ReadOnly = true;
+            this.view_created_route.Size = new System.Drawing.Size(355, 420);
+            this.view_created_route.TabIndex = 15;
+            // 
+            // txt_start
+            // 
+            this.txt_start.Location = new System.Drawing.Point(92, 74);
+            this.txt_start.Name = "txt_start";
+            this.txt_start.Size = new System.Drawing.Size(179, 24);
+            this.txt_start.TabIndex = 10;
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold);
+            this.label36.Location = new System.Drawing.Point(3, 112);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(67, 19);
+            this.label36.TabIndex = 7;
+            this.label36.Text = "Koniec:";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold);
+            this.label39.Location = new System.Drawing.Point(3, 77);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(83, 19);
+            this.label39.TabIndex = 5;
+            this.label39.Text = "Początek:";
+            // 
+            // pnl_edit_team
+            // 
+            this.pnl_edit_team.BackColor = System.Drawing.Color.White;
+            this.pnl_edit_team.Controls.Add(this.btn_back_editTeam);
+            this.pnl_edit_team.Controls.Add(this.view_editTeam);
+            this.pnl_edit_team.Controls.Add(this.view_showTeam);
+            this.pnl_edit_team.Controls.Add(this.btn_kierowcy_editTeam);
+            this.pnl_edit_team.Controls.Add(this.btn_teams_editTeam);
+            this.pnl_edit_team.Controls.Add(this.btn_smieciarze_editTeam);
+            this.pnl_edit_team.Location = new System.Drawing.Point(0, 0);
+            this.pnl_edit_team.Name = "pnl_edit_team";
+            this.pnl_edit_team.Size = new System.Drawing.Size(731, 483);
+            this.pnl_edit_team.TabIndex = 20;
+            // 
+            // btn_back_editTeam
+            // 
+            this.btn_back_editTeam.BackColor = System.Drawing.Color.Ivory;
+            this.btn_back_editTeam.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_back_editTeam.Location = new System.Drawing.Point(6, 431);
+            this.btn_back_editTeam.Name = "btn_back_editTeam";
+            this.btn_back_editTeam.Size = new System.Drawing.Size(160, 39);
+            this.btn_back_editTeam.TabIndex = 26;
+            this.btn_back_editTeam.Text = "Wróć";
+            this.btn_back_editTeam.UseVisualStyleBackColor = false;
+            this.btn_back_editTeam.Click += new System.EventHandler(this.btn_back_editTeam_Click);
+            // 
+            // view_editTeam
+            // 
+            this.view_editTeam.AllowUserToAddRows = false;
+            this.view_editTeam.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.view_editTeam.BackgroundColor = System.Drawing.Color.Snow;
+            this.view_editTeam.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.view_editTeam.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.view_editTeam.Location = new System.Drawing.Point(6, 56);
+            this.view_editTeam.Name = "view_editTeam";
+            this.view_editTeam.Size = new System.Drawing.Size(356, 369);
+            this.view_editTeam.TabIndex = 29;
+            // 
+            // view_showTeam
+            // 
+            this.view_showTeam.AllowUserToAddRows = false;
+            this.view_showTeam.AllowUserToDeleteRows = false;
+            this.view_showTeam.BackgroundColor = System.Drawing.Color.Snow;
+            this.view_showTeam.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.view_showTeam.Location = new System.Drawing.Point(368, 56);
+            this.view_showTeam.Name = "view_showTeam";
+            this.view_showTeam.ReadOnly = true;
+            this.view_showTeam.Size = new System.Drawing.Size(360, 369);
+            this.view_showTeam.TabIndex = 15;
+            // 
+            // btn_kierowcy_editTeam
+            // 
+            this.btn_kierowcy_editTeam.BackColor = System.Drawing.Color.PaleGreen;
+            this.btn_kierowcy_editTeam.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_kierowcy_editTeam.Location = new System.Drawing.Point(458, 0);
+            this.btn_kierowcy_editTeam.Name = "btn_kierowcy_editTeam";
+            this.btn_kierowcy_editTeam.Size = new System.Drawing.Size(135, 52);
+            this.btn_kierowcy_editTeam.TabIndex = 6;
+            this.btn_kierowcy_editTeam.Text = "Kierowcy";
+            this.btn_kierowcy_editTeam.UseVisualStyleBackColor = false;
+            this.btn_kierowcy_editTeam.Click += new System.EventHandler(this.btn_kierowcy_editTeam_Click);
+            // 
+            // btn_teams_editTeam
+            // 
+            this.btn_teams_editTeam.BackColor = System.Drawing.Color.PaleGreen;
+            this.btn_teams_editTeam.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_teams_editTeam.Location = new System.Drawing.Point(0, 0);
+            this.btn_teams_editTeam.Name = "btn_teams_editTeam";
+            this.btn_teams_editTeam.Size = new System.Drawing.Size(135, 52);
+            this.btn_teams_editTeam.TabIndex = 28;
+            this.btn_teams_editTeam.Text = "Stworzone zespoły";
+            this.btn_teams_editTeam.UseVisualStyleBackColor = false;
+            this.btn_teams_editTeam.Click += new System.EventHandler(this.btn_teams_editTeam_Click);
+            // 
+            // btn_smieciarze_editTeam
+            // 
+            this.btn_smieciarze_editTeam.BackColor = System.Drawing.Color.PaleGreen;
+            this.btn_smieciarze_editTeam.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_smieciarze_editTeam.Location = new System.Drawing.Point(593, 0);
+            this.btn_smieciarze_editTeam.Name = "btn_smieciarze_editTeam";
+            this.btn_smieciarze_editTeam.Size = new System.Drawing.Size(135, 52);
+            this.btn_smieciarze_editTeam.TabIndex = 2;
+            this.btn_smieciarze_editTeam.Text = "Śmieciarze";
+            this.btn_smieciarze_editTeam.UseVisualStyleBackColor = false;
+            this.btn_smieciarze_editTeam.Click += new System.EventHandler(this.btn_smieciarze_editTeam_Click);
+            // 
+            // pnl_create_team
+            // 
+            this.pnl_create_team.BackColor = System.Drawing.Color.White;
+            this.pnl_create_team.Controls.Add(this.txt_nr_rejestr);
+            this.pnl_create_team.Controls.Add(this.btn_trucks);
+            this.pnl_create_team.Controls.Add(this.label31);
+            this.pnl_create_team.Controls.Add(this.btn_creatTeam);
+            this.pnl_create_team.Controls.Add(this.btn_back_team);
+            this.pnl_create_team.Controls.Add(this.view_create_team);
+            this.pnl_create_team.Controls.Add(this.txt_kierowca);
+            this.pnl_create_team.Controls.Add(this.label33);
+            this.pnl_create_team.Controls.Add(this.btn_kierowcy);
+            this.pnl_create_team.Controls.Add(this.btn_teams);
+            this.pnl_create_team.Controls.Add(this.btn_odbior);
+            this.pnl_create_team.Location = new System.Drawing.Point(0, 0);
+            this.pnl_create_team.Name = "pnl_create_team";
+            this.pnl_create_team.Size = new System.Drawing.Size(731, 483);
+            this.pnl_create_team.TabIndex = 19;
+            // 
+            // txt_nr_rejestr
+            // 
+            this.txt_nr_rejestr.Location = new System.Drawing.Point(130, 115);
+            this.txt_nr_rejestr.Name = "txt_nr_rejestr";
+            this.txt_nr_rejestr.Size = new System.Drawing.Size(179, 24);
+            this.txt_nr_rejestr.TabIndex = 34;
+            // 
+            // btn_trucks
+            // 
+            this.btn_trucks.BackColor = System.Drawing.Color.PaleGreen;
+            this.btn_trucks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_trucks.Location = new System.Drawing.Point(331, 0);
+            this.btn_trucks.Name = "btn_trucks";
+            this.btn_trucks.Size = new System.Drawing.Size(135, 52);
+            this.btn_trucks.TabIndex = 33;
+            this.btn_trucks.Text = "Ciężarówki";
+            this.btn_trucks.UseVisualStyleBackColor = false;
+            this.btn_trucks.Click += new System.EventHandler(this.btn_trucks_Click);
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold);
+            this.label31.Location = new System.Drawing.Point(3, 117);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(117, 19);
+            this.label31.TabIndex = 31;
+            this.label31.Text = "ID ciężarówki:";
+            // 
+            // btn_creatTeam
+            // 
+            this.btn_creatTeam.BackColor = System.Drawing.Color.Ivory;
+            this.btn_creatTeam.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_creatTeam.Location = new System.Drawing.Point(149, 169);
+            this.btn_creatTeam.Name = "btn_creatTeam";
+            this.btn_creatTeam.Size = new System.Drawing.Size(160, 39);
+            this.btn_creatTeam.TabIndex = 27;
+            this.btn_creatTeam.Text = "Dodaj";
+            this.btn_creatTeam.UseVisualStyleBackColor = false;
+            this.btn_creatTeam.Click += new System.EventHandler(this.btn_creatTeam_Click);
+            // 
+            // btn_back_team
+            // 
+            this.btn_back_team.BackColor = System.Drawing.Color.Ivory;
+            this.btn_back_team.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_back_team.Location = new System.Drawing.Point(6, 431);
+            this.btn_back_team.Name = "btn_back_team";
+            this.btn_back_team.Size = new System.Drawing.Size(160, 39);
+            this.btn_back_team.TabIndex = 26;
+            this.btn_back_team.Text = "Wróć";
+            this.btn_back_team.UseVisualStyleBackColor = false;
+            this.btn_back_team.Click += new System.EventHandler(this.btn_back_team_Click);
+            // 
+            // view_create_team
+            // 
+            this.view_create_team.AllowUserToAddRows = false;
+            this.view_create_team.AllowUserToDeleteRows = false;
+            this.view_create_team.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.view_create_team.BackgroundColor = System.Drawing.Color.Snow;
+            this.view_create_team.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.view_create_team.Location = new System.Drawing.Point(331, 56);
+            this.view_create_team.Name = "view_create_team";
+            this.view_create_team.ReadOnly = true;
+            this.view_create_team.Size = new System.Drawing.Size(397, 420);
+            this.view_create_team.TabIndex = 15;
+            // 
+            // txt_kierowca
+            // 
+            this.txt_kierowca.Location = new System.Drawing.Point(128, 75);
+            this.txt_kierowca.Name = "txt_kierowca";
+            this.txt_kierowca.Size = new System.Drawing.Size(179, 24);
+            this.txt_kierowca.TabIndex = 10;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold);
+            this.label33.Location = new System.Drawing.Point(3, 77);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(123, 19);
+            this.label33.TabIndex = 5;
+            this.label33.Text = "ID Pracownika:";
+            // 
+            // btn_kierowcy
+            // 
+            this.btn_kierowcy.BackColor = System.Drawing.Color.PaleGreen;
+            this.btn_kierowcy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_kierowcy.Location = new System.Drawing.Point(462, 0);
+            this.btn_kierowcy.Name = "btn_kierowcy";
+            this.btn_kierowcy.Size = new System.Drawing.Size(135, 52);
+            this.btn_kierowcy.TabIndex = 6;
+            this.btn_kierowcy.Text = "Kierowcy";
+            this.btn_kierowcy.UseVisualStyleBackColor = false;
+            this.btn_kierowcy.Click += new System.EventHandler(this.btn_kierowcy_Click);
+            // 
+            // btn_teams
+            // 
+            this.btn_teams.BackColor = System.Drawing.Color.PaleGreen;
+            this.btn_teams.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_teams.Location = new System.Drawing.Point(199, 0);
+            this.btn_teams.Name = "btn_teams";
+            this.btn_teams.Size = new System.Drawing.Size(135, 52);
+            this.btn_teams.TabIndex = 28;
+            this.btn_teams.Text = "Stworzone zespoły";
+            this.btn_teams.UseVisualStyleBackColor = false;
+            this.btn_teams.Click += new System.EventHandler(this.btn_teams_Click);
+            // 
+            // btn_odbior
+            // 
+            this.btn_odbior.BackColor = System.Drawing.Color.PaleGreen;
+            this.btn_odbior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_odbior.Location = new System.Drawing.Point(596, 0);
+            this.btn_odbior.Name = "btn_odbior";
+            this.btn_odbior.Size = new System.Drawing.Size(135, 52);
+            this.btn_odbior.TabIndex = 2;
+            this.btn_odbior.Text = "Śmieciarze";
+            this.btn_odbior.UseVisualStyleBackColor = false;
+            this.btn_odbior.Click += new System.EventHandler(this.btn_odbior_Click);
+            // 
+            // pnl_create_truck
+            // 
+            this.pnl_create_truck.BackColor = System.Drawing.Color.White;
+            this.pnl_create_truck.Controls.Add(this.btn_created_truck);
+            this.pnl_create_truck.Controls.Add(this.txt_pltNumber);
+            this.pnl_create_truck.Controls.Add(this.label35);
+            this.pnl_create_truck.Controls.Add(this.txt_seats);
+            this.pnl_create_truck.Controls.Add(this.btn_add_createtruck);
+            this.pnl_create_truck.Controls.Add(this.btn_back_createtruck);
+            this.pnl_create_truck.Controls.Add(this.view_create_truck);
+            this.pnl_create_truck.Controls.Add(this.txt_brand);
+            this.pnl_create_truck.Controls.Add(this.label37);
+            this.pnl_create_truck.Controls.Add(this.label38);
+            this.pnl_create_truck.Location = new System.Drawing.Point(0, 0);
+            this.pnl_create_truck.Name = "pnl_create_truck";
+            this.pnl_create_truck.Size = new System.Drawing.Size(731, 483);
+            this.pnl_create_truck.TabIndex = 23;
+            // 
+            // btn_created_truck
+            // 
+            this.btn_created_truck.BackColor = System.Drawing.Color.PaleGreen;
+            this.btn_created_truck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_created_truck.Location = new System.Drawing.Point(596, 0);
+            this.btn_created_truck.Name = "btn_created_truck";
+            this.btn_created_truck.Size = new System.Drawing.Size(135, 52);
+            this.btn_created_truck.TabIndex = 34;
+            this.btn_created_truck.Text = "Stworzone Ciężarówki";
+            this.btn_created_truck.UseVisualStyleBackColor = false;
+            this.btn_created_truck.Click += new System.EventHandler(this.btn_created_truck_Click);
+            // 
+            // txt_pltNumber
+            // 
+            this.txt_pltNumber.Location = new System.Drawing.Point(188, 148);
+            this.txt_pltNumber.Name = "txt_pltNumber";
+            this.txt_pltNumber.Size = new System.Drawing.Size(179, 24);
+            this.txt_pltNumber.TabIndex = 32;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold);
+            this.label35.Location = new System.Drawing.Point(3, 150);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(188, 19);
+            this.label35.TabIndex = 31;
+            this.label35.Text = "Rejestracja ciężarówki:";
+            // 
+            // txt_seats
+            // 
+            this.txt_seats.Location = new System.Drawing.Point(121, 110);
+            this.txt_seats.Name = "txt_seats";
+            this.txt_seats.Size = new System.Drawing.Size(179, 24);
+            this.txt_seats.TabIndex = 30;
+            // 
+            // btn_add_createtruck
+            // 
+            this.btn_add_createtruck.BackColor = System.Drawing.Color.Ivory;
+            this.btn_add_createtruck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_add_createtruck.Location = new System.Drawing.Point(207, 205);
+            this.btn_add_createtruck.Name = "btn_add_createtruck";
+            this.btn_add_createtruck.Size = new System.Drawing.Size(160, 39);
+            this.btn_add_createtruck.TabIndex = 27;
+            this.btn_add_createtruck.Text = "Dodaj";
+            this.btn_add_createtruck.UseVisualStyleBackColor = false;
+            this.btn_add_createtruck.Click += new System.EventHandler(this.btn_add_createtruck_Click);
+            // 
+            // btn_back_createtruck
+            // 
+            this.btn_back_createtruck.BackColor = System.Drawing.Color.Ivory;
+            this.btn_back_createtruck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_back_createtruck.Location = new System.Drawing.Point(6, 431);
+            this.btn_back_createtruck.Name = "btn_back_createtruck";
+            this.btn_back_createtruck.Size = new System.Drawing.Size(160, 39);
+            this.btn_back_createtruck.TabIndex = 26;
+            this.btn_back_createtruck.Text = "Wróć";
+            this.btn_back_createtruck.UseVisualStyleBackColor = false;
+            this.btn_back_createtruck.Click += new System.EventHandler(this.btn_back_createtruck_Click);
+            // 
+            // view_create_truck
+            // 
+            this.view_create_truck.AllowUserToAddRows = false;
+            this.view_create_truck.AllowUserToDeleteRows = false;
+            this.view_create_truck.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.view_create_truck.BackgroundColor = System.Drawing.Color.Snow;
+            this.view_create_truck.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.view_create_truck.Location = new System.Drawing.Point(373, 56);
+            this.view_create_truck.Name = "view_create_truck";
+            this.view_create_truck.ReadOnly = true;
+            this.view_create_truck.Size = new System.Drawing.Size(355, 420);
+            this.view_create_truck.TabIndex = 15;
+            // 
+            // txt_brand
+            // 
+            this.txt_brand.Location = new System.Drawing.Point(63, 74);
+            this.txt_brand.Name = "txt_brand";
+            this.txt_brand.Size = new System.Drawing.Size(179, 24);
+            this.txt_brand.TabIndex = 10;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold);
+            this.label37.Location = new System.Drawing.Point(3, 112);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(119, 19);
+            this.label37.TabIndex = 7;
+            this.label37.Text = "Liczba miejsc:";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Arial Black", 10F, System.Drawing.FontStyle.Bold);
+            this.label38.Location = new System.Drawing.Point(3, 77);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(60, 19);
+            this.label38.TabIndex = 5;
+            this.label38.Text = "Marka:";
+            // 
+            // pnl_edit_trucks
+            // 
+            this.pnl_edit_trucks.BackColor = System.Drawing.Color.White;
+            this.pnl_edit_trucks.Controls.Add(this.Tryb_trucks);
+            this.pnl_edit_trucks.Controls.Add(this.btn_update_trucks);
+            this.pnl_edit_trucks.Controls.Add(this.btn_delete_trucks);
+            this.pnl_edit_trucks.Controls.Add(this.btn_back_edit_trucks);
+            this.pnl_edit_trucks.Controls.Add(this.view_edit_trucks);
+            this.pnl_edit_trucks.Controls.Add(this.btn_ed_created_trucks);
+            this.pnl_edit_trucks.Location = new System.Drawing.Point(0, 0);
+            this.pnl_edit_trucks.Name = "pnl_edit_trucks";
+            this.pnl_edit_trucks.Size = new System.Drawing.Size(731, 483);
+            this.pnl_edit_trucks.TabIndex = 24;
+            // 
+            // Tryb_trucks
+            // 
+            this.Tryb_trucks.AutoSize = true;
+            this.Tryb_trucks.Location = new System.Drawing.Point(10, 10);
+            this.Tryb_trucks.Name = "Tryb_trucks";
+            this.Tryb_trucks.Size = new System.Drawing.Size(73, 17);
+            this.Tryb_trucks.TabIndex = 32;
+            this.Tryb_trucks.Text = "Aktualizuj";
+            // 
+            // btn_update_trucks
+            // 
+            this.btn_update_trucks.BackColor = System.Drawing.Color.Ivory;
+            this.btn_update_trucks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_update_trucks.Location = new System.Drawing.Point(402, 431);
+            this.btn_update_trucks.Name = "btn_update_trucks";
+            this.btn_update_trucks.Size = new System.Drawing.Size(160, 39);
+            this.btn_update_trucks.TabIndex = 31;
+            this.btn_update_trucks.Text = "Aktualizuj";
+            this.btn_update_trucks.UseVisualStyleBackColor = false;
+            // 
+            // btn_delete_trucks
+            // 
+            this.btn_delete_trucks.BackColor = System.Drawing.Color.Ivory;
+            this.btn_delete_trucks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_delete_trucks.Location = new System.Drawing.Point(568, 431);
+            this.btn_delete_trucks.Name = "btn_delete_trucks";
+            this.btn_delete_trucks.Size = new System.Drawing.Size(160, 39);
+            this.btn_delete_trucks.TabIndex = 30;
+            this.btn_delete_trucks.Text = "Usuń";
+            this.btn_delete_trucks.UseVisualStyleBackColor = false;
+            // 
+            // btn_back_edit_trucks
+            // 
+            this.btn_back_edit_trucks.BackColor = System.Drawing.Color.Ivory;
+            this.btn_back_edit_trucks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_back_edit_trucks.Location = new System.Drawing.Point(6, 431);
+            this.btn_back_edit_trucks.Name = "btn_back_edit_trucks";
+            this.btn_back_edit_trucks.Size = new System.Drawing.Size(160, 39);
+            this.btn_back_edit_trucks.TabIndex = 26;
+            this.btn_back_edit_trucks.Text = "Wróć";
+            this.btn_back_edit_trucks.UseVisualStyleBackColor = false;
+            this.btn_back_edit_trucks.Click += new System.EventHandler(this.btn_back_edit_trucks_Click);
+            // 
+            // view_edit_trucks
+            // 
+            this.view_edit_trucks.AllowUserToAddRows = false;
+            this.view_edit_trucks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.view_edit_trucks.BackgroundColor = System.Drawing.Color.Snow;
+            this.view_edit_trucks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.view_edit_trucks.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.view_edit_trucks.Location = new System.Drawing.Point(6, 56);
+            this.view_edit_trucks.Name = "view_edit_trucks";
+            this.view_edit_trucks.Size = new System.Drawing.Size(722, 369);
+            this.view_edit_trucks.TabIndex = 29;
+            // 
+            // btn_ed_created_trucks
+            // 
+            this.btn_ed_created_trucks.BackColor = System.Drawing.Color.PaleGreen;
+            this.btn_ed_created_trucks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_ed_created_trucks.Location = new System.Drawing.Point(300, 0);
+            this.btn_ed_created_trucks.Name = "btn_ed_created_trucks";
+            this.btn_ed_created_trucks.Size = new System.Drawing.Size(135, 52);
+            this.btn_ed_created_trucks.TabIndex = 28;
+            this.btn_ed_created_trucks.Text = "Stworzone ciężarówki";
+            this.btn_ed_created_trucks.UseVisualStyleBackColor = false;
+            this.btn_ed_created_trucks.Click += new System.EventHandler(this.btn_ed_created_trucks_Click);
+            // 
+            // pnl_edit_segregacja
+            // 
+            this.pnl_edit_segregacja.BackColor = System.Drawing.Color.White;
+            this.pnl_edit_segregacja.Controls.Add(this.Tryb_segregacja);
+            this.pnl_edit_segregacja.Controls.Add(this.btn_back_segregacja);
+            this.pnl_edit_segregacja.Controls.Add(this.btn_edit_segregacja);
+            this.pnl_edit_segregacja.Controls.Add(this.view_edit_segregacja);
+            this.pnl_edit_segregacja.Controls.Add(this.btn_delete_segregacja);
+            this.pnl_edit_segregacja.Controls.Add(this.label24);
+            this.pnl_edit_segregacja.Location = new System.Drawing.Point(0, 0);
+            this.pnl_edit_segregacja.Name = "pnl_edit_segregacja";
+            this.pnl_edit_segregacja.Size = new System.Drawing.Size(731, 482);
+            this.pnl_edit_segregacja.TabIndex = 16;
+            // 
+            // Tryb_segregacja
+            // 
+            this.Tryb_segregacja.AutoSize = true;
+            this.Tryb_segregacja.Location = new System.Drawing.Point(10, 12);
+            this.Tryb_segregacja.Name = "Tryb_segregacja";
+            this.Tryb_segregacja.Size = new System.Drawing.Size(73, 17);
+            this.Tryb_segregacja.TabIndex = 26;
+            this.Tryb_segregacja.Text = "Aktualizuj";
+            // 
+            // btn_back_segregacja
+            // 
+            this.btn_back_segregacja.BackColor = System.Drawing.Color.Ivory;
+            this.btn_back_segregacja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_back_segregacja.Location = new System.Drawing.Point(10, 431);
+            this.btn_back_segregacja.Name = "btn_back_segregacja";
+            this.btn_back_segregacja.Size = new System.Drawing.Size(160, 39);
+            this.btn_back_segregacja.TabIndex = 25;
+            this.btn_back_segregacja.Text = "Wróć";
+            this.btn_back_segregacja.UseVisualStyleBackColor = false;
+            // 
+            // btn_edit_segregacja
+            // 
+            this.btn_edit_segregacja.BackColor = System.Drawing.Color.Ivory;
+            this.btn_edit_segregacja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_edit_segregacja.Location = new System.Drawing.Point(393, 431);
+            this.btn_edit_segregacja.Name = "btn_edit_segregacja";
+            this.btn_edit_segregacja.Size = new System.Drawing.Size(160, 39);
+            this.btn_edit_segregacja.TabIndex = 24;
+            this.btn_edit_segregacja.Text = "Aktualizuj";
+            this.btn_edit_segregacja.UseVisualStyleBackColor = false;
+            // 
+            // view_edit_segregacja
+            // 
+            this.view_edit_segregacja.AllowUserToAddRows = false;
+            this.view_edit_segregacja.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.view_edit_segregacja.BackgroundColor = System.Drawing.Color.Snow;
+            this.view_edit_segregacja.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.view_edit_segregacja.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.view_edit_segregacja.Location = new System.Drawing.Point(10, 33);
+            this.view_edit_segregacja.Name = "view_edit_segregacja";
+            this.view_edit_segregacja.Size = new System.Drawing.Size(709, 392);
+            this.view_edit_segregacja.TabIndex = 23;
+            // 
+            // btn_delete_segregacja
+            // 
+            this.btn_delete_segregacja.BackColor = System.Drawing.Color.Ivory;
+            this.btn_delete_segregacja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_delete_segregacja.Location = new System.Drawing.Point(559, 431);
+            this.btn_delete_segregacja.Name = "btn_delete_segregacja";
+            this.btn_delete_segregacja.Size = new System.Drawing.Size(160, 39);
+            this.btn_delete_segregacja.TabIndex = 22;
+            this.btn_delete_segregacja.Text = "Usuń";
+            this.btn_delete_segregacja.UseVisualStyleBackColor = false;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Bold);
+            this.label24.Location = new System.Drawing.Point(281, 6);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(103, 22);
+            this.label24.TabIndex = 0;
+            this.label24.Text = "Segregacja";
             // 
             // pnl_edit_admin
             // 
@@ -658,6 +1506,48 @@
             this.pnl_edit_admin.Name = "pnl_edit_admin";
             this.pnl_edit_admin.Size = new System.Drawing.Size(731, 482);
             this.pnl_edit_admin.TabIndex = 12;
+            // 
+            // btn_delete
+            // 
+            this.btn_delete.BackColor = System.Drawing.Color.Ivory;
+            this.btn_delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_delete.Location = new System.Drawing.Point(559, 431);
+            this.btn_delete.Name = "btn_delete";
+            this.btn_delete.Size = new System.Drawing.Size(160, 39);
+            this.btn_delete.TabIndex = 21;
+            this.btn_delete.Text = "Usuń";
+            this.btn_delete.UseVisualStyleBackColor = false;
+            // 
+            // btn_admins_back
+            // 
+            this.btn_admins_back.BackColor = System.Drawing.Color.Ivory;
+            this.btn_admins_back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_admins_back.Location = new System.Drawing.Point(10, 431);
+            this.btn_admins_back.Name = "btn_admins_back";
+            this.btn_admins_back.Size = new System.Drawing.Size(160, 39);
+            this.btn_admins_back.TabIndex = 20;
+            this.btn_admins_back.Text = "Wróć";
+            this.btn_admins_back.UseVisualStyleBackColor = false;
+            // 
+            // Tryb_admins
+            // 
+            this.Tryb_admins.AutoSize = true;
+            this.Tryb_admins.Location = new System.Drawing.Point(7, 7);
+            this.Tryb_admins.Name = "Tryb_admins";
+            this.Tryb_admins.Size = new System.Drawing.Size(73, 17);
+            this.Tryb_admins.TabIndex = 17;
+            this.Tryb_admins.Text = "Aktualizuj";
+            // 
+            // btn_update_admins
+            // 
+            this.btn_update_admins.BackColor = System.Drawing.Color.Ivory;
+            this.btn_update_admins.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_update_admins.Location = new System.Drawing.Point(391, 431);
+            this.btn_update_admins.Name = "btn_update_admins";
+            this.btn_update_admins.Size = new System.Drawing.Size(160, 39);
+            this.btn_update_admins.TabIndex = 16;
+            this.btn_update_admins.Text = "Aktualizuj";
+            this.btn_update_admins.UseVisualStyleBackColor = false;
             // 
             // view_edit_admin
             // 
@@ -680,6 +1570,339 @@
             this.label20.Size = new System.Drawing.Size(141, 22);
             this.label20.TabIndex = 0;
             this.label20.Text = "Administratorzy";
+            // 
+            // pnl_edit_smieciarze
+            // 
+            this.pnl_edit_smieciarze.BackColor = System.Drawing.Color.White;
+            this.pnl_edit_smieciarze.Controls.Add(this.btn_back_smieciarze);
+            this.pnl_edit_smieciarze.Controls.Add(this.btn_smieciarze_edit);
+            this.pnl_edit_smieciarze.Controls.Add(this.btn_delete_smieciarze);
+            this.pnl_edit_smieciarze.Controls.Add(this.view_edit_smieciarze);
+            this.pnl_edit_smieciarze.Controls.Add(this.Tryb_smieciarze);
+            this.pnl_edit_smieciarze.Controls.Add(this.label21);
+            this.pnl_edit_smieciarze.Location = new System.Drawing.Point(0, 0);
+            this.pnl_edit_smieciarze.Name = "pnl_edit_smieciarze";
+            this.pnl_edit_smieciarze.Size = new System.Drawing.Size(731, 482);
+            this.pnl_edit_smieciarze.TabIndex = 13;
+            // 
+            // btn_back_smieciarze
+            // 
+            this.btn_back_smieciarze.BackColor = System.Drawing.Color.Ivory;
+            this.btn_back_smieciarze.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_back_smieciarze.Location = new System.Drawing.Point(10, 431);
+            this.btn_back_smieciarze.Name = "btn_back_smieciarze";
+            this.btn_back_smieciarze.Size = new System.Drawing.Size(160, 39);
+            this.btn_back_smieciarze.TabIndex = 31;
+            this.btn_back_smieciarze.Text = "Wróć";
+            this.btn_back_smieciarze.UseVisualStyleBackColor = false;
+            // 
+            // btn_smieciarze_edit
+            // 
+            this.btn_smieciarze_edit.BackColor = System.Drawing.Color.Ivory;
+            this.btn_smieciarze_edit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_smieciarze_edit.Location = new System.Drawing.Point(391, 431);
+            this.btn_smieciarze_edit.Name = "btn_smieciarze_edit";
+            this.btn_smieciarze_edit.Size = new System.Drawing.Size(160, 39);
+            this.btn_smieciarze_edit.TabIndex = 30;
+            this.btn_smieciarze_edit.Text = "Aktualizuj";
+            this.btn_smieciarze_edit.UseVisualStyleBackColor = false;
+            // 
+            // btn_delete_smieciarze
+            // 
+            this.btn_delete_smieciarze.BackColor = System.Drawing.Color.Ivory;
+            this.btn_delete_smieciarze.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_delete_smieciarze.Location = new System.Drawing.Point(557, 431);
+            this.btn_delete_smieciarze.Name = "btn_delete_smieciarze";
+            this.btn_delete_smieciarze.Size = new System.Drawing.Size(160, 39);
+            this.btn_delete_smieciarze.TabIndex = 29;
+            this.btn_delete_smieciarze.Text = "Usuń";
+            this.btn_delete_smieciarze.UseVisualStyleBackColor = false;
+            // 
+            // view_edit_smieciarze
+            // 
+            this.view_edit_smieciarze.AllowUserToAddRows = false;
+            this.view_edit_smieciarze.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.view_edit_smieciarze.BackgroundColor = System.Drawing.Color.Snow;
+            this.view_edit_smieciarze.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.view_edit_smieciarze.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.view_edit_smieciarze.Location = new System.Drawing.Point(10, 33);
+            this.view_edit_smieciarze.Name = "view_edit_smieciarze";
+            this.view_edit_smieciarze.Size = new System.Drawing.Size(709, 392);
+            this.view_edit_smieciarze.TabIndex = 28;
+            // 
+            // Tryb_smieciarze
+            // 
+            this.Tryb_smieciarze.AutoSize = true;
+            this.Tryb_smieciarze.Location = new System.Drawing.Point(7, 10);
+            this.Tryb_smieciarze.Name = "Tryb_smieciarze";
+            this.Tryb_smieciarze.Size = new System.Drawing.Size(73, 17);
+            this.Tryb_smieciarze.TabIndex = 27;
+            this.Tryb_smieciarze.Text = "Aktualizuj";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Bold);
+            this.label21.Location = new System.Drawing.Point(276, 6);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(101, 22);
+            this.label21.TabIndex = 0;
+            this.label21.Text = "Śmieciarze";
+            // 
+            // pnl_edit_kierowcy
+            // 
+            this.pnl_edit_kierowcy.BackColor = System.Drawing.Color.White;
+            this.pnl_edit_kierowcy.Controls.Add(this.btn_delete_kierowcy);
+            this.pnl_edit_kierowcy.Controls.Add(this.btn_kierowcy_edit);
+            this.pnl_edit_kierowcy.Controls.Add(this.Tryb_kierowcy);
+            this.pnl_edit_kierowcy.Controls.Add(this.view_edit_kierowcy);
+            this.pnl_edit_kierowcy.Controls.Add(this.btn_back_kierowcy);
+            this.pnl_edit_kierowcy.Controls.Add(this.label22);
+            this.pnl_edit_kierowcy.Location = new System.Drawing.Point(0, 0);
+            this.pnl_edit_kierowcy.Name = "pnl_edit_kierowcy";
+            this.pnl_edit_kierowcy.Size = new System.Drawing.Size(731, 482);
+            this.pnl_edit_kierowcy.TabIndex = 14;
+            // 
+            // btn_delete_kierowcy
+            // 
+            this.btn_delete_kierowcy.BackColor = System.Drawing.Color.Ivory;
+            this.btn_delete_kierowcy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_delete_kierowcy.Location = new System.Drawing.Point(559, 431);
+            this.btn_delete_kierowcy.Name = "btn_delete_kierowcy";
+            this.btn_delete_kierowcy.Size = new System.Drawing.Size(160, 39);
+            this.btn_delete_kierowcy.TabIndex = 36;
+            this.btn_delete_kierowcy.Text = "Usuń";
+            this.btn_delete_kierowcy.UseVisualStyleBackColor = false;
+            // 
+            // btn_kierowcy_edit
+            // 
+            this.btn_kierowcy_edit.BackColor = System.Drawing.Color.Ivory;
+            this.btn_kierowcy_edit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_kierowcy_edit.Location = new System.Drawing.Point(393, 431);
+            this.btn_kierowcy_edit.Name = "btn_kierowcy_edit";
+            this.btn_kierowcy_edit.Size = new System.Drawing.Size(160, 39);
+            this.btn_kierowcy_edit.TabIndex = 35;
+            this.btn_kierowcy_edit.Text = "Aktualizuj";
+            this.btn_kierowcy_edit.UseVisualStyleBackColor = false;
+            // 
+            // Tryb_kierowcy
+            // 
+            this.Tryb_kierowcy.AutoSize = true;
+            this.Tryb_kierowcy.Location = new System.Drawing.Point(10, 10);
+            this.Tryb_kierowcy.Name = "Tryb_kierowcy";
+            this.Tryb_kierowcy.Size = new System.Drawing.Size(73, 17);
+            this.Tryb_kierowcy.TabIndex = 34;
+            this.Tryb_kierowcy.Text = "Aktualizuj";
+            // 
+            // view_edit_kierowcy
+            // 
+            this.view_edit_kierowcy.AllowUserToAddRows = false;
+            this.view_edit_kierowcy.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.view_edit_kierowcy.BackgroundColor = System.Drawing.Color.Snow;
+            this.view_edit_kierowcy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.view_edit_kierowcy.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.view_edit_kierowcy.Location = new System.Drawing.Point(10, 33);
+            this.view_edit_kierowcy.Name = "view_edit_kierowcy";
+            this.view_edit_kierowcy.Size = new System.Drawing.Size(709, 392);
+            this.view_edit_kierowcy.TabIndex = 33;
+            // 
+            // btn_back_kierowcy
+            // 
+            this.btn_back_kierowcy.BackColor = System.Drawing.Color.Ivory;
+            this.btn_back_kierowcy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_back_kierowcy.Location = new System.Drawing.Point(10, 431);
+            this.btn_back_kierowcy.Name = "btn_back_kierowcy";
+            this.btn_back_kierowcy.Size = new System.Drawing.Size(160, 39);
+            this.btn_back_kierowcy.TabIndex = 32;
+            this.btn_back_kierowcy.Text = "Wróć";
+            this.btn_back_kierowcy.UseVisualStyleBackColor = false;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Bold);
+            this.label22.Location = new System.Drawing.Point(276, 6);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(88, 22);
+            this.label22.TabIndex = 0;
+            this.label22.Text = "Kierowcy";
+            // 
+            // pnl_edit_odbior
+            // 
+            this.pnl_edit_odbior.BackColor = System.Drawing.Color.White;
+            this.pnl_edit_odbior.Controls.Add(this.Tryb_odbior);
+            this.pnl_edit_odbior.Controls.Add(this.btn_back_odbior);
+            this.pnl_edit_odbior.Controls.Add(this.btn_delete_odbior);
+            this.pnl_edit_odbior.Controls.Add(this.btn_odbior_edit);
+            this.pnl_edit_odbior.Controls.Add(this.view_edit_odbior);
+            this.pnl_edit_odbior.Controls.Add(this.label23);
+            this.pnl_edit_odbior.Location = new System.Drawing.Point(0, 0);
+            this.pnl_edit_odbior.Name = "pnl_edit_odbior";
+            this.pnl_edit_odbior.Size = new System.Drawing.Size(731, 482);
+            this.pnl_edit_odbior.TabIndex = 15;
+            // 
+            // Tryb_odbior
+            // 
+            this.Tryb_odbior.AutoSize = true;
+            this.Tryb_odbior.Location = new System.Drawing.Point(10, 10);
+            this.Tryb_odbior.Name = "Tryb_odbior";
+            this.Tryb_odbior.Size = new System.Drawing.Size(73, 17);
+            this.Tryb_odbior.TabIndex = 40;
+            this.Tryb_odbior.Text = "Aktualizuj";
+            // 
+            // btn_back_odbior
+            // 
+            this.btn_back_odbior.BackColor = System.Drawing.Color.Ivory;
+            this.btn_back_odbior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_back_odbior.Location = new System.Drawing.Point(13, 431);
+            this.btn_back_odbior.Name = "btn_back_odbior";
+            this.btn_back_odbior.Size = new System.Drawing.Size(160, 39);
+            this.btn_back_odbior.TabIndex = 39;
+            this.btn_back_odbior.Text = "Wróć";
+            this.btn_back_odbior.UseVisualStyleBackColor = false;
+            // 
+            // btn_delete_odbior
+            // 
+            this.btn_delete_odbior.BackColor = System.Drawing.Color.Ivory;
+            this.btn_delete_odbior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_delete_odbior.Location = new System.Drawing.Point(559, 431);
+            this.btn_delete_odbior.Name = "btn_delete_odbior";
+            this.btn_delete_odbior.Size = new System.Drawing.Size(160, 39);
+            this.btn_delete_odbior.TabIndex = 37;
+            this.btn_delete_odbior.Text = "Usuń";
+            this.btn_delete_odbior.UseVisualStyleBackColor = false;
+            // 
+            // btn_odbior_edit
+            // 
+            this.btn_odbior_edit.BackColor = System.Drawing.Color.Ivory;
+            this.btn_odbior_edit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_odbior_edit.Location = new System.Drawing.Point(393, 431);
+            this.btn_odbior_edit.Name = "btn_odbior_edit";
+            this.btn_odbior_edit.Size = new System.Drawing.Size(160, 39);
+            this.btn_odbior_edit.TabIndex = 38;
+            this.btn_odbior_edit.Text = "Aktualizuj";
+            this.btn_odbior_edit.UseVisualStyleBackColor = false;
+            // 
+            // view_edit_odbior
+            // 
+            this.view_edit_odbior.AllowUserToAddRows = false;
+            this.view_edit_odbior.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.view_edit_odbior.BackgroundColor = System.Drawing.Color.Snow;
+            this.view_edit_odbior.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.view_edit_odbior.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.view_edit_odbior.Location = new System.Drawing.Point(13, 33);
+            this.view_edit_odbior.Name = "view_edit_odbior";
+            this.view_edit_odbior.Size = new System.Drawing.Size(709, 392);
+            this.view_edit_odbior.TabIndex = 34;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Bold);
+            this.label23.Location = new System.Drawing.Point(297, 6);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(65, 22);
+            this.label23.TabIndex = 0;
+            this.label23.Text = "Odbiór";
+            // 
+            // pnl_add_acc
+            // 
+            this.pnl_add_acc.BackColor = System.Drawing.Color.PaleGreen;
+            this.pnl_add_acc.Controls.Add(this.checkbox_segregacja);
+            this.pnl_add_acc.Controls.Add(this.checkbox_odbior);
+            this.pnl_add_acc.Controls.Add(this.checkbox_kierowca);
+            this.pnl_add_acc.Controls.Add(this.checkbox_smieciarz);
+            this.pnl_add_acc.Controls.Add(this.checkbox_admin);
+            this.pnl_add_acc.Controls.Add(this.btn_add);
+            this.pnl_add_acc.Controls.Add(this.txt_add_email);
+            this.pnl_add_acc.Controls.Add(this.label_add_email);
+            this.pnl_add_acc.Location = new System.Drawing.Point(414, 0);
+            this.pnl_add_acc.Name = "pnl_add_acc";
+            this.pnl_add_acc.Size = new System.Drawing.Size(317, 479);
+            this.pnl_add_acc.TabIndex = 0;
+            // 
+            // checkbox_segregacja
+            // 
+            this.checkbox_segregacja.AutoSize = true;
+            this.checkbox_segregacja.Location = new System.Drawing.Point(22, 264);
+            this.checkbox_segregacja.Name = "checkbox_segregacja";
+            this.checkbox_segregacja.Size = new System.Drawing.Size(101, 21);
+            this.checkbox_segregacja.TabIndex = 7;
+            this.checkbox_segregacja.Text = "Segregacja";
+            this.checkbox_segregacja.UseVisualStyleBackColor = true;
+            this.checkbox_segregacja.CheckedChanged += new System.EventHandler(this.checkbox_segregacja_CheckedChanged);
+            // 
+            // checkbox_odbior
+            // 
+            this.checkbox_odbior.AutoSize = true;
+            this.checkbox_odbior.Location = new System.Drawing.Point(22, 237);
+            this.checkbox_odbior.Name = "checkbox_odbior";
+            this.checkbox_odbior.Size = new System.Drawing.Size(70, 21);
+            this.checkbox_odbior.TabIndex = 6;
+            this.checkbox_odbior.Text = "Odbiór";
+            this.checkbox_odbior.UseVisualStyleBackColor = true;
+            this.checkbox_odbior.CheckedChanged += new System.EventHandler(this.checkbox_odbior_CheckedChanged);
+            // 
+            // checkbox_kierowca
+            // 
+            this.checkbox_kierowca.AutoSize = true;
+            this.checkbox_kierowca.Location = new System.Drawing.Point(22, 210);
+            this.checkbox_kierowca.Name = "checkbox_kierowca";
+            this.checkbox_kierowca.Size = new System.Drawing.Size(89, 21);
+            this.checkbox_kierowca.TabIndex = 5;
+            this.checkbox_kierowca.Text = "Kierowca";
+            this.checkbox_kierowca.UseVisualStyleBackColor = true;
+            this.checkbox_kierowca.CheckedChanged += new System.EventHandler(this.checkbox_kierowca_CheckedChanged);
+            // 
+            // checkbox_smieciarz
+            // 
+            this.checkbox_smieciarz.AutoSize = true;
+            this.checkbox_smieciarz.Location = new System.Drawing.Point(22, 183);
+            this.checkbox_smieciarz.Name = "checkbox_smieciarz";
+            this.checkbox_smieciarz.Size = new System.Drawing.Size(92, 21);
+            this.checkbox_smieciarz.TabIndex = 4;
+            this.checkbox_smieciarz.Text = "Śmieciarz";
+            this.checkbox_smieciarz.UseVisualStyleBackColor = true;
+            this.checkbox_smieciarz.CheckedChanged += new System.EventHandler(this.checkbox_user_CheckedChanged);
+            // 
+            // checkbox_admin
+            // 
+            this.checkbox_admin.AutoSize = true;
+            this.checkbox_admin.Location = new System.Drawing.Point(22, 155);
+            this.checkbox_admin.Name = "checkbox_admin";
+            this.checkbox_admin.Size = new System.Drawing.Size(115, 21);
+            this.checkbox_admin.TabIndex = 3;
+            this.checkbox_admin.Text = "Administrator";
+            this.checkbox_admin.UseVisualStyleBackColor = true;
+            this.checkbox_admin.CheckedChanged += new System.EventHandler(this.checkbox_admin_CheckedChanged);
+            // 
+            // btn_add
+            // 
+            this.btn_add.BackColor = System.Drawing.Color.Ivory;
+            this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_add.Location = new System.Drawing.Point(182, 324);
+            this.btn_add.Name = "btn_add";
+            this.btn_add.Size = new System.Drawing.Size(97, 33);
+            this.btn_add.TabIndex = 2;
+            this.btn_add.Text = "Dodaj";
+            this.btn_add.UseVisualStyleBackColor = false;
+            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
+            // 
+            // txt_add_email
+            // 
+            this.txt_add_email.Location = new System.Drawing.Point(22, 112);
+            this.txt_add_email.Name = "txt_add_email";
+            this.txt_add_email.Size = new System.Drawing.Size(257, 24);
+            this.txt_add_email.TabIndex = 1;
+            // 
+            // label_add_email
+            // 
+            this.label_add_email.AutoSize = true;
+            this.label_add_email.Location = new System.Drawing.Point(22, 81);
+            this.label_add_email.Name = "label_add_email";
+            this.label_add_email.Size = new System.Drawing.Size(257, 17);
+            this.label_add_email.TabIndex = 0;
+            this.label_add_email.Text = "Wprowadź Email nowego użytkownika";
             // 
             // pnl_edit_wydzial
             // 
@@ -765,104 +1988,50 @@
             this.btn_edit_smieciarze.UseVisualStyleBackColor = false;
             this.btn_edit_smieciarze.Click += new System.EventHandler(this.btn_edit_smieciarze_Click);
             // 
-            // pnl_add_acc
+            // pnl_edit_truck
             // 
-            this.pnl_add_acc.BackColor = System.Drawing.Color.PaleGreen;
-            this.pnl_add_acc.Controls.Add(this.checkbox_segregacja);
-            this.pnl_add_acc.Controls.Add(this.checkbox_odbior);
-            this.pnl_add_acc.Controls.Add(this.checkbox_kierowca);
-            this.pnl_add_acc.Controls.Add(this.checkbox_smieciarz);
-            this.pnl_add_acc.Controls.Add(this.checkbox_admin);
-            this.pnl_add_acc.Controls.Add(this.btn_add);
-            this.pnl_add_acc.Controls.Add(this.txt_add_email);
-            this.pnl_add_acc.Controls.Add(this.label_add_email);
-            this.pnl_add_acc.Location = new System.Drawing.Point(414, 0);
-            this.pnl_add_acc.Name = "pnl_add_acc";
-            this.pnl_add_acc.Size = new System.Drawing.Size(317, 479);
-            this.pnl_add_acc.TabIndex = 0;
+            this.pnl_edit_truck.BackColor = System.Drawing.Color.PaleGreen;
+            this.pnl_edit_truck.Controls.Add(this.btn_create_truck);
+            this.pnl_edit_truck.Controls.Add(this.btn_edit_trucks);
+            this.pnl_edit_truck.Controls.Add(this.label34);
+            this.pnl_edit_truck.Location = new System.Drawing.Point(414, 0);
+            this.pnl_edit_truck.Name = "pnl_edit_truck";
+            this.pnl_edit_truck.Size = new System.Drawing.Size(317, 482);
+            this.pnl_edit_truck.TabIndex = 22;
             // 
-            // checkbox_segregacja
+            // btn_create_truck
             // 
-            this.checkbox_segregacja.AutoSize = true;
-            this.checkbox_segregacja.Location = new System.Drawing.Point(22, 264);
-            this.checkbox_segregacja.Name = "checkbox_segregacja";
-            this.checkbox_segregacja.Size = new System.Drawing.Size(101, 21);
-            this.checkbox_segregacja.TabIndex = 7;
-            this.checkbox_segregacja.Text = "Segregacja";
-            this.checkbox_segregacja.UseVisualStyleBackColor = true;
-            this.checkbox_segregacja.CheckedChanged += new System.EventHandler(this.checkbox_segregacja_CheckedChanged);
+            this.btn_create_truck.BackColor = System.Drawing.Color.Ivory;
+            this.btn_create_truck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_create_truck.Location = new System.Drawing.Point(23, 120);
+            this.btn_create_truck.Name = "btn_create_truck";
+            this.btn_create_truck.Size = new System.Drawing.Size(160, 39);
+            this.btn_create_truck.TabIndex = 15;
+            this.btn_create_truck.Text = "Stwórz Ciężarówkę";
+            this.btn_create_truck.UseVisualStyleBackColor = false;
+            this.btn_create_truck.Click += new System.EventHandler(this.btn_create_truck_Click);
             // 
-            // checkbox_odbior
+            // btn_edit_trucks
             // 
-            this.checkbox_odbior.AutoSize = true;
-            this.checkbox_odbior.Location = new System.Drawing.Point(22, 237);
-            this.checkbox_odbior.Name = "checkbox_odbior";
-            this.checkbox_odbior.Size = new System.Drawing.Size(70, 21);
-            this.checkbox_odbior.TabIndex = 6;
-            this.checkbox_odbior.Text = "Odbiór";
-            this.checkbox_odbior.UseVisualStyleBackColor = true;
-            this.checkbox_odbior.CheckedChanged += new System.EventHandler(this.checkbox_odbior_CheckedChanged);
+            this.btn_edit_trucks.BackColor = System.Drawing.Color.Ivory;
+            this.btn_edit_trucks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_edit_trucks.Location = new System.Drawing.Point(23, 59);
+            this.btn_edit_trucks.Name = "btn_edit_trucks";
+            this.btn_edit_trucks.Size = new System.Drawing.Size(160, 39);
+            this.btn_edit_trucks.TabIndex = 14;
+            this.btn_edit_trucks.Text = "Edytuj Ciężarówkę";
+            this.btn_edit_trucks.UseVisualStyleBackColor = false;
+            this.btn_edit_trucks.Click += new System.EventHandler(this.btn_edit_trucks_Click);
             // 
-            // checkbox_kierowca
+            // label34
             // 
-            this.checkbox_kierowca.AutoSize = true;
-            this.checkbox_kierowca.Location = new System.Drawing.Point(22, 210);
-            this.checkbox_kierowca.Name = "checkbox_kierowca";
-            this.checkbox_kierowca.Size = new System.Drawing.Size(89, 21);
-            this.checkbox_kierowca.TabIndex = 5;
-            this.checkbox_kierowca.Text = "Kierowca";
-            this.checkbox_kierowca.UseVisualStyleBackColor = true;
-            this.checkbox_kierowca.CheckedChanged += new System.EventHandler(this.checkbox_kierowca_CheckedChanged);
-            // 
-            // checkbox_smieciarz
-            // 
-            this.checkbox_smieciarz.AutoSize = true;
-            this.checkbox_smieciarz.Location = new System.Drawing.Point(22, 183);
-            this.checkbox_smieciarz.Name = "checkbox_smieciarz";
-            this.checkbox_smieciarz.Size = new System.Drawing.Size(96, 21);
-            this.checkbox_smieciarz.TabIndex = 4;
-            this.checkbox_smieciarz.Text = "Pracownik";
-            this.checkbox_smieciarz.UseVisualStyleBackColor = true;
-            this.checkbox_smieciarz.CheckedChanged += new System.EventHandler(this.checkbox_user_CheckedChanged);
-            // 
-            // checkbox_admin
-            // 
-            this.checkbox_admin.AutoSize = true;
-            this.checkbox_admin.Location = new System.Drawing.Point(22, 155);
-            this.checkbox_admin.Name = "checkbox_admin";
-            this.checkbox_admin.Size = new System.Drawing.Size(115, 21);
-            this.checkbox_admin.TabIndex = 3;
-            this.checkbox_admin.Text = "Administrator";
-            this.checkbox_admin.UseVisualStyleBackColor = true;
-            this.checkbox_admin.CheckedChanged += new System.EventHandler(this.checkbox_admin_CheckedChanged);
-            // 
-            // btn_add
-            // 
-            this.btn_add.BackColor = System.Drawing.Color.Ivory;
-            this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_add.Location = new System.Drawing.Point(182, 324);
-            this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(97, 33);
-            this.btn_add.TabIndex = 2;
-            this.btn_add.Text = "Dodaj";
-            this.btn_add.UseVisualStyleBackColor = false;
-            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
-            // 
-            // txt_add_email
-            // 
-            this.txt_add_email.Location = new System.Drawing.Point(22, 112);
-            this.txt_add_email.Name = "txt_add_email";
-            this.txt_add_email.Size = new System.Drawing.Size(257, 24);
-            this.txt_add_email.TabIndex = 1;
-            // 
-            // label_add_email
-            // 
-            this.label_add_email.AutoSize = true;
-            this.label_add_email.Location = new System.Drawing.Point(22, 81);
-            this.label_add_email.Name = "label_add_email";
-            this.label_add_email.Size = new System.Drawing.Size(257, 17);
-            this.label_add_email.TabIndex = 0;
-            this.label_add_email.Text = "Wprowadź Email nowego użytkownika";
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
+            this.label34.Location = new System.Drawing.Point(19, 7);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(107, 23);
+            this.label34.TabIndex = 12;
+            this.label34.Text = "Ciężarówki";
             // 
             // pnl_edit_harmonogram
             // 
@@ -885,6 +2054,7 @@
             this.btn_create_harm.TabIndex = 15;
             this.btn_create_harm.Text = "Stwórz harmonogram";
             this.btn_create_harm.UseVisualStyleBackColor = false;
+            this.btn_create_harm.Click += new System.EventHandler(this.btn_create_harm_Click);
             // 
             // btn_edit_harm
             // 
@@ -896,6 +2066,7 @@
             this.btn_edit_harm.TabIndex = 14;
             this.btn_edit_harm.Text = "Edytuj harmonogram";
             this.btn_edit_harm.UseVisualStyleBackColor = false;
+            this.btn_edit_harm.Click += new System.EventHandler(this.btn_edit_harm_Click);
             // 
             // label11
             // 
@@ -907,17 +2078,131 @@
             this.label11.TabIndex = 12;
             this.label11.Text = "Harmonogramy";
             // 
-            // btn_edit_harmonogram
+            // pnl_edit_team1
             // 
-            this.btn_edit_harmonogram.BackColor = System.Drawing.Color.Ivory;
-            this.btn_edit_harmonogram.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_edit_harmonogram.Location = new System.Drawing.Point(30, 180);
-            this.btn_edit_harmonogram.Name = "btn_edit_harmonogram";
-            this.btn_edit_harmonogram.Size = new System.Drawing.Size(160, 39);
-            this.btn_edit_harmonogram.TabIndex = 4;
-            this.btn_edit_harmonogram.Text = "Harmonogramy";
-            this.btn_edit_harmonogram.UseVisualStyleBackColor = false;
-            this.btn_edit_harmonogram.Click += new System.EventHandler(this.btn_edit_harmonogram_Click);
+            this.pnl_edit_team1.BackColor = System.Drawing.Color.PaleGreen;
+            this.pnl_edit_team1.Controls.Add(this.btn_create_team);
+            this.pnl_edit_team1.Controls.Add(this.btn_edit_team);
+            this.pnl_edit_team1.Controls.Add(this.label29);
+            this.pnl_edit_team1.Location = new System.Drawing.Point(414, 0);
+            this.pnl_edit_team1.Name = "pnl_edit_team1";
+            this.pnl_edit_team1.Size = new System.Drawing.Size(317, 482);
+            this.pnl_edit_team1.TabIndex = 18;
+            // 
+            // btn_create_team
+            // 
+            this.btn_create_team.BackColor = System.Drawing.Color.Ivory;
+            this.btn_create_team.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_create_team.Location = new System.Drawing.Point(23, 120);
+            this.btn_create_team.Name = "btn_create_team";
+            this.btn_create_team.Size = new System.Drawing.Size(160, 39);
+            this.btn_create_team.TabIndex = 15;
+            this.btn_create_team.Text = "Stwórz Zespół";
+            this.btn_create_team.UseVisualStyleBackColor = false;
+            this.btn_create_team.Click += new System.EventHandler(this.btn_create_team_Click);
+            // 
+            // btn_edit_team
+            // 
+            this.btn_edit_team.BackColor = System.Drawing.Color.Ivory;
+            this.btn_edit_team.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_edit_team.Location = new System.Drawing.Point(23, 59);
+            this.btn_edit_team.Name = "btn_edit_team";
+            this.btn_edit_team.Size = new System.Drawing.Size(160, 39);
+            this.btn_edit_team.TabIndex = 14;
+            this.btn_edit_team.Text = "Edytuj Zespół";
+            this.btn_edit_team.UseVisualStyleBackColor = false;
+            this.btn_edit_team.Click += new System.EventHandler(this.btn_edit_team_Click);
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
+            this.label29.Location = new System.Drawing.Point(19, 7);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(80, 23);
+            this.label29.TabIndex = 12;
+            this.label29.Text = "Zespoły";
+            // 
+            // pnl_edit_routes
+            // 
+            this.pnl_edit_routes.BackColor = System.Drawing.Color.PaleGreen;
+            this.pnl_edit_routes.Controls.Add(this.btn_create_route);
+            this.pnl_edit_routes.Controls.Add(this.btn_edit_route);
+            this.pnl_edit_routes.Controls.Add(this.label30);
+            this.pnl_edit_routes.Location = new System.Drawing.Point(414, 0);
+            this.pnl_edit_routes.Name = "pnl_edit_routes";
+            this.pnl_edit_routes.Size = new System.Drawing.Size(317, 482);
+            this.pnl_edit_routes.TabIndex = 26;
+            // 
+            // btn_create_route
+            // 
+            this.btn_create_route.BackColor = System.Drawing.Color.Ivory;
+            this.btn_create_route.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_create_route.Location = new System.Drawing.Point(23, 120);
+            this.btn_create_route.Name = "btn_create_route";
+            this.btn_create_route.Size = new System.Drawing.Size(160, 39);
+            this.btn_create_route.TabIndex = 15;
+            this.btn_create_route.Text = "Stwórz Trasy";
+            this.btn_create_route.UseVisualStyleBackColor = false;
+            this.btn_create_route.Click += new System.EventHandler(this.btn_create_route_Click);
+            // 
+            // btn_edit_route
+            // 
+            this.btn_edit_route.BackColor = System.Drawing.Color.Ivory;
+            this.btn_edit_route.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_edit_route.Location = new System.Drawing.Point(23, 59);
+            this.btn_edit_route.Name = "btn_edit_route";
+            this.btn_edit_route.Size = new System.Drawing.Size(160, 39);
+            this.btn_edit_route.TabIndex = 14;
+            this.btn_edit_route.Text = "Edytuj Trasy";
+            this.btn_edit_route.UseVisualStyleBackColor = false;
+            this.btn_edit_route.Click += new System.EventHandler(this.btn_edit_route_Click);
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
+            this.label30.Location = new System.Drawing.Point(19, 7);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(59, 23);
+            this.label30.TabIndex = 12;
+            this.label30.Text = "Trasy";
+            // 
+            // btn_edit_routes
+            // 
+            this.btn_edit_routes.BackColor = System.Drawing.Color.Ivory;
+            this.btn_edit_routes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_edit_routes.Location = new System.Drawing.Point(30, 360);
+            this.btn_edit_routes.Name = "btn_edit_routes";
+            this.btn_edit_routes.Size = new System.Drawing.Size(160, 39);
+            this.btn_edit_routes.TabIndex = 25;
+            this.btn_edit_routes.Text = "Trasy";
+            this.btn_edit_routes.UseVisualStyleBackColor = false;
+            this.btn_edit_routes.Click += new System.EventHandler(this.btn_edit_routes_Click);
+            // 
+            // btn_edit_truck
+            // 
+            this.btn_edit_truck.BackColor = System.Drawing.Color.Ivory;
+            this.btn_edit_truck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_edit_truck.Location = new System.Drawing.Point(30, 300);
+            this.btn_edit_truck.Name = "btn_edit_truck";
+            this.btn_edit_truck.Size = new System.Drawing.Size(160, 39);
+            this.btn_edit_truck.TabIndex = 21;
+            this.btn_edit_truck.Text = "Ciężarówki";
+            this.btn_edit_truck.UseVisualStyleBackColor = false;
+            this.btn_edit_truck.Click += new System.EventHandler(this.btn_edit_truck_Click_1);
+            // 
+            // btn_edit_team1
+            // 
+            this.btn_edit_team1.BackColor = System.Drawing.Color.Ivory;
+            this.btn_edit_team1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_edit_team1.Location = new System.Drawing.Point(30, 240);
+            this.btn_edit_team1.Name = "btn_edit_team1";
+            this.btn_edit_team1.Size = new System.Drawing.Size(160, 39);
+            this.btn_edit_team1.TabIndex = 17;
+            this.btn_edit_team1.Text = "Zespoły";
+            this.btn_edit_team1.UseVisualStyleBackColor = false;
+            this.btn_edit_team1.Click += new System.EventHandler(this.btn_edit_truck_Click);
             // 
             // btn_edit_user
             // 
@@ -931,6 +2216,18 @@
             this.btn_edit_user.UseVisualStyleBackColor = false;
             this.btn_edit_user.Click += new System.EventHandler(this.btn_edit_user_Click);
             // 
+            // btn_edit_harmonogram
+            // 
+            this.btn_edit_harmonogram.BackColor = System.Drawing.Color.Ivory;
+            this.btn_edit_harmonogram.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_edit_harmonogram.Location = new System.Drawing.Point(30, 180);
+            this.btn_edit_harmonogram.Name = "btn_edit_harmonogram";
+            this.btn_edit_harmonogram.Size = new System.Drawing.Size(160, 39);
+            this.btn_edit_harmonogram.TabIndex = 4;
+            this.btn_edit_harmonogram.Text = "Harmonogramy";
+            this.btn_edit_harmonogram.UseVisualStyleBackColor = false;
+            this.btn_edit_harmonogram.Click += new System.EventHandler(this.btn_edit_harmonogram_Click);
+            // 
             // btn_new_acc
             // 
             this.btn_new_acc.BackColor = System.Drawing.Color.Ivory;
@@ -942,102 +2239,6 @@
             this.btn_new_acc.Text = "Nowy użytkownik";
             this.btn_new_acc.UseVisualStyleBackColor = false;
             this.btn_new_acc.Click += new System.EventHandler(this.btn_new_acc_Click);
-            // 
-            // pnl_edit_smieciarze
-            // 
-            this.pnl_edit_smieciarze.BackColor = System.Drawing.Color.White;
-            this.pnl_edit_smieciarze.Controls.Add(this.btn_back_smieciarze);
-            this.pnl_edit_smieciarze.Controls.Add(this.btn_smieciarze_edit);
-            this.pnl_edit_smieciarze.Controls.Add(this.btn_delete_smieciarze);
-            this.pnl_edit_smieciarze.Controls.Add(this.view_edit_smieciarze);
-            this.pnl_edit_smieciarze.Controls.Add(this.Tryb_smieciarze);
-            this.pnl_edit_smieciarze.Controls.Add(this.label21);
-            this.pnl_edit_smieciarze.Location = new System.Drawing.Point(0, 0);
-            this.pnl_edit_smieciarze.Name = "pnl_edit_smieciarze";
-            this.pnl_edit_smieciarze.Size = new System.Drawing.Size(731, 482);
-            this.pnl_edit_smieciarze.TabIndex = 13;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Bold);
-            this.label21.Location = new System.Drawing.Point(276, 6);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(101, 22);
-            this.label21.TabIndex = 0;
-            this.label21.Text = "Śmieciarze";
-            // 
-            // pnl_edit_kierowcy
-            // 
-            this.pnl_edit_kierowcy.BackColor = System.Drawing.Color.White;
-            this.pnl_edit_kierowcy.Controls.Add(this.btn_delete_kierowcy);
-            this.pnl_edit_kierowcy.Controls.Add(this.btn_kierowcy_edit);
-            this.pnl_edit_kierowcy.Controls.Add(this.Tryb_kierowcy);
-            this.pnl_edit_kierowcy.Controls.Add(this.view_edit_kierowcy);
-            this.pnl_edit_kierowcy.Controls.Add(this.btn_back_kierowcy);
-            this.pnl_edit_kierowcy.Controls.Add(this.label22);
-            this.pnl_edit_kierowcy.Location = new System.Drawing.Point(0, 0);
-            this.pnl_edit_kierowcy.Name = "pnl_edit_kierowcy";
-            this.pnl_edit_kierowcy.Size = new System.Drawing.Size(731, 482);
-            this.pnl_edit_kierowcy.TabIndex = 14;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Bold);
-            this.label22.Location = new System.Drawing.Point(276, 6);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(88, 22);
-            this.label22.TabIndex = 0;
-            this.label22.Text = "Kierowcy";
-            // 
-            // pnl_edit_odbior
-            // 
-            this.pnl_edit_odbior.BackColor = System.Drawing.Color.White;
-            this.pnl_edit_odbior.Controls.Add(this.Tryb_odbior);
-            this.pnl_edit_odbior.Controls.Add(this.btn_back_odbior);
-            this.pnl_edit_odbior.Controls.Add(this.btn_delete_odbior);
-            this.pnl_edit_odbior.Controls.Add(this.btn_odbior_edit);
-            this.pnl_edit_odbior.Controls.Add(this.view_edit_odbior);
-            this.pnl_edit_odbior.Controls.Add(this.label23);
-            this.pnl_edit_odbior.Location = new System.Drawing.Point(0, 0);
-            this.pnl_edit_odbior.Name = "pnl_edit_odbior";
-            this.pnl_edit_odbior.Size = new System.Drawing.Size(731, 482);
-            this.pnl_edit_odbior.TabIndex = 15;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Bold);
-            this.label23.Location = new System.Drawing.Point(297, 6);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(65, 22);
-            this.label23.TabIndex = 0;
-            this.label23.Text = "Odbiór";
-            // 
-            // pnl_edit_segregacja
-            // 
-            this.pnl_edit_segregacja.BackColor = System.Drawing.Color.White;
-            this.pnl_edit_segregacja.Controls.Add(this.Tryb_segregacja);
-            this.pnl_edit_segregacja.Controls.Add(this.btn_back_segregacja);
-            this.pnl_edit_segregacja.Controls.Add(this.btn_edit_segregacja);
-            this.pnl_edit_segregacja.Controls.Add(this.view_edit_segregacja);
-            this.pnl_edit_segregacja.Controls.Add(this.btn_delete_segregacja);
-            this.pnl_edit_segregacja.Controls.Add(this.label24);
-            this.pnl_edit_segregacja.Location = new System.Drawing.Point(0, 0);
-            this.pnl_edit_segregacja.Name = "pnl_edit_segregacja";
-            this.pnl_edit_segregacja.Size = new System.Drawing.Size(731, 482);
-            this.pnl_edit_segregacja.TabIndex = 16;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Arial Black", 11F, System.Drawing.FontStyle.Bold);
-            this.label24.Location = new System.Drawing.Point(281, 6);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(103, 22);
-            this.label24.TabIndex = 0;
-            this.label24.Text = "Segregacja";
             // 
             // pnl_harmonogramy
             // 
@@ -1052,12 +2253,54 @@
             // 
             // pnl_niesegregowane
             // 
+            this.pnl_niesegregowane.Controls.Add(this.btn_nieseg_all);
+            this.pnl_niesegregowane.Controls.Add(this.btn_nieseg_yours);
+            this.pnl_niesegregowane.Controls.Add(this.view_niesegregowane);
             this.pnl_niesegregowane.Controls.Add(this.label4);
             this.pnl_niesegregowane.Controls.Add(this.label3);
             this.pnl_niesegregowane.Location = new System.Drawing.Point(0, 40);
             this.pnl_niesegregowane.Name = "pnl_niesegregowane";
             this.pnl_niesegregowane.Size = new System.Drawing.Size(731, 442);
             this.pnl_niesegregowane.TabIndex = 3;
+            // 
+            // btn_nieseg_all
+            // 
+            this.btn_nieseg_all.BackColor = System.Drawing.Color.Ivory;
+            this.btn_nieseg_all.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btn_nieseg_all.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_nieseg_all.Location = new System.Drawing.Point(3, 27);
+            this.btn_nieseg_all.Name = "btn_nieseg_all";
+            this.btn_nieseg_all.Size = new System.Drawing.Size(99, 25);
+            this.btn_nieseg_all.TabIndex = 8;
+            this.btn_nieseg_all.Text = "Wszystkie";
+            this.btn_nieseg_all.UseVisualStyleBackColor = false;
+            this.btn_nieseg_all.Click += new System.EventHandler(this.btn_nieseg_all_Click);
+            // 
+            // btn_nieseg_yours
+            // 
+            this.btn_nieseg_yours.BackColor = System.Drawing.Color.Ivory;
+            this.btn_nieseg_yours.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btn_nieseg_yours.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_nieseg_yours.Location = new System.Drawing.Point(3, 2);
+            this.btn_nieseg_yours.Name = "btn_nieseg_yours";
+            this.btn_nieseg_yours.Size = new System.Drawing.Size(99, 25);
+            this.btn_nieseg_yours.TabIndex = 7;
+            this.btn_nieseg_yours.Text = "Twoje";
+            this.btn_nieseg_yours.UseVisualStyleBackColor = false;
+            this.btn_nieseg_yours.Click += new System.EventHandler(this.btn_nieseg_yours_Click);
+            // 
+            // view_niesegregowane
+            // 
+            this.view_niesegregowane.AllowUserToAddRows = false;
+            this.view_niesegregowane.AllowUserToDeleteRows = false;
+            this.view_niesegregowane.BackgroundColor = System.Drawing.Color.Snow;
+            this.view_niesegregowane.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.view_niesegregowane.Location = new System.Drawing.Point(6, 55);
+            this.view_niesegregowane.Name = "view_niesegregowane";
+            this.view_niesegregowane.ReadOnly = true;
+            this.view_niesegregowane.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            this.view_niesegregowane.Size = new System.Drawing.Size(722, 375);
+            this.view_niesegregowane.TabIndex = 6;
             // 
             // label4
             // 
@@ -1079,12 +2322,54 @@
             // 
             // pnl_segregowane
             // 
+            this.pnl_segregowane.Controls.Add(this.btn_seg_all);
+            this.pnl_segregowane.Controls.Add(this.btn_seg_yours);
+            this.pnl_segregowane.Controls.Add(this.view_segregowane);
             this.pnl_segregowane.Controls.Add(this.label2);
             this.pnl_segregowane.Controls.Add(this.label1);
             this.pnl_segregowane.Location = new System.Drawing.Point(0, 40);
             this.pnl_segregowane.Name = "pnl_segregowane";
             this.pnl_segregowane.Size = new System.Drawing.Size(731, 442);
             this.pnl_segregowane.TabIndex = 2;
+            // 
+            // btn_seg_all
+            // 
+            this.btn_seg_all.BackColor = System.Drawing.Color.Ivory;
+            this.btn_seg_all.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btn_seg_all.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_seg_all.Location = new System.Drawing.Point(3, 27);
+            this.btn_seg_all.Name = "btn_seg_all";
+            this.btn_seg_all.Size = new System.Drawing.Size(99, 25);
+            this.btn_seg_all.TabIndex = 4;
+            this.btn_seg_all.Text = "Wszystkie";
+            this.btn_seg_all.UseVisualStyleBackColor = false;
+            this.btn_seg_all.Click += new System.EventHandler(this.btn_seg_all_Click);
+            // 
+            // btn_seg_yours
+            // 
+            this.btn_seg_yours.BackColor = System.Drawing.Color.Ivory;
+            this.btn_seg_yours.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btn_seg_yours.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_seg_yours.Location = new System.Drawing.Point(3, 2);
+            this.btn_seg_yours.Name = "btn_seg_yours";
+            this.btn_seg_yours.Size = new System.Drawing.Size(99, 25);
+            this.btn_seg_yours.TabIndex = 3;
+            this.btn_seg_yours.Text = "Twoje";
+            this.btn_seg_yours.UseVisualStyleBackColor = false;
+            this.btn_seg_yours.Click += new System.EventHandler(this.btn_seg_yours_Click);
+            // 
+            // view_segregowane
+            // 
+            this.view_segregowane.AllowUserToAddRows = false;
+            this.view_segregowane.AllowUserToDeleteRows = false;
+            this.view_segregowane.BackgroundColor = System.Drawing.Color.Snow;
+            this.view_segregowane.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.view_segregowane.Location = new System.Drawing.Point(6, 55);
+            this.view_segregowane.Name = "view_segregowane";
+            this.view_segregowane.ReadOnly = true;
+            this.view_segregowane.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            this.view_segregowane.Size = new System.Drawing.Size(722, 375);
+            this.view_segregowane.TabIndex = 2;
             // 
             // label2
             // 
@@ -1374,56 +2659,92 @@
             // 
             // pnl_druki_pliki
             // 
-            this.pnl_druki_pliki.Controls.Add(this.btn_zaznacz);
-            this.pnl_druki_pliki.Controls.Add(this.btn_odznacz);
-            this.pnl_druki_pliki.Controls.Add(this.btn_pobierz);
+            this.pnl_druki_pliki.Controls.Add(this.btn_usun_plik);
+            this.pnl_druki_pliki.Controls.Add(this.dGVFilesList);
+            this.pnl_druki_pliki.Controls.Add(this.textBox_FilePath);
+            this.pnl_druki_pliki.Controls.Add(this.btn_dodaj_plik);
+            this.pnl_druki_pliki.Controls.Add(this.btn_otworz);
+            this.pnl_druki_pliki.Controls.Add(this.btn_dodaj);
+            this.pnl_druki_pliki.Controls.Add(this.btn_anuluj);
             this.pnl_druki_pliki.Location = new System.Drawing.Point(229, 58);
             this.pnl_druki_pliki.Name = "pnl_druki_pliki";
             this.pnl_druki_pliki.Size = new System.Drawing.Size(731, 482);
             this.pnl_druki_pliki.TabIndex = 3;
             // 
-            // btn_zaznacz
+            // btn_usun_plik
             // 
-            this.btn_zaznacz.BackColor = System.Drawing.Color.Ivory;
-            this.btn_zaznacz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_zaznacz.Location = new System.Drawing.Point(227, 431);
-            this.btn_zaznacz.Name = "btn_zaznacz";
-            this.btn_zaznacz.Size = new System.Drawing.Size(160, 39);
-            this.btn_zaznacz.TabIndex = 4;
-            this.btn_zaznacz.Text = "Zaznacz wszystko";
-            this.btn_zaznacz.UseVisualStyleBackColor = false;
+            this.btn_usun_plik.BackColor = System.Drawing.Color.Ivory;
+            this.btn_usun_plik.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_usun_plik.Location = new System.Drawing.Point(227, 431);
+            this.btn_usun_plik.Name = "btn_usun_plik";
+            this.btn_usun_plik.Size = new System.Drawing.Size(160, 39);
+            this.btn_usun_plik.TabIndex = 9;
+            this.btn_usun_plik.Text = "Usuń Plik";
+            this.btn_usun_plik.UseVisualStyleBackColor = false;
+            this.btn_usun_plik.Click += new System.EventHandler(this.btn_usun_plik_Click);
             // 
-            // btn_odznacz
+            // dGVFilesList
             // 
-            this.btn_odznacz.BackColor = System.Drawing.Color.Ivory;
-            this.btn_odznacz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_odznacz.Location = new System.Drawing.Point(393, 431);
-            this.btn_odznacz.Name = "btn_odznacz";
-            this.btn_odznacz.Size = new System.Drawing.Size(160, 39);
-            this.btn_odznacz.TabIndex = 3;
-            this.btn_odznacz.Text = "Odznacz";
-            this.btn_odznacz.UseVisualStyleBackColor = false;
-            this.btn_odznacz.Click += new System.EventHandler(this.button3_Click_1);
+            this.dGVFilesList.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dGVFilesList.Location = new System.Drawing.Point(9, 7);
+            this.dGVFilesList.Name = "dGVFilesList";
+            this.dGVFilesList.Size = new System.Drawing.Size(710, 417);
+            this.dGVFilesList.TabIndex = 0;
             // 
-            // btn_pobierz
+            // textBox_FilePath
             // 
-            this.btn_pobierz.BackColor = System.Drawing.Color.Ivory;
-            this.btn_pobierz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_pobierz.Location = new System.Drawing.Point(559, 431);
-            this.btn_pobierz.Name = "btn_pobierz";
-            this.btn_pobierz.Size = new System.Drawing.Size(160, 39);
-            this.btn_pobierz.TabIndex = 2;
-            this.btn_pobierz.Text = "Pobierz";
-            this.btn_pobierz.UseVisualStyleBackColor = false;
+            this.textBox_FilePath.Location = new System.Drawing.Point(7, 446);
+            this.textBox_FilePath.Name = "textBox_FilePath";
+            this.textBox_FilePath.Size = new System.Drawing.Size(378, 24);
+            this.textBox_FilePath.TabIndex = 8;
             // 
-            // pnl_powiadomienia
+            // btn_dodaj_plik
             // 
-            this.pnl_powiadomienia.BackColor = System.Drawing.Color.PaleGreen;
-            this.pnl_powiadomienia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnl_powiadomienia.Location = new System.Drawing.Point(428, 58);
-            this.pnl_powiadomienia.Name = "pnl_powiadomienia";
-            this.pnl_powiadomienia.Size = new System.Drawing.Size(451, 251);
-            this.pnl_powiadomienia.TabIndex = 5;
+            this.btn_dodaj_plik.BackColor = System.Drawing.Color.Ivory;
+            this.btn_dodaj_plik.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_dodaj_plik.Location = new System.Drawing.Point(393, 431);
+            this.btn_dodaj_plik.Name = "btn_dodaj_plik";
+            this.btn_dodaj_plik.Size = new System.Drawing.Size(160, 39);
+            this.btn_dodaj_plik.TabIndex = 5;
+            this.btn_dodaj_plik.Text = "Dodaj Plik";
+            this.btn_dodaj_plik.UseVisualStyleBackColor = false;
+            this.btn_dodaj_plik.Click += new System.EventHandler(this.btn_dodaj_Click);
+            // 
+            // btn_otworz
+            // 
+            this.btn_otworz.BackColor = System.Drawing.Color.Ivory;
+            this.btn_otworz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_otworz.Location = new System.Drawing.Point(557, 431);
+            this.btn_otworz.Name = "btn_otworz";
+            this.btn_otworz.Size = new System.Drawing.Size(160, 39);
+            this.btn_otworz.TabIndex = 2;
+            this.btn_otworz.Text = "Otwórz";
+            this.btn_otworz.UseVisualStyleBackColor = false;
+            this.btn_otworz.Click += new System.EventHandler(this.btn_otworz_Click);
+            // 
+            // btn_dodaj
+            // 
+            this.btn_dodaj.BackColor = System.Drawing.Color.Ivory;
+            this.btn_dodaj.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_dodaj.Location = new System.Drawing.Point(557, 431);
+            this.btn_dodaj.Name = "btn_dodaj";
+            this.btn_dodaj.Size = new System.Drawing.Size(160, 39);
+            this.btn_dodaj.TabIndex = 7;
+            this.btn_dodaj.Text = "Dodaj";
+            this.btn_dodaj.UseVisualStyleBackColor = false;
+            this.btn_dodaj.Click += new System.EventHandler(this.btn_dodaj_Click_1);
+            // 
+            // btn_anuluj
+            // 
+            this.btn_anuluj.BackColor = System.Drawing.Color.Ivory;
+            this.btn_anuluj.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_anuluj.Location = new System.Drawing.Point(393, 431);
+            this.btn_anuluj.Name = "btn_anuluj";
+            this.btn_anuluj.Size = new System.Drawing.Size(160, 39);
+            this.btn_anuluj.TabIndex = 6;
+            this.btn_anuluj.Text = "Anuluj";
+            this.btn_anuluj.UseVisualStyleBackColor = false;
+            this.btn_anuluj.Click += new System.EventHandler(this.btn_anuluj_Click);
             // 
             // pnl_account
             // 
@@ -1686,263 +3007,13 @@
             this.opis_imie.TabIndex = 0;
             this.opis_imie.Text = "Imię:";
             // 
-            // btn_update_admins
+            // pnl_Blank
             // 
-            this.btn_update_admins.BackColor = System.Drawing.Color.Ivory;
-            this.btn_update_admins.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_update_admins.Location = new System.Drawing.Point(391, 431);
-            this.btn_update_admins.Name = "btn_update_admins";
-            this.btn_update_admins.Size = new System.Drawing.Size(160, 39);
-            this.btn_update_admins.TabIndex = 16;
-            this.btn_update_admins.Text = "Aktualizuj";
-            this.btn_update_admins.UseVisualStyleBackColor = false;
-            // 
-            // Tryb_admins
-            // 
-            this.Tryb_admins.AutoSize = true;
-            this.Tryb_admins.Location = new System.Drawing.Point(7, 7);
-            this.Tryb_admins.Name = "Tryb_admins";
-            this.Tryb_admins.Size = new System.Drawing.Size(73, 17);
-            this.Tryb_admins.TabIndex = 17;
-            this.Tryb_admins.Text = "Aktualizuj";
-            // 
-            // btn_admins_back
-            // 
-            this.btn_admins_back.BackColor = System.Drawing.Color.Ivory;
-            this.btn_admins_back.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_admins_back.Location = new System.Drawing.Point(10, 431);
-            this.btn_admins_back.Name = "btn_admins_back";
-            this.btn_admins_back.Size = new System.Drawing.Size(160, 39);
-            this.btn_admins_back.TabIndex = 20;
-            this.btn_admins_back.Text = "Wróć";
-            this.btn_admins_back.UseVisualStyleBackColor = false;
-            // 
-            // btn_delete
-            // 
-            this.btn_delete.BackColor = System.Drawing.Color.Ivory;
-            this.btn_delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_delete.Location = new System.Drawing.Point(559, 431);
-            this.btn_delete.Name = "btn_delete";
-            this.btn_delete.Size = new System.Drawing.Size(160, 39);
-            this.btn_delete.TabIndex = 21;
-            this.btn_delete.Text = "Usuń";
-            this.btn_delete.UseVisualStyleBackColor = false;
-            // 
-            // btn_delete_segregacja
-            // 
-            this.btn_delete_segregacja.BackColor = System.Drawing.Color.Ivory;
-            this.btn_delete_segregacja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_delete_segregacja.Location = new System.Drawing.Point(559, 431);
-            this.btn_delete_segregacja.Name = "btn_delete_segregacja";
-            this.btn_delete_segregacja.Size = new System.Drawing.Size(160, 39);
-            this.btn_delete_segregacja.TabIndex = 22;
-            this.btn_delete_segregacja.Text = "Usuń";
-            this.btn_delete_segregacja.UseVisualStyleBackColor = false;
-            // 
-            // view_edit_segregacja
-            // 
-            this.view_edit_segregacja.AllowUserToAddRows = false;
-            this.view_edit_segregacja.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.view_edit_segregacja.BackgroundColor = System.Drawing.Color.Snow;
-            this.view_edit_segregacja.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.view_edit_segregacja.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.view_edit_segregacja.Location = new System.Drawing.Point(10, 33);
-            this.view_edit_segregacja.Name = "view_edit_segregacja";
-            this.view_edit_segregacja.Size = new System.Drawing.Size(709, 392);
-            this.view_edit_segregacja.TabIndex = 23;
-            // 
-            // btn_edit_segregacja
-            // 
-            this.btn_edit_segregacja.BackColor = System.Drawing.Color.Ivory;
-            this.btn_edit_segregacja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_edit_segregacja.Location = new System.Drawing.Point(393, 431);
-            this.btn_edit_segregacja.Name = "btn_edit_segregacja";
-            this.btn_edit_segregacja.Size = new System.Drawing.Size(160, 39);
-            this.btn_edit_segregacja.TabIndex = 24;
-            this.btn_edit_segregacja.Text = "Aktualizuj";
-            this.btn_edit_segregacja.UseVisualStyleBackColor = false;
-            // 
-            // btn_back_segregacja
-            // 
-            this.btn_back_segregacja.BackColor = System.Drawing.Color.Ivory;
-            this.btn_back_segregacja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_back_segregacja.Location = new System.Drawing.Point(10, 431);
-            this.btn_back_segregacja.Name = "btn_back_segregacja";
-            this.btn_back_segregacja.Size = new System.Drawing.Size(160, 39);
-            this.btn_back_segregacja.TabIndex = 25;
-            this.btn_back_segregacja.Text = "Wróć";
-            this.btn_back_segregacja.UseVisualStyleBackColor = false;
-            // 
-            // Tryb_segregacja
-            // 
-            this.Tryb_segregacja.AutoSize = true;
-            this.Tryb_segregacja.Location = new System.Drawing.Point(10, 12);
-            this.Tryb_segregacja.Name = "Tryb_segregacja";
-            this.Tryb_segregacja.Size = new System.Drawing.Size(73, 17);
-            this.Tryb_segregacja.TabIndex = 26;
-            this.Tryb_segregacja.Text = "Aktualizuj";
-            // 
-            // Tryb_smieciarze
-            // 
-            this.Tryb_smieciarze.AutoSize = true;
-            this.Tryb_smieciarze.Location = new System.Drawing.Point(7, 10);
-            this.Tryb_smieciarze.Name = "Tryb_smieciarze";
-            this.Tryb_smieciarze.Size = new System.Drawing.Size(73, 17);
-            this.Tryb_smieciarze.TabIndex = 27;
-            this.Tryb_smieciarze.Text = "Aktualizuj";
-            // 
-            // view_edit_smieciarze
-            // 
-            this.view_edit_smieciarze.AllowUserToAddRows = false;
-            this.view_edit_smieciarze.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.view_edit_smieciarze.BackgroundColor = System.Drawing.Color.Snow;
-            this.view_edit_smieciarze.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.view_edit_smieciarze.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.view_edit_smieciarze.Location = new System.Drawing.Point(10, 33);
-            this.view_edit_smieciarze.Name = "view_edit_smieciarze";
-            this.view_edit_smieciarze.Size = new System.Drawing.Size(709, 392);
-            this.view_edit_smieciarze.TabIndex = 28;
-            // 
-            // btn_delete_smieciarze
-            // 
-            this.btn_delete_smieciarze.BackColor = System.Drawing.Color.Ivory;
-            this.btn_delete_smieciarze.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_delete_smieciarze.Location = new System.Drawing.Point(557, 431);
-            this.btn_delete_smieciarze.Name = "btn_delete_smieciarze";
-            this.btn_delete_smieciarze.Size = new System.Drawing.Size(160, 39);
-            this.btn_delete_smieciarze.TabIndex = 29;
-            this.btn_delete_smieciarze.Text = "Usuń";
-            this.btn_delete_smieciarze.UseVisualStyleBackColor = false;
-            // 
-            // btn_smieciarze_edit
-            // 
-            this.btn_smieciarze_edit.BackColor = System.Drawing.Color.Ivory;
-            this.btn_smieciarze_edit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_smieciarze_edit.Location = new System.Drawing.Point(391, 431);
-            this.btn_smieciarze_edit.Name = "btn_smieciarze_edit";
-            this.btn_smieciarze_edit.Size = new System.Drawing.Size(160, 39);
-            this.btn_smieciarze_edit.TabIndex = 30;
-            this.btn_smieciarze_edit.Text = "Aktualizuj";
-            this.btn_smieciarze_edit.UseVisualStyleBackColor = false;
-            // 
-            // btn_back_smieciarze
-            // 
-            this.btn_back_smieciarze.BackColor = System.Drawing.Color.Ivory;
-            this.btn_back_smieciarze.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_back_smieciarze.Location = new System.Drawing.Point(10, 431);
-            this.btn_back_smieciarze.Name = "btn_back_smieciarze";
-            this.btn_back_smieciarze.Size = new System.Drawing.Size(160, 39);
-            this.btn_back_smieciarze.TabIndex = 31;
-            this.btn_back_smieciarze.Text = "Wróć";
-            this.btn_back_smieciarze.UseVisualStyleBackColor = false;
-            // 
-            // btn_back_kierowcy
-            // 
-            this.btn_back_kierowcy.BackColor = System.Drawing.Color.Ivory;
-            this.btn_back_kierowcy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_back_kierowcy.Location = new System.Drawing.Point(10, 431);
-            this.btn_back_kierowcy.Name = "btn_back_kierowcy";
-            this.btn_back_kierowcy.Size = new System.Drawing.Size(160, 39);
-            this.btn_back_kierowcy.TabIndex = 32;
-            this.btn_back_kierowcy.Text = "Wróć";
-            this.btn_back_kierowcy.UseVisualStyleBackColor = false;
-            // 
-            // view_edit_kierowcy
-            // 
-            this.view_edit_kierowcy.AllowUserToAddRows = false;
-            this.view_edit_kierowcy.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.view_edit_kierowcy.BackgroundColor = System.Drawing.Color.Snow;
-            this.view_edit_kierowcy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.view_edit_kierowcy.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.view_edit_kierowcy.Location = new System.Drawing.Point(10, 33);
-            this.view_edit_kierowcy.Name = "view_edit_kierowcy";
-            this.view_edit_kierowcy.Size = new System.Drawing.Size(709, 392);
-            this.view_edit_kierowcy.TabIndex = 33;
-            // 
-            // Tryb_kierowcy
-            // 
-            this.Tryb_kierowcy.AutoSize = true;
-            this.Tryb_kierowcy.Location = new System.Drawing.Point(10, 10);
-            this.Tryb_kierowcy.Name = "Tryb_kierowcy";
-            this.Tryb_kierowcy.Size = new System.Drawing.Size(73, 17);
-            this.Tryb_kierowcy.TabIndex = 34;
-            this.Tryb_kierowcy.Text = "Aktualizuj";
-            // 
-            // btn_kierowcy_edit
-            // 
-            this.btn_kierowcy_edit.BackColor = System.Drawing.Color.Ivory;
-            this.btn_kierowcy_edit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_kierowcy_edit.Location = new System.Drawing.Point(393, 431);
-            this.btn_kierowcy_edit.Name = "btn_kierowcy_edit";
-            this.btn_kierowcy_edit.Size = new System.Drawing.Size(160, 39);
-            this.btn_kierowcy_edit.TabIndex = 35;
-            this.btn_kierowcy_edit.Text = "Aktualizuj";
-            this.btn_kierowcy_edit.UseVisualStyleBackColor = false;
-            // 
-            // btn_delete_kierowcy
-            // 
-            this.btn_delete_kierowcy.BackColor = System.Drawing.Color.Ivory;
-            this.btn_delete_kierowcy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_delete_kierowcy.Location = new System.Drawing.Point(559, 431);
-            this.btn_delete_kierowcy.Name = "btn_delete_kierowcy";
-            this.btn_delete_kierowcy.Size = new System.Drawing.Size(160, 39);
-            this.btn_delete_kierowcy.TabIndex = 36;
-            this.btn_delete_kierowcy.Text = "Usuń";
-            this.btn_delete_kierowcy.UseVisualStyleBackColor = false;
-            // 
-            // view_edit_odbior
-            // 
-            this.view_edit_odbior.AllowUserToAddRows = false;
-            this.view_edit_odbior.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.view_edit_odbior.BackgroundColor = System.Drawing.Color.Snow;
-            this.view_edit_odbior.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.view_edit_odbior.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.view_edit_odbior.Location = new System.Drawing.Point(13, 33);
-            this.view_edit_odbior.Name = "view_edit_odbior";
-            this.view_edit_odbior.Size = new System.Drawing.Size(709, 392);
-            this.view_edit_odbior.TabIndex = 34;
-            // 
-            // btn_delete_odbior
-            // 
-            this.btn_delete_odbior.BackColor = System.Drawing.Color.Ivory;
-            this.btn_delete_odbior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_delete_odbior.Location = new System.Drawing.Point(559, 431);
-            this.btn_delete_odbior.Name = "btn_delete_odbior";
-            this.btn_delete_odbior.Size = new System.Drawing.Size(160, 39);
-            this.btn_delete_odbior.TabIndex = 37;
-            this.btn_delete_odbior.Text = "Usuń";
-            this.btn_delete_odbior.UseVisualStyleBackColor = false;
-            // 
-            // btn_odbior_edit
-            // 
-            this.btn_odbior_edit.BackColor = System.Drawing.Color.Ivory;
-            this.btn_odbior_edit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_odbior_edit.Location = new System.Drawing.Point(393, 431);
-            this.btn_odbior_edit.Name = "btn_odbior_edit";
-            this.btn_odbior_edit.Size = new System.Drawing.Size(160, 39);
-            this.btn_odbior_edit.TabIndex = 38;
-            this.btn_odbior_edit.Text = "Aktualizuj";
-            this.btn_odbior_edit.UseVisualStyleBackColor = false;
-            // 
-            // btn_back_odbior
-            // 
-            this.btn_back_odbior.BackColor = System.Drawing.Color.Ivory;
-            this.btn_back_odbior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_back_odbior.Location = new System.Drawing.Point(13, 431);
-            this.btn_back_odbior.Name = "btn_back_odbior";
-            this.btn_back_odbior.Size = new System.Drawing.Size(160, 39);
-            this.btn_back_odbior.TabIndex = 39;
-            this.btn_back_odbior.Text = "Wróć";
-            this.btn_back_odbior.UseVisualStyleBackColor = false;
-            // 
-            // Tryb_odbior
-            // 
-            this.Tryb_odbior.AutoSize = true;
-            this.Tryb_odbior.Location = new System.Drawing.Point(10, 10);
-            this.Tryb_odbior.Name = "Tryb_odbior";
-            this.Tryb_odbior.Size = new System.Drawing.Size(73, 17);
-            this.Tryb_odbior.TabIndex = 40;
-            this.Tryb_odbior.Text = "Aktualizuj";
+            this.pnl_Blank.BackColor = System.Drawing.Color.White;
+            this.pnl_Blank.Location = new System.Drawing.Point(229, 58);
+            this.pnl_Blank.Name = "pnl_Blank";
+            this.pnl_Blank.Size = new System.Drawing.Size(731, 486);
+            this.pnl_Blank.TabIndex = 15;
             // 
             // MenuForm
             // 
@@ -1950,15 +3021,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(960, 540);
-            this.Controls.Add(this.pnl_account);
-            this.Controls.Add(this.pnl_edycja_danych);
-            this.Controls.Add(this.pnl_powiadomienia);
-            this.Controls.Add(this.pnl_wydzialy);
-            this.Controls.Add(this.pnl_raport_odp);
+            this.Controls.Add(this.pnl_Blank);
             this.Controls.Add(this.pnl_druki_pliki);
-            this.Controls.Add(this.pnl_harmonogramy);
-            this.Controls.Add(this.pnl_up);
             this.Controls.Add(this.pnl_left);
+            this.Controls.Add(this.pnl_account);
+            this.Controls.Add(this.pnl_harmonogramy);
+            this.Controls.Add(this.pnl_wydzialy);
+            this.Controls.Add(this.pnl_edycja_danych);
+            this.Controls.Add(this.pnl_up);
             this.Font = new System.Drawing.Font("Arial Black", 9F, System.Drawing.FontStyle.Bold);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
@@ -1966,37 +3036,67 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MenuForm";
             this.pnl_left.ResumeLayout(false);
-            this.pnl_raport_odp.ResumeLayout(false);
-            this.pnl_new_raport.ResumeLayout(false);
-            this.pnl_new_raport.PerformLayout();
-            this.pnl_print_raport.ResumeLayout(false);
-            this.pnl_print_raport.PerformLayout();
-            this.pnl_show_raport.ResumeLayout(false);
-            this.pnl_show_raport.PerformLayout();
             this.pnl_up.ResumeLayout(false);
             this.pnl_edycja_danych.ResumeLayout(false);
+            this.pnl_edit_schedules.ResumeLayout(false);
+            this.pnl_edit_schedules.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.view_edit_schedule)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.view_show_trucks_routes)).EndInit();
+            this.pnl_create_schedule.ResumeLayout(false);
+            this.pnl_create_schedule.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.view_create_schedule)).EndInit();
+            this.pnl_edit_route.ResumeLayout(false);
+            this.pnl_edit_route.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.view_edit_route)).EndInit();
+            this.pnl_create_route.ResumeLayout(false);
+            this.pnl_create_route.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.view_created_route)).EndInit();
+            this.pnl_edit_team.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.view_editTeam)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.view_showTeam)).EndInit();
+            this.pnl_create_team.ResumeLayout(false);
+            this.pnl_create_team.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.view_create_team)).EndInit();
+            this.pnl_create_truck.ResumeLayout(false);
+            this.pnl_create_truck.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.view_create_truck)).EndInit();
+            this.pnl_edit_trucks.ResumeLayout(false);
+            this.pnl_edit_trucks.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.view_edit_trucks)).EndInit();
+            this.pnl_edit_segregacja.ResumeLayout(false);
+            this.pnl_edit_segregacja.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.view_edit_segregacja)).EndInit();
             this.pnl_edit_admin.ResumeLayout(false);
             this.pnl_edit_admin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.view_edit_admin)).EndInit();
-            this.pnl_edit_wydzial.ResumeLayout(false);
-            this.pnl_edit_wydzial.PerformLayout();
-            this.pnl_add_acc.ResumeLayout(false);
-            this.pnl_add_acc.PerformLayout();
-            this.pnl_edit_harmonogram.ResumeLayout(false);
-            this.pnl_edit_harmonogram.PerformLayout();
             this.pnl_edit_smieciarze.ResumeLayout(false);
             this.pnl_edit_smieciarze.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.view_edit_smieciarze)).EndInit();
             this.pnl_edit_kierowcy.ResumeLayout(false);
             this.pnl_edit_kierowcy.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.view_edit_kierowcy)).EndInit();
             this.pnl_edit_odbior.ResumeLayout(false);
             this.pnl_edit_odbior.PerformLayout();
-            this.pnl_edit_segregacja.ResumeLayout(false);
-            this.pnl_edit_segregacja.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.view_edit_odbior)).EndInit();
+            this.pnl_add_acc.ResumeLayout(false);
+            this.pnl_add_acc.PerformLayout();
+            this.pnl_edit_wydzial.ResumeLayout(false);
+            this.pnl_edit_wydzial.PerformLayout();
+            this.pnl_edit_truck.ResumeLayout(false);
+            this.pnl_edit_truck.PerformLayout();
+            this.pnl_edit_harmonogram.ResumeLayout(false);
+            this.pnl_edit_harmonogram.PerformLayout();
+            this.pnl_edit_team1.ResumeLayout(false);
+            this.pnl_edit_team1.PerformLayout();
+            this.pnl_edit_routes.ResumeLayout(false);
+            this.pnl_edit_routes.PerformLayout();
             this.pnl_harmonogramy.ResumeLayout(false);
             this.pnl_niesegregowane.ResumeLayout(false);
             this.pnl_niesegregowane.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.view_niesegregowane)).EndInit();
             this.pnl_segregowane.ResumeLayout(false);
             this.pnl_segregowane.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.view_segregowane)).EndInit();
             this.pnl_wydzialy.ResumeLayout(false);
             this.pnl_odbiór.ResumeLayout(false);
             this.pnl_odbiór.PerformLayout();
@@ -2014,12 +3114,10 @@
             this.pnl_administracja.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.widok_administracja)).EndInit();
             this.pnl_druki_pliki.ResumeLayout(false);
+            this.pnl_druki_pliki.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dGVFilesList)).EndInit();
             this.pnl_account.ResumeLayout(false);
             this.pnl_account.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.view_edit_segregacja)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.view_edit_smieciarze)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.view_edit_kierowcy)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.view_edit_odbior)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2031,10 +3129,8 @@
         private System.Windows.Forms.Button btn_wydzialy;
         private System.Windows.Forms.Button btn_harmonogramy;
         private System.Windows.Forms.Button btn_edycja_danych;
-        private System.Windows.Forms.Button btn_mail;
         private System.Windows.Forms.Button btn_druki_pliki;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Panel pnl_edycja_danych;
         private System.Windows.Forms.Button btn_new_acc;
         private System.Windows.Forms.Panel pnl_add_acc;
@@ -2059,7 +3155,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel pnl_smieciarze;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Panel pnl_raport_odp;
         private System.Windows.Forms.Panel pnl_kierowcy;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel pnl_segregacja;
@@ -2069,38 +3164,13 @@
         private System.Windows.Forms.Button odbior;
         private System.Windows.Forms.Button segregacja;
         private System.Windows.Forms.Panel pnl_druki_pliki;
-        private System.Windows.Forms.Button btn_zaznacz;
-        private System.Windows.Forms.Button btn_odznacz;
-        private System.Windows.Forms.Button btn_pobierz;
-        private System.Windows.Forms.Panel pnl_powiadomienia;
+        private System.Windows.Forms.Button btn_otworz;
         private System.Windows.Forms.Button btn_edit_harmonogram;
         private System.Windows.Forms.Button btn_edit_user;
         private System.Windows.Forms.Panel pnl_edit_harmonogram;
         private System.Windows.Forms.Button btn_create_harm;
         private System.Windows.Forms.Button btn_edit_harm;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Panel pnl_new_raport;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Button btn_new_raport;
-        private System.Windows.Forms.Button btn_show_raport;
-        private System.Windows.Forms.Button btn_print_raport;
-        private System.Windows.Forms.Button btn_raport_odp;
-        private System.Windows.Forms.Button btn_raport_prac;
-        private System.Windows.Forms.Panel pnl_show_raport;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Panel pnl_print_raport;
-        private System.Windows.Forms.Button btn_print;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox txt_trasa;
-        private System.Windows.Forms.TextBox txt_rodzaj;
-        private System.Windows.Forms.TextBox txt_ile_smiec;
-        private System.Windows.Forms.TextBox txt_date;
-        private System.Windows.Forms.TextBox txt_name;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.CheckBox checkbox_smieciarz;
         private System.Windows.Forms.CheckBox checkbox_admin;
         private System.Windows.Forms.Button btn_account;
@@ -2179,5 +3249,117 @@
         private System.Windows.Forms.Button btn_delete_odbior;
         private System.Windows.Forms.Button btn_odbior_edit;
         private System.Windows.Forms.DataGridView view_edit_odbior;
+        private System.Windows.Forms.Button btn_dodaj_plik;
+        private System.Windows.Forms.Button btn_dodaj;
+        private System.Windows.Forms.Button btn_anuluj;
+        private System.Windows.Forms.Panel pnl_create_schedule;
+        private System.Windows.Forms.Button btn_back_cs;
+        private System.Windows.Forms.DataGridView view_create_schedule;
+        private System.Windows.Forms.CheckBox checkBox_nieseg;
+        private System.Windows.Forms.CheckBox checkBox_seg;
+        private System.Windows.Forms.TextBox txt_id_truck;
+        private System.Windows.Forms.TextBox txt_data;
+        private System.Windows.Forms.TextBox txt_id_route;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Button btn_trasy;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Button btn_ciezarowki;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Panel pnl_edit_team1;
+        private System.Windows.Forms.Button btn_create_team;
+        private System.Windows.Forms.Button btn_edit_team;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Button btn_edit_team1;
+        private System.Windows.Forms.Button btn_create_schedule;
+        private System.Windows.Forms.Panel pnl_create_team;
+        private System.Windows.Forms.Button btn_teams;
+        private System.Windows.Forms.Button btn_creatTeam;
+        private System.Windows.Forms.Button btn_back_team;
+        private System.Windows.Forms.DataGridView view_create_team;
+        private System.Windows.Forms.TextBox txt_kierowca;
+        private System.Windows.Forms.Button btn_kierowcy;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Button btn_odbior;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Panel pnl_edit_team;
+        private System.Windows.Forms.Button btn_back_editTeam;
+        private System.Windows.Forms.DataGridView view_showTeam;
+        private System.Windows.Forms.Button btn_kierowcy_editTeam;
+        private System.Windows.Forms.Button btn_teams_editTeam;
+        private System.Windows.Forms.Button btn_smieciarze_editTeam;
+        private System.Windows.Forms.DataGridView view_editTeam;
+        private System.Windows.Forms.Panel pnl_Blank;
+        private System.Windows.Forms.Button btn_edit_truck;
+        private System.Windows.Forms.Panel pnl_edit_truck;
+        private System.Windows.Forms.Button btn_create_truck;
+        private System.Windows.Forms.Button btn_edit_trucks;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Panel pnl_create_truck;
+        private System.Windows.Forms.TextBox txt_pltNumber;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.TextBox txt_seats;
+        private System.Windows.Forms.Button btn_add_createtruck;
+        private System.Windows.Forms.Button btn_back_createtruck;
+        private System.Windows.Forms.DataGridView view_create_truck;
+        private System.Windows.Forms.TextBox txt_brand;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Button btn_created_truck;
+        private System.Windows.Forms.Panel pnl_edit_trucks;
+        private System.Windows.Forms.Button btn_back_edit_trucks;
+        private System.Windows.Forms.DataGridView view_edit_trucks;
+        private System.Windows.Forms.Button btn_ed_created_trucks;
+        private System.Windows.Forms.Button btn_trucks;
+        private System.Windows.Forms.TextBox txt_nr_rejestr;
+        private System.Windows.Forms.Label Tryb_trucks;
+        private System.Windows.Forms.Button btn_update_trucks;
+        private System.Windows.Forms.Button btn_delete_trucks;
+        private System.Windows.Forms.TextBox textBox_FilePath;
+        private System.Windows.Forms.DataGridView dGVFilesList;
+        private System.Windows.Forms.Button btn_usun_plik;
+        private System.Windows.Forms.Button btn_edit_routes;
+        private System.Windows.Forms.Panel pnl_edit_routes;
+        private System.Windows.Forms.Button btn_create_route;
+        private System.Windows.Forms.Button btn_edit_route;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Panel pnl_create_route;
+        private System.Windows.Forms.TextBox txt_length;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Button btn_show_routes;
+        private System.Windows.Forms.TextBox txt_by;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.TextBox txt_end;
+        private System.Windows.Forms.Button btn_add_route;
+        private System.Windows.Forms.Button btn_back_route;
+        private System.Windows.Forms.DataGridView view_created_route;
+        private System.Windows.Forms.TextBox txt_start;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Panel pnl_edit_route;
+        private System.Windows.Forms.Label label_edit_route;
+        private System.Windows.Forms.Button btn_edit_route_back;
+        private System.Windows.Forms.Button btn_update_route;
+        private System.Windows.Forms.DataGridView view_edit_route;
+        private System.Windows.Forms.Button btn_delete_route;
+        private System.Windows.Forms.Button btn_show_route;
+        private System.Windows.Forms.Button btn_created_schedules;
+        private System.Windows.Forms.Panel pnl_edit_schedules;
+        private System.Windows.Forms.Button btn_sch_back;
+        private System.Windows.Forms.DataGridView view_edit_schedule;
+        private System.Windows.Forms.DataGridView view_show_trucks_routes;
+        private System.Windows.Forms.Button btn_sch_show_routes;
+        private System.Windows.Forms.Button btn_show_schedules;
+        private System.Windows.Forms.Button btn_sch_show_trucks;
+        private System.Windows.Forms.Label label_edit_schedule;
+        private System.Windows.Forms.Button btn_update_schedule;
+        private System.Windows.Forms.Button btn_delete_schedule;
+        private System.Windows.Forms.DataGridView view_segregowane;
+        private System.Windows.Forms.DataGridView view_niesegregowane;
+        private System.Windows.Forms.Button btn_seg_all;
+        private System.Windows.Forms.Button btn_seg_yours;
+        private System.Windows.Forms.Button btn_nieseg_all;
+        private System.Windows.Forms.Button btn_nieseg_yours;
     }
 }
