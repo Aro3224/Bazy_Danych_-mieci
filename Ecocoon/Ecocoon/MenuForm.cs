@@ -2315,9 +2315,28 @@ namespace Ecocoon
                 }
             }
         }
-        //usuwanie trucków
+        //usuwanie trucków - akcja referencyjna
         private void view_edit_trucks_Delete(object sender, DataGridViewCellEventArgs e)
         {
+            /* TRIGGER STWORZONY DO WYKONANIA AKCJI REFERNYJNEJ
+            CREATE TRIGGER dbo.Truck_Delete
+            ON dbo.Truck
+            INSTEAD OF DELETE
+            AS
+            BEGIN
+                SET NOCOUNT ON;
+
+                DELETE FROM Schedule
+                WHERE TruckID IN (SELECT deleted.TruckID FROM deleted);
+
+                UPDATE Users
+                SET Team = NULL
+                WHERE Team IN (SELECT deleted.TruckID FROM deleted);
+
+                DELETE FROM Truck
+                WHERE TruckID IN (SELECT deleted.TruckID FROM deleted);
+            END
+             */
             if (e.RowIndex >= 0)
             {
                 DialogResult result = MessageBox.Show("Czy na pewno chcesz usunąć ciężarówkę?", "Usuwanie ciężarówki", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -2326,37 +2345,11 @@ namespace Ecocoon
                 {
                     string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
                     string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-                    string query1 = "DELETE FROM Schedule WHERE TruckID = @TruckID";
-                    string query2 = "UPDATE Users SET Team = NULL WHERE Team = @TruckID";
-                    string query3 = "DELETE FROM Truck WHERE TruckID = @TruckID";
+                    string deleteTruckQuery = "DELETE FROM Truck WHERE TruckID = @TruckID";
 
                     using (SqlConnection connection = new SqlConnection(connectionString))
                     {
-                        using (SqlCommand command = new SqlCommand(query1, connection))
-                        {
-                            command.Parameters.AddWithValue("@TruckID", view_edit_trucks.Rows[e.RowIndex].Cells["TruckID"].Value);
-
-                            connection.Open();
-                            command.ExecuteNonQuery();
-                            connection.Close();
-                        }
-                    }
-
-                    using (SqlConnection connection = new SqlConnection(connectionString))
-                    {
-                        using (SqlCommand command = new SqlCommand(query2, connection))
-                        {
-                            command.Parameters.AddWithValue("@TruckID", view_edit_trucks.Rows[e.RowIndex].Cells["TruckID"].Value);
-
-                            connection.Open();
-                            command.ExecuteNonQuery();
-                            connection.Close();
-                        }
-                    }
-
-                    using (SqlConnection connection = new SqlConnection(connectionString))
-                    {
-                        using (SqlCommand command = new SqlCommand(query3, connection))
+                        using (SqlCommand command = new SqlCommand(deleteTruckQuery, connection))
                         {
                             command.Parameters.AddWithValue("@TruckID", view_edit_trucks.Rows[e.RowIndex].Cells["TruckID"].Value);
 
