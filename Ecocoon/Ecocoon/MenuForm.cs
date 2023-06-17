@@ -2271,12 +2271,14 @@ namespace Ecocoon
         {
             string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
             string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
-            string query = "UPDATE Truck SET Brand = @brand, PltNumber = @pltnumber, Seats = @seats WHERE TruckID = @TruckID;";
+            string Procedure = "UpdateTruck";
+            CreateProcedure();
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlCommand command = new SqlCommand(Procedure, connection))
                 {
+                    command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@brand", view_edit_trucks.Rows[e.RowIndex].Cells["Brand"].Value);
                     command.Parameters.AddWithValue("@pltnumber", view_edit_trucks.Rows[e.RowIndex].Cells["PltNumber"].Value);
                     command.Parameters.AddWithValue("@seats", view_edit_trucks.Rows[e.RowIndex].Cells["Seats"].Value);
@@ -2285,7 +2287,31 @@ namespace Ecocoon
                     connection.Open();
                     command.ExecuteNonQuery();
                     connection.Close();
+                }
+            }
+        }
+        //procedura do edycji trucka
+        private void CreateProcedure()
+        {
+            string serverAddress = ConfigurationManager.AppSettings["ServerAddress"];
+            string connectionString = $"Data Source={serverAddress};Initial Catalog=DatabaseSmieci;Integrated Security=True";
+            string dropProcedureQuery = "IF OBJECT_ID('UpdateTruck', 'P') IS NOT NULL DROP PROCEDURE UpdateTruck";
+            string createProcedureQuery = @"CREATE PROCEDURE UpdateTruck @brand VARCHAR(50), @pltnumber VARCHAR(50), @seats INT, @truckid INT AS BEGIN UPDATE Truck SET Brand = @brand, PltNumber = @pltnumber, Seats = @seats WHERE TruckID = @truckid; END";
 
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(dropProcedureQuery, connection))
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+
+                using (SqlCommand command = new SqlCommand(createProcedureQuery, connection))
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
                 }
             }
         }
